@@ -87,7 +87,7 @@ export default function CustomCursor() {
                 ref={dotRef}
                 className="fixed top-0 left-0 rounded-full pointer-events-none z-9999 mix-blend-difference will-change-transform"
                 style={{
-                    transition: "transform 0.1s linear, width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
+                    transition: "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
                     width: isHovered ? "32px" : "8px",
                     height: isHovered ? "32px" : "8px",
                     backgroundColor: isHovered ? "rgba(255, 255, 255, 0.4)" : "white",
@@ -98,7 +98,7 @@ export default function CustomCursor() {
                 ref={outlineRef}
                 className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-9999 mix-blend-difference will-change-transform"
                 style={{
-                    transition: "transform 0.08s linear, opacity 0.3s ease",
+                    transition: "opacity 0.3s ease",
                     opacity: isHovered ? "0" : "1",
                 }}
             />
