@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-surface-container-lowest border-t border-stroke-gray relative w-full z-10">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full px-16 py-7 md:py-16  mx-auto">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full px-16 py-7 md:py-16">
         <div className="md:max-w-[25%] space-y-2">
           <Logo />
           <p className="text-on-surface-variant text-center place-items-center text-sm leading-relaxed">
@@ -12,8 +12,8 @@ export default function Footer() {
             دیجیتال از سال ۱۳۸۲.
           </p>
         </div>
-        <div className="flex justify-between w-full md:justify-end md:gap-x-12 md:gap-y-6 mt-8 md:mt-0">
-          <div className="flex flex-col gap-y-0.5">
+        <div className="flex flex-row justify-between w-full md:justify-end md:gap-x-5 mt-8 md:mt-0">
+          <div className="flex flex-col md:flex-row gap-y-0.5 md:gap-x-5">
             <Link
               className="text-on-surface-variant hover:text-electric-blue transition-colors duration-300"
               href="#"
@@ -27,7 +27,7 @@ export default function Footer() {
               سوالات متداول
             </Link>
           </div>
-          <div className="flex flex-col gap-y-0.5">
+          <div className="flex flex-col md:flex-row gap-y-0.5 md:gap-x-5">
             <Link
               className="text-on-surface-variant hover:text-electric-blue transition-colors duration-300"
               href="#"
