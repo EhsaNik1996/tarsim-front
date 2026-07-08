@@ -2,13 +2,28 @@
 
 import { useEffect, useRef, useState } from "react";
 
+function getInitialPointerFine() {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(pointer: fine)").matches;
+}
+
 export default function CustomCursor() {
     const dotRef = useRef<HTMLDivElement>(null);
     const outlineRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [isFinePointer, setIsFinePointer] = useState(getInitialPointerFine);
 
     useEffect(() => {
+        const mediaQuery = window.matchMedia("(pointer: fine)");
+        const handleChange = (e: MediaQueryListEvent) => setIsFinePointer(e.matches);
+        mediaQuery.addEventListener("change", handleChange);
+        return () => mediaQuery.removeEventListener("change", handleChange);
+    }, []);
+
+    useEffect(() => {
+        if (!isFinePointer) return;
+
         const mouse = { x: 0, y: 0 };
         const cursor = { x: 0, y: 0 };
         const speed = 0.12;
@@ -62,9 +77,9 @@ export default function CustomCursor() {
             document.removeEventListener("mouseleave", handleMouseLeave);
             document.removeEventListener("mouseenter", handleMouseEnter);
         };
-    }, [isVisible]);
+    }, [isVisible, isFinePointer]);
 
-    if (!isVisible) return null;
+    if (!isFinePointer || !isVisible) return null;
 
     return (
         <>
@@ -76,7 +91,6 @@ export default function CustomCursor() {
                     width: isHovered ? "32px" : "8px",
                     height: isHovered ? "32px" : "8px",
                     backgroundColor: isHovered ? "rgba(255, 255, 255, 0.4)" : "white",
-
                 }}
             />
 
