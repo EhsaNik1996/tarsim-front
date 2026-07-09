@@ -1,89 +1,44 @@
-"use client";
-import CTA from "@/app/components/CTA";
-import Hero from "@/app/components/Hero";
-import { useEffect, useRef } from "react";
-import About from "@/app/components/About";
 import Header from "@/app/components/Header";
-import Footer from "@/app/components/Footer";
+import Hero from "@/app/components/Hero";
+import Partners from "@/app/components/Partners";
+import Metrics from "@/app/components/Metrics"; // نسخه بروزرسانی شده فوت پرینت
+import About from "@/app/components/About";
+import Approach from "@/app/components/Approach";
 import Services from "@/app/components/Services";
+import FeaturedProjects from "@/app/components/FeaturedProjects"; // بخش جدید اسلایدر مارکی دار
 import Timeline from "@/app/components/Timeline";
-import Portfolio from "@/app/components/Portfolio";
-import { useInView } from "react-intersection-observer";
-import { useMotionValue, useSpring, useTransform } from "framer-motion";
+import TrackRecord from "@/app/components/TrackRecord"; // بخش جدید دارک مایلستون
+import FAQ from "@/app/components/FAQ";
+import CTA from "@/app/components/CTA";
+import Footer from "@/app/components/Footer"; // نسخه متحرک مارکی دار
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-white">
+    <main className="relative min-h-screen bg-white selection:bg-electric-blue selection:text-white">
+      {/* لایه ناوبری هوایی */}
       <Header />
+      
+      {/* فاز ۱: آغازین */}
       <Hero />
-      <section className="border-y border-stroke-gray bg-surface-container-low py-16 relative z-10" dir="rtl">
-        <div className="max-w-360 mx-auto px-6 md:px-16">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-
-            <div className="space-y-2">
-              <div className="text-electric-blue text-5xl font-extrabold font-mono flex items-center justify-center gap-1">
-                <Counter from={0} to={20} />
-                <span>+</span>
-              </div>
-              <div className="text-lg text-on-surface font-medium">سال تجربه مستمر</div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-electric-blue text-5xl font-extrabold font-mono flex items-center justify-center gap-1">
-                <Counter from={0} to={500} />
-                <span>+</span>
-              </div>
-              <div className="text-lg text-on-surface font-medium">پروژه موفق کشوری</div>
-            </div>
-
-            <div className="space-y-2">
-              <div className="text-electric-blue text-5xl font-extrabold font-mono flex items-center justify-center gap-1">
-                <Counter from={0} to={45} />
-                <span>+</span>
-              </div>
-              <div className="text-lg text-on-surface font-medium">متخصص خبره</div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
+      <Partners />
+      
+      {/* فاز ۲: هویت و آمار عددی دقیق سوپرنتريکس */}
+      <Metrics />
       <About />
+      
+      {/* فاز ۳: استراتژی، قابلیت‌ها و سرویس‌ها */}
+      <Approach />
       <Services />
+      
+      {/* فاز ۴: مایلستون‌ها و خط زمان متحرک دَش لایو */}
       <Timeline />
-      <Portfolio />
+      <FeaturedProjects />
+      <TrackRecord />
+      
+      {/* فاز ۵: تعامل و اقدام نهایی */}
+      <FAQ />
       <CTA />
       <Footer />
     </main>
   );
-}
-
-function Counter({ from, to }: { from: number; to: number }) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-    triggerOnce: true,
-  });
-
-  const count = useMotionValue(from);
-  const roundedSpring = useSpring(count, {
-    stiffness: 40,
-    damping: 18,
-  });
-  const displayValue = useTransform(roundedSpring, (latest) => Math.floor(latest));
-
-  useEffect(() => {
-    if (inView) {
-      count.set(to);
-    }
-  }, [inView, count, to]);
-  useEffect(() => {
-    return displayValue.on("change", (latest) => {
-      if (nodeRef.current) {
-        nodeRef.current.textContent = latest.toString();
-      }
-    });
-  }, [displayValue]);
-
-  return <span ref={ref}><span ref={nodeRef}>{from}</span></span>;
 }
