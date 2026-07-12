@@ -9,17 +9,19 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@base-ui/react": "^1.6.0",
     "@tailwindcss/forms": "^0.5.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.0",
-    "lucide-react": "^1.23.0",
+    "lucide-react": "^1.24.0",
     "motion": "^12.42.2",
     "next": "16.2.9",
     "radix-ui": "^1.6.1",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-intersection-observer": "^10.0.3",
+    "swiper": "^14.0.5",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {

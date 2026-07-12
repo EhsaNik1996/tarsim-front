@@ -37,8 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="selection:bg-electric-blue selection:text-white">
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          <div className="grid-line-v right-[64px]"></div>
-          <div className="grid-line-v left-[64px]"></div>
+          <div className="grid-line-v right-16"></div>
+          <div className="grid-line-v left-16"></div>
           <div className="grid-line-v left-1/2"></div>
         </div>
         <div className="relative z-10">{children}</div>
