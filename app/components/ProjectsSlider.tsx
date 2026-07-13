@@ -1,11 +1,9 @@
 "use client";
-import Image from "next/image";
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
-import { ArrowLeft, ArrowRight, X, ExternalLink } from "lucide-react";
 import { Dialog, DialogContent } from "@/app/components/ui/dialog";
-
+import { ArrowLeft, ArrowRight, X, ExternalLink } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,12 +11,15 @@ import "swiper/css/pagination";
 const projectsData = [
   {
     id: 1,
-    title: "کورسو پلتفرم",
-    subtitle: "سیستم اشتراک خلاقیت",
-    desc: "شبکه اختصاصی به اشتراک‌گذاری مفاهیم هنری، ایده‌های دیزاین و خلق تعامل لایو بین هنرمندان مدرن.",
-    longDesc: "پلتفرم کورسو به یک بستر یکپارچه وب با مدیریت فرآیندهای پیشرفته محتوا نیاز داشت. ما زیرساخت‌های فرانت‌اند، جریان‌های داینامیک استوری، چت‌های زنده معماری‌شده و فیدهای الگوریتمی هوشمند را به گونه‌ای توسعه دادیم که در ترافیک زنده و مقیاس بالا بدون وقفه عمل کند.",
-    tags: ["Next.js", "توسعه ابری", "هوش مصنوعی"],
-    url: "https://example.com",
+    title: "داکیباکس",
+    subtitle: "پلتفرم مدیریت کتابخانه ها",
+    desc: "بانک بزرگی از کتاب ها و کتابخانه ها و دسترسی به فایل کتاب های دیجیتال",
+    longDesc:
+      "پلتفرم داکیباکس به یک بستر یکپارچه وب با مدیریت فرآیندهای پیشرفته محتوا نیاز داشت. ما زیرساخت‌های فرانت‌اند، جریان‌های داینامیک استوری، چت‌های زنده معماری‌شده و فیدهای الگوریتمی هوشمند را به گونه‌ای توسعه دادیم که در ترافیک زنده و مقیاس بالا بدون وقفه عمل کند.",
+    tags: ["Next.js", "React.js", "tailwind"],
+    url: "https://docibox.ir",
+    screenshotName: "docibox",
+    privacy: "public",
     bgGradient: "from-orange-50/60 via-white to-white",
     hoverBorder: "hover:border-orange-200",
     activeColor: "text-orange-500",
@@ -27,12 +28,15 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "ترسیم کپیتال",
-    subtitle: "داشبورد مالی و وب‌سایت",
-    desc: "پلتفرم مدیریت دارایی‌های دیجیتال و زنجیره تامین مالی پروژه‌ها مجهز به سیستم‌های تحلیلی زنده.",
-    longDesc: "ترسیم کپیتال نیازمند یک بستر لایو برای پایش فرآیندهای مالی با امنیت تراز سازمانی بود. ساختار کاستوم وب‌سایت، جریان‌های ورود داده و نمودارهای پیشرفته آماری را به صورت ماژولار پیاده‌سازی کردیم تا تحلیلگران بدون نیاز به دانش مهندسی، خروجی‌ها را مدیریت کنند.",
-    tags: ["React", "داشبورد", "مهندسی داده"],
-    url: "https://tailwindcss.com",
+    title: "کتابخانه مجازی ادبیات",
+    subtitle: "دسترسی به کتب ادبی",
+    desc: "بستری آزاد برای تحقیق و دسترسی به منابع تمام متن ادبی",
+    longDesc:
+      "«کتابخانۀ مجازی ادبیات» بستری است برای دستیابی پژوهشگران ارجمند حوزۀ ادبیات به فایل تمام‌متن پی‌دی‌اف (pdf) کتاب‌های حوزۀ ادبیات فارسی و عربی.",
+    tags: ["Next.js", "Laravel", "tailwind"],
+    privacy: "public",
+    url: "https://eliteraturebook.com",
+    screenshotName: "adabiat",
     bgGradient: "from-emerald-50/60 via-white to-white",
     hoverBorder: "hover:border-emerald-200",
     activeColor: "text-emerald-500",
@@ -41,12 +45,100 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "اتوماسیون کلاود",
-    subtitle: "زیرساخت ابری هوشمند",
-    desc: "پلتفرم اتوماسیون فرآیندهای ابری، دپلوی مداوم لایه‌ها و مدیریت هوشمند ترافیک سرورها.",
-    longDesc: "این پروژه با هدف خودکارسازی زیرساخت‌های ابری پایدار برای پلتفرم‌های حساس مهندسی شد. معماری دیتابیس‌های توزیع‌شده، کانتینرهای داکر و مانیتورینگ بلادرنگ فرآیندها به تیم‌های توسعه اجازه می‌دهد تا دپلوی محصولات را با حداکثر سرعت انجام دهند.",
+    title: "کتابخانه تخصصی تاریخ اسلام و ایران",
+    subtitle: "مرجع دیجیتال پژوهش‌های تاریخی",
+    desc: "سامانه جامع دسترسی به منابع، کتاب‌ها، مقالات و اسناد تخصصی تاریخ اسلام و ایران برای پژوهشگران و علاقه‌مندان.",
+    longDesc:
+      "وب‌سایت کتابخانه تخصصی تاریخ اسلام و ایران با هدف ارائه دسترسی سریع و سازمان‌یافته به منابع معتبر تاریخی طراحی و توسعه شد. این پلتفرم امکان جستجوی پیشرفته، معرفی کتاب‌ها و مقالات، مدیریت آرشیو منابع و ارائه اطلاعات پژوهشی را در بستری مدرن و کاربرپسند فراهم می‌کند تا پژوهشگران، دانشجویان و علاقه‌مندان بتوانند به آسانی به محتوای تخصصی مورد نیاز خود دسترسی داشته باشند.",
+    tags: ["Next.js", "آرشیو دیجیتال", "کتابخانه"],
+    privacy: "public",
+    url: "https://historylib.com/",
+    screenshotName: "tarikh",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-teal-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 4,
+    title: "شرکت بازرگانی سفیر آفاق تجارت سبز",
+    subtitle: "تامین تجهیزات تصفیه آب صنعتی",
+    desc: "وب‌سایت شرکتی برای معرفی محصولات، برندهای بین‌المللی و خدمات تخصصی در حوزه فیلترهای ممبران و تجهیزات تصفیه آب صنعتی.",
+    longDesc:
+      "این وب‌سایت با هدف معرفی خدمات و محصولات شرکت سفیر آفاق تجارت سبز طراحی و توسعه شد. پلتفرم امکان معرفی برندهای معتبر جهانی، نمایش مشخصات فنی محصولات، ارائه اطلاعات تخصصی درباره فناوری‌های تصفیه آب صنعتی و ایجاد بستری حرفه‌ای برای ارتباط با مشتریان و دریافت درخواست‌های تجاری را فراهم می‌کند.",
+    tags: ["Next.js", "وب‌سایت شرکتی", "تجارت بین‌الملل"],
+    privacy: "public",
+    url: "http://sats-co.com/",
+    screenshotName: "safir",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-teal-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 5,
+    title: "المستند",
+    subtitle: "سایت خبری و اطلاعات",
+    desc: "سایت اطلاعات مدیران و ارگان های موسسه آل البیت التراث",
+    longDesc:
+      "این پروژه با هدف خودکارسازی زیرساخت‌های ابری پایدار برای پلتفرم‌های حساس مهندسی شد. معماری دیتابیس‌های توزیع‌شده، کانتینرهای داکر و مانیتورینگ بلادرنگ فرآیندها به تیم‌های توسعه اجازه می‌دهد تا دپلوی محصولات را با حداکثر سرعت انجام دهند.",
     tags: ["Docker", "زیرساخت", "امنیت"],
-    url: "https://vercel.com",
+    privacy: "private",
+    url: "https://new.al-mostanad.com/home",
+    screenshotName: "mostanad",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-teal-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 6,
+    title: "الاختام",
+    subtitle: "پلتفرم رسانه‌ای و آرشیو محتوای تاریخی",
+    desc: "وب‌سایت چندرسانه‌ای برای انتشار مستندها، پادکست‌ها، پژوهش‌ها، نسخه‌های خطی و رویدادهای فرهنگی و تاریخی.",
+    longDesc:
+      "این پلتفرم با هدف ارائه و انتشار محتوای پژوهشی و رسانه‌ای در حوزه تاریخ و فرهنگ طراحی و توسعه شد. امکاناتی مانند معرفی مستندها، انتشار مقالات و پژوهش‌ها، آرشیو نسخه‌های خطی، پادکست، پوشش رویدادها و مدیریت محتوای چندرسانه‌ای در بستری مدرن و واکنش‌گرا، تجربه‌ای روان برای مخاطبان و پژوهشگران فراهم می‌کند.",
+    tags: ["Next.js", "CMS", "چندرسانه‌ای"],
+    privacy: "public",
+    url: "https://akhtam.net/",
+    screenshotName: "akhtam",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-teal-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 7,
+    title: "الفائزون",
+    subtitle: "پلتفرم معرفی آثار سینمایی و تلویزیونی",
+    desc: "وب‌سایت رسمی شرکت تولیدات هنری برای معرفی سریال‌ها، فیلم‌ها، پروژه‌های در حال تولید و اخبار رسانه‌ای.",
+    longDesc:
+      "این وب‌سایت با هدف معرفی آثار و فعالیت‌های شرکت تولیدات هنری طراحی و توسعه شد. پلتفرم امکان نمایش پروژه‌های در حال تولید، معرفی آثار منتشرشده، ارائه اخبار، مدیریت محتوای چندرسانه‌ای و معرفی تیم تولید را در محیطی مدرن، واکنش‌گرا و بهینه برای تمامی دستگاه‌ها فراهم می‌کند.",
+    tags: ["Next.js", "رسانه", "چندرسانه‌ای"],
+    privacy: "public",
+    url: "https://alfaazon.com/",
+    screenshotName: "faezoon",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-emerald-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 8,
+    title: "عقائد",
+    subtitle: "پلتفرم پژوهشی و آموزشی",
+    desc: "وب‌سایت رسمی شرکت تولیدات هنری برای معرفی سریال‌ها، فیلم‌ها، پروژه‌های در حال تولید و اخبار رسانه‌ای.",
+    longDesc:
+      "این وب‌سایت با هدف معرفی آثار و فعالیت‌های شرکت تولیدات هنری طراحی و توسعه شد. پلتفرم امکان نمایش پروژه‌های در حال تولید، معرفی آثار منتشرشده، ارائه اخبار، مدیریت محتوای چندرسانه‌ای و معرفی تیم تولید را در محیطی مدرن، واکنش‌گرا و بهینه برای تمامی دستگاه‌ها فراهم می‌کند.",
+    tags: ["Next.js", "رسانه", "چندرسانه‌ای"],
+    privacy: "public",
+    url: "https://aqaed.net",
+    screenshotName: "aqaed",
     bgGradient: "from-teal-50/60 via-white to-white",
     hoverBorder: "hover:border-teal-200",
     activeColor: "text-teal-500",
@@ -61,14 +153,9 @@ export default function ProjectsSlider() {
   >(null);
   const swiperRef = useRef<SwiperRef>(null);
 
-  const getScreenshotUrl = (url: string) => {
-    return `https://api.microlink.io?url=${encodeURIComponent(url)}&screenshot=true&embed=screenshot.url`;
-  };
-
   return (
-    <section className="py-32 bg-white text-zinc-900 relative">
-      <div className="px-6 md:px-36 mx-auto" dir="rtl">
-        
+    <section className="bg-white text-zinc-900 relative">
+      <div className="w-[84%] place-self-center" dir="rtl">
         {/* هدر بخش به همراه نویگیشن */}
         <div className="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
           <div className="text-right">
@@ -83,15 +170,15 @@ export default function ProjectsSlider() {
           <div className="flex gap-2 items-center" dir="ltr">
             <button
               onClick={() => swiperRef.current?.swiper.slidePrev()}
-              className="w-10 h-10 border border-zinc-200 flex items-center justify-center bg-white hover:border-zinc-400 transition-all cursor-pointer rounded-full z-10"
+              className="size-10 border border-zinc-200 flex items-center justify-center bg-white hover:border-zinc-400 transition-all cursor-pointer rounded-full z-10"
             >
-              <ArrowLeft className="w-4 h-4 text-zinc-600" />
+              <ArrowLeft className="size-4 text-zinc-600" />
             </button>
             <button
               onClick={() => swiperRef.current?.swiper.slideNext()}
-              className="w-10 h-10 border border-zinc-200 flex items-center justify-center bg-white hover:border-zinc-400 transition-all cursor-pointer rounded-full z-10"
+              className="size-10 border border-zinc-200 flex items-center justify-center bg-white hover:border-zinc-400 transition-all cursor-pointer rounded-full z-10"
             >
-              <ArrowRight className="w-4 h-4 text-zinc-600" />
+              <ArrowRight className="size-4 text-zinc-600" />
             </button>
           </div>
         </div>
@@ -103,31 +190,34 @@ export default function ProjectsSlider() {
             modules={[Navigation, Pagination]}
             spaceBetween={32}
             slidesPerView={1}
+            loop={false}
             allowTouchMove={false}
             pagination={{
               clickable: true,
               el: ".custom-swiper-pagination",
             }}
             breakpoints={{
-              768: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
               1024: { slidesPerView: 3 },
             }}
             className="w-full"
           >
             {projectsData.map((project) => (
-              <SwiperSlide key={project.id} className="py-4">
+              <SwiperSlide key={project.id} className="py-4 px-1.5">
                 <div
                   onClick={() => setSelectedProject(project)}
-                  className={`group relative border border-zinc-100 bg-linear-to-br ${project.bgGradient} rounded-4xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.025] origin-bottom ${project.hoverBorder} shadow-[0_10px_30px_rgba(0,0,0,0.01)] flex flex-col justify-between p-10 min-h-115 text-right`}
+                  className={`group relative border border-zinc-100 bg-linear-to-br ${project.bgGradient} rounded-4xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.015] hover:z-10 origin-bottom ${project.hoverBorder} shadow-[0_10px_30px_rgba(0,0,0,0.01)] flex flex-col justify-between p-10 min-h-115 text-right`}
                   dir="rtl"
                 >
                   <div>
                     <div className="flex justify-between items-center mb-8">
-                      <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wide ${project.badgeBg}`}>
+                      <span
+                        className={`px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wide ${project.badgeBg}`}
+                      >
                         {project.subtitle}
                       </span>
                       <span className="text-[9px] font-mono font-bold text-zinc-400 tracking-widest bg-zinc-50 border border-zinc-100 px-2 py-0.5 rounded-sm">
-                        PUBLIC
+                        {project.privacy}
                       </span>
                     </div>
 
@@ -142,14 +232,22 @@ export default function ProjectsSlider() {
                   <div className="relative z-10 flex flex-col gap-6">
                     <div className="flex flex-wrap gap-1.5 justify-end">
                       {project.tags.map((tag, i) => (
-                        <span key={i} className="text-[10px] font-medium bg-zinc-100 border border-zinc-200/60 text-zinc-600 px-2.5 py-1 rounded-md">
+                        <span
+                          key={i}
+                          className="text-[10px] font-medium bg-zinc-100 border border-zinc-200/60 text-zinc-600 px-2.5 py-1 rounded-md"
+                        >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex justify-between items-center pt-2" dir="ltr">
-                      <span className={`text-[11px] font-mono font-bold ${project.activeColor} flex items-center gap-1 border-b border-transparent group-hover:border-current transition-all pb-0.5`}>
+                    <div
+                      className="flex justify-between items-center pt-2"
+                      dir="ltr"
+                    >
+                      <span
+                        className={`text-[11px] font-mono font-bold ${project.activeColor} flex items-center gap-1 border-b border-transparent group-hover:border-current transition-all pb-0.5`}
+                      >
                         VIEW CASE STUDY <span className="text-xs">↗</span>
                       </span>
                     </div>
@@ -167,13 +265,11 @@ export default function ProjectsSlider() {
           </Swiper>
         </div>
 
-        {/* المان پجینیشن کاستوم با کنترل موقعیت */}
-        <div className="mt-12 flex justify-center w-full relative z-30">
+        <div className="mt-10 flex justify-center w-full relative z-30">
           <div className="custom-swiper-pagination flex gap-2 justify-center items-center h-6" />
         </div>
       </div>
 
-      {/* دیالوگ دو ستونه با فیلدهای کاملاً فارسی‌شده */}
       <Dialog
         open={selectedProject !== null}
         onOpenChange={(open) => !open && setSelectedProject(null)}
@@ -190,12 +286,11 @@ export default function ProjectsSlider() {
           </button>
 
           <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-0">
-            
-            {/* ستون سمت چپ: اطلاعات فارسی به همراه دکمه خروج وب‌سایت */}
+            {/* ستون سمت چپ */}
             <div className="md:col-span-5 p-12 flex flex-col justify-between overflow-y-auto custom-scrollbar bg-white">
               <div className="space-y-8">
                 <div>
-                  <h3 className="text-5xl font-black text-zinc-900 tracking-tight leading-tight mb-4">
+                  <h3 className="text-3xl font-black text-zinc-900 tracking-tight leading-tight mb-4">
                     {selectedProject?.title}
                   </h3>
                   <p className="text-sm text-zinc-500 leading-relaxed font-medium">
@@ -204,17 +299,24 @@ export default function ProjectsSlider() {
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase">مرور کلی پروژه</h4>
+                  <h4 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
+                    مرور کلی پروژه
+                  </h4>
                   <p className="text-xs text-zinc-600 leading-relaxed font-medium bg-zinc-50/60 p-5 rounded-2xl border border-zinc-100">
                     {selectedProject?.longDesc}
                   </p>
                 </div>
 
                 <div className="space-y-3">
-                  <h4 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase">تکنولوژی‌ها</h4>
+                  <h4 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
+                    تکنولوژی‌ها
+                  </h4>
                   <div className="flex flex-wrap gap-1.5" dir="rtl">
                     {selectedProject?.tags.map((tag, i) => (
-                      <span key={i} className="text-[11px] font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1.5 rounded-md shadow-2xs">
+                      <span
+                        key={i}
+                        className="text-[11px] font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1.5 rounded-md shadow-2xs"
+                      >
                         {tag}
                       </span>
                     ))}
@@ -237,39 +339,54 @@ export default function ProjectsSlider() {
               </div>
             </div>
 
-            {/* ستون سمت راست: نمایش مرورگر زنده و اسکرین‌شات محصول */}
-            <div className="md:col-span-7 bg-zinc-50 p-8 flex flex-col justify-center border-r border-zinc-100 min-h-0" dir="ltr">
-              <span className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 mb-2 block uppercase text-left">LIVE PREVIEW</span>
-              <span className="text-xs font-bold text-zinc-800 mb-4 block text-left">{selectedProject?.title.toLowerCase()}-assets website</span>
-              
+            {/* ستون سمت راست: نمایش اسکرین‌شات ثابت از پوشه public */}
+            <div
+              className="md:col-span-7 bg-zinc-50 p-8 flex flex-col justify-center border-r border-zinc-100 min-h-0"
+              dir="ltr"
+            >
+              <span className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 mb-2 block uppercase text-right">
+                LIVE PREVIEW
+              </span>
+              <span className="text-xs font-bold text-zinc-800 mb-4 block text-right">
+                {selectedProject?.title.toLowerCase()}
+              </span>
+
               <div className="flex-1 border border-zinc-200 rounded-xl bg-white shadow-xl overflow-hidden flex flex-col min-h-0">
                 <div className="bg-zinc-50/80 px-4 py-3 border-b border-zinc-200 flex items-center gap-2 shrink-0">
                   <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-red-400" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-green-400" />
+                    <div className="size-2.5 rounded-full bg-red-400" />
+                    <div className="size-2.5 rounded-full bg-yellow-400" />
+                    <div className="size-2.5 rounded-full bg-green-400" />
                   </div>
                   <div className="flex-1 max-w-md mx-auto bg-white border border-zinc-200 rounded-md text-[10px] text-zinc-400 py-0.5 px-3 text-center font-mono truncate select-none">
-                    {selectedProject?.url.replace("https://", "")}/
+                    {selectedProject?.url
+                      .replace("https://", "")
+                      .replace("http://", "")}
+                    /
                   </div>
                 </div>
 
-                <div className="flex-1 overflow-y-auto custom-scrollbar bg-zinc-100 p-0 relative min-h-0">
-                  {selectedProject && (
-                    <div className="relative w-full min-h-225">
-                      <Image
-                        src={getScreenshotUrl(selectedProject.url)}
-                        alt={selectedProject.title}
-                        fill
-                        className="object-cover object-top"
-                        unoptimized
-                      />
+                <div className="flex-1 overflow-y-auto bg-zinc-100">
+                  {selectedProject ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={`/screenshots/${selectedProject.screenshotName}.jpeg`}
+                      alt={selectedProject.title ?? "Project screenshot"}
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        if (!img.src.endsWith(".png")) {
+                          img.src = `/screenshots/${selectedProject.screenshotName}.png`;
+                        }
+                      }}
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center h-full text-zinc-400 text-xs">
+                      در حال بارگذاری پیش‌نمایش...
                     </div>
                   )}
                 </div>
               </div>
             </div>
-
           </div>
         </DialogContent>
       </Dialog>

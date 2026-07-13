@@ -18,7 +18,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "ترسیم | معماری نوآوری و تکنولوژی",
+  title: "ترسیم | معماری ، نوآوری و تکنولوژی",
   description: "راهکارهای دیجیتال هوشمند و مدرن",
   icons: {
     icon: "/icon.png",

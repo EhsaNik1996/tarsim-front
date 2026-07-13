@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import logoImg from "@/public/Logo-noneBg.png";
 
 const tickerItems = ["ESTABLISHED 2003", "DESIGNING FUTURE", "ZINC INFRASTRUCTURE", "HIGH LEVEL SECURITY", "TARSIM ARCHITECTURE"];
 
@@ -28,7 +29,7 @@ export default function Footer() {
               <Image 
                 alt="لوگوی ترسیم" 
                 className="object-contain absolute top-0" 
-                src="/Logo-removebg-preview.png" 
+                src={logoImg}
                 width={56} 
                 height={56} 
               />

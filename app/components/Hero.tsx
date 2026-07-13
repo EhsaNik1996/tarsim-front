@@ -46,7 +46,7 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-3 bg-surface-container px-4 py-2 rounded-full border border-stroke-gray/40"
           >
-            <span className="flex h-2 w-2 rounded-full bg-electric-blue animate-pulse"></span>
+            <span className="flex size-2 rounded-full bg-electric-blue animate-pulse"></span>
             <span className="text-on-surface-variant uppercase tracking-widest text-[9px] md:text-xs font-mono">
               Pioneering Digital Architecture Since 2003
             </span>
@@ -136,6 +136,7 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
+      
       </div>
     </section>
   );

@@ -11,22 +11,25 @@ import Approach from "@/app/components/Approach";
 import Services from "@/app/components/Services";
 import Capabilities from "./components/Capabilities";
 import TrackRecord from "@/app/components/TrackRecord";
-import InfiniteMarquee from "./components/InfiniteMarquee";
-import FeaturedProjects from "@/app/components/FeaturedProjects";
 import ProjectsSlider from "./components/ProjectsSlider";
+import InfiniteMarquee from "./components/InfiniteMarquee";
+import ScrollIndicator from "./components/Scrollindicator";
+import TechStackSection from "./components/Techstacksection ";
+import FeaturedProjects from "@/app/components/FeaturedProjects";
 
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-white selection:bg-electric-blue selection:text-white">
       <Header />
-
       <Hero />
+      <ScrollIndicator/>
       <Partners />
       <Metrics />
       <About />
       <Capabilities />
       <InfiniteMarquee /> 
       <ProjectsSlider/>
+      <TechStackSection/>
       <Approach />
       <Services />
       <Timeline />

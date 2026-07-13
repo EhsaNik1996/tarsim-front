@@ -64,7 +64,7 @@ export default function Capabilities() {
               </div>
 
               <div className="relative z-10 space-y-6">
-                <div className="w-5 h-5 border-2 border-[#02c953]/40 bg-[#02c953]/10 rotate-45 rounded-xs transition-colors duration-500 group-hover:border-[#02c953] group-hover:bg-[#02c953] mr-auto ml-0" />
+                <div className="size-5 border-2 border-[#02c953]/40 bg-[#02c953]/10 rotate-45 rounded-xs transition-colors duration-500 group-hover:border-[#02c953] group-hover:bg-[#02c953] mr-auto ml-0" />
 
                 <div className="space-y-2">
                   <h3 className="text-xl font-bold text-zinc-100 group-hover:text-[#02c953] transition-colors duration-300">

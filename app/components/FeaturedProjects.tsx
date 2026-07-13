@@ -36,8 +36,8 @@ export default function FeaturedProjects() {
             <h3 className="text-3xl md:text-4xl font-extrabold text-on-surface">پروژه‌های شاخص</h3>
           </div>
           <div className="flex gap-2">
-            <button className="w-10 h-10 rounded-full border border-stroke-gray flex items-center justify-center hover:border-on-surface transition-colors"><span className="material-symbols-outlined text-sm">arrow_forward</span></button>
-            <button className="w-10 h-10 rounded-full border border-stroke-gray flex items-center justify-center hover:border-on-surface transition-colors"><span className="material-symbols-outlined text-sm">arrow_back</span></button>
+            <button className="size-10 rounded-full border border-stroke-gray flex items-center justify-center hover:border-on-surface transition-colors"><span className="material-symbols-outlined text-sm">arrow_forward</span></button>
+            <button className="size-10 rounded-full border border-stroke-gray flex items-center justify-center hover:border-on-surface transition-colors"><span className="material-symbols-outlined text-sm">arrow_back</span></button>
           </div>
         </div>
 

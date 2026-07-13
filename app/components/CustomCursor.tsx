@@ -96,7 +96,7 @@ export default function CustomCursor() {
 
             <div
                 ref={outlineRef}
-                className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-9999 mix-blend-difference will-change-transform"
+                className="fixed top-0 left-0 size-8 border border-white rounded-full pointer-events-none z-9999 mix-blend-difference will-change-transform"
                 style={{
                     transition: "opacity 0.3s ease",
                     opacity: isHovered ? "0" : "1",

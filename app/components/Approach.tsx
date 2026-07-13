@@ -9,7 +9,7 @@ const steps = [
 
 export default function Approach() {
   return (
-    <section className="pt-32 bg-linear-to-b from-white to-background-deep px-6 md:px-16 max-w-360 mx-auto">
+    <section className="pt-24 bg-linear-to-b from-white to-background-deep px-6 md:px-16 max-w-360 mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
         <div className="text-right lg:sticky lg:top-32 h-fit">
           <div className="font-mono text-electric-blue mb-4 text-sm tracking-widest">HOW WE WORK</div>
