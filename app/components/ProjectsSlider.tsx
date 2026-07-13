@@ -62,40 +62,6 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "شرکت بازرگانی سفیر آفاق تجارت سبز",
-    subtitle: "تامین تجهیزات تصفیه آب صنعتی",
-    desc: "وب‌سایت شرکتی برای معرفی محصولات، برندهای بین‌المللی و خدمات تخصصی در حوزه فیلترهای ممبران و تجهیزات تصفیه آب صنعتی.",
-    longDesc:
-      "این وب‌سایت با هدف معرفی خدمات و محصولات شرکت سفیر آفاق تجارت سبز طراحی و توسعه شد. پلتفرم امکان معرفی برندهای معتبر جهانی، نمایش مشخصات فنی محصولات، ارائه اطلاعات تخصصی درباره فناوری‌های تصفیه آب صنعتی و ایجاد بستری حرفه‌ای برای ارتباط با مشتریان و دریافت درخواست‌های تجاری را فراهم می‌کند.",
-    tags: ["Next.js", "وب‌سایت شرکتی", "تجارت بین‌الملل"],
-    privacy: "public",
-    url: "http://sats-co.com/",
-    screenshotName: "safir",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
-  },
-  {
-    id: 5,
-    title: "المستند",
-    subtitle: "سایت خبری و اطلاعات",
-    desc: "سایت اطلاعات مدیران و ارگان های موسسه آل البیت التراث",
-    longDesc:
-      "این پروژه با هدف خودکارسازی زیرساخت‌های ابری پایدار برای پلتفرم‌های حساس مهندسی شد. معماری دیتابیس‌های توزیع‌شده، کانتینرهای داکر و مانیتورینگ بلادرنگ فرآیندها به تیم‌های توسعه اجازه می‌دهد تا دپلوی محصولات را با حداکثر سرعت انجام دهند.",
-    tags: ["Docker", "زیرساخت", "امنیت"],
-    privacy: "private",
-    url: "https://new.al-mostanad.com/home",
-    screenshotName: "mostanad",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
-  },
-  {
-    id: 6,
     title: "الاختام",
     subtitle: "پلتفرم رسانه‌ای و آرشیو محتوای تاریخی",
     desc: "وب‌سایت چندرسانه‌ای برای انتشار مستندها، پادکست‌ها، پژوهش‌ها، نسخه‌های خطی و رویدادهای فرهنگی و تاریخی.",
@@ -112,7 +78,7 @@ const projectsData = [
     badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
-    id: 7,
+    id: 5,
     title: "الفائزون",
     subtitle: "پلتفرم معرفی آثار سینمایی و تلویزیونی",
     desc: "وب‌سایت رسمی شرکت تولیدات هنری برای معرفی سریال‌ها، فیلم‌ها، پروژه‌های در حال تولید و اخبار رسانه‌ای.",
@@ -129,7 +95,7 @@ const projectsData = [
     badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
-    id: 8,
+    id: 6,
     title: "عقائد",
     subtitle: "پلتفرم پژوهشی و آموزشی",
     desc: "وب‌سایت رسمی شرکت تولیدات هنری برای معرفی سریال‌ها، فیلم‌ها، پروژه‌های در حال تولید و اخبار رسانه‌ای.",
@@ -139,6 +105,40 @@ const projectsData = [
     privacy: "public",
     url: "https://aqaed.net",
     screenshotName: "aqaed",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-teal-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 7,
+    title: "شرکت بازرگانی سفیر آفاق تجارت سبز",
+    subtitle: "تامین تجهیزات تصفیه آب صنعتی",
+    desc: "وب‌سایت شرکتی برای معرفی محصولات، برندهای بین‌المللی و خدمات تخصصی در حوزه فیلترهای ممبران و تجهیزات تصفیه آب صنعتی.",
+    longDesc:
+      "این وب‌سایت با هدف معرفی خدمات و محصولات شرکت سفیر آفاق تجارت سبز طراحی و توسعه شد. پلتفرم امکان معرفی برندهای معتبر جهانی، نمایش مشخصات فنی محصولات، ارائه اطلاعات تخصصی درباره فناوری‌های تصفیه آب صنعتی و ایجاد بستری حرفه‌ای برای ارتباط با مشتریان و دریافت درخواست‌های تجاری را فراهم می‌کند.",
+    tags: ["Next.js", "وب‌سایت شرکتی", "تجارت بین‌الملل"],
+    privacy: "public",
+    url: "http://sats-co.com/",
+    screenshotName: "safir",
+    bgGradient: "from-teal-50/60 via-white to-white",
+    hoverBorder: "hover:border-teal-200",
+    activeColor: "text-teal-500",
+    numColor: "group-hover:text-teal-100/80",
+    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+  {
+    id: 8,
+    title: "المستند",
+    subtitle: "سایت خبری و اطلاعات",
+    desc: "سایت اطلاعات مدیران و ارگان های موسسه آل البیت التراث",
+    longDesc:
+      "این پروژه با هدف خودکارسازی زیرساخت‌های ابری پایدار برای پلتفرم‌های حساس مهندسی شد. معماری دیتابیس‌های توزیع‌شده، کانتینرهای داکر و مانیتورینگ بلادرنگ فرآیندها به تیم‌های توسعه اجازه می‌دهد تا دپلوی محصولات را با حداکثر سرعت انجام دهند.",
+    tags: ["Docker", "زیرساخت", "امنیت"],
+    privacy: "private",
+    url: "https://new.al-mostanad.com",
+    screenshotName: "mostanad",
     bgGradient: "from-teal-50/60 via-white to-white",
     hoverBorder: "hover:border-teal-200",
     activeColor: "text-teal-500",
@@ -372,6 +372,7 @@ export default function ProjectsSlider() {
                     <img
                       src={`/screenshots/${selectedProject.screenshotName}.jpeg`}
                       alt={selectedProject.title ?? "Project screenshot"}
+                      className="w-full min-h-full object-cover"
                       onError={(e) => {
                         const img = e.currentTarget;
                         if (!img.src.endsWith(".png")) {
