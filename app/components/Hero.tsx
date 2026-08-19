@@ -1,143 +1,94 @@
-"use client";
-import Image from "next/image";
-import Logo from "@/public/Logo.png";
-import { motion } from "framer-motion";
+﻿"use client";
+
 import { ArrowLeft } from "lucide-react";
-
-const containerVariant = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-    },
-  },
-};
-
-const wordBlurVariant = {
-  hidden: {
-    opacity: 0,
-    y: 15,
-    filter: "blur(10px)",
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.9,
-      ease: [0.2, 0.65, 0.3, 1] as const,
-    },
-  },
-};
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function Hero() {
-  const titleText = "ترسیم ؛ معماری نوآوری و تکنولوژی";
-  const paragraphText =
-    "ما با بیش از دو دهه تجربه، راهکارهای دیجیتالی هوشمندی را خلق می‌کنیم که کسب‌وکار شما را برای آینده‌ای مبتنی بر تکنولوژی آماده می‌سازد. از طراحی وب‌سایت تا زیرساخت‌های ابری.";
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section className="relative min-h-screen flex items-center py-20 mx-auto overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center w-full relative z-10 px-6 md:px-16">
-        <div className="space-y-8 text-center md:text-right mt-6">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-3 bg-surface-container px-4 py-2 rounded-full border border-stroke-gray/40"
-          >
-            <span className="flex size-2 rounded-full bg-electric-blue animate-pulse"></span>
-            <span className="text-on-surface-variant uppercase tracking-widest text-[9px] md:text-xs font-mono">
-              Pioneering Digital Architecture Since 2003
-            </span>
-          </motion.div>
+    <section
+      className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-white px-6 pb-24 pt-28 md:px-16 md:pb-28 md:pt-32"
+      dir="rtl"
+    >
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(79,82,255,0.09)_1px,transparent_0)] bg-size-[29px_29px]" />
+      <div className="pointer-events-none absolute -right-72 top-4 size-160 rounded-full bg-electric-blue/5 blur-[110px]" />
+      <div className="pointer-events-none absolute -left-72 bottom-0 size-160 rounded-full bg-electric-blue/5 blur-[110px]" />
 
-          <motion.h1
-            variants={containerVariant}
-            initial="hidden"
-            animate="visible"
-            className="text-5xl lg:text-7xl leading-tight text-on-surface font-extrabold flex flex-wrap gap-x-3 gap-y-2 justify-center md:justify-start"
-          >
-            {titleText.split(" ").map((word, idx) => (
-              <motion.span
-                key={idx}
-                variants={wordBlurVariant}
-                className="inline-block"
-              >
-                {word === "ترسیم" ? (
-                  <span className="text-electric-blue">{word}</span>
-                ) : (
-                  word
-                )}
-              </motion.span>
-            ))}
-          </motion.h1>
+      <div className="relative z-10 mx-auto flex w-full max-w-300 flex-col items-center text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+          className="mb-8 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-zinc-200 bg-white/85 px-4 py-2 text-[10px] font-bold text-zinc-500 shadow-sm backdrop-blur-sm sm:text-xs"
+        >
+          <span className="size-2 rounded-full bg-electric-blue shadow-[0_0_0_5px_rgba(79,82,255,0.10)]" />
+          <span>از سال ۱۳۸۹</span>
+          <span className="text-zinc-300">•</span>
+          <span>مهندسی سیستم</span>
+          <span className="text-zinc-300">•</span>
+          <span>محصولات دیجیتال</span>
+          <span className="text-zinc-300">•</span>
+          <span>زیرساخت</span>
+          <span className="text-zinc-300">•</span>
+          <span>مدیریت دانش</span>
+        </motion.div>
 
-          <motion.p
-            variants={containerVariant}
-            initial="hidden"
-            animate="visible"
-            className="text-lg text-on-surface-variant max-w-xl leading-relaxed flex flex-wrap gap-x-1.5 gap-y-1 justify-center md:justify-start"
-          >
-            {paragraphText.split(" ").map((word, idx) => (
-              <motion.span
-                key={idx}
-                variants={wordBlurVariant}
-                className="inline-block"
-              >
-                {word}
-              </motion.span>
-            ))}
-          </motion.p>
+        <motion.h1
+          initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.85, delay: 0.08, ease: [0.2, 0.65, 0.3, 1] }}
+          className="max-w-275 text-4xl xl:text-6xl font-black leading-12 xl:leading-24"
+        >
+          سیستم‌هایی می‌سازیم که سال‌ها بتوان به آن‌ها
+          <span className="block text-electric-blue">اعتماد کرد.</span>
+        </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-            className="flex flex-col w-[50%] xl:w-full place-self-center xl:flex-row gap-4"
-          >
-            <button className="bg-on-surface text-white px-8 py-4 rounded-lg font-bold text-sm xl:text-lg hover:bg-electric-blue transition-all duration-500 cursor-pointer">
-              شروع پروژه
-            </button>
-            <button className="border border-stroke-gray text-on-surface py-4 md:px-8 rounded-lg font-bold text-sm xl:text-lg hover:border-electric-blue transition-all duration-500 group flex items-center justify-center gap-2 cursor-pointer">
-              <span>مشاهده پروژه‌ها</span>
-              <ArrowLeft className="w-4 md:w-6 transition-transform group-hover:-translate-x-1.5" />
-            </button>
-          </motion.div>
-        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.28 }}
+          className="mt-7 max-w-220 text-[15px] leading-8 text-zinc-500 sm:text-base md:text-lg md:leading-9"
+        >
+          ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت، توسعه‌پذیری و پایداری ساخته شده‌اند.
+        </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.2, 0, 0, 1], delay: 0.2 }}
-          className="relative"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.45 }}
+          className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
         >
-          <div className="absolute -inset-10 bg-electric-blue/5 blur-3xl rounded-full"></div>
-          <div className="relative overflow-hidden border border-stroke-gray aspect-4/3 shadow-2xl rounded-2xl">
-            <Image
-              alt="Architectural Tech"
-              className="w-full h-full object-cover"
-              src={Logo}
-              fill
-              priority
-            />
-          </div>
-          <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl border border-stroke-gray shadow-xl hidden md:block">
-            <div className="flex items-center gap-4">
-              <div className="text-4xl font-bold text-electric-blue font-mono">
-                20Y
-              </div>
-              <div className="h-10 w-px bg-stroke-gray"></div>
-              <div className="text-on-surface-variant text-sm leading-tight">
-                سابقه درخشان در
-                <br />
-                صنعت فناوری
-              </div>
-            </div>
-          </div>
+          <a
+            href="#contact"
+            className="group inline-flex items-center justify-center gap-3 rounded-full bg-black px-8 py-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(0,0,0,0.14)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-electric-blue"
+          >
+            <span>شروع همکاری</span>
+            <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+          </a>
+          <a
+            href="#projects"
+            className="inline-flex items-center justify-center rounded-full border border-zinc-300 bg-white/80 px-8 py-4 text-sm font-bold text-zinc-900 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-electric-blue hover:text-electric-blue"
+          >
+            مشاهده پروژه‌ها
+          </a>
         </motion.div>
-      
       </div>
+
+      <motion.a
+        href="#projects"
+        aria-label="رفتن به بخش پروژه‌ها"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.5 }}
+        className="absolute bottom-6 left-1/2 z-10 flex h-9 w-5 -translate-x-1/2 justify-center rounded-full border border-zinc-300 bg-white/80 pt-2 backdrop-blur-sm md:bottom-8"
+      >
+        <motion.span
+          className="w-1 h-2.5 rounded-full bg-electric-blue"
+          animate={reduceMotion ? undefined : { y: [0, 5, 0], opacity: [1, 0.6, 1] }}
+          transition={{ duration: 1.65, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.a>
     </section>
   );
 }

@@ -85,18 +85,18 @@ export default function CustomCursor() {
         <>
             <div
                 ref={dotRef}
-                className="fixed top-0 left-0 rounded-full pointer-events-none z-9999 mix-blend-difference will-change-transform"
+                className="fixed top-0 left-0 rounded-full pointer-events-none z-9999 will-change-transform"
                 style={{
                     transition: "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
                     width: isHovered ? "32px" : "8px",
                     height: isHovered ? "32px" : "8px",
-                    backgroundColor: isHovered ? "rgba(255, 255, 255, 0.4)" : "white",
+                    backgroundColor: isHovered ? "rgba(79, 82, 255, 0.35)" : "#4f52ff",
                 }}
             />
 
             <div
                 ref={outlineRef}
-                className="fixed top-0 left-0 size-8 border border-white rounded-full pointer-events-none z-9999 mix-blend-difference will-change-transform"
+                className="fixed top-0 left-0 size-8 border border-electric-blue rounded-full pointer-events-none z-9999 will-change-transform"
                 style={{
                     transition: "opacity 0.3s ease",
                     opacity: isHovered ? "0" : "1",

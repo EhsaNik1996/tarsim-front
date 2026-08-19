@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { CSSProperties, useState, useRef } from "react";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Dialog, DialogContent } from "@/app/components/ui/dialog";
@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, X, ExternalLink } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import styles from "./ProjectsSlider.module.css";
 
 const projectsData = [
   {
@@ -20,11 +21,6 @@ const projectsData = [
     url: "https://docibox.ir",
     screenshotName: "docibox",
     privacy: "public",
-    bgGradient: "from-orange-50/60 via-white to-white",
-    hoverBorder: "hover:border-orange-200",
-    activeColor: "text-orange-500",
-    numColor: "group-hover:text-orange-100/80",
-    badgeBg: "bg-orange-100/60 text-orange-700",
   },
   {
     id: 2,
@@ -37,11 +33,6 @@ const projectsData = [
     privacy: "public",
     url: "https://eliteraturebook.com",
     screenshotName: "adabiat",
-    bgGradient: "from-emerald-50/60 via-white to-white",
-    hoverBorder: "hover:border-emerald-200",
-    activeColor: "text-emerald-500",
-    numColor: "group-hover:text-emerald-100/80",
-    badgeBg: "bg-emerald-100/60 text-emerald-700",
   },
   {
     id: 3,
@@ -54,11 +45,6 @@ const projectsData = [
     privacy: "public",
     url: "https://historylib.com/",
     screenshotName: "tarikh",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
     id: 4,
@@ -71,11 +57,6 @@ const projectsData = [
     privacy: "public",
     url: "https://akhtam.net/",
     screenshotName: "akhtam",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
     id: 5,
@@ -88,11 +69,6 @@ const projectsData = [
     privacy: "public",
     url: "https://alfaazon.com/",
     screenshotName: "faezoon",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-emerald-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
     id: 6,
@@ -105,11 +81,6 @@ const projectsData = [
     privacy: "public",
     url: "https://aqaed.net",
     screenshotName: "aqaed",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
     id: 7,
@@ -122,11 +93,6 @@ const projectsData = [
     privacy: "public",
     url: "http://sats-co.com/",
     screenshotName: "safir",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
   },
   {
     id: 8,
@@ -139,11 +105,49 @@ const projectsData = [
     privacy: "private",
     url: "https://new.al-mostanad.com",
     screenshotName: "mostanad",
-    bgGradient: "from-teal-50/60 via-white to-white",
-    hoverBorder: "hover:border-teal-200",
-    activeColor: "text-teal-500",
-    numColor: "group-hover:text-teal-100/80",
-    badgeBg: "bg-teal-100/60 text-teal-700",
+  },
+];
+
+const projectPalettes = [
+  {
+    accent: "#7c3aed",
+    tint: "rgba(124, 58, 237, 0.085)",
+    border: "rgba(124, 58, 237, 0.42)",
+  },
+  {
+    accent: "#138fc8",
+    tint: "rgba(19, 143, 200, 0.085)",
+    border: "rgba(19, 143, 200, 0.25)",
+  },
+  {
+    accent: "#db720d",
+    tint: "rgba(219, 114, 13, 0.075)",
+    border: "rgba(219, 114, 13, 0.22)",
+  },
+  {
+    accent: "#159b73",
+    tint: "rgba(21, 155, 115, 0.08)",
+    border: "rgba(21, 155, 115, 0.24)",
+  },
+  {
+    accent: "#d94f7d",
+    tint: "rgba(217, 79, 125, 0.075)",
+    border: "rgba(217, 79, 125, 0.23)",
+  },
+  {
+    accent: "#5562df",
+    tint: "rgba(85, 98, 223, 0.08)",
+    border: "rgba(85, 98, 223, 0.24)",
+  },
+  {
+    accent: "#0f9994",
+    tint: "rgba(15, 153, 148, 0.075)",
+    border: "rgba(15, 153, 148, 0.23)",
+  },
+  {
+    accent: "#bd861b",
+    tint: "rgba(189, 134, 27, 0.08)",
+    border: "rgba(189, 134, 27, 0.24)",
   },
 ];
 
@@ -151,34 +155,37 @@ export default function ProjectsSlider() {
   const [selectedProject, setSelectedProject] = useState<
     (typeof projectsData)[0] | null
   >(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
 
   return (
-    <section className="bg-white text-zinc-900 relative">
-      <div className="w-[84%] place-self-center" dir="rtl">
+    <section className="relative overflow-hidden bg-white py-20 text-zinc-950 md:pt-18">
+      <div className="mx-auto w-[94%] max-w-380" dir="rtl">
         {/* هدر بخش به همراه نویگیشن */}
-        <div className="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+        <div className="mb-14 flex flex-col items-start justify-between gap-7 md:mb-16 md:flex-row md:items-center">
           <div className="text-right">
-            <span className="text-[11px] font-mono text-zinc-400 tracking-widest block mb-2 uppercase">
+            <h2 className="text-[clamp(2.75rem,5vw,4rem)] font-black leading-none tracking-[-0.055em] text-black">
               پروژه‌های شاخص
-            </span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-zinc-900 tracking-tight">
-              آثار توسعه‌یافته
             </h2>
           </div>
 
-          <div className="flex gap-2 items-center" dir="ltr">
-            <button
-              onClick={() => swiperRef.current?.swiper.slidePrev()}
-              className="size-10 border border-zinc-200 flex items-center justify-center bg-white hover:border-zinc-400 transition-all cursor-pointer rounded-full z-10"
-            >
-              <ArrowLeft className="size-4 text-zinc-600" />
-            </button>
+          <div className="flex items-center gap-3" dir="ltr">
+            <span className="mr-1 min-w-10 font-manrope text-[12px] font-extrabold tracking-[-0.04em] text-black">
+              {activeIndex + 1}/{projectsData.length}
+            </span>
             <button
               onClick={() => swiperRef.current?.swiper.slideNext()}
-              className="size-10 border border-zinc-200 flex items-center justify-center bg-white hover:border-zinc-400 transition-all cursor-pointer rounded-full z-10"
+              aria-label="پروژه قبلی"
+              className={`${styles.navButton} z-10 flex size-10 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
             >
-              <ArrowRight className="size-4 text-zinc-600" />
+              <ArrowLeft className="size-4 text-zinc-500" strokeWidth={1.5} />
+            </button>
+            <button
+              onClick={() => swiperRef.current?.swiper.slidePrev()}
+              aria-label="پروژه بعدی"
+              className={`${styles.navButton} z-10 flex size-10 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
+            >
+              <ArrowRight className="size-4 text-zinc-500" strokeWidth={1.5} />
             </button>
           </div>
         </div>
@@ -188,76 +195,84 @@ export default function ProjectsSlider() {
           <Swiper
             ref={swiperRef}
             modules={[Navigation, Pagination]}
-            spaceBetween={32}
+            spaceBetween={20}
             slidesPerView={1}
             loop={false}
-            allowTouchMove={false}
+            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             pagination={{
               clickable: true,
-              el: ".custom-swiper-pagination",
+              el: `.${styles.pagination}`,
             }}
             breakpoints={{
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 3 },
+              640: { slidesPerView: 1.35 },
+              768: { slidesPerView: 2 },
+              1150: { slidesPerView: 3 },
             }}
-            className="w-full"
+            className={`${styles.swiper} w-full`}
           >
             {projectsData.map((project) => (
-              <SwiperSlide key={project.id} className="py-4 px-1.5">
+              <SwiperSlide key={project.id} className="h-auto! py-2 px-0.5">
                 <div
                   onClick={() => setSelectedProject(project)}
-                  className={`group relative border border-zinc-100 bg-linear-to-br ${project.bgGradient} rounded-4xl overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.015] hover:z-10 origin-bottom ${project.hoverBorder} shadow-[0_10px_30px_rgba(0,0,0,0.01)] flex flex-col justify-between p-10 min-h-115 text-right`}
+                  style={
+                    {
+                      "--project-accent":
+                        projectPalettes[project.id - 1].accent,
+                      "--project-tint": projectPalettes[project.id - 1].tint,
+                      "--project-border":
+                        projectPalettes[project.id - 1].border,
+                    } as CSSProperties
+                  }
+                  className={`${styles.card} group relative flex min-h-102.5 h-full cursor-pointer flex-col justify-between overflow-hidden rounded-[22px] border p-7 text-right transition-all duration-500 md:p-8`}
                   dir="rtl"
                 >
-                  <div>
-                    <div className="flex justify-between items-center mb-8">
+                  <div className="relative z-10">
+                    <div className="mb-9 flex items-center justify-between gap-3">
                       <span
-                        className={`px-2.5 py-1 rounded-md text-[10px] font-bold tracking-wide ${project.badgeBg}`}
+                        className={`${styles.category} max-w-[76%] truncate rounded-full border px-3 py-1.5 text-[10px] font-extrabold leading-none`}
                       >
                         {project.subtitle}
                       </span>
-                      <span className="text-[9px] font-mono font-bold text-zinc-400 tracking-widest bg-zinc-50 border border-zinc-100 px-2 py-0.5 rounded-sm">
+                      <span className="shrink-0 rounded-full border border-zinc-200/80 bg-white/75 px-3 py-1.5 font-manrope text-[9px] font-bold uppercase leading-none tracking-[0.16em] text-zinc-400">
                         {project.privacy}
                       </span>
                     </div>
 
-                    <h3 className="text-3xl font-black text-zinc-900 tracking-tight mb-4">
+                    <h3 className="mb-4 text-[clamp(1.7rem,2.3vw,2.45rem)] font-black leading-[1.2] tracking-[-0.04em] text-black">
                       {project.title}
                     </h3>
-                    <p className="text-[13px] text-zinc-500 leading-relaxed font-medium">
+                    <p className="max-w-[92%] text-[13px] font-medium leading-[1.9] text-zinc-500">
                       {project.desc}
                     </p>
                   </div>
 
-                  <div className="relative z-10 flex flex-col gap-6">
-                    <div className="flex flex-wrap gap-1.5 justify-end">
-                      {project.tags.map((tag, i) => (
-                        <span
-                          key={i}
-                          className="text-[10px] font-medium bg-zinc-100 border border-zinc-200/60 text-zinc-600 px-2.5 py-1 rounded-md"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
+                  <div className="relative z-10 flex flex-col gap-5">
                     <div
-                      className="flex justify-between items-center pt-2"
+                      className="flex items-center justify-between pt-1"
                       dir="ltr"
                     >
-                      <span
-                        className={`text-[11px] font-mono font-bold ${project.activeColor} flex items-center gap-1 border-b border-transparent group-hover:border-current transition-all pb-0.5`}
+                      <div className={`${styles.link} flex flex-col items-start justify-end h-full gap-y-6 border-b border-transparent pb-0.5 font-manrope text-[10px] font-extrabold tracking-[0.02em] transition-all`}>
+                        <div className="flex gap-x-0.5">
+                        {project.tags.map((tag, i) => (
+                          <div
+                            key={i}
+                            className="flex border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-[9px] font-bold text-zinc-500 backdrop-blur-sm rounded-full"
+                          >
+                            {tag}
+                          </div>
+                        ))}
+                        </div>
+                        <div className="group-hover:scale-105">
+                          VIEW CASE STUDY <span className="text-xs">↗</span>
+                        </div>
+                      </div>
+                      <div
+                        className={`${styles.number} pointer-events-none z-0 select-none font-manrope text-[7.5rem] font-extrabold leading-none tracking-[-0.08em] transition-all duration-500`}
+                        dir="ltr"
                       >
-                        VIEW CASE STUDY <span className="text-xs">↗</span>
-                      </span>
+                        {String(project.id).padStart(2, "0")}
+                      </div>
                     </div>
-                  </div>
-
-                  <div
-                    className={`absolute bottom-4 right-6 font-mono text-8xl font-black leading-none text-zinc-100 select-none pointer-events-none transition-colors duration-500 z-0 ${project.numColor}`}
-                    style={{ WebkitTextStroke: "1px currentColor" }}
-                  >
-                    {String(project.id).padStart(2, "0")}
                   </div>
                 </div>
               </SwiperSlide>
@@ -265,8 +280,10 @@ export default function ProjectsSlider() {
           </Swiper>
         </div>
 
-        <div className="mt-10 flex justify-center w-full relative z-30">
-          <div className="custom-swiper-pagination flex gap-2 justify-center items-center h-6" />
+        <div className="relative z-30 mt-9 flex w-full justify-center">
+          <div
+            className={`${styles.pagination} flex h-6 items-center justify-center gap-2`}
+          />
         </div>
       </div>
 
@@ -287,7 +304,7 @@ export default function ProjectsSlider() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-0">
             {/* ستون سمت چپ */}
-            <div className="md:col-span-5 p-12 flex flex-col justify-between overflow-y-auto custom-scrollbar bg-white">
+            <div className={`${styles.scrollbar} md:col-span-5 p-12 flex flex-col justify-between overflow-y-auto bg-white`}>
               <div className="space-y-8">
                 <div>
                   <h3 className="text-3xl font-black text-zinc-900 tracking-tight leading-tight mb-4">
@@ -393,17 +410,86 @@ export default function ProjectsSlider() {
       </Dialog>
 
       <style jsx global>{`
+        .projects-swiper .swiper-wrapper {
+          align-items: stretch;
+        }
+        .project-card {
+          border-color: var(--project-border);
+          background:
+            radial-gradient(
+              circle at 100% 0%,
+              var(--project-tint),
+              transparent 57%
+            ),
+            linear-gradient(
+              145deg,
+              color-mix(in srgb, var(--project-tint) 44%, white) 0%,
+              white 66%
+            );
+          box-shadow: 0 12px 30px rgba(24, 24, 27, 0.025);
+        }
+        .project-card:hover {
+          border-color: var(--project-accent);
+          background:
+            radial-gradient(
+              circle at 100% 0%,
+              color-mix(in srgb, var(--project-tint) 135%, transparent),
+              transparent 61%
+            ),
+            linear-gradient(
+              145deg,
+              color-mix(in srgb, var(--project-tint) 58%, white) 0%,
+              white 68%
+            );
+          box-shadow:
+            0 24px 44px -30px
+              color-mix(in srgb, var(--project-accent) 32%, transparent),
+            0 10px 28px rgba(24, 24, 27, 0.045);
+          transform: translateY(-4px);
+        }
+        .project-category {
+          border-color: color-mix(
+            in srgb,
+            var(--project-accent) 22%,
+            transparent
+          );
+          background: color-mix(in srgb, var(--project-accent) 10%, white);
+          color: var(--project-accent);
+        }
+        .project-link {
+          color: var(--project-accent);
+        }
+        .project-number {
+          color: transparent;
+          -webkit-text-stroke: 1px
+            color-mix(in srgb, var(--project-accent) 25%, transparent);
+          opacity: 0.8;
+        }
+        .project-card:hover .project-number {
+          -webkit-text-stroke-color: color-mix(
+            in srgb,
+            var(--project-accent) 43%,
+            transparent
+          );
+          opacity: 1;
+          transform: translateY(-2px);
+        }
+        .project-nav-button:hover {
+          border-color: #a1a1aa;
+          background: #fafafa;
+          transform: translateY(-1px);
+        }
         .custom-swiper-pagination .swiper-pagination-bullet {
-          background: #e4e4e7 !important;
+          background: #dedee3 !important;
           opacity: 1 !important;
-          width: 6px !important;
-          height: 6px !important;
+          width: 5px !important;
+          height: 5px !important;
           transition: all 0.4s ease !important;
           border-radius: 9999px !important;
         }
         .custom-swiper-pagination .swiper-pagination-bullet-active {
-          background: #000000 !important;
-          width: 20px !important;
+          background: #7c3aed !important;
+          width: 32px !important;
         }
         .custom-scrollbar::-webkit-scrollbar {
           width: 5px;

@@ -68,7 +68,7 @@ export default function Header() {
                 </button>
               </SheetTrigger>
 
-              <SheetContent side="right" className="w-75 px-5 bg-white/80 sm:w-100" dir="rtl">
+              <SheetContent side="left" className="w-75 px-5 bg-white/80 sm:w-100" dir="rtl">
                 <SheetHeader className="text-right pb-6 border-b border-stroke-gray">
                   <SheetTitle className="text-right">
                     <Logo />

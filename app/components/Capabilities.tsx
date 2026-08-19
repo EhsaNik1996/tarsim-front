@@ -35,12 +35,12 @@ export default function Capabilities() {
       <div className="px-6 md:px-36 text-right" dir="rtl">
         <div className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-8">
-            <span className="text-xs font-mono text-[#02c953] tracking-widest block mb-3 uppercase">
+            <span className="text-xs font-mono text-electric-blue tracking-widest block mb-3 uppercase">
               حوزه فعالیت ما
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-zinc-100 leading-tight tracking-tight">
               توسعه زیرساخت‌ها در{" "}
-              <span className="text-[#02c953]">بالاترین تراز فنی</span>
+              <span className="text-electric-blue">بالاترین تراز فنی</span>
             </h2>
           </div>
         </div>
@@ -53,21 +53,21 @@ export default function Capabilities() {
               whileHover="hover"
               className="group relative border border-zinc-900 bg-[#0d0d10] p-10 overflow-hidden flex flex-col justify-between min-h-65 cursor-pointer rounded-3xl text-right"
             >
-              <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-[#02c953] transition-all duration-500 pointer-events-none z-20" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-[#02c953]/4 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-electric-blue transition-all duration-500 pointer-events-none z-20" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-electric-blue/4 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
               <div
-                className="absolute bottom-0 left-2 font-mono text-8xl font-black leading-none text-[#131316] select-none pointer-events-none group-hover:text-[#02c953]/10 transition-colors duration-500 z-0"
+                className="absolute bottom-0 left-2 font-mono text-8xl font-black leading-none text-[#131316] select-none pointer-events-none group-hover:text-electric-blue/10 transition-colors duration-500 z-0"
                 dir="ltr"
               >
                 {item.num}
               </div>
 
               <div className="relative z-10 space-y-6">
-                <div className="size-5 border-2 border-[#02c953]/40 bg-[#02c953]/10 rotate-45 rounded-xs transition-colors duration-500 group-hover:border-[#02c953] group-hover:bg-[#02c953] mr-auto ml-0" />
+                <div className="size-5 border-2 border-electric-blue/40 bg-electric-blue/10 rotate-45 rounded-xs transition-colors duration-500 group-hover:border-electric-blue group-hover:bg-electric-blue mr-auto ml-0" />
 
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-zinc-100 group-hover:text-[#02c953] transition-colors duration-300">
+                  <h3 className="text-xl font-bold text-zinc-100 group-hover:text-electric-blue transition-colors duration-300">
                     {item.title}
                   </h3>
                   <p className="text-sm text-zinc-500 font-medium">
@@ -79,7 +79,7 @@ export default function Capabilities() {
               <div className="relative z-10 mt-6 overflow-hidden h-6" dir="ltr">
                 <motion.div
                   variants={buttonVariants}
-                  className="flex items-center gap-1 text-[11px] font-mono font-bold text-[#02c953] justify-start"
+                  className="flex items-center gap-1 text-[11px] font-mono font-bold text-electric-blue justify-start"
                 >
                   <span>Explore</span>
                   <span>→</span>

@@ -4,7 +4,7 @@ const techStack = [
   {
     name: "React",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <circle cx="12" cy="12" r="2.2" fill="#61DAFB" />
         <g stroke="#61DAFB" strokeWidth="1.2">
           <ellipse cx="12" cy="12" rx="10" ry="4.2" />
@@ -29,7 +29,7 @@ const techStack = [
   {
     name: "Next.js",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <circle cx="12" cy="12" r="10" stroke="#111" strokeWidth="1.3" />
         <path
           d="M9 8v8M9 8l6.5 8M15.5 8v5.5"
@@ -44,7 +44,7 @@ const techStack = [
   {
     name: "TypeScript",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4">
+      <svg viewBox="0 0 24 24" className="size-8">
         <rect width="24" height="24" rx="4" fill="#3178C6" />
         <text
           x="12"
@@ -62,7 +62,7 @@ const techStack = [
   {
     name: "Node.js",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <path
           d="M12 2L20 6.5V17.5L12 22L4 17.5V6.5L12 2Z"
           stroke="#3C873A"
@@ -81,7 +81,7 @@ const techStack = [
   {
     name: "Python",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <path
           d="M12 3c-3.5 0-3.3 1.5-3.3 1.5v2h3.4v.6H6.9S4 6.7 4 10.2s2.5 3.4 2.5 3.4h1.6v-2.1s-.1-2.5 2.4-2.5h3.3s2.3.03 2.3-2.2V5.3S16.4 3 12 3z"
           fill="#3776AB"
@@ -96,7 +96,7 @@ const techStack = [
   {
     name: "PostgreSQL",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <ellipse
           cx="12"
           cy="6"
@@ -121,7 +121,7 @@ const techStack = [
   {
     name: "AWS",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <path
           d="M4 15c4 2.5 12 2.5 16 0"
           stroke="#FF9900"
@@ -151,7 +151,7 @@ const techStack = [
   {
     name: "Docker",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-4" fill="none">
+      <svg viewBox="0 0 24 24" className="size-8" fill="none">
         <rect x="3" y="10" width="3" height="3" fill="#2496ED" />
         <rect x="7" y="10" width="3" height="3" fill="#2496ED" />
         <rect x="11" y="10" width="3" height="3" fill="#2496ED" />
@@ -171,10 +171,10 @@ const badges = ["پیاده‌سازی سریع", "تحویل تمیز و مست
 export default function TechStackSection() {
   return (
     <div
-      className="mt-20 place-self-center border border-zinc-100 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-8 md:p-10 w-[84%] rounded-4xl"
+      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-8 md:p-10 w-[84%] rounded-4xl"
       dir="rtl"
     >
-      <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.6fr] gap-8 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.6fr] items-center">
         <div className="text-right space-y-3 pr-1">
           <span className="text-[10px] font-mono font-bold text-zinc-400 tracking-widest block uppercase">
             تکنولوژی
@@ -191,7 +191,7 @@ export default function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 border border-zinc-100 rounded-2xl overflow-hidden bg-white/70 backdrop-blur-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-4 border border-zinc-200 rounded-2xl overflow-hidden bg-white/70 backdrop-blur-sm">
           {techStack.map((tech, i) => {
             const col = i % 4;
             const row = Math.floor(i / 4);
@@ -199,8 +199,8 @@ export default function TechStackSection() {
               <div
                 key={tech.name}
                 className={`flex flex-col items-start gap-2.5 p-5 text-left ${
-                  col !== 0 ? "border-r border-zinc-100" : ""
-                } ${row !== 0 ? "border-t border-zinc-100" : ""}`}
+                  col !== 0 ? "border-r border-zinc-200" : ""
+                } ${row !== 0 ? "border-t border-zinc-200" : ""}`}
                 dir="ltr"
               >
                 <div className="flex items-center justify-center">

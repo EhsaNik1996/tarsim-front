@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { CSSProperties, useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
@@ -9,28 +9,32 @@ const metricsData = [
     label: "پروژه‌های تحویل شده",
     num: "01",
     desc: "سامانه‌های سازمانی تحت وب و پلتفرم‌های خصوصی ابری.",
-    color: "from-[#3ce36a]/5",
+    accent: "#7895ff",
+    tint: "rgba(120, 149, 255, 0.105)",
   },
   {
     to: 100,
     label: "رضایت و حفظ مشتری",
     num: "02",
     desc: "روابط پایدار بلندمدت بر پایه تعهد و کیفیت فنی.",
-    color: "from-[#4f52ff]/5",
+    accent: "#58cbb0",
+    tint: "rgba(88, 203, 176, 0.10)",
   },
   {
     to: 5,
     label: "سال ساخت و توسعه مستمر",
     num: "03",
     desc: "توسعه محصول هوشمند، هوش مصنوعی و مهندسی داده.",
-    color: "from-[#ffb597]/5",
+    accent: "#7c3aed",
+    tint: "rgba(124, 58, 237, 0.095)",
   },
   {
     to: 10,
     label: "سرعت بالاتر در زیرساخت",
     num: "04",
     desc: "مدیریت چابک، دپلوی مداوم و معماری تمیز کامپوننت‌ها.",
-    color: "from-cyan-400/5",
+    accent: "#eea05a",
+    tint: "rgba(238, 160, 90, 0.105)",
   },
 ];
 
@@ -81,7 +85,31 @@ export default function Metrics() {
       className="py-24 px-6 md:px-16 max-w-360 mx-auto text-right"
       dir="rtl"
     >
-      <div className="mb-16 space-y-6 select-none">
+      <div className="mb-12 space-y-3 select-none">
+        {/* ۱. اجرای انیمیشن تیتر اصلی */}
+        <motion.h2
+          variants={createContainerVariant(0)}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="text-4xl md:text-6xl font-black text-on-surface leading-tight flex flex-wrap gap-x-2"
+        >
+          {titleText.split(" ").map((word, idx) => (
+            <motion.span
+              key={idx}
+              variants={wordBlurVariant}
+              className="inline-block"
+            >
+              {word.includes("خلق") ||
+              word.includes("ساختار") ||
+              word.includes("مدرن") ||
+              word.includes("دیجیتال") ? (
+                <span className="text-electric-blue">{word}</span>
+              ) : (
+                word
+              )}
+            </motion.span>
+          ))}
+        </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -95,36 +123,11 @@ export default function Metrics() {
             THE VISION
           </span>
         </motion.div>
-
-        {/* ۱. اجرای انیمیشن تیتر اصلی */}
-        <motion.h2
-          variants={createContainerVariant(0)}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="text-4xl md:text-5xl font-extrabold text-on-surface leading-tight tracking-tight flex flex-wrap gap-x-2 gap-y-1"
-        >
-          {titleText.split(" ").map((word, idx) => (
-            <motion.span
-              key={idx}
-              variants={wordBlurVariant}
-              className="inline-block"
-            >
-              {word.includes("خلق") ||
-              word.includes("ساختار") ||
-              word.includes("مدرن") ||
-              word.includes("دیجیتال") ? (
-                <span className="text-[#02c953]">{word}</span>
-              ) : (
-                word
-              )}
-            </motion.span>
-          ))}
-        </motion.h2>
         <motion.p
           variants={createContainerVariant(0.3)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-xl text-on-surface max-w-4xl leading-relaxed font-medium flex flex-wrap gap-x-1.5 gap-y-1"
+          className="text-xl text-on-surface max-w-4xl leading-relaxed font-medium flex flex-wrap gap-x-1.5 gap-y-1 xl:mt-14"
         >
           {paragraph1.split(" ").map((word, idx) => (
             <motion.span
@@ -155,14 +158,13 @@ export default function Metrics() {
         </motion.p>
       </div>
 
-      {/* بخش کارت‌های ۴ تایی سوپرنتريکس */}
-      <div className="border border-stroke-gray rounded-3xl overflow-hidden bg-surface-container-low/40 grid grid-cols-1 md:grid-cols-12 backdrop-blur-md">
+      <div className="border border-stroke-gray bg-surface-container-low/40 grid grid-cols-1 md:grid-cols-12 backdrop-blur-md rounded-3xl overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="p-8 md:p-12 md:col-span-4 flex flex-col justify-center border-b md:border-b-0 md:border-l border-stroke-gray bg-white/40"
+          className="metrics-summary p-6 md:p-14 md:col-span-4 flex flex-col justify-center border-b md:border-b-0 md:border-l border-stroke-gray bg-white/40"
         >
           <span className="text-xs font-mono text-on-surface-variant tracking-widest uppercase mb-2 block">
             DELIVERY SNAPSHOT
@@ -176,18 +178,18 @@ export default function Metrics() {
           </p>
         </motion.div>
 
-        <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="md:col-span-8 grid grid-cols-2 lg:grid-cols-4">
           {metricsData.map((item, idx) => (
             <div
               key={idx}
-              className="p-8 border-b sm:border-b-0 border-l last:border-l-0 border-stroke-gray flex flex-col justify-between relative group hover:bg-white/60 hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01] hover:z-20 transition-all duration-300 ease-out"
+              style={{
+                "--metric-accent": item.accent,
+                "--metric-tint": item.tint,
+              } as CSSProperties}
+              className="metric-card p-6 md:p-9 border-b sm:border-b-0 border-l last:border-l-0 border-stroke-gray flex flex-col justify-between relative group hover:z-20 transition-all duration-300 ease-out"
             >
-              <div
-                className={`absolute inset-0 bg-linear-to-b ${item.color} to-transparent transition-opacity duration-500`}
-              />
-
               <div className="relative z-10">
-                <div className="text-4xl font-black text-on-surface flex items-center gap-1 font-mono mb-1">
+                <div className="metric-value text-4xl font-black text-on-surface flex items-center gap-1 font-mono mb-1 transition-colors duration-300">
                   <span>+</span>
                   <Counter from={0} to={item.to} />
                 </div>
@@ -202,18 +204,18 @@ export default function Metrics() {
                   {item.label}
                 </motion.div>
 
+              </div>
+
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.7, delay: 0.3 + idx * 0.12 }}
-                  className="text-xs text-on-surface-variant leading-relaxed"
+                  className="relative z-10 text-xs text-on-surface-variant leading-relaxed"
                 >
                   {item.desc}
                 </motion.p>
-              </div>
-
-              <div className="text-6xl font-black text-stroke-gray/20 font-mono absolute bottom-4 left-4 group-hover:text-electric-blue/10 transition-colors">
+              <div className="metric-outline text-6xl font-black font-mono absolute bottom-4 left-4 z-10 transition-all duration-300">
                 {item.num}
               </div>
             </div>

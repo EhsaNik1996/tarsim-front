@@ -36,10 +36,10 @@ export default function InfiniteMarquee() {
         >
           {marqueeItemsRow1.map((text, idx) => (
             <div key={`r1-dup-${idx}`} className="flex items-center gap-6 shrink-0">
-              <span className="text-xl md:text-2xl font-black text-zinc-400 tracking-tight uppercase hover:text-[#02c953] transition-colors duration-300">
+              <span className="text-xl md:text-2xl font-black text-zinc-400 tracking-tight uppercase hover:text-electric-blue transition-colors duration-300">
                 {text}
               </span>
-              <div className="size-2.5 border border-[#02c953] bg-[#02c953]/20 rotate-45 shrink-0" />
+              <div className="size-2.5 border border-electric-blue bg-electric-blue/20 rotate-45 shrink-0" />
             </div>
           ))}
         </div>
@@ -49,10 +49,10 @@ export default function InfiniteMarquee() {
         >
           {marqueeItemsRow1.map((text, idx) => (
             <div key={`r1-${idx}`} className="flex items-center gap-6 shrink-0">
-              <span className="text-xl md:text-2xl font-black text-zinc-400 tracking-tight uppercase hover:text-[#02c953] transition-colors duration-300">
+              <span className="text-xl md:text-2xl font-black text-zinc-400 tracking-tight uppercase hover:text-electric-blue transition-colors duration-300">
                 {text}
               </span>
-              <div className="size-2.5 border border-[#02c953] bg-[#02c953]/20 rotate-45 shrink-0" />
+              <div className="size-2.5 border border-electric-blue bg-electric-blue/20 rotate-45 shrink-0" />
             </div>
           ))}
         </div>

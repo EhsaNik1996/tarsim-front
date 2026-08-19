@@ -1,61 +1,158 @@
 "use client";
-import { motion } from "framer-motion";
+
+import { useState } from "react";
+import { Plus } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const milestones = [
-  { year: "2026", cat: "ACTIVE BUILD", title: "Construction AI Systems", desc: "توسعه زیرساخت یکپارچه پردازش تصویر کارگاهی، تحلیل ریسک سیگنال‌های محیطی و پایش زنده ترافیک تجهیزات." },
-  { year: "2026", cat: "PRIVATE PLATFORM", title: "WhatsApp MRV + Field Rewards", desc: "سیستم جامع ردیابی پاداش میدانی متصل به بات‌های ارتباطی متمرکز سازمانی با هدف یکپارچه‌سازی فرآیند فروش." },
-  { year: "2025", cat: "INTERNAL TOOLING", title: "AI Content Operations", desc: "کاهش بار پردازش داده‌های مالتی‌مدیا با اتوماسیون زنجیره تامین محتوای خلاق دپارتمان برندینگ." },
-  { year: "2025", cat: "PLATFORM BUILDS", title: "Finance + Trade Platforms", desc: "طراحی هسته لایه معاملاتی صرافی‌های مدرن ابری و بهینه‌سازی سرعت پاسخ‌دهی پورت‌ها." }
+  {
+    year: "۱۳۸۹",
+    category: "آغاز مسیر",
+    title: "تأسیس ترسیم",
+    description:
+      "ترسیم با تمرکز بر مهندسی سیستم و ساخت راهکارهایی شکل گرفت که برای استفاده بلندمدت، توسعه‌پذیری و پایداری طراحی می‌شوند.",
+  },
+  {
+    year: "۱۳۹۰",
+    category: "توسعه محصول",
+    title: "نخستین CMS اختصاصی و نرم‌افزارهای کتابخانه",
+    description:
+      "توسعه سامانه‌های اختصاصی مدیریت محتوا و راهکارهای کتابخانه‌ای، مسیر ورود ترسیم به حوزه مدیریت دانش و اطلاعات را تثبیت کرد.",
+  },
+  {
+    year: "۱۳۹۵",
+    category: "گسترش حوزه فعالیت",
+    title: "ورود به پروژه‌های موزه و پروژه‌های عراق",
+    description:
+      "دامنه خدمات ترسیم از نرم‌افزار فراتر رفت و طراحی روایت، مستندسازی آثار، زیرساخت و تجربه دیجیتال موزه‌ها را نیز در بر گرفت.",
+  },
+  {
+    year: "امروز",
+    category: "محصول و تداوم",
+    title: "تولد DOCiBOX و ادامه مسیر",
+    description:
+      "DOCiBOX از دل تجربه پروژه‌های واقعی متولد شد؛ اکوسیستمی برای مدیریت دانش، کتابخانه، آرشیو، ناشران و مراکز فرهنگی که همچنان توسعه پیدا می‌کند.",
+  },
 ];
 
-const tags = ["MONEYOS", "VOICEGUARD AI", "GG KRISHI", "EVERKIND AI", "ONSITE", "SITESALES AI"];
+const tags = [
+  "تأسیس ترسیم",
+  "CMS اختصاصی",
+  "مدیریت دانش",
+  "پروژه‌های موزه",
+  "DOCiBOX",
+];
 
 export default function TrackRecord() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <section className="py-32 bg-[#09090b] text-white border-t border-white/10">
-      <div className="max-w-360 mx-auto px-6 md:px-16 grid grid-cols-1 lg:grid-cols-12 gap-16 text-right" dir="rtl">
-        
-        {/* سایدبار فیلترها و تایتل دارک */}
-        <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit space-y-8">
+    <section className="my-20 border-y border-white/10 bg-[#090a0a] py-24 text-white md:py-28">
+      <div
+        className="mx-auto grid max-w-360 grid-cols-1 gap-16 px-6 md:px-16 lg:grid-cols-12 lg:gap-20"
+        dir="rtl"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
+          className="h-fit space-y-7 lg:col-span-5"
+        >
           <div>
-            <h3 className="text-4xl font-extrabold tracking-tight mb-4">
-              TRACK RECORD <br />
-              <span className="text-[#02c953]">& MILESTONES</span>
+            <h3 className="text-6xl font-black leading-[0.98] tracking-[-0.055em]">
+              مسیر ترسیم
+              <span className="mt-2 block text-electric-blue">و نقاط عطف</span>
             </h3>
-            <p className="text-sm text-zinc-400 leading-relaxed">نمای واقعی از کل پورتفولیو شامل لایه‌های امنیتی سازمان‌ها، فرآیندهای ابری تحت هوش مصنوعی و کارهای مستقر شده.</p>
+            <p className="mt-7 max-w-xl text-[15px] leading-7 text-[#8eb7d2]">
+              بیش از پانزده سال تجربه در طراحی محصول، زیرساخت فناوری، مدیریت
+              دانش و میراث فرهنگی؛ مسیری که هر مرحله آن، پایه‌ای برای ساخت
+              سیستم‌های ماندگارتر بوده است.
+            </p>
           </div>
-          <div className="flex flex-wrap gap-2 justify-start">
-            {tags.map((t, idx) => (
-              <span key={idx} className="text-[10px] font-mono border border-zinc-800 text-zinc-400 px-3 py-1.5 rounded-full hover:border-[#02c953] hover:text-white transition-colors cursor-pointer">{t}</span>
+
+          <div className="flex max-w-xl flex-wrap gap-2">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full border border-zinc-800 bg-white/2 px-3 py-1.5 text-[10px] font-bold text-[#a9cae0] transition-colors duration-300 hover:border-[#00d563]/60 hover:text-white"
+              >
+                {tag}
+              </span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        {/* لیست دستاوردهای ریلیز شده */}
-        <div className="lg:col-span-8 space-y-12">
-          {milestones.map((item, idx) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="border-b border-zinc-800 pb-8 flex flex-col md:flex-row gap-6 justify-between items-start" 
-              key={idx}
-            >
-              <div className="flex-1 space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono font-bold tracking-wider text-[#02c953] bg-[#02c953]/10 border border-[#02c953]/20 px-2 py-0.5 rounded">{item.cat}</span>
-                  <h4 className="text-xl font-bold font-mono text-zinc-100">{item.title}</h4>
-                </div>
-                <p className="text-sm text-zinc-400 leading-loose">{item.desc}</p>
-              </div>
-              <div className="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto border-t md:border-t-0 border-zinc-900 pt-4 md:pt-0">
-                <span className="font-mono text-zinc-500 font-bold">{item.year}</span>
-                <span className="material-symbols-outlined text-zinc-600 hidden md:block text-sm mt-2">add</span>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <div className="lg:col-span-7" dir="ltr">
+          {milestones.map((item, index) => {
+            const isOpen = openIndex === index;
+            const contentId = `milestone-content-${index}`;
 
+            return (
+              <motion.div
+                key={item.year}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.5, delay: index * 0.07 }}
+                className="border-b border-[#243139] first:border-t"
+              >
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={contentId}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="group grid w-full grid-cols-[54px_minmax(0,1fr)_24px] items-start gap-4 py-6 text-left md:grid-cols-[56px_minmax(0,1fr)_28px] md:gap-5 md:py-7"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="relative mt-2 block size-4 shrink-0 text-electric-blue"
+                  >
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="absolute inset-0 block origin-center"
+                    >
+                      <Plus className="size-4" strokeWidth={2} />
+                    </motion.span>
+                  </span>
+                  <div className="flex flex-col justify-center items-end">
+                    <span className="mb-3 text-right border border-zinc-700/70 bg-white/2 px-3 py-1 font-vazir text-[9px] font-bold tracking-wide text-[#91bfe0] rounded-full">
+                      {item.category}
+                    </span>
+                    <span className="block text-right text-[19px] font-extrabold leading-7 text-zinc-100 transition-colors duration-300 group-hover:text-white md:text-[21px]">
+                      {item.title}
+                    </span>
+                  </div>
+
+                  <span className="pt-1 font-manrope text-[13px] font-bold text-[#53636d]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      id={contentId}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <p
+                        className="pb-7 pl-18.5 text-right text-[13px] leading-7 text-zinc-400 md:pl-20.25"
+                        dir="rtl"
+                      >
+                        {item.description}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

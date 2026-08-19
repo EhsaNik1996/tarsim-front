@@ -1,19 +1,17 @@
 import FAQ from "@/app/components/FAQ";
 import CTA from "@/app/components/CTA";
 import Hero from "@/app/components/Hero";
-import About from "@/app/components/About";
 import Timeline from "./components/Timeline";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import Metrics from "@/app/components/Metrics";
 import Partners from "@/app/components/Partners";
 import Approach from "@/app/components/Approach";
-import Services from "@/app/components/Services";
+import Expertise from "@/app/components/Expertise";
 import Capabilities from "./components/Capabilities";
 import TrackRecord from "@/app/components/TrackRecord";
 import ProjectsSlider from "./components/ProjectsSlider";
 import InfiniteMarquee from "./components/InfiniteMarquee";
-import ScrollIndicator from "./components/Scrollindicator";
 import TechStackSection from "./components/Techstacksection ";
 import FeaturedProjects from "@/app/components/FeaturedProjects";
 
@@ -22,19 +20,17 @@ export default function Home() {
     <main className="relative min-h-screen bg-white selection:bg-electric-blue selection:text-white">
       <Header />
       <Hero />
-      <ScrollIndicator/>
       <Partners />
       <Metrics />
-      <About />
       <Capabilities />
       <InfiniteMarquee /> 
       <ProjectsSlider/>
       <TechStackSection/>
-      <Approach />
-      <Services />
-      <Timeline />
-      <FeaturedProjects />
       <TrackRecord />
+      <Expertise />
+      <Timeline />
+      <Approach />
+      <FeaturedProjects />
       <FAQ />
       <CTA />
       <Footer />
