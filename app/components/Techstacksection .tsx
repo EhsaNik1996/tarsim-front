@@ -171,7 +171,7 @@ const badges = ["پیاده‌سازی سریع", "تحویل تمیز و مست
 export default function TechStackSection() {
   return (
     <div
-      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-8 md:p-10 w-[84%] rounded-4xl"
+      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-8 md:p-10 mx-4 md:mx-0 md:w-[84%] rounded-4xl"
       dir="rtl"
     >
       <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.6fr] items-center">
@@ -191,7 +191,7 @@ export default function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 border border-zinc-200 rounded-2xl overflow-hidden bg-white/70 backdrop-blur-sm">
+        <div className="grid grid-cols-2 sm:grid-cols-4 border border-zinc-200 mt-10 rounded-2xl overflow-hidden bg-white/70 backdrop-blur-sm">
           {techStack.map((tech, i) => {
             const col = i % 4;
             const row = Math.floor(i / 4);
@@ -215,7 +215,7 @@ export default function TechStackSection() {
         </div>
       </div>
 
-      <div className="mt-6 flex flex-wrap justify-center gap-3">
+      <div className="mt-6 flex flex-col md:flex-row md:flex-wrap justify-center gap-3">
         {badges.map((badge) => (
           <span
             key={badge}

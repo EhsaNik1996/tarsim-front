@@ -1,20 +1,20 @@
 "use client";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import styles from "./ProjectsSlider.module.css";
 import { CSSProperties, useState, useRef } from "react";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Dialog, DialogContent } from "@/app/components/ui/dialog";
 import { ArrowLeft, ArrowRight, X, ExternalLink } from "lucide-react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import styles from "./ProjectsSlider.module.css";
 
 const projectsData = [
   {
     id: 1,
     title: "داکیباکس",
     subtitle: "پلتفرم مدیریت کتابخانه ها",
-    desc: "بانک بزرگی از کتاب ها و کتابخانه ها و دسترسی به فایل کتاب های دیجیتال",
+    desc: "اکوسیستم مدیریت دانش، کتابخانه، آرشیو، ناشران و مراکز فرهنگی.",
     longDesc:
       "پلتفرم داکیباکس به یک بستر یکپارچه وب با مدیریت فرآیندهای پیشرفته محتوا نیاز داشت. ما زیرساخت‌های فرانت‌اند، جریان‌های داینامیک استوری، چت‌های زنده معماری‌شده و فیدهای الگوریتمی هوشمند را به گونه‌ای توسعه دادیم که در ترافیک زنده و مقیاس بالا بدون وقفه عمل کند.",
     tags: ["Next.js", "React.js", "tailwind"],
@@ -159,14 +159,19 @@ export default function ProjectsSlider() {
   const swiperRef = useRef<SwiperRef>(null);
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 text-zinc-950 md:pt-18">
+    <section
+      id="projects"
+      className="scroll-mt-20 relative overflow-hidden bg-white py-16 md:py-24 text-zinc-950 md:pt-18"
+    >
       <div className="mx-auto w-[94%] max-w-380" dir="rtl">
-        {/* هدر بخش به همراه نویگیشن */}
         <div className="mb-14 flex flex-col items-start justify-between gap-7 md:mb-16 md:flex-row md:items-center">
-          <div className="text-right">
-            <h2 className="text-[clamp(2.75rem,5vw,4rem)] font-black leading-none tracking-[-0.055em] text-black">
-              پروژه‌های شاخص
+          <div className="text-right space-y-1">
+            <h2 className="text-4xl md:6xl font-black leading-none tracking-[-0.055em] text-black">
+              تجربه هایی که به نتیجه رسیدند
             </h2>
+            <h3 className="text-base text-gray-500">
+              هر پروژه، یک مسئله واقعی بود
+            </h3>
           </div>
 
           <div className="flex items-center gap-3" dir="ltr">
@@ -251,16 +256,18 @@ export default function ProjectsSlider() {
                       className="flex items-center justify-between pt-1"
                       dir="ltr"
                     >
-                      <div className={`${styles.link} flex flex-col items-start justify-end h-full gap-y-6 border-b border-transparent pb-0.5 font-manrope text-[10px] font-extrabold tracking-[0.02em] transition-all`}>
+                      <div
+                        className={`${styles.link} flex flex-col items-start justify-end h-full gap-y-6 border-b border-transparent pb-0.5 font-manrope text-[10px] font-extrabold tracking-[0.02em] transition-all`}
+                      >
                         <div className="flex gap-x-0.5">
-                        {project.tags.map((tag, i) => (
-                          <div
-                            key={i}
-                            className="flex border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-[9px] font-bold text-zinc-500 backdrop-blur-sm rounded-full"
-                          >
-                            {tag}
-                          </div>
-                        ))}
+                          {project.tags.map((tag, i) => (
+                            <div
+                              key={i}
+                              className="flex border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-[9px] font-bold text-zinc-500 backdrop-blur-sm rounded-full"
+                            >
+                              {tag}
+                            </div>
+                          ))}
                         </div>
                         <div className="group-hover:scale-105">
                           VIEW CASE STUDY <span className="text-xs">↗</span>
@@ -304,7 +311,9 @@ export default function ProjectsSlider() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-0">
             {/* ستون سمت چپ */}
-            <div className={`${styles.scrollbar} md:col-span-5 p-12 flex flex-col justify-between overflow-y-auto bg-white`}>
+            <div
+              className={`${styles.scrollbar} md:col-span-5 p-12 flex flex-col justify-between overflow-y-auto bg-white`}
+            >
               <div className="space-y-8">
                 <div>
                   <h3 className="text-3xl font-black text-zinc-900 tracking-tight leading-tight mb-4">

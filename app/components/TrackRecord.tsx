@@ -29,9 +29,9 @@ const milestones = [
   {
     year: "امروز",
     category: "محصول و تداوم",
-    title: "تولد DOCiBOX و ادامه مسیر",
+    title: "تولد داکـیباکس و ادامه مسیر",
     description:
-      "DOCiBOX از دل تجربه پروژه‌های واقعی متولد شد؛ اکوسیستمی برای مدیریت دانش، کتابخانه، آرشیو، ناشران و مراکز فرهنگی که همچنان توسعه پیدا می‌کند.",
+      "داکـیباکس از دل تجربه پروژه‌های واقعی متولد شد؛ اکوسیستمی برای مدیریت دانش، کتابخانه، آرشیو، ناشران و مراکز فرهنگی که همچنان توسعه پیدا می‌کند.",
   },
 ];
 
@@ -40,14 +40,14 @@ const tags = [
   "CMS اختصاصی",
   "مدیریت دانش",
   "پروژه‌های موزه",
-  "DOCiBOX",
+  "داکـیباکس",
 ];
 
 export default function TrackRecord() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="my-20 border-y border-white/10 bg-[#090a0a] py-24 text-white md:py-28">
+    <section className="mt-16 border-y border-white/10 bg-[#090a0a] py-16 md:py-24 text-white">
       <div
         className="mx-auto grid max-w-360 grid-cols-1 gap-16 px-6 md:px-16 lg:grid-cols-12 lg:gap-20"
         dir="rtl"
@@ -60,7 +60,7 @@ export default function TrackRecord() {
           className="h-fit space-y-7 lg:col-span-5"
         >
           <div>
-            <h3 className="text-6xl font-black leading-[0.98] tracking-[-0.055em]">
+            <h3 className="text-4xl md:text-6xl font-black leading-[0.98] tracking-[-0.055em]">
               مسیر ترسیم
               <span className="mt-2 block text-electric-blue">و نقاط عطف</span>
             </h3>

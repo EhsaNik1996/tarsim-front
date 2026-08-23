@@ -1,51 +1,50 @@
 "use client";
-import React, { CSSProperties, useEffect, useRef } from "react";
+import React, { CSSProperties } from "react";
 import { useInView } from "react-intersection-observer";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const metricsData = [
   {
-    to: 25,
-    label: "پروژه‌های تحویل شده",
+    value: "۱۵+",
+    label: "سال تجربه",
     num: "01",
-    desc: "سامانه‌های سازمانی تحت وب و پلتفرم‌های خصوصی ابری.",
+    desc: "طراحی، توسعه و نگهداری سیستم‌های قابل اتکا از سال ۱۳۸۹.",
     accent: "#7895ff",
     tint: "rgba(120, 149, 255, 0.105)",
   },
   {
-    to: 100,
-    label: "رضایت و حفظ مشتری",
+    value: "۰ تا ۱۰۰",
+    label: "همراهی کامل",
     num: "02",
-    desc: "روابط پایدار بلندمدت بر پایه تعهد و کیفیت فنی.",
+    desc: "از شناخت مسئله و معماری تا اجرا، استقرار و پشتیبانی.",
     accent: "#58cbb0",
     tint: "rgba(88, 203, 176, 0.10)",
   },
   {
-    to: 5,
-    label: "سال ساخت و توسعه مستمر",
+    value: "۴ حوزه",
+    label: "نگاه چندتخصصی",
     num: "03",
-    desc: "توسعه محصول هوشمند، هوش مصنوعی و مهندسی داده.",
+    desc: "محصول دیجیتال، زیرساخت، مدیریت دانش و میراث فرهنگی در یک تیم.",
     accent: "#7c3aed",
     tint: "rgba(124, 58, 237, 0.095)",
   },
   {
-    to: 10,
-    label: "سرعت بالاتر در زیرساخت",
+    value: "۱۰۰٪",
+    label: "مهندسی اختصاصی",
     num: "04",
-    desc: "مدیریت چابک، دپلوی مداوم و معماری تمیز کامپوننت‌ها.",
+    desc: "راهکارهایی متناسب با نیاز واقعی، ساختار و آینده هر سازمان.",
     accent: "#eea05a",
     tint: "rgba(238, 160, 90, 0.105)",
   },
 ];
 
-// تنظیم سرعت و میزان تأخیر متوالی بین هر کلمه
 const createContainerVariant = (delay: number) => ({
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
       delayChildren: delay,
-      staggerChildren: 0.05, // سرعت ترتیبی نوشته شدن کلمات
+      staggerChildren: 0.05,
     },
   },
 });
@@ -73,19 +72,31 @@ export default function Metrics() {
     triggerOnce: true,
   });
 
-  const titleText = "فراتر از کدنویسی؛ خلق ساختار مدرن دیجیتال";
+  const titleText = "ما فقط پروژه اجرا نمی‌کنیم؛ سیستم طراحی می‌کنیم.";
   const paragraph1 =
-    "استودیو ترسیم پلتفرم‌های پیشرفته وب، فرآیندهای اتوماسیون مبتنی بر هوش مصنوعی، و زیرساخت‌های ابری پایدار را برای کسب‌وکارهای آینده‌نگر طراحی و مهندسی می‌کند.";
+    "در بسیاری از پروژه‌ها، تمرکز روی تحویل یک نرم‌افزار یا راه‌اندازی یک زیرساخت است. در ترسیم، نقطه شروع متفاوت است. ما ابتدا مسئله را می‌شناسیم، سپس معماری سیستم را طراحی می‌کنیم و در نهایت مناسب‌ترین فناوری را انتخاب می‌کنیم.";
   const paragraph2 =
-    "تمرکز عملیاتی ما روی خروجی محصول است: دامنه‌های شفاف، توسعه پرسرعت و مهندسی تمیزی که در ترافیک واقعی زنده می‌ماند.";
+    "به همین دلیل، پروژه‌های ما صرفاً خروجی فنی نیستند؛ بلکه زیرساختی برای رشد، نگهداری و توسعه آینده سازمان‌ها هستند.";
 
   return (
     <section
+      id="about"
       ref={sectionRef}
-      className="py-24 px-6 md:px-16 max-w-360 mx-auto text-right"
+      className="scroll-mt-20 py-16 md:py-24 px-4 md:px-16 max-w-360 mx-auto text-right"
       dir="rtl"
     >
       <div className="mb-12 space-y-3 select-none">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-2 flex"
+        >
+          <span className="rounded-full border border-stroke-gray bg-surface-container px-3 py-1 text-xs font-bold tracking-wide text-on-surface-variant">
+            بیش از کدنویسی
+          </span>
+        </motion.div>
+
         {/* ۱. اجرای انیمیشن تیتر اصلی */}
         <motion.h2
           variants={createContainerVariant(0)}
@@ -99,10 +110,7 @@ export default function Metrics() {
               variants={wordBlurVariant}
               className="inline-block"
             >
-              {word.includes("خلق") ||
-              word.includes("ساختار") ||
-              word.includes("مدرن") ||
-              word.includes("دیجیتال") ? (
+              {word.includes("سیستم") || word.includes("طراحی") ? (
                 <span className="text-electric-blue">{word}</span>
               ) : (
                 word
@@ -110,24 +118,11 @@ export default function Metrics() {
             </motion.span>
           ))}
         </motion.h2>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="flex gap-2 mb-2"
-        >
-          <span className="text-xs font-mono uppercase tracking-wider px-3 py-1 bg-surface-container rounded-full border border-stroke-gray">
-            ABOUT US
-          </span>
-          <span className="text-xs font-mono uppercase tracking-wider px-3 py-1 bg-surface-container rounded-full border border-stroke-gray">
-            THE VISION
-          </span>
-        </motion.div>
         <motion.p
           variants={createContainerVariant(0.3)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-xl text-on-surface max-w-4xl leading-relaxed font-medium flex flex-wrap gap-x-1.5 gap-y-1 xl:mt-14"
+          className="text-base md:text-lg max-w-4xl leading-8 font-medium flex flex-wrap gap-x-1.5 gap-y-1 md:mt-14"
         >
           {paragraph1.split(" ").map((word, idx) => (
             <motion.span
@@ -158,64 +153,68 @@ export default function Metrics() {
         </motion.p>
       </div>
 
-      <div className="border border-stroke-gray bg-surface-container-low/40 grid grid-cols-1 md:grid-cols-12 backdrop-blur-md rounded-3xl overflow-hidden">
+      <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-stroke-gray bg-surface-container-low/40 backdrop-blur-md md:grid-cols-12">
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="metrics-summary p-6 md:p-14 md:col-span-4 flex flex-col justify-center border-b md:border-b-0 md:border-l border-stroke-gray bg-white/40"
+          className="metrics-summary flex flex-col justify-center border-b border-stroke-gray bg-white/70 p-5 sm:p-6 md:col-span-4 md:border-b-0 md:border-l md:p-14"
         >
-          <span className="text-xs font-mono text-on-surface-variant tracking-widest uppercase mb-2 block">
-            DELIVERY SNAPSHOT
+          <span className="mb-3 text-[10px] font-extrabold tracking-[.14em] text-on-surface-variant md:text-xs">
+            تصویر کلی ترسیم
           </span>
-          <h3 className="text-3xl font-extrabold text-on-surface mb-4">
-            اثبات توانایی، بدون حاشیه.
+          <h3 className="mb-3 text-3xl font-black leading-tight tracking-[-.035em] text-on-surface md:mb-4 md:text-4xl">
+            توانمندی، بدون حاشیه.
           </h3>
-          <p className="text-sm text-on-surface-variant leading-relaxed">
-            نمایی واقع‌بینانه از معیارهایی که اهمیت دارند: کدهای مستقر شده،
-            مشتریان وفادار و اجرای دقیق بدون وقفه.
+          <p className="text-[13px] leading-7 text-on-surface-variant md:text-sm md:leading-relaxed">
+            چهار شاخص روشن از تجربه، شیوه همراهی و عمق مهندسی ترسیم.
           </p>
         </motion.div>
 
-        <div className="md:col-span-8 grid grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 md:col-span-8 lg:grid-cols-4">
           {metricsData.map((item, idx) => (
             <div
               key={idx}
-              style={{
-                "--metric-accent": item.accent,
-                "--metric-tint": item.tint,
-              } as CSSProperties}
-              className="metric-card p-6 md:p-9 border-b sm:border-b-0 border-l last:border-l-0 border-stroke-gray flex flex-col justify-between relative group hover:z-20 transition-all duration-300 ease-out"
+              style={
+                {
+                  "--metric-accent": item.accent,
+                  "--metric-tint": item.tint,
+                } as CSSProperties
+              }
+              className={`metric-card group relative flex min-h-44 flex-col justify-between overflow-hidden p-5 transition-all duration-300 ease-out hover:z-20 sm:min-h-48 sm:p-6 md:min-h-70 md:border-b-0 md:border-l md:p-7 md:last:border-l-0 xl:p-9 ${
+                idx < 2 ? "border-b border-stroke-gray" : ""
+              } ${idx % 2 === 0 ? "border-l border-stroke-gray" : ""}`}
             >
               <div className="relative z-10">
-                <div className="metric-value text-4xl font-black text-on-surface flex items-center gap-1 font-mono mb-1 transition-colors duration-300">
-                  <span>+</span>
-                  <Counter from={0} to={item.to} />
-                </div>
+                <div>
+                  <div className="metric-value mb-4 text-[30px] leading-none font-black tracking-[-.04em] text-on-surface transition-colors duration-300 sm:text-4xl md:mb-3 md:text-[clamp(2rem,3vw,3rem)]">
+                    {item.value}
+                  </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
-                  className="text-sm font-bold text-on-surface mb-4"
-                >
-                  {item.label}
-                </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
+                    className="text-[10px] leading-5 font-extrabold tracking-[.06em] text-on-surface-variant sm:text-[11px] md:text-xs"
+                  >
+                    {item.label}
+                  </motion.div>
+                </div>
 
               </div>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: 0.3 + idx * 0.12 }}
-                  className="relative z-10 text-xs text-on-surface-variant leading-relaxed"
-                >
-                  {item.desc}
-                </motion.p>
-              <div className="metric-outline text-6xl font-black font-mono absolute bottom-4 left-4 z-10 transition-all duration-300">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.3 + idx * 0.12 }}
+                className="relative z-10 mt-5 hidden max-w-136 text-on-surface-variant md:block md:max-w-44 md:text-xs md:leading-relaxed"
+              >
+                {item.desc}
+              </motion.p>
+              <div className="metric-outline absolute bottom-2 left-2 z-0 font-mono text-6xl font-black transition-all duration-300 sm:text-7xl md:bottom-3 md:left-3">
                 {item.num}
               </div>
             </div>
@@ -223,34 +222,5 @@ export default function Metrics() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Counter({ from, to }: { from: number; to: number }) {
-  const nodeRef = useRef<HTMLSpanElement>(null);
-  const { ref, inView } = useInView({ threshold: 0.5, triggerOnce: true });
-
-  const count = useMotionValue(from);
-  const roundedSpring = useSpring(count, { stiffness: 35, damping: 18 });
-  const displayValue = useTransform(roundedSpring, (latest) =>
-    Math.floor(latest),
-  );
-
-  useEffect(() => {
-    if (inView) count.set(to);
-  }, [inView, count, to]);
-
-  useEffect(() => {
-    return displayValue.on("change", (latest) => {
-      if (nodeRef.current) {
-        nodeRef.current.textContent = latest.toString();
-      }
-    });
-  }, [displayValue]);
-
-  return (
-    <span ref={ref}>
-      <span ref={nodeRef}>{from}</span>
-    </span>
   );
 }

@@ -20,24 +20,28 @@ export default function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
-          className="mb-8 inline-flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full border border-zinc-200 bg-white/85 px-4 py-2 text-[10px] font-bold text-zinc-500 shadow-sm backdrop-blur-sm sm:text-xs"
+          className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-zinc-200 bg-white/85 px-4 py-2 mb-8 text-[10px] font-bold text-zinc-500 shadow-sm backdrop-blur-sm sm:text-xs rounded-full"
         >
-          <span className="size-2 rounded-full bg-electric-blue shadow-[0_0_0_5px_rgba(79,82,255,0.10)]" />
-          <span>از سال ۱۳۸۹</span>
-          <span className="text-zinc-300">•</span>
+          <span className="size-2 bg-electric-blue shadow-sm rounded-full" />
+          <span className="hidden md:block">از سال ۱۳۸۹</span>
+          <span className="hidden md:block text-zinc-300">•</span>
           <span>مهندسی سیستم</span>
           <span className="text-zinc-300">•</span>
           <span>محصولات دیجیتال</span>
           <span className="text-zinc-300">•</span>
           <span>زیرساخت</span>
-          <span className="text-zinc-300">•</span>
-          <span>مدیریت دانش</span>
+          <span className="text-zinc-300 hidden md:block">•</span>
+          <span className="hidden md:block">مدیریت دانش</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.85, delay: 0.08, ease: [0.2, 0.65, 0.3, 1] }}
+          transition={{
+            duration: 0.85,
+            delay: 0.08,
+            ease: [0.2, 0.65, 0.3, 1],
+          }}
           className="max-w-275 text-4xl xl:text-6xl font-black leading-12 xl:leading-24"
         >
           سیستم‌هایی می‌سازیم که سال‌ها بتوان به آن‌ها
@@ -50,7 +54,10 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.28 }}
           className="mt-7 max-w-220 text-[15px] leading-8 text-zinc-500 sm:text-base md:text-lg md:leading-9"
         >
-          ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت، توسعه‌پذیری و پایداری ساخته شده‌اند.
+          ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های
+          فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما
+          سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت،
+          توسعه‌پذیری و پایداری ساخته شده‌اند.
         </motion.p>
 
         <motion.div
@@ -85,7 +92,9 @@ export default function Hero() {
       >
         <motion.span
           className="w-1 h-2.5 rounded-full bg-electric-blue"
-          animate={reduceMotion ? undefined : { y: [0, 5, 0], opacity: [1, 0.6, 1] }}
+          animate={
+            reduceMotion ? undefined : { y: [0, 5, 0], opacity: [1, 0.6, 1] }
+          }
           transition={{ duration: 1.65, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.a>

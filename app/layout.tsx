@@ -28,20 +28,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazir.variable} ${manrope.variable}`}>
+    <html lang="fa" dir="rtl" className={`${vazir.variable} ${manrope.variable} overflow-x-clip`}>
       <head>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
       </head>
-      <body className="selection:bg-electric-blue selection:text-white">
+      <body className="overflow-x-clip selection:bg-electric-blue selection:text-white">
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="grid-line-v right-16"></div>
           <div className="grid-line-v left-16"></div>
           <div className="grid-line-v left-1/2"></div>
         </div>
-        <div className="relative z-10">{children}</div>
+        <div className="relative z-10 max-w-full overflow-x-clip">{children}</div>
         <CustomCursor />
       </body>
     </html>

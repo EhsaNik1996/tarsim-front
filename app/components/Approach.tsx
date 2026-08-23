@@ -2,21 +2,54 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { num: "01", title: "کشف و تحلیل نیاز", desc: "بررسی عمیق ساختار فعلی کسب‌وکار، تحلیل رقبا و مهندسی معکوس فرآیندها جهت ترسیم نقشه راه." },
-  { num: "02", title: "معماری و توسعه خلاق", desc: "طراحی راه‌حل هوشمند دیجیتال، پیاده‌سازی زیرساخت‌های پایدار نرم‌افزاری و کدنویسی بهینه." },
-  { num: "03", title: "تضمین کیفیت و استقرار", desc: "تست‌های امنیتی لایه‌ای، بهینه‌سازی سرعت و راه‌اندازی بدون پرش سیستم بر روی سرورهای ابری." }
+  {
+    num: "01",
+    title: "شناخت مسئله",
+    desc: "نیازها، محدودیت‌ها و هدف واقعی پروژه را پیش از هر تصمیم فنی روشن می‌کنیم.",
+  },
+  {
+    num: "02",
+    title: "طراحی سیستم",
+    desc: "معماری، مسیر اجرا و فناوری مناسب را متناسب با آینده سیستم طراحی می‌کنیم.",
+  },
+  {
+    num: "03",
+    title: "پیاده‌سازی",
+    desc: "راهکار را مرحله‌به‌مرحله، مستند و قابل ارزیابی توسعه می‌دهیم.",
+  },
+  {
+    num: "04",
+    title: "پشتیبانی",
+    desc: "پس از راه‌اندازی، عملکرد سیستم را پایش و مسیر نگهداری آن را همراهی می‌کنیم.",
+  },
+  {
+    num: "05",
+    title: "بهبود مستمر",
+    desc: "بر پایه داده، بازخورد و نیازهای تازه، سیستم را پیوسته کامل‌تر می‌کنیم.",
+  },
 ];
 
 export default function Approach() {
   return (
-    <section className="pt-24 bg-linear-to-b from-white to-background-deep px-6 md:px-16 max-w-360">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-        <div className="text-right lg:sticky lg:top-32 h-fit">
-          <div className="font-mono text-electric-blue mb-4 text-sm tracking-widest">HOW WE WORK</div>
-          <h2 className="text-4xl font-bold text-on-surface leading-tight">رویکرد استراتژیک ترسیم در اجرای پروژه‌ها</h2>
+    <section
+      className="w-full bg-linear-to-b from-white to-background-deep px-6 py-16 md:px-16 md:py-24"
+      dir="rtl"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 max-w-360 place-self-center">
+        <div className="h-fit text-right lg:sticky lg:top-28">
+          <div className="font-mono text-electric-blue mb-4 text-sm tracking-widest">
+            روش کار
+          </div>
+          <h2 className="text-4xl font-bold text-on-surface leading-tight">
+            هر پروژه، یک مسیر مشخص دارد.
+          </h2>
+          <p className="mt-6 max-w-md text-sm leading-7 text-on-surface-variant md:text-base md:leading-8">
+            ما باور داریم کیفیت، نتیجه یک مرحله نیست؛ حاصل تصمیم‌هایی است که از
+            اولین جلسه تا سال‌ها پس از بهره‌برداری ادامه پیدا می‌کند.
+          </p>
         </div>
 
-        <div className="lg:col-span-2 space-y-12">
+        <div className="space-y-8 lg:col-span-2 lg:space-y-10">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -24,12 +57,18 @@ export default function Approach() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="flex gap-8 border-b border-stroke-gray pb-8 text-right flex-row-reverse"
+              className="group flex flex-row-reverse gap-6 border-b border-stroke-gray pb-8 text-right transition-colors duration-300 hover:border-electric-blue/35 md:gap-8"
             >
-              <span className="font-mono text-electric-blue text-4xl font-extrabold">{step.num}</span>
+              <span className="font-mono text-3xl font-extrabold text-electric-blue transition-transform duration-300 group-hover:-translate-y-1 md:text-4xl">
+                {step.num}
+              </span>
               <div className="space-y-3 flex-1">
-                <h3 className="text-2xl font-bold text-on-surface">{step.title}</h3>
-                <p className="text-on-surface-variant text-base leading-relaxed">{step.desc}</p>
+                <h3 className="text-2xl font-bold text-on-surface">
+                  {step.title}
+                </h3>
+                <p className="text-on-surface-variant text-base leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             </motion.div>
           ))}

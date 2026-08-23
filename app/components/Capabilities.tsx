@@ -1,92 +1,237 @@
 "use client";
-import { motion, Variants } from "framer-motion"; // ۱. ایمپورت کردن نوع Variants
-
-const capabilitiesData = [
-  {
-    num: "01",
-    title: "پلتفرم‌های SaaS",
-    desc: "طراحی زیرساخت‌های چندمستاجری (Multi-tenant) و مقیاس‌پذیر.",
+import { motion } from "framer-motion";
+import { Zap } from "lucide-react";
+const services = {
+  main: {
+    eyebrow: "ENGINEERING",
+    title: "محصولات\nدیجیتال",
+    description:
+      "طراحی و توسعه نرم‌افزارهای اختصاصی، سامانه‌های سازمانی، CMS اختصاصی، پلتفرم‌های تحت وب و راهکارهای دیجیتال.",
+    tags: ["Web Applications", "Custom Software", "Digital Products"],
   },
-  {
-    num: "02",
-    title: "سیستم‌های هوش مصنوعی",
-    desc: "توسعه مدل‌های زبانی بزرگ، عامل‌های خودمختار و اتوماسیون فرآیندها.",
+  smallTop: {
+    eyebrow: "INFRASTRUCTURE",
+    title: "زیرساخت فناوری",
+    description:
+      "طراحی و اجرای شبکه، مراکز داده، زیرساخت‌های پسیو، مانیتورینگ، مجازی‌سازی و خدمات DevOps.",
   },
-  {
-    num: "03",
-    title: "اپلیکیشن‌های پیشرفته وب",
-    desc: "پیاده‌سازی برنامه‌های تک‌صفحه‌ای و پویا با معماری مایکروفرانت‌اند.",
+  smallBottom: {
+    eyebrow: "KNOWLEDGE",
+    title: "سامانه‌های مدیریت دانش",
+    description:
+      "راهکارهای تخصصی برای کتابخانه‌ها، آرشیوها، مراکز اسناد و مدیریت اطلاعات.",
   },
-];
-
+  blue: {
+    eyebrow: "#CULTURAL_TECH",
+    title: "موزه و\nمیراث فرهنگی",
+    description:
+      "از طراحی روایت موزه تا زیرساخت، ویترین، مستندسازی آثار، بازدید مجازی و سامانه‌های تخصصی.",
+    tags: [
+      "Museum Systems",
+      "Documentation",
+      "Virtual Experience",
+      "Digital Heritage",
+    ],
+  },
+  bottomLeft: {
+    eyebrow: "ENGINEERING",
+    title: "خدمات مهندسی",
+    description:
+      "مشاوره، معماری سیستم، استانداردسازی، مستندسازی، نظارت فنی و طراحی فرآیند.",
+  },
+};
+const cardTransition = { duration: 0.8, ease: [0.2, 0, 0, 1] as const };
 export default function Capabilities() {
-  // ۲. نسبت دادن نوع صریح Variants به متغیر برای رفع کامل ارور
-  const buttonVariants: Variants = {
-    initial: { opacity: 0, y: 15 },
-    hover: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.3, ease: "easeOut" } 
-    },
-  };
-
   return (
-    <section className="py-32 bg-[#09090b] text-white border-t border-zinc-900 overflow-hidden relative">
-      <div className="px-6 md:px-36 text-right" dir="rtl">
-        <div className="mb-20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          <div className="lg:col-span-8">
-            <span className="text-xs font-mono text-electric-blue tracking-widest block mb-3 uppercase">
-              حوزه فعالیت ما
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black text-zinc-100 leading-tight tracking-tight">
-              توسعه زیرساخت‌ها در{" "}
-              <span className="text-electric-blue">بالاترین تراز فنی</span>
-            </h2>
+    <section
+      id="services"
+      dir="rtl"
+      className="relative overflow-hidden px-6 py-16 md:px-12 lg:px-16 lg:py-24"
+    >
+      <div className="mx-auto max-w-350">
+        {/* Section heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={cardTransition}
+        >
+          <div className="mb-2 font-mono text-xs font-medium text-electric-blue">
+            توانمندی‌ها
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {capabilitiesData.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial="initial"
-              whileHover="hover"
-              className="group relative border border-zinc-900 bg-[#0d0d10] p-10 overflow-hidden flex flex-col justify-between min-h-65 cursor-pointer rounded-3xl text-right"
+          <div className="relative">
+            <h2 className="relative z-10 text-4xl md:text-6xl font-black md:leading-17 pt-2">
+              توانمندی‌هایی که در کنار هم،
+              <span className="block text-electric-blue">یک سیستم کامل می‌سازند.</span>
+            </h2>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-2 top-1/2 -translate-y-1/2 select-none text-[clamp(5rem,13vw,12rem)] font-black leading-none text-transparent"
             >
-              <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-electric-blue transition-all duration-500 pointer-events-none z-20" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-electric-blue/4 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              SYSTEMS
+            </span>
+          </div>
+        </motion.div>
+        {/* Services grid */}
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 mt-7 md:mt-16">
+          {/* Main green card */}
+          <motion.article
+            data-cursor="link"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ ...cardTransition, delay: 0.05 }}
+            className="group relative min-h-96 md:min-h-105 overflow-hidden rounded-[28px] bg-green-500/80 p-5 md:p-8 text-right transition-transform duration-300 ease-out hover:-translate-y-1.5 lg:col-span-5 lg:min-h-125 lg:p-10"
+          >
+            <div className="flex items-center w-fit gap-x-1.5 rounded-full bg-black/95 px-2.5 py-2 text-[10px] font-bold tracking-wide text-white">
+              HIGH PERFORMANCE
+              <Zap className="size-3" />
+            </div>
 
-              <div
-                className="absolute bottom-0 left-2 font-mono text-8xl font-black leading-none text-[#131316] select-none pointer-events-none group-hover:text-electric-blue/10 transition-colors duration-500 z-0"
-                dir="ltr"
-              >
-                {item.num}
+            <div className="absolute inset-x-10 bottom-10">
+              <div className="hidden md:block mb-4 text-xs font-medium tracking-wider text-black/60">
+                {services.main.eyebrow}
               </div>
-
-              <div className="relative z-10 space-y-6">
-                <div className="size-5 border-2 border-electric-blue/40 bg-electric-blue/10 rotate-45 rounded-xs transition-colors duration-500 group-hover:border-electric-blue group-hover:bg-electric-blue mr-auto ml-0" />
-
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-zinc-100 group-hover:text-electric-blue transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-zinc-500 font-medium">
-                    {item.desc}
-                  </p>
+              <h3 className="whitespace-pre-line text-4xl font-black leading-10 md:leading-16 text-black md:text-6xl">
+                {services.main.title}
+              </h3>
+              <p className="mt-5 max-w-md text-sm leading-7 text-black/70">
+                {services.main.description}
+              </p>
+              <div className="mt-6 border-t border-black/15 pt-5">
+                <div className="flex flex-wrap gap-x-6 gap-y-2">
+                  {services.main.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-semibold uppercase tracking-wider text-black/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
+            </div>
+          </motion.article>
+          {/* Middle column */}
+          <div className="flex w-full flex-row gap-3 sm:gap-4 md:flex-col lg:col-span-3">
+            {/* Small white card */}
+            <motion.article
+              data-cursor="link"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...cardTransition, delay: 0.25 }}
+              className="group flex min-h-73 basis-1/2 flex-col items-center justify-between rounded-[26px] border border-black/10 bg-white px-4 py-5 text-center transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-black/20 sm:min-h-77.5 sm:px-6 sm:py-6 md:min-h-0 md:items-start md:p-7 md:text-right"
+            >
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-zinc-100 text-lg text-zinc-500 transition duration-300 group-hover:bg-electric-blue/5 group-hover:text-electric-blue">
+                ◈
+              </span>
 
-              <div className="relative z-10 mt-6 overflow-hidden h-6" dir="ltr">
-                <motion.div
-                  variants={buttonVariants}
-                  className="flex items-center gap-1 text-[11px] font-mono font-bold text-electric-blue justify-start"
-                >
-                  <span>Explore</span>
-                  <span>→</span>
-                </motion.div>
+              <div className="flex flex-col items-center md:items-start">
+                <div className="mb-2 hidden text-[9px] font-bold text-black/35 md:block">
+                  {services.smallTop.eyebrow}
+                </div>
+                <h3 className="text-lg font-black leading-7 tracking-tight text-black transition duration-300 group-hover:text-electric-blue md:text-2xl">
+                  {services.smallTop.title}
+                </h3>
+                <p className="mt-2 text-[11px] leading-5 text-black/45 sm:text-xs sm:leading-6">
+                  {services.smallTop.description}
+                </p>
               </div>
-            </motion.div>
-          ))}
+              <span aria-hidden="true" className="text-xl leading-none text-black/15 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-electric-blue">
+                &#8599;
+              </span>
+            </motion.article>
+            {/* Small white card */}
+            <motion.article
+              data-cursor="link"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...cardTransition, delay: 0.25 }}
+              className="group flex min-h-73 basis-1/2 flex-col items-center justify-between rounded-[26px] border border-black/10 bg-white px-4 py-5 text-center transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-black/20 sm:min-h-77.5 sm:px-6 sm:py-6 md:min-h-0 md:items-start md:p-7 md:text-right"
+            >
+              <span className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-zinc-100 text-lg text-zinc-500 transition duration-300 group-hover:bg-electric-blue/5 group-hover:text-electric-blue">
+                ◎
+              </span>
+
+              <div className="flex flex-col items-center md:items-start">
+                <div className="mb-2 hidden text-[9px] font-bold text-black/35 md:block">
+                  {services.smallBottom.eyebrow}
+                </div>
+                <h3 className="text-lg font-black leading-7 text-black transition duration-300 group-hover:text-electric-blue md:text-2xl">
+                  {services.smallBottom.title}
+                </h3>
+                <p className="mt-2 text-[11px] leading-5 text-black/45 sm:text-xs sm:leading-6">
+                  {services.smallBottom.description}
+                </p>
+              </div>
+              <span aria-hidden="true" className="text-xl leading-none text-black/15 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-electric-blue">
+                &#8599;
+              </span>
+            </motion.article>
+          </div>
+          {/* Blue featured card */}
+          <motion.article
+            data-cursor="link"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ ...cardTransition, delay: 0.2 }}
+            className="group relative min-h-96 md:min-h-105 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-[#2450ff] p-8 text-white lg:col-span-4 lg:min-h-125 lg:p-10"
+          >
+            <div className="flex items-start justify-between">
+              <span className="text-[10px] font-bold tracking-[0.15em] text-white/55">
+                {services.blue.eyebrow}
+              </span>
+              <span className="text-7xl font-black leading-none text-white/[0.07] transition-transform duration-700 group-hover:scale-110">
+                AI
+              </span>
+            </div>
+            <div className="absolute inset-x-8 bottom-8 lg:inset-x-10 lg:bottom-10">
+              <h3 className="whitespace-pre-line text-4xl font-black leading-11 md:leading-16 md:text-6xl">
+                {services.blue.title}
+              </h3>
+              <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
+                {services.blue.description}
+              </p>
+              <div className="mt-6 border-t border-white/15 pt-5">
+                <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+                  {services.blue.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-medium text-white/60"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.article>
+          {/* Bottom left */}
+          <motion.article
+            data-cursor="link"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ ...cardTransition, delay: 0.3 }}
+            className="group relative min-h-47.5 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-[#090909] p-8 text-white lg:col-span-12"
+          >
+            <div className="flex h-full flex-col justify-between">
+              <div className="flex items-start justify-between">
+                <h3 className="text-3xl font-bold group-hover:text-electric-blue transition-transform duration-500">
+                  {services.bottomLeft.title}
+                </h3>
+                <span className="text-4xl text-white/15 transition-transform duration-500 group-hover:rotate-12 group-hover:text-electric-blue">
+                  ✦
+                </span>
+              </div>
+              <p className="max-w-xl text-sm leading-7 text-white/45">
+                {services.bottomLeft.description}
+              </p>
+            </div>
+          </motion.article>
         </div>
       </div>
     </section>
