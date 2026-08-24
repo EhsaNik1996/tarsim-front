@@ -5,15 +5,15 @@ import { motion } from "framer-motion";
 
 const metricsData = [
   {
-    value: "۱۵+",
+    value: "15+",
     label: "سال تجربه",
     num: "01",
-    desc: "طراحی، توسعه و نگهداری سیستم‌های قابل اتکا از سال ۱۳۸۹.",
+    desc: "طراحی، توسعه و نگهداری سیستم‌های قابل اتکا از سال 1389.",
     accent: "#7895ff",
     tint: "rgba(120, 149, 255, 0.105)",
   },
   {
-    value: "۰ تا ۱۰۰",
+    value: "0 تا 100",
     label: "همراهی کامل",
     num: "02",
     desc: "از شناخت مسئله و معماری تا اجرا، استقرار و پشتیبانی.",
@@ -21,7 +21,7 @@ const metricsData = [
     tint: "rgba(88, 203, 176, 0.10)",
   },
   {
-    value: "۴ حوزه",
+    value: "4 حوزه",
     label: "نگاه چندتخصصی",
     num: "03",
     desc: "محصول دیجیتال، زیرساخت، مدیریت دانش و میراث فرهنگی در یک تیم.",
@@ -29,7 +29,7 @@ const metricsData = [
     tint: "rgba(124, 58, 237, 0.095)",
   },
   {
-    value: "۱۰۰٪",
+    value: "100%",
     label: "مهندسی اختصاصی",
     num: "04",
     desc: "راهکارهایی متناسب با نیاز واقعی، ساختار و آینده هر سازمان.",
@@ -97,25 +97,29 @@ export default function Metrics() {
           </span>
         </motion.div>
 
-        {/* ۱. اجرای انیمیشن تیتر اصلی */}
+        {/* 1. اجرای انیمیشن تیتر اصلی */}
         <motion.h2
           variants={createContainerVariant(0)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-4xl md:text-6xl font-black text-on-surface leading-tight flex flex-wrap gap-x-2"
+          className="text-4xl md:text-7xl font-black text-on-surface leading-tight flex flex-wrap gap-x-2"
         >
           {titleText.split(" ").map((word, idx) => (
-            <motion.span
-              key={idx}
-              variants={wordBlurVariant}
-              className="inline-block"
-            >
-              {word.includes("سیستم") || word.includes("طراحی") ? (
-                <span className="text-electric-blue">{word}</span>
-              ) : (
-                word
+            <React.Fragment key={idx}>
+              {word === "سیستم" && (
+                <span className="h-0 basis-full" aria-hidden="true" />
               )}
-            </motion.span>
+              <motion.span
+                variants={wordBlurVariant}
+                className="inline-block"
+              >
+                {word === "طراحی" ? (
+                  <span className="text-electric-blue">{word}</span>
+                ) : (
+                  word
+                )}
+              </motion.span>
+            </React.Fragment>
           ))}
         </motion.h2>
         <motion.p
@@ -164,7 +168,7 @@ export default function Metrics() {
           <span className="mb-3 text-[10px] font-extrabold tracking-[.14em] text-on-surface-variant md:text-xs">
             تصویر کلی ترسیم
           </span>
-          <h3 className="mb-3 text-3xl font-black leading-tight tracking-[-.035em] text-on-surface md:mb-4 md:text-4xl">
+          <h3 className="mb-3 text-4xl font-black leading-tight tracking-[-.035em] text-on-surface md:mb-4 md:text-5xl">
             توانمندی، بدون حاشیه.
           </h3>
           <p className="text-[13px] leading-7 text-on-surface-variant md:text-sm md:leading-relaxed">
@@ -188,7 +192,7 @@ export default function Metrics() {
             >
               <div className="relative z-10">
                 <div>
-                  <div className="metric-value mb-4 text-[30px] leading-none font-black tracking-[-.04em] text-on-surface transition-colors duration-300 sm:text-4xl md:mb-3 md:text-[clamp(2rem,3vw,3rem)]">
+                  <div className="metric-value mb-4 md:text-7xl text-nowrap leading-none font-black tracking-[-.04em] text-on-surface transition-colors duration-300 text-4xl md:mb-3 md:text-[clamp(2rem,3vw,3rem)]">
                     {item.value}
                   </div>
 
@@ -214,7 +218,7 @@ export default function Metrics() {
               >
                 {item.desc}
               </motion.p>
-              <div className="metric-outline absolute bottom-2 left-2 z-0 font-mono text-6xl font-black transition-all duration-300 sm:text-7xl md:bottom-3 md:left-3">
+              <div className="metric-outline absolute bottom-2 left-2 z-0 font-mono text-7xl font-black transition-all duration-300 sm:text-7xl md:bottom-3 md:left-3">
                 {item.num}
               </div>
             </div>

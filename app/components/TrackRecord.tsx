@@ -6,21 +6,21 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const milestones = [
   {
-    year: "۱۳۸۹",
+    year: "1389",
     category: "آغاز مسیر",
     title: "تأسیس ترسیم",
     description:
       "ترسیم با تمرکز بر مهندسی سیستم و ساخت راهکارهایی شکل گرفت که برای استفاده بلندمدت، توسعه‌پذیری و پایداری طراحی می‌شوند.",
   },
   {
-    year: "۱۳۹۰",
+    year: "1390",
     category: "توسعه محصول",
     title: "نخستین CMS اختصاصی و نرم‌افزارهای کتابخانه",
     description:
       "توسعه سامانه‌های اختصاصی مدیریت محتوا و راهکارهای کتابخانه‌ای، مسیر ورود ترسیم به حوزه مدیریت دانش و اطلاعات را تثبیت کرد.",
   },
   {
-    year: "۱۳۹۵",
+    year: "1395",
     category: "گسترش حوزه فعالیت",
     title: "ورود به پروژه‌های موزه و پروژه‌های عراق",
     description:
@@ -60,9 +60,11 @@ export default function TrackRecord() {
           className="h-fit space-y-7 lg:col-span-5"
         >
           <div>
-            <h3 className="text-4xl md:text-6xl font-black leading-[0.98] tracking-[-0.055em]">
+            <h3 className="text-4xl md:text-7xl font-black leading-[0.98] tracking-[-0.055em]">
               مسیر ترسیم
-              <span className="mt-2 block text-electric-blue">و نقاط عطف</span>
+              <span className="mt-2 block">
+                و <span className="text-electric-blue">نقاط عطف</span>
+              </span>
             </h3>
             <p className="mt-7 max-w-xl text-[15px] leading-7 text-[#8eb7d2]">
               بیش از پانزده سال تجربه در طراحی محصول، زیرساخت فناوری، مدیریت

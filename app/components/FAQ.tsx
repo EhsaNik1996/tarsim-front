@@ -55,7 +55,7 @@ export default function FAQ() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="mb-16 md:mb-19"
           >
-            <h2 className="text-4xl font-black leading-none tracking-tighter md:text-6xl">
+            <h2 className="text-4xl font-black leading-none tracking-tighter md:text-7xl">
               سوالات متداول
             </h2>
             <div className="flex items-center mt-6 gap-x-1.5 text-[15px] text-zinc-500 md:text-[17px]">
@@ -112,18 +112,37 @@ export default function FAQ() {
                     {isOpen && (
                       <motion.div
                         id={contentId}
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
                         transition={{
-                          duration: 0.35,
+                          duration: 0.4,
                           ease: [0.22, 1, 0.36, 1],
                         }}
                         className="overflow-hidden"
                       >
-                        <p className="max-w-3xl pb-7 pl-11 text-[13px] leading-7 text-[#79b7df] md:text-[15px] md:leading-7">
+                        <motion.p
+                          initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                          animate={{
+                            opacity: 1,
+                            y: 0,
+                            filter: "blur(0px)",
+                            transition: {
+                              duration: 0.3,
+                              delay: 0.12,
+                              ease: [0.22, 1, 0.36, 1],
+                            },
+                          }}
+                          exit={{
+                            opacity: 0,
+                            y: -4,
+                            filter: "blur(3px)",
+                            transition: { duration: 0.18, ease: "easeOut" },
+                          }}
+                          className="max-w-3xl pb-7 pl-11 text-[13px] leading-7 text-[#79b7df] md:text-[15px] md:leading-7"
+                        >
                           {faq.answer}
-                        </p>
+                        </motion.p>
                       </motion.div>
                     )}
                   </AnimatePresence>

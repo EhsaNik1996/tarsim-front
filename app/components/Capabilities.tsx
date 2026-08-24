@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Zap } from "lucide-react";
+import { Paintbrush, Presentation, Zap } from "lucide-react";
 const services = {
   main: {
     eyebrow: "ENGINEERING",
@@ -33,13 +33,23 @@ const services = {
       "Digital Heritage",
     ],
   },
-  bottomLeft: {
-    eyebrow: "ENGINEERING",
+};
+
+const bottomServices = [
+  {
     title: "خدمات مهندسی",
     description:
       "مشاوره، معماری سیستم، استانداردسازی، مستندسازی، نظارت فنی و طراحی فرآیند.",
+    icon: Presentation,
   },
-};
+  {
+    title: "طراحی رابط و تجربه کاربری",
+    description:
+      "طراحی کاربرمحور برای جریان‌های روشن، وضعیت‌های قابل‌فهم و تصمیم‌های دقیق محصول.",
+    icon: Paintbrush,
+  },
+];
+
 const cardTransition = { duration: 0.8, ease: [0.2, 0, 0, 1] as const };
 export default function Capabilities() {
   return (
@@ -60,7 +70,7 @@ export default function Capabilities() {
             توانمندی‌ها
           </div>
           <div className="relative">
-            <h2 className="relative z-10 text-4xl md:text-6xl font-black md:leading-17 pt-2">
+            <h2 className="relative z-10 text-4xl md:text-7xl font-black md:leading-19 pt-2">
               توانمندی‌هایی که در کنار هم،
               <span className="block text-electric-blue">یک سیستم کامل می‌سازند.</span>
             </h2>
@@ -92,7 +102,7 @@ export default function Capabilities() {
               <div className="hidden md:block mb-4 text-xs font-medium tracking-wider text-black/60">
                 {services.main.eyebrow}
               </div>
-              <h3 className="whitespace-pre-line text-4xl font-black leading-10 md:leading-16 text-black md:text-6xl">
+              <h3 className="whitespace-pre-line text-4xl font-black leading-10 md:leading-16 text-black md:text-7xl">
                 {services.main.title}
               </h3>
               <p className="mt-5 max-w-md text-sm leading-7 text-black/70">
@@ -189,7 +199,7 @@ export default function Capabilities() {
               </span>
             </div>
             <div className="absolute inset-x-8 bottom-8 lg:inset-x-10 lg:bottom-10">
-              <h3 className="whitespace-pre-line text-4xl font-black leading-11 md:leading-16 md:text-6xl">
+              <h3 className="whitespace-pre-line text-4xl font-black leading-11 md:leading-16 md:text-7xl">
                 {services.blue.title}
               </h3>
               <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
@@ -209,29 +219,40 @@ export default function Capabilities() {
               </div>
             </div>
           </motion.article>
-          {/* Bottom left */}
-          <motion.article
-            data-cursor="link"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...cardTransition, delay: 0.3 }}
-            className="group relative min-h-47.5 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-[#090909] p-8 text-white lg:col-span-12"
-          >
-            <div className="flex h-full flex-col justify-between">
-              <div className="flex items-start justify-between">
-                <h3 className="text-3xl font-bold group-hover:text-electric-blue transition-transform duration-500">
-                  {services.bottomLeft.title}
-                </h3>
-                <span className="text-4xl text-white/15 transition-transform duration-500 group-hover:rotate-12 group-hover:text-electric-blue">
-                  ✦
-                </span>
+          {bottomServices.map((service, index) => {
+            const Icon = service.icon;
+
+            return (
+            <motion.article
+              key={service.title}
+              data-cursor="link"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                ...cardTransition,
+                delay: 0.3 + index * 0.08,
+              }}
+              className="group relative min-h-64 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-black p-8 text-white lg:col-span-6"
+            >
+              <div className="flex h-full flex-col justify-between">
+                <div className="flex items-start justify-between">
+                  <h3 className="text-3xl font-bold group-hover:text-electric-blue transition-transform duration-500">
+                    {service.title}
+                  </h3>
+                  <Icon
+                    aria-hidden="true"
+                    className="size-12 shrink-0 text-white/15 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 group-hover:text-electric-blue"
+                    strokeWidth={1.6}
+                  />
+                </div>
+                <p className="max-w-xl text-sm leading-7 text-white/45">
+                  {service.description}
+                </p>
               </div>
-              <p className="max-w-xl text-sm leading-7 text-white/45">
-                {services.bottomLeft.description}
-              </p>
-            </div>
-          </motion.article>
+            </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>

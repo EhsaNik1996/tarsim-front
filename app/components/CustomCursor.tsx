@@ -83,10 +83,10 @@ export default function CustomCursor() {
             cursor.x += (mouse.x - cursor.x) * speed;
             cursor.y += (mouse.y - cursor.y) * speed;
             if (dotRef.current) {
-                dotRef.current.style.transform = `translate3d(${mouse.x - 4}px, ${mouse.y - 4}px, 0)`;
+                dotRef.current.style.transform = `translate3d(${mouse.x}px, ${mouse.y}px, 0)`;
             }
             if (outlineRef.current) {
-                outlineRef.current.style.transform = `translate3d(${cursor.x - 16}px, ${cursor.y - 16}px, 0)`;
+                outlineRef.current.style.transform = `translate3d(${cursor.x}px, ${cursor.y}px, 0)`;
             }
             requestAnimationFrame(animateCursor);
         };
@@ -132,8 +132,9 @@ export default function CustomCursor() {
                 className="fixed top-0 left-0 rounded-full pointer-events-none z-9999 will-change-transform"
                 style={{
                     transition: "width 0.3s ease, height 0.3s ease, background-color 0.3s ease",
-                    width: isHovered ? "32px" : "8px",
-                    height: isHovered ? "32px" : "8px",
+                    translate: "-50% -50%",
+                    width: isHovered ? "48px" : "8px",
+                    height: isHovered ? "48px" : "8px",
                     backgroundColor: isOnBlue
                         ? (isHovered ? "rgba(255, 45, 141, 0.5)" : "#ff2d8d")
                         : (isHovered ? "rgba(79, 82, 255, 0.35)" : "#4f52ff"),
@@ -143,9 +144,10 @@ export default function CustomCursor() {
 
             <div
                 ref={outlineRef}
-                className="fixed top-0 left-0 size-8 rounded-full pointer-events-none z-9999 will-change-transform"
+                className="fixed top-0 left-0 size-10 rounded-full pointer-events-none z-9999 will-change-transform"
                 style={{
                     border: `1px solid ${isOnBlue ? "#ff2d8d" : "#4f52ff"}`,
+                    translate: "-50% -50%",
                     transition: "opacity 0.3s ease, border-color 0.3s ease",
                     opacity: isHovered ? "0" : "1",
                 }}

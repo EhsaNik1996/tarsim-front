@@ -3,7 +3,14 @@
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
-const processItems = ["طراحی", "توسعه", "اجرا", "رشد"];
+const processItems = [
+  "تحلیل نیازمندی‌ها",
+  "معماری نرم‌افزار",
+  "پیاده‌سازی",
+  "تست و تضمین کیفیت",
+  "استقرار",
+  "پایش و بهینه‌سازی",
+];
 const expertiseItems = [
   "پلتفرم‌های وب",
   "اپلیکیشن موبایل",
@@ -20,7 +27,7 @@ function MarqueeBand({
 }) {
   return (
     <div
-      className={`flex h-14 w-full min-w-0 max-w-full items-center overflow-hidden whitespace-nowrap sm:h-19 ${
+      className={`flex h-16 w-full min-w-0 max-w-full items-center overflow-hidden whitespace-nowrap sm:h-22 ${
         reverse
           ? "border-t-4 border-white bg-electric-blue text-white"
           : "bg-[#c7ff00] text-black"
@@ -28,16 +35,30 @@ function MarqueeBand({
       aria-hidden="true"
       dir="ltr"
     >
-      <div className={`flex w-max shrink-0 animate-[contactTicker_24s_linear_infinite] ${reverse ? "[animation-direction:reverse]" : ""}`}>
-        {[...items, ...items, ...items].map((item, index) => (
-          <span
-            className="me-4 inline-flex items-center gap-4 font-vazir text-2xl font-black tracking-[-0.04em] sm:text-[clamp(25px,2.8vw,42px)]"
-            key={`${item}-${index}`}
+      <div
+        className={`flex w-max shrink-0 ${
+          reverse
+            ? "animate-[contactTicker_9s_linear_infinite] [animation-direction:reverse]"
+            : "animate-[contactTicker_13s_linear_infinite]"
+        }`}
+      >
+        {[0, 1].map((copy) => (
+          <div
+            className="flex min-w-[calc(100vw+12rem)] shrink-0 items-center justify-around sm:min-w-[calc(100vw+8rem)]"
+            dir="rtl"
+            key={copy}
           >
-            {item}
-            <span className="text-[.85em]">✦</span>
-            <span className="text-[.42em]">●</span>
-          </span>
+            {items.map((item, index) => (
+              <span
+                className="mx-2 inline-flex shrink-0 items-center gap-4 font-vazir text-2xl font-black tracking-[-0.04em] sm:text-[clamp(25px,2.8vw,42px)]"
+                key={`${copy}-${item}-${index}`}
+              >
+                {item}
+                <span className="text-[.85em]">✦</span>
+                <span className="text-[.42em]">●</span>
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </div>
@@ -66,10 +87,15 @@ export default function CTA() {
             <span className="size-2 rounded-full bg-[#05e986] shadow-[0_0_12px_rgba(5,233,134,.55)]" />
             یک همکاری ماندگار
           </div>
-          <h2 className="mt-8 text-[34px] leading-tight font-black tracking-[-.045em] sm:text-5xl sm:leading-[1.15] md:mt-10 md:text-6xl">
+          <h2 className="mt-8 text-[34px] leading-tight font-black tracking-[-.045em] sm:text-5xl sm:leading-[1.15] md:mt-10 md:text-7xl">
             بیایید سیستمی بسازیم
-            <span className="block">که برای سال‌های آینده</span>
-            <span className="block text-[#c7ff00]">ارزش داشته باشد.</span>
+            <span className="block">
+              که برای{" "}
+              <span className="px-2 text-[#c7ff00] rounded-lg">
+                سال‌های آینده
+              </span>
+            </span>
+            <span className="block">ارزش داشته باشد.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-170 text-[13px] leading-[1.9] text-white/70 sm:text-[17px]">
             اگر به دنبال یک پیمانکار هستید، احتمالاً گزینه‌های زیادی وجود دارد. اگر به دنبال یک شریک مهندسی برای طراحی، توسعه و نگهداری یک سیستم ماندگار هستید، خوشحال می‌شویم گفت‌وگو را آغاز کنیم.

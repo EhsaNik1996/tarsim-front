@@ -2,13 +2,14 @@
 
 import { ArrowLeft } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
+import BlurText from "./BlurText";
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();
 
   return (
     <section
-      className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-white px-6 pb-24 pt-28 md:px-16 md:pb-28 md:pt-32"
+      className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-white px-6 pb-24 pt-28 md:px-16 md:pb-32 md:pt-32"
       dir="rtl"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(79,82,255,0.09)_1px,transparent_0)] bg-size-[29px_29px]" />
@@ -17,13 +18,17 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-300 flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55 }}
+          initial={
+            reduceMotion
+              ? false
+              : { opacity: 0, y: 10, filter: "blur(6px)" }
+          }
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: reduceMotion ? 0 : 0.55 }}
           className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-zinc-200 bg-white/85 px-4 py-2 mb-8 text-[10px] font-bold text-zinc-500 shadow-sm backdrop-blur-sm sm:text-xs rounded-full"
         >
           <span className="size-2 bg-electric-blue shadow-sm rounded-full" />
-          <span className="hidden md:block">از سال ۱۳۸۹</span>
+          <span className="hidden md:block">از سال 1389</span>
           <span className="hidden md:block text-zinc-300">•</span>
           <span>مهندسی سیستم</span>
           <span className="text-zinc-300">•</span>
@@ -34,36 +39,43 @@ export default function Hero() {
           <span className="hidden md:block">مدیریت دانش</span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 22, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{
-            duration: 0.85,
-            delay: 0.08,
-            ease: [0.2, 0.65, 0.3, 1],
-          }}
-          className="max-w-275 text-4xl xl:text-6xl font-black leading-12 xl:leading-24"
-        >
-          سیستم‌هایی می‌سازیم که سال‌ها بتوان به آن‌ها
-          <span className="block text-electric-blue">اعتماد کرد.</span>
-        </motion.h1>
+        <h1 className="max-w-275 text-4xl xl:text-7xl font-black leading-12 xl:leading-24">
+          <BlurText
+            text="سیستم‌هایی می‌سازیم که سال‌ها بتوان به آن‌ها"
+            delay={0.18}
+            stagger={0.07}
+            className="justify-center"
+          />
+          <BlurText
+            text="اعتماد کرد."
+            delay={0.75}
+            stagger={0.07}
+            className="justify-center"
+            highlightWords={["اعتماد"]}
+            highlightClassName="text-electric-blue"
+          />
+        </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.28 }}
-          className="mt-7 max-w-220 text-[15px] leading-8 text-zinc-500 sm:text-base md:text-lg md:leading-9"
-        >
-          ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های
-          فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما
-          سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت،
-          توسعه‌پذیری و پایداری ساخته شده‌اند.
-        </motion.p>
+        <p className="mt-7 max-w-220 text-[15px] leading-8 text-zinc-500 sm:text-base md:text-lg md:leading-9">
+          <BlurText
+            text="ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت، توسعه‌پذیری و پایداری ساخته شده‌اند."
+            delay={1}
+            stagger={0.025}
+            className="justify-center"
+          />
+        </p>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.45 }}
+          initial={
+            reduceMotion
+              ? false
+              : { opacity: 0, y: 16, filter: "blur(8px)" }
+          }
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.65,
+            delay: reduceMotion ? 0 : 1.8,
+          }}
           className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
         >
           <a

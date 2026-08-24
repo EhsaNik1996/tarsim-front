@@ -38,7 +38,7 @@ export default function DigitalEngineering() {
             <span className="mb-3 block text-xs font-mono tracking-widest text-electric-blue">
               مهندسی دیجیتال
             </span>
-            <h2 className="text-4xl leading-tight font-black tracking-tight text-zinc-100 md:text-5xl">
+            <h2 className="text-4xl leading-tight font-black tracking-tight text-zinc-100 md:text-6xl">
               فناوری‌هایی برای ساخت
               <span className="block text-electric-blue">محصولات دیجیتال پیشرفته</span>
             </h2>
@@ -49,9 +49,10 @@ export default function DigitalEngineering() {
           {engineeringAreas.map((item) => (
             <motion.div
               key={item.num}
+              data-cursor="link"
               initial="initial"
               whileHover="hover"
-              className="group relative flex min-h-65 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border border-zinc-900 bg-[#0d0d10] p-8 text-right md:p-10"
+              className="group relative flex min-h-65 cursor-none flex-col justify-between overflow-hidden rounded-3xl border border-zinc-900 bg-[#0d0d10] p-8 text-right md:p-10"
             >
               <div className="pointer-events-none absolute inset-0 z-20 rounded-3xl border border-transparent transition-all duration-500 group-hover:border-electric-blue" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-electric-blue/4 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />

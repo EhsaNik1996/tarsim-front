@@ -48,7 +48,7 @@ const projectsData = [
   },
   {
     id: 4,
-    title: "الاختام",
+    title: "اختام",
     subtitle: "پلتفرم رسانه‌ای و آرشیو محتوای تاریخی",
     desc: "وب‌سایت چندرسانه‌ای برای انتشار مستندها، پادکست‌ها، پژوهش‌ها، نسخه‌های خطی و رویدادهای فرهنگی و تاریخی.",
     longDesc:
@@ -151,23 +151,199 @@ const projectPalettes = [
   },
 ];
 
+type Project = (typeof projectsData)[number];
+
+function ProjectDetails({ project }: { project: Project }) {
+  return (
+    <div className="grid h-full min-h-0 grid-cols-1 overflow-y-auto md:grid-cols-12 md:overflow-hidden">
+      <div
+        className={`${styles.scrollbar} flex flex-col justify-between bg-white p-6 md:col-span-5 md:overflow-y-auto md:p-12`}
+      >
+        <div className="space-y-8">
+          <div>
+            <h3 className="mb-4 text-3xl leading-tight font-black text-zinc-900">
+              {project.title}
+            </h3>
+            <p className="text-sm leading-relaxed font-medium text-zinc-500">
+              {project.desc}
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="font-mono text-xs font-bold text-zinc-400">
+              مرور کلی پروژه
+            </h4>
+            <p className="rounded-2xl border border-zinc-100 bg-zinc-50/60 p-5 text-xs leading-relaxed font-medium text-zinc-600">
+              {project.longDesc}
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="font-mono text-xs font-bold text-zinc-400">
+              تکنولوژی‌ها
+            </h4>
+            <div className="flex flex-wrap gap-1.5">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md border border-zinc-200 bg-white px-3 py-1.5 text-xs font-medium text-zinc-600 shadow-2xs"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 border-t border-zinc-100 pt-6">
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex w-full items-center justify-center gap-2 rounded-xl bg-black py-4 text-sm font-bold text-white shadow-md transition-colors hover:bg-zinc-900"
+          >
+            <span>ورود به وب‌سایت اصلی</span>
+            <ExternalLink className="size-4 text-zinc-400 transition-colors group-hover:text-white" />
+          </a>
+        </div>
+      </div>
+
+      <div
+        className="flex min-h-80 flex-col justify-center border-zinc-100 bg-zinc-50 p-5 md:col-span-7 md:min-h-0 md:border-r md:p-8"
+        dir="ltr"
+      >
+        <span className="mb-5 block text-right text-xs font-bold text-zinc-800">
+          {project.title}
+        </span>
+
+        <div className="flex min-h-72 flex-1 flex-col overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl">
+          <div className="flex shrink-0 items-center gap-2 border-b border-zinc-200 bg-zinc-50/80 px-4 py-3">
+            <div className="flex gap-1.5">
+              <div className="size-2.5 rounded-full bg-red-400" />
+              <div className="size-2.5 rounded-full bg-yellow-400" />
+              <div className="size-2.5 rounded-full bg-green-400" />
+            </div>
+            <div className="mx-auto flex-1 max-w-md truncate rounded-md border border-zinc-200 bg-white px-3 py-0.5 text-center font-mono text-xs text-zinc-400 select-none">
+              {project.url.replace("https://", "").replace("http://", "")}/
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto bg-zinc-100">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`/screenshots/${project.screenshotName}.jpeg`}
+              alt={project.title}
+              className={`min-h-full w-full object-cover ${
+                project.screenshotName === "mostanad"
+                  ? "object-left"
+                  : "object-center"
+              }`}
+              onError={(event) => {
+                const image = event.currentTarget;
+                if (!image.src.endsWith(".png")) {
+                  image.src = `/screenshots/${project.screenshotName}.png`;
+                }
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectDialog({
+  open,
+  selectedIndex,
+  onIndexChange,
+  onClose,
+}: {
+  open: boolean;
+  selectedIndex: number;
+  onIndexChange: (index: number) => void;
+  onClose: () => void;
+}) {
+  const detailSwiperRef = useRef<SwiperRef>(null);
+
+  return (
+    <Dialog open={open} onOpenChange={(nextOpen) => !nextOpen && onClose()}>
+      <DialogContent
+        className="isolate flex h-[85vh] max-w-7xl flex-col overflow-visible rounded-4xl border border-zinc-200 bg-white p-0 text-right shadow-2xl"
+        dir="rtl"
+      >
+        <button
+          type="button"
+          onPointerDown={(event) => {
+            event.stopPropagation();
+            onClose();
+          }}
+          onClick={onClose}
+          aria-label="بستن جزئیات پروژه"
+          className="pointer-events-auto absolute top-6 left-6 z-50 flex size-8 touch-manipulation items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-400 shadow-xs transition-all hover:border-zinc-400 hover:text-zinc-900"
+        >
+          <X className="size-4" />
+        </button>
+
+        <div className="absolute -top-10 left-1/2 z-50 -translate-x-1/2 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 font-manrope text-xs font-bold text-zinc-500 shadow-sm backdrop-blur-sm">
+          {selectedIndex + 1}/{projectsData.length}
+        </div>
+
+        <button
+          type="button"
+          onClick={() => detailSwiperRef.current?.swiper.slidePrev()}
+          aria-label="پروژه قبلی"
+          className="absolute top-1/2 right-2 z-50 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-500 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-400 hover:text-black md:-right-16"
+        >
+          <ArrowRight className="size-5" strokeWidth={1.7} />
+        </button>
+        <button
+          type="button"
+          onClick={() => detailSwiperRef.current?.swiper.slideNext()}
+          aria-label="پروژه بعدی"
+          className="absolute top-1/2 left-2 z-50 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-500 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-400 hover:text-black md:-left-16"
+        >
+          <ArrowLeft className="size-5" strokeWidth={1.7} />
+        </button>
+
+        {open && (
+          <Swiper
+            ref={detailSwiperRef}
+            modules={[Navigation]}
+            initialSlide={selectedIndex}
+            slidesPerView={1}
+            spaceBetween={0}
+            loop
+            onSlideChange={(swiper) => onIndexChange(swiper.realIndex)}
+            className="h-full w-full overflow-hidden rounded-4xl"
+          >
+            {projectsData.map((project) => (
+              <SwiperSlide key={project.id} className="h-full!">
+                <ProjectDetails project={project} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export default function ProjectsSlider() {
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projectsData)[0] | null
-  >(null);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
 
   return (
     <section
       id="projects"
-      className="scroll-mt-20 relative overflow-hidden bg-white py-16 md:py-24 text-zinc-950 md:pt-18"
+      className="relative scroll-mt-20 overflow-hidden bg-white py-16 text-zinc-950 md:py-24 md:pt-18"
     >
       <div className="mx-auto w-[94%] max-w-380" dir="rtl">
         <div className="mb-14 flex flex-col items-start justify-between gap-7 md:mb-16 md:flex-row md:items-center">
-          <div className="text-right space-y-1">
-            <h2 className="text-4xl md:6xl font-black leading-none tracking-[-0.055em] text-black">
-              تجربه هایی که به نتیجه رسیدند
+          <div className="space-y-2 text-right">
+            <h2 className="text-4xl leading-none font-black text-black md:text-6xl">
+              تجربه‌هایی که به نتیجه رسیدند
             </h2>
             <h3 className="text-base text-gray-500">
               هر پروژه، یک مسئله واقعی بود
@@ -175,27 +351,28 @@ export default function ProjectsSlider() {
           </div>
 
           <div className="flex items-center gap-3" dir="ltr">
-            <span className="mr-1 min-w-10 font-manrope text-[12px] font-extrabold tracking-[-0.04em] text-black">
+            <span className="mr-1 min-w-10 font-manrope text-xs font-extrabold text-black">
               {activeIndex + 1}/{projectsData.length}
             </span>
             <button
+              type="button"
               onClick={() => swiperRef.current?.swiper.slideNext()}
               aria-label="پروژه قبلی"
-              className={`${styles.navButton} z-10 flex size-10 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
+              className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
             >
               <ArrowLeft className="size-4 text-zinc-500" strokeWidth={1.5} />
             </button>
             <button
+              type="button"
               onClick={() => swiperRef.current?.swiper.slidePrev()}
               aria-label="پروژه بعدی"
-              className={`${styles.navButton} z-10 flex size-10 cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
+              className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
             >
               <ArrowRight className="size-4 text-zinc-500" strokeWidth={1.5} />
             </button>
           </div>
         </div>
 
-        {/* محفظه Swiper */}
         <div className="relative w-full">
           <Swiper
             ref={swiperRef}
@@ -215,10 +392,13 @@ export default function ProjectsSlider() {
             }}
             className={`${styles.swiper} w-full`}
           >
-            {projectsData.map((project) => (
-              <SwiperSlide key={project.id} className="h-auto! py-2 px-0.5">
+            {projectsData.map((project, projectIndex) => (
+              <SwiperSlide key={project.id} className="h-auto! px-0.5 py-2">
                 <div
-                  onClick={() => setSelectedProject(project)}
+                  onClick={() => {
+                    setSelectedProjectIndex(projectIndex);
+                    setIsProjectDialogOpen(true);
+                  }}
                   style={
                     {
                       "--project-accent":
@@ -228,25 +408,25 @@ export default function ProjectsSlider() {
                         projectPalettes[project.id - 1].border,
                     } as CSSProperties
                   }
-                  className={`${styles.card} group relative flex min-h-102.5 h-full cursor-pointer flex-col justify-between overflow-hidden rounded-[22px] border p-7 text-right transition-all duration-500 md:p-8`}
+                  className={`${styles.card} group relative flex h-full min-h-102.5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border p-7 text-right transition-all duration-500 md:p-8`}
                   dir="rtl"
                 >
                   <div className="relative z-10">
                     <div className="mb-9 flex items-center justify-between gap-3">
                       <span
-                        className={`${styles.category} max-w-[76%] truncate rounded-full border px-3 py-1.5 text-[10px] font-extrabold leading-none`}
+                        className={`${styles.category} max-w-3/4 truncate rounded-full border px-3 py-1.5 text-xs leading-none font-extrabold`}
                       >
                         {project.subtitle}
                       </span>
-                      <span className="shrink-0 rounded-full border border-zinc-200/80 bg-white/75 px-3 py-1.5 font-manrope text-[9px] font-bold uppercase leading-none tracking-[0.16em] text-zinc-400">
+                      <span className="shrink-0 rounded-full border border-zinc-200/80 bg-white/75 px-3 py-1.5 font-manrope text-xs leading-none font-bold text-zinc-400">
                         {project.privacy}
                       </span>
                     </div>
 
-                    <h3 className="mb-4 text-[clamp(1.7rem,2.3vw,2.45rem)] font-black leading-[1.2] tracking-[-0.04em] text-black">
+                    <h3 className="mb-4 text-3xl leading-tight font-black text-black">
                       {project.title}
                     </h3>
-                    <p className="max-w-[92%] text-[13px] font-medium leading-[1.9] text-zinc-500">
+                    <p className="max-w-11/12 text-sm leading-7 font-medium text-zinc-500">
                       {project.desc}
                     </p>
                   </div>
@@ -257,24 +437,24 @@ export default function ProjectsSlider() {
                       dir="ltr"
                     >
                       <div
-                        className={`${styles.link} flex flex-col items-start justify-end h-full gap-y-6 border-b border-transparent pb-0.5 font-manrope text-[10px] font-extrabold tracking-[0.02em] transition-all`}
+                        className={`${styles.link} flex h-full flex-col items-start justify-end gap-y-6 border-b border-transparent pb-0.5 font-manrope text-xs font-extrabold transition-all`}
                       >
-                        <div className="flex gap-x-0.5">
-                          {project.tags.map((tag, i) => (
+                        <div className="flex flex-wrap gap-1">
+                          {project.tags.map((tag) => (
                             <div
-                              key={i}
-                              className="flex border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-[9px] font-bold text-zinc-500 backdrop-blur-sm rounded-full"
+                              key={tag}
+                              className="flex rounded-full border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-xs font-bold text-zinc-500 backdrop-blur-sm"
                             >
                               {tag}
                             </div>
                           ))}
                         </div>
                         <div className="group-hover:scale-105">
-                          VIEW CASE STUDY <span className="text-xs">↗</span>
+                          مشاهده جزئیات <span>↗</span>
                         </div>
                       </div>
                       <div
-                        className={`${styles.number} pointer-events-none z-0 select-none font-manrope text-[7.5rem] font-extrabold leading-none tracking-[-0.08em] transition-all duration-500`}
+                        className={`${styles.number} pointer-events-none z-0 select-none font-manrope text-8xl leading-none font-extrabold transition-all duration-500`}
                         dir="ltr"
                       >
                         {String(project.id).padStart(2, "0")}
@@ -294,223 +474,12 @@ export default function ProjectsSlider() {
         </div>
       </div>
 
-      <Dialog
-        open={selectedProject !== null}
-        onOpenChange={(open) => !open && setSelectedProject(null)}
-      >
-        <DialogContent
-          className="max-w-6xl bg-white border border-zinc-200 p-0 overflow-hidden flex flex-col max-h-[90vh] text-right shadow-2xl rounded-4xl"
-          dir="rtl"
-        >
-          <button
-            onClick={() => setSelectedProject(null)}
-            className="absolute top-6 left-6 size-8 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-zinc-900 bg-white hover:border-zinc-400 transition-all cursor-pointer z-50 shadow-xs"
-          >
-            <X className="size-4" />
-          </button>
-
-          <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-hidden min-h-0">
-            {/* ستون سمت چپ */}
-            <div
-              className={`${styles.scrollbar} md:col-span-5 p-12 flex flex-col justify-between overflow-y-auto bg-white`}
-            >
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-3xl font-black text-zinc-900 tracking-tight leading-tight mb-4">
-                    {selectedProject?.title}
-                  </h3>
-                  <p className="text-sm text-zinc-500 leading-relaxed font-medium">
-                    {selectedProject?.desc}
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
-                    مرور کلی پروژه
-                  </h4>
-                  <p className="text-xs text-zinc-600 leading-relaxed font-medium bg-zinc-50/60 p-5 rounded-2xl border border-zinc-100">
-                    {selectedProject?.longDesc}
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h4 className="text-[10px] font-mono font-bold tracking-widest text-zinc-400 uppercase">
-                    تکنولوژی‌ها
-                  </h4>
-                  <div className="flex flex-wrap gap-1.5" dir="rtl">
-                    {selectedProject?.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="text-[11px] font-medium bg-white border border-zinc-200 text-zinc-600 px-3 py-1.5 rounded-md shadow-2xs"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-12 pt-6 border-t border-zinc-100">
-                {selectedProject && (
-                  <a
-                    href={selectedProject.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 bg-black hover:bg-zinc-900 text-white font-bold w-full py-4 rounded-xl text-sm transition-all shadow-md group"
-                  >
-                    <span>ورود به وب‌سایت اصلی</span>
-                    <ExternalLink className="size-4 text-zinc-400 group-hover:text-white transition-colors" />
-                  </a>
-                )}
-              </div>
-            </div>
-
-            {/* ستون سمت راست: نمایش اسکرین‌شات ثابت از پوشه public */}
-            <div
-              className="md:col-span-7 bg-zinc-50 p-8 flex flex-col justify-center border-r border-zinc-100 min-h-0"
-              dir="ltr"
-            >
-              <span className="text-[10px] font-mono font-bold tracking-wider text-zinc-400 mb-2 block uppercase text-right">
-                LIVE PREVIEW
-              </span>
-              <span className="text-xs font-bold text-zinc-800 mb-4 block text-right">
-                {selectedProject?.title.toLowerCase()}
-              </span>
-
-              <div className="flex-1 border border-zinc-200 rounded-xl bg-white shadow-xl overflow-hidden flex flex-col min-h-0">
-                <div className="bg-zinc-50/80 px-4 py-3 border-b border-zinc-200 flex items-center gap-2 shrink-0">
-                  <div className="flex gap-1.5">
-                    <div className="size-2.5 rounded-full bg-red-400" />
-                    <div className="size-2.5 rounded-full bg-yellow-400" />
-                    <div className="size-2.5 rounded-full bg-green-400" />
-                  </div>
-                  <div className="flex-1 max-w-md mx-auto bg-white border border-zinc-200 rounded-md text-[10px] text-zinc-400 py-0.5 px-3 text-center font-mono truncate select-none">
-                    {selectedProject?.url
-                      .replace("https://", "")
-                      .replace("http://", "")}
-                    /
-                  </div>
-                </div>
-
-                <div className="flex-1 overflow-y-auto bg-zinc-100">
-                  {selectedProject ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={`/screenshots/${selectedProject.screenshotName}.jpeg`}
-                      alt={selectedProject.title ?? "Project screenshot"}
-                      className="w-full min-h-full object-cover"
-                      onError={(e) => {
-                        const img = e.currentTarget;
-                        if (!img.src.endsWith(".png")) {
-                          img.src = `/screenshots/${selectedProject.screenshotName}.png`;
-                        }
-                      }}
-                    />
-                  ) : (
-                    <div className="flex items-center justify-center h-full text-zinc-400 text-xs">
-                      در حال بارگذاری پیش‌نمایش...
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <style jsx global>{`
-        .projects-swiper .swiper-wrapper {
-          align-items: stretch;
-        }
-        .project-card {
-          border-color: var(--project-border);
-          background:
-            radial-gradient(
-              circle at 100% 0%,
-              var(--project-tint),
-              transparent 57%
-            ),
-            linear-gradient(
-              145deg,
-              color-mix(in srgb, var(--project-tint) 44%, white) 0%,
-              white 66%
-            );
-          box-shadow: 0 12px 30px rgba(24, 24, 27, 0.025);
-        }
-        .project-card:hover {
-          border-color: var(--project-accent);
-          background:
-            radial-gradient(
-              circle at 100% 0%,
-              color-mix(in srgb, var(--project-tint) 135%, transparent),
-              transparent 61%
-            ),
-            linear-gradient(
-              145deg,
-              color-mix(in srgb, var(--project-tint) 58%, white) 0%,
-              white 68%
-            );
-          box-shadow:
-            0 24px 44px -30px
-              color-mix(in srgb, var(--project-accent) 32%, transparent),
-            0 10px 28px rgba(24, 24, 27, 0.045);
-          transform: translateY(-4px);
-        }
-        .project-category {
-          border-color: color-mix(
-            in srgb,
-            var(--project-accent) 22%,
-            transparent
-          );
-          background: color-mix(in srgb, var(--project-accent) 10%, white);
-          color: var(--project-accent);
-        }
-        .project-link {
-          color: var(--project-accent);
-        }
-        .project-number {
-          color: transparent;
-          -webkit-text-stroke: 1px
-            color-mix(in srgb, var(--project-accent) 25%, transparent);
-          opacity: 0.8;
-        }
-        .project-card:hover .project-number {
-          -webkit-text-stroke-color: color-mix(
-            in srgb,
-            var(--project-accent) 43%,
-            transparent
-          );
-          opacity: 1;
-          transform: translateY(-2px);
-        }
-        .project-nav-button:hover {
-          border-color: #a1a1aa;
-          background: #fafafa;
-          transform: translateY(-1px);
-        }
-        .custom-swiper-pagination .swiper-pagination-bullet {
-          background: #dedee3 !important;
-          opacity: 1 !important;
-          width: 5px !important;
-          height: 5px !important;
-          transition: all 0.4s ease !important;
-          border-radius: 9999px !important;
-        }
-        .custom-swiper-pagination .swiper-pagination-bullet-active {
-          background: #7c3aed !important;
-          width: 32px !important;
-        }
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 5px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #e4e4e7;
-          border-radius: 9999px;
-        }
-      `}</style>
+      <ProjectDialog
+        open={isProjectDialogOpen}
+        selectedIndex={selectedProjectIndex}
+        onIndexChange={setSelectedProjectIndex}
+        onClose={() => setIsProjectDialogOpen(false)}
+      />
     </section>
   );
 }

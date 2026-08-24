@@ -171,7 +171,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-11 flex flex-col md:flex-row items-center md:items-start justify-between gap-4 border-t border-[#dedede] pt-6 text-xs text-[#aaa] sm:mt-16 sm:items-center">
-          <p>© ۲۰۲۶ ترسیم. تمامی حقوق محفوظ است.</p>
+          <p>© 2026 ترسیم. تمامی حقوق محفوظ است.</p>
           <a
             className="inline-flex items-center gap-1 transition-colors hover:text-electric-blue"
             href="#"

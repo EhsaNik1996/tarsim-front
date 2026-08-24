@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
-import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AtSign, Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -55,40 +55,79 @@ export default function Header() {
       dir="rtl"
     >
       <div className="flex flex-row justify-between items-center w-full px-6 xl:px-16 py-3 mx-auto">
-        <div className="flex items-center gap-12">
-          <Logo />
+        <Logo />
 
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
 
-              return (
-                <Link
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setActiveSection(item.id)}
-                  aria-current={isActive ? "location" : undefined}
-                  className={`border-b-2 pb-1 text-sm transition-colors duration-300 ${
-                    isActive
-                      ? "border-electric-blue font-bold text-electric-blue"
-                      : "border-transparent text-on-surface-variant hover:text-electric-blue"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
+            return (
+              <Link
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setActiveSection(item.id)}
+                aria-current={isActive ? "location" : undefined}
+                className={`border-b-2 pb-1 text-sm transition-colors duration-300 ${
+                  isActive
+                    ? "border-electric-blue font-bold text-electric-blue"
+                    : "border-transparent text-on-surface-variant hover:text-electric-blue"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
 
         {/* بخش چپ: دکمه مشاوره (دسکتاپ) و منوی همبرگری موبایل */}
         <div className="flex items-center gap-4">
+          <div
+            className="hidden items-center gap-2 md:flex"
+            aria-label="شبکه‌های اجتماعی"
+          >
+            <button
+              type="button"
+              aria-label="اینستاگرام ترسیم"
+              data-cursor="link"
+              className="grid size-9 place-items-center border border-black/10 bg-white text-black/45 hover:text-black transition-all duration-300 hover:border-black/80 rounded-full"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              aria-label="تردز ترسیم"
+              data-cursor="link"
+              className="grid size-9 place-items-center border border-black/10 bg-white text-black/45 hover:text-black transition-all duration-300 hover:border-black/80 rounded-full"
+            >
+              <AtSign className="size-4" strokeWidth={1.8} />
+            </button>
+          </div>
           {/* دکمه دسکتاپ */}
           <motion.a
             href="#contact"
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.02 }}
-            className="hidden md:block bg-electric-blue text-white px-6 py-2.5 rounded-xl text-sm font-bold hover:bg-opacity-90 transition-all"
+            className="hidden md:block bg-electric-blue text-white text-sm font-bold hover:bg-opacity-90 transition-all px-6 py-2.5 rounded-full"
           >
             درخواست مشاوره
           </motion.a>
@@ -101,7 +140,11 @@ export default function Header() {
                 </button>
               </SheetTrigger>
 
-              <SheetContent side="left" className="w-75 px-5 bg-white/80 sm:w-100" dir="rtl">
+              <SheetContent
+                side="left"
+                className="w-75 px-5 bg-white/80 sm:w-100"
+                dir="rtl"
+              >
                 <SheetHeader className="text-right pb-6 border-b border-stroke-gray">
                   <SheetTitle className="text-right">
                     <Logo />
