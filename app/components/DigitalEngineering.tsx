@@ -42,7 +42,7 @@ export default function DigitalEngineering() {
 
   return (
     <section className="relative overflow-hidden border-t border-zinc-900 bg-[#09090b] py-16 text-white md:py-24 mt-16">
-      <div className="text-right px-6 md:px-16" dir="rtl">
+      <div className="mx-auto max-w-360 px-6 md:px-16" dir="rtl">
         <div className="mb-14 grid grid-cols-1 items-end gap-8 md:mb-20 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <span className="mb-3 block text-xs font-mono tracking-widest text-electric-blue">
