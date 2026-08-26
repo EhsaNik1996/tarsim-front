@@ -54,30 +54,31 @@ export default function Header() {
       className="fixed top-0 w-full z-50 glass-nav bg-white/80 backdrop-blur-md border-b border-stroke-gray"
       dir="rtl"
     >
-      <div className="flex flex-row justify-between items-center w-full px-6 xl:px-16 py-3 mx-auto">
+      <div className="relative flex flex-row justify-between items-center w-full px-6 xl:px-16 py-3 mx-auto">
         <Logo />
 
-        <div className="hidden md:flex items-center gap-8">
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {navItems.map((item) => {
             const isActive = activeSection === item.id;
 
             return (
-              <Link
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setActiveSection(item.id)}
-                aria-current={isActive ? "location" : undefined}
-                className={`border-b-2 pb-1 text-sm transition-colors duration-300 ${
-                  isActive
-                    ? "border-electric-blue font-bold text-electric-blue"
-                    : "border-transparent text-on-surface-variant hover:text-electric-blue"
-                }`}
-              >
-                {item.label}
-              </Link>
+              <li key={item.id}>
+                <Link
+                  href={`#${item.id}`}
+                  onClick={() => setActiveSection(item.id)}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`block border-b-2 pb-1 text-sm transition-colors duration-300 ${
+                    isActive
+                      ? "border-electric-blue font-bold text-electric-blue"
+                      : "border-transparent text-on-surface-variant hover:text-electric-blue"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
         {/* بخش چپ: دکمه مشاوره (دسکتاپ) و منوی همبرگری موبایل */}
         <div className="flex items-center gap-4">
