@@ -136,18 +136,38 @@ export default function TrackRecord() {
                   {isOpen && (
                     <motion.div
                       id={contentId}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      exit={{ height: 0 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                       className="overflow-hidden"
                     >
-                      <p
+                      <motion.p
+                        initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                          filter: "blur(0px)",
+                          transition: {
+                            duration: 0.3,
+                            delay: 0.12,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                        }}
+                        exit={{
+                          opacity: 0,
+                          y: -4,
+                          filter: "blur(3px)",
+                          transition: { duration: 0.18, ease: "easeOut" },
+                        }}
                         className="pb-7 pl-18.5 text-right text-[13px] leading-7 text-zinc-400 md:pl-20.25"
                         dir="rtl"
                       >
                         {item.description}
-                      </p>
+                      </motion.p>
                     </motion.div>
                   )}
                 </AnimatePresence>

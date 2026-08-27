@@ -44,15 +44,34 @@ const techStack = [
   {
     name: "TypeScript",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-8">
-        <rect width="24" height="24" rx="4" fill="#3178C6" />
+      <svg viewBox="0 0 256 256" className="size-7 md:size-8 text-[#3178c6]">
+        <rect
+          x="8"
+          y="8"
+          width="240"
+          height="240"
+          rx="24"
+          fill="currentColor"
+          opacity="0.12"
+        />
+        <rect
+          x="8"
+          y="8"
+          width="240"
+          height="240"
+          rx="24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="8"
+        />
         <text
-          x="12"
-          y="16.5"
+          x="128"
+          y="170"
           textAnchor="middle"
-          fontSize="10.5"
-          fontWeight="700"
-          fill="white"
+          fill="currentColor"
+          font-size="120"
+          font-family="Space Grotesk"
+          font-weight="800"
         >
           TS
         </text>
@@ -62,33 +81,45 @@ const techStack = [
   {
     name: "Node.js",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-8" fill="none">
+      <svg viewBox="0 0 256 292" className="size-7 md:size-8 text-[#339933]">
         <path
-          d="M12 2L20 6.5V17.5L12 22L4 17.5V6.5L12 2Z"
-          stroke="#3C873A"
-          strokeWidth="1.3"
-          strokeLinejoin="round"
+          d="M128 0L256 73.9v146.2L128 292 0 220.1V73.9z"
+          fill="currentColor"
+          opacity="0.15"
         />
         <path
-          d="M12 8V16M9 10.5L15 13.5M15 10.5L9 13.5"
-          stroke="#3C873A"
-          strokeWidth="1"
-          strokeLinecap="round"
+          d="M128 32l96 55.4v110.8L128 253.6 32 198.2V87.4z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="8"
         />
+        <text
+          x="128"
+          y="160"
+          textAnchor="middle"
+          fill="currentColor"
+          font-size="80"
+          font-family="Space Grotesk"
+          font-weight="700"
+        >
+          N
+        </text>
       </svg>
     ),
   },
   {
     name: "Python",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-8" fill="none">
+      <svg viewBox="0 0 256 256" className="size-7 md:size-8 text-[#3776ab]">
         <path
-          d="M12 3c-3.5 0-3.3 1.5-3.3 1.5v2h3.4v.6H6.9S4 6.7 4 10.2s2.5 3.4 2.5 3.4h1.6v-2.1s-.1-2.5 2.4-2.5h3.3s2.3.03 2.3-2.2V5.3S16.4 3 12 3z"
-          fill="#3776AB"
+          d="M126 8C80 8 56 30 56 60v28h72v8H44c-24 0-44 20-44 56s16 56 40 56h24v-32c0-24 16-44 40-44h72c20 0 36-16 36-36V60c0-28-26-52-86-52zm-40 28a12 12 0 110 24 12 12 0 010-24z"
+          fill="currentColor"
+          opacity="0.7"
         />
         <path
-          d="M12 21c3.5 0 3.3-1.5 3.3-1.5v-2H11.9v-.6h5.2S20 17.3 20 13.8s-2.5-3.4-2.5-3.4h-1.6v2.1s.1 2.5-2.4 2.5H10.2s-2.3-.03-2.3 2.2v3.5S7.6 21 12 21z"
-          fill="#FFD43B"
+          d="M130 248c46 0 70-22 70-52v-28h-72v-8h84c24 0 44-20 44-56s-16-56-40-56h-24v32c0 24-16 44-40 44H80c-20 0-36 16-36 36v36c0 28 26 52 86 52zm40-28a12 12 0 110-24 12 12 0 010 24z"
+          fill="currentColor"
+          opacity="0.4"
         />
       </svg>
     ),
@@ -96,24 +127,28 @@ const techStack = [
   {
     name: "PostgreSQL",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-8" fill="none">
+      <svg viewBox="0 0 256 256" className="size-7 md:size-8 text-[#336791]">
         <ellipse
-          cx="12"
-          cy="6"
-          rx="7"
-          ry="2.5"
-          stroke="#336791"
-          strokeWidth="1.3"
+          cx="128"
+          cy="80"
+          rx="72"
+          ry="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="7"
         />
         <path
-          d="M5 6v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6"
-          stroke="#336791"
-          strokeWidth="1.3"
+          d="M56 80v96c0 22 32 40 72 40s72-18 72-40V80"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="7"
         />
         <path
-          d="M5 12v6c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-6"
-          stroke="#336791"
-          strokeWidth="1.3"
+          d="M56 128c0 22 32 40 72 40s72-18 72-40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="5"
+          opacity="0.4"
         />
       </svg>
     ),
@@ -121,46 +156,140 @@ const techStack = [
   {
     name: "AWS",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-8" fill="none">
+      <svg viewBox="0 0 256 256" className="size-7 md:size-8 text-[#ff9900]">
         <path
-          d="M4 15c4 2.5 12 2.5 16 0"
-          stroke="#FF9900"
-          strokeWidth="1.4"
-          strokeLinecap="round"
+          d="M44 160c28 28 72 40 112 28"
+          stroke="currentColor"
+          strokeWidth="10"
+          stroke-linecap="round"
+          fill="none"
         />
         <path
-          d="M17 13.5l2 1-1 2.2"
-          stroke="#FF9900"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          d="M180 100c-8-36-44-60-80-52s-56 44-48 80"
+          stroke="currentColor"
+          strokeWidth="8"
+          fill="none"
         />
-        <text
-          x="12"
-          y="10"
-          textAnchor="middle"
-          fontSize="7"
-          fontWeight="700"
-          fill="#111"
-        >
-          aws
-        </text>
+        <path
+          d="M160 188l32-12-12-32"
+          stroke="currentColor"
+          strokeWidth="8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          fill="none"
+        />
       </svg>
     ),
   },
   {
     name: "Docker",
     icon: (
-      <svg viewBox="0 0 24 24" className="size-8" fill="none">
-        <rect x="3" y="10" width="3" height="3" fill="#2496ED" />
-        <rect x="7" y="10" width="3" height="3" fill="#2496ED" />
-        <rect x="11" y="10" width="3" height="3" fill="#2496ED" />
-        <rect x="7" y="6.5" width="3" height="3" fill="#2496ED" />
-        <rect x="11" y="6.5" width="3" height="3" fill="#2496ED" />
+      <svg viewBox="0 0 256 256" className="size-7 md:size-8 text-[#2496ed]">
+        <rect
+          x="48"
+          y="100"
+          width="160"
+          height="96"
+          rx="12"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="7"
+        ></rect>
+        <rect
+          x="56"
+          y="108"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.2"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="86"
+          y="108"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.2"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="116"
+          y="108"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.2"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="146"
+          y="108"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.2"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="176"
+          y="108"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.2"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="86"
+          y="80"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.15"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="116"
+          y="80"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.15"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
+        <rect
+          x="146"
+          y="80"
+          width="24"
+          height="20"
+          rx="3"
+          fill="currentColor"
+          opacity="0.15"
+          stroke="currentColor"
+          strokeWidth="2"
+        ></rect>
         <path
-          d="M2.5 13.2c0 3.6 2.8 5.3 6.5 5.3 5.8 0 9.3-3.2 10.6-7.3 1.9.15 3.3-.9 3.3-.9s-.9-1.6-2.9-1.3c-.5-.9-1.4-1.4-1.4-1.4l-.7 1c-.5-.15-1-.2-1-.2s-1.9 3.6-6.4 4.6c-2 .4-6.2.2-6.2.2H2.5z"
-          fill="#2496ED"
-        />
+          d="M28 148c-8-4-12-12-8-20"
+          stroke="currentColor"
+          strokeWidth="5"
+          stroke-linecap="round"
+          fill="none"
+        ></path>
       </svg>
     ),
   },
@@ -179,12 +308,12 @@ export default function TechStackSection() {
           <span className="text-[10px] font-mono font-bold text-zinc-400 tracking-widest block uppercase">
             تکنولوژی
           </span>
-          <h3 className="text-[26px] md:text-[30px] font-black text-zinc-900 tracking-tight leading-[1.15]">
+          <h3 className="text-[26px] md:text-4xl font-black text-zinc-900 tracking-tight leading-[1.15]">
             ابزارهای شناخته‌شده.
             <br />
             انتخاب‌های عملی.
           </h3>
-          <p className="text-[13px] text-zinc-500 leading-relaxed font-medium max-w-xs">
+          <p className="text-base text-zinc-500 leading-6 font-light max-w-xs">
             اغلب کارفرماها نیازی به دانستن جزئیات فنی ندارند. ما از ابزارهای
             اثبات‌شده استفاده می‌کنیم، بخش‌های مهم را مستند می‌کنیم و نگهداری
             محصول را بعد از راه‌اندازی ساده نگه می‌داریم.
@@ -206,7 +335,7 @@ export default function TechStackSection() {
                 <div className="flex items-center justify-center">
                   {tech.icon}
                 </div>
-                <span className="text-[12.5px] font-bold text-zinc-800">
+                <span className="text-base font-bold text-zinc-800">
                   {tech.name}
                 </span>
               </div>

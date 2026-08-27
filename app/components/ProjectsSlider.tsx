@@ -1,13 +1,50 @@
 "use client";
 import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import styles from "./ProjectsSlider.module.css";
-import { CSSProperties, useState, useRef } from "react";
-import { Navigation, Pagination } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Dialog, DialogContent } from "@/app/components/ui/dialog";
+import { CSSProperties, useCallback, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, X, ExternalLink } from "lucide-react";
+
+const SLIDE_SPEED = 360;
+
+function getVisibleRange(swiper: SwiperType) {
+  const fullyVisibleClass =
+    swiper.params.slideFullyVisibleClass ?? "swiper-slide-fully-visible";
+  const fullyVisible = [...swiper.slides]
+    .map((slide, index) => ({ slide, index }))
+    .filter(({ slide }) => slide.classList.contains(fullyVisibleClass))
+    .map(({ index }) => index);
+
+  if (fullyVisible.length > 0) {
+    return {
+      start: fullyVisible[0],
+      end: fullyVisible[fullyVisible.length - 1],
+    };
+  }
+
+  const perView = swiper.params.slidesPerView;
+  const count = Math.max(1, Math.floor(typeof perView === "number" ? perView : 1));
+  const start = swiper.activeIndex;
+  return {
+    start,
+    end: Math.min(start + count - 1, swiper.slides.length - 1),
+  };
+}
+
+function slideToKeepIndexVisible(swiper: SwiperType, index: number) {
+  const { start, end } = getVisibleRange(swiper);
+  if (index >= start && index <= end) return;
+
+  const visibleCount = end - start + 1;
+  if (index > end) {
+    swiper.slideTo(index - visibleCount + 1, SLIDE_SPEED);
+    return;
+  }
+
+  swiper.slideTo(index, SLIDE_SPEED);
+}
 
 const projectsData = [
   {
@@ -308,7 +345,6 @@ function ProjectDialog({
         {open && (
           <Swiper
             ref={detailSwiperRef}
-            modules={[Navigation]}
             initialSlide={selectedIndex}
             slidesPerView={1}
             spaceBetween={0}
@@ -333,6 +369,14 @@ export default function ProjectsSlider() {
   const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
+  const draggedRef = useRef(false);
+
+  const goToIndex = useCallback((index: number) => {
+    const next = Math.min(projectsData.length - 1, Math.max(0, index));
+    setActiveIndex(next);
+    const swiper = swiperRef.current?.swiper;
+    if (swiper) slideToKeepIndexVisible(swiper, next);
+  }, []);
 
   return (
     <section
@@ -356,7 +400,7 @@ export default function ProjectsSlider() {
             </span>
             <button
               type="button"
-              onClick={() => swiperRef.current?.swiper.slideNext()}
+              onClick={() => goToIndex(activeIndex + 1)}
               aria-label="پروژه قبلی"
               className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
             >
@@ -364,7 +408,7 @@ export default function ProjectsSlider() {
             </button>
             <button
               type="button"
-              onClick={() => swiperRef.current?.swiper.slidePrev()}
+              onClick={() => goToIndex(activeIndex - 1)}
               aria-label="پروژه بعدی"
               className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
             >
@@ -376,14 +420,23 @@ export default function ProjectsSlider() {
         <div className="relative w-full">
           <Swiper
             ref={swiperRef}
-            modules={[Navigation, Pagination]}
             spaceBetween={20}
             slidesPerView={1}
             loop={false}
-            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-            pagination={{
-              clickable: true,
-              el: `.${styles.pagination}`,
+            speed={SLIDE_SPEED}
+            watchSlidesProgress
+            onSliderFirstMove={() => {
+              draggedRef.current = true;
+            }}
+            onTransitionEnd={(swiper) => {
+              if (!draggedRef.current) return;
+              draggedRef.current = false;
+              const { start, end } = getVisibleRange(swiper);
+              setActiveIndex((current) => {
+                if (current >= start && current <= end) return current;
+                if (current < start) return start;
+                return end;
+              });
             }}
             breakpoints={{
               640: { slidesPerView: 1.35 },
@@ -408,7 +461,7 @@ export default function ProjectsSlider() {
                         projectPalettes[project.id - 1].border,
                     } as CSSProperties
                   }
-                  className={`${styles.card} group relative flex h-full min-h-102.5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border p-7 text-right transition-all duration-500 md:p-8`}
+                  className={`${styles.card} ${projectIndex === activeIndex ? styles.cardActive : ""} group relative flex h-full min-h-102.5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border p-7 text-right transition-all duration-500 md:p-8`}
                   dir="rtl"
                 >
                   <div className="relative z-10">
@@ -449,7 +502,7 @@ export default function ProjectsSlider() {
                             </div>
                           ))}
                         </div>
-                        <div className="group-hover:scale-105">
+                        <div className={`${styles.detailsCta} transition-transform duration-500`}>
                           مشاهده جزئیات <span>↗</span>
                         </div>
                       </div>
@@ -470,7 +523,27 @@ export default function ProjectsSlider() {
         <div className="relative z-30 mt-9 flex w-full justify-center">
           <div
             className={`${styles.pagination} flex h-6 items-center justify-center gap-2`}
-          />
+            dir="rtl"
+            aria-label="انتخاب پروژه"
+          >
+            {projectsData.map((project, index) => (
+              <button
+                key={project.id}
+                type="button"
+                onClick={() => goToIndex(index)}
+                aria-label={`نمایش پروژه ${index + 1}`}
+                aria-current={activeIndex === index ? "true" : undefined}
+                style={
+                  {
+                    "--pagination-accent": projectPalettes[index].accent,
+                  } as CSSProperties
+                }
+                className={`${styles.bullet} ${
+                  activeIndex === index ? styles.bulletActive : ""
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

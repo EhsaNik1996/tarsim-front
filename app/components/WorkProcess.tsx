@@ -6,7 +6,9 @@ import {
   useMotionValueEvent,
   useReducedMotion,
   useScroll,
+  useTransform,
 } from "framer-motion";
+import type { MotionValue } from "framer-motion";
 
 type Stage = {
   number: string;
@@ -23,6 +25,9 @@ type Stage = {
 };
 
 type MotionPreference = boolean | null;
+
+const DESKTOP_CARD_STEP = 84;
+const DESKTOP_CARD_INACTIVE_SCALE = 0.95;
 
 const stages: Stage[] = [
   {
@@ -193,34 +198,55 @@ function DesktopStageCard({
   stage,
   index,
   activeIndex,
+  stageProgress,
   reduceMotion,
 }: {
   stage: Stage;
   index: number;
   activeIndex: number;
+  stageProgress: MotionValue<number>;
   reduceMotion: MotionPreference;
 }) {
   const offset = index - activeIndex;
   const isActive = offset === 0;
-  const isNear = Math.abs(offset) === 1;
+  const left = useTransform(
+    stageProgress,
+    (progress) => `${50 - (index - progress) * DESKTOP_CARD_STEP}%`,
+  );
+  const opacity = useTransform(stageProgress, (progress) => {
+    const distance = Math.abs(index - progress);
+    return Math.max(0, 1 - Math.min(distance, 1.14) * 0.88);
+  });
+  const scale = useTransform(stageProgress, (progress) => {
+    const distance = Math.min(Math.abs(index - progress), 1);
+    return 1 - distance * (1 - DESKTOP_CARD_INACTIVE_SCALE);
+  });
+  const filter = useTransform(stageProgress, (progress) => {
+    const distance = Math.min(Math.abs(index - progress), 1);
+    return `blur(${distance * 2}px)`;
+  });
 
   return (
     <motion.article
       initial={false}
-      animate={{
-        left: `${50 - offset * 92}%`,
-        opacity: isActive ? 1 : isNear ? 0.12 : 0,
-        scale: isActive ? 1 : 0.98,
-        filter: isActive ? "blur(0px)" : "blur(2px)",
-      }}
-      transition={{
-        duration: reduceMotion ? 0 : 0.65,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      animate={
+        reduceMotion
+          ? {
+              left: `${50 - offset * DESKTOP_CARD_STEP}%`,
+              opacity: isActive ? 1 : 0,
+              scale: isActive ? 1 : DESKTOP_CARD_INACTIVE_SCALE,
+              filter: isActive ? "blur(0px)" : "blur(2px)",
+            }
+          : undefined
+      }
       className={`process-card ${
         isActive ? "pointer-events-auto" : "pointer-events-none"
       }`}
       style={{
+        left: reduceMotion ? undefined : left,
+        opacity: reduceMotion ? undefined : opacity,
+        scale: reduceMotion ? undefined : scale,
+        filter: reduceMotion ? undefined : filter,
         borderColor: isActive ? stage.color : undefined,
         zIndex: stages.length - Math.abs(offset),
       }}
@@ -297,10 +323,12 @@ function DesktopStageCard({
 
 function DesktopProcess({
   activeIndex,
+  stageProgress,
   reduceMotion,
   onSelect,
 }: {
   activeIndex: number;
+  stageProgress: MotionValue<number>;
   reduceMotion: MotionPreference;
   onSelect: (index: number) => void;
 }) {
@@ -346,6 +374,7 @@ function DesktopProcess({
               stage={stage}
               index={index}
               activeIndex={activeIndex}
+              stageProgress={stageProgress}
               reduceMotion={reduceMotion}
             />
           ))}
@@ -449,11 +478,16 @@ export default function WorkProcess() {
     target: sectionRef,
     offset: ["start start", "end end"],
   });
+  const stageProgress = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, stages.length - 1],
+  );
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const nextIndex = Math.min(
       stages.length - 1,
-      Math.floor(latest * stages.length),
+      Math.round(latest * (stages.length - 1)),
     );
 
     setActiveIndex((current) => (current === nextIndex ? current : nextIndex));
@@ -482,6 +516,7 @@ export default function WorkProcess() {
     >
       <DesktopProcess
         activeIndex={activeIndex}
+        stageProgress={stageProgress}
         reduceMotion={reduceMotion}
         onSelect={selectStage}
       />
