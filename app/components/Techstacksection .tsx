@@ -69,9 +69,9 @@ const techStack = [
           y="170"
           textAnchor="middle"
           fill="currentColor"
-          font-size="120"
-          font-family="Space Grotesk"
-          font-weight="800"
+          fontSize="120"
+          fontFamily="Space Grotesk"
+          fontWeight="800"
         >
           TS
         </text>
@@ -98,9 +98,9 @@ const techStack = [
           y="160"
           textAnchor="middle"
           fill="currentColor"
-          font-size="80"
-          font-family="Space Grotesk"
-          font-weight="700"
+          fontSize="80"
+          fontFamily="Space Grotesk"
+          fontWeight="700"
         >
           N
         </text>
@@ -161,7 +161,7 @@ const techStack = [
           d="M44 160c28 28 72 40 112 28"
           stroke="currentColor"
           strokeWidth="10"
-          stroke-linecap="round"
+          strokeLinecap="round"
           fill="none"
         />
         <path
@@ -174,8 +174,8 @@ const techStack = [
           d="M160 188l32-12-12-32"
           stroke="currentColor"
           strokeWidth="8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           fill="none"
         />
       </svg>
@@ -287,7 +287,7 @@ const techStack = [
           d="M28 148c-8-4-12-12-8-20"
           stroke="currentColor"
           strokeWidth="5"
-          stroke-linecap="round"
+          strokeLinecap="round"
           fill="none"
         ></path>
       </svg>

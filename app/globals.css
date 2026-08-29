@@ -168,3 +168,166 @@
     to { transform: translateX(100%); } 
   }
 }
+@keyframes about-hero-drift-one {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+
+  to {
+    transform: translate3d(-5rem, 2rem, 0) rotate(1deg);
+  }
+}
+
+@keyframes about-hero-drift-two {
+  from {
+    transform: translate3d(0, 0, 0) rotate(1deg);
+  }
+
+  to {
+    transform: translate3d(6rem, -3rem, 0) rotate(-2deg);
+  }
+}
+
+@keyframes about-hero-drift-three {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-7rem, 3rem, 0);
+  }
+}
+
+@keyframes about-hero-drift-four {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(5rem, -2.5rem, 0);
+  }
+}
+
+@keyframes about-hero-drift-five {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-4rem, -3rem, 0);
+  }
+}
+
+@keyframes about-hero-drift-six {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(7rem, 2rem, 0);
+  }
+}
+
+/* -------------------------------- */
+/* Background typography             */
+/* -------------------------------- */
+
+.about-hero-word {
+  position: absolute;
+  white-space: nowrap;
+
+  font-size: clamp(5rem, 10vw, 10rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.08em;
+
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(30 50 255 / 4%);
+
+  will-change: transform;
+  user-select: none;
+}
+
+.about-hero-word-one {
+  top: 4%;
+  right: 2%;
+
+  -webkit-text-stroke-color: rgb(30 50 255 / 5%);
+
+  animation: about-hero-drift-one 24s ease-in-out infinite alternate;
+}
+
+.about-hero-word-two {
+  top: 18%;
+  left: 2%;
+
+  -webkit-text-stroke-color: rgb(30 50 255 / 4%);
+
+  animation: about-hero-drift-two 30s ease-in-out infinite alternate;
+}
+
+.about-hero-word-three {
+  top: 36%;
+  right: 8%;
+
+  -webkit-text-stroke-color: rgb(30 50 255 / 3.5%);
+
+  animation: about-hero-drift-three 27s ease-in-out infinite alternate;
+}
+
+.about-hero-word-four {
+  top: 53%;
+  left: 5%;
+
+  -webkit-text-stroke-color: rgb(30 50 255 / 3.5%);
+
+  animation: about-hero-drift-four 32s ease-in-out infinite alternate;
+}
+
+.about-hero-word-five {
+  top: 69%;
+  right: 4%;
+
+  -webkit-text-stroke-color: rgb(30 50 255 / 3%);
+
+  animation: about-hero-drift-five 29s ease-in-out infinite alternate;
+}
+
+.about-hero-word-six {
+  top: 83%;
+  left: 20%;
+
+  -webkit-text-stroke-color: rgb(30 50 255 / 2.5%);
+
+  animation: about-hero-drift-six 26s ease-in-out infinite alternate;
+}
+
+/* -------------------------------- */
+/* Bottom marquee                    */
+/* -------------------------------- */
+
+@keyframes about-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.about-marquee {
+  animation: about-marquee 24s linear infinite;
+  will-change: transform;
+}
+
+/* -------------------------------- */
+/* Accessibility                     */
+/* -------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-word,
+  .about-marquee {
+    animation: none !important;
+  }
+}
