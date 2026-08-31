@@ -1,7 +1,7 @@
 export default function SpecialistBoundary() {
   return (
     <section className="bg-[#fbfbfa] px-3.5 pb-20 text-black md:px-8 md:pb-22">
-      <div className="mx-auto grid w-full max-w-336 gap-7 border-y border-[#d9d9d6] py-12 md:grid-cols-[0.8fr_1.25fr_3fr] md:items-start md:gap-12 md:py-13">
+      <div className="mx-auto grid w-full max-w-336 gap-7 border-b md:border-y border-[#d9d9d6] py-12 md:grid-cols-[0.8fr_1.25fr_3fr] md:items-start md:gap-12 md:py-13">
         <span className="text-[9px] leading-5 font-extrabold tracking-[0.18em] text-emerald-700">
           مرز همکاری تخصصی
         </span>
