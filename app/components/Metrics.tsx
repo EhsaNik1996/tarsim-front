@@ -176,7 +176,7 @@ export default function Metrics() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:col-span-8 lg:grid-cols-4">
+        <div className="grid grid-cols-2 md:col-span-8 md:grid-cols-4">
           {metricsData.map((item, idx) => (
             <div
               key={idx}

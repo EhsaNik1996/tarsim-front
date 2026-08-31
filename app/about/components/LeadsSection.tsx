@@ -1,113 +1,175 @@
 const people = [
   {
-    category: "01 / محصول",
-    name: "رهبر محصول",
+    category: "01 / رهبر محصول",
+    name: "علی جواهرزاده",
     description:
-      "مسئله، اولویت‌ها و نتیجه‌ای که باید برای کاربر و کسب‌وکار ایجاد شود را دنبال می‌کند.",
-    background: "bg-indigo-50",
+      "از نخستین جلسه کاری تا جهت‌دهی محصول، اجرا، بازبینی و انتشار در کنار پروژه می‌ماند.",
+    accent: "text-blue-600",
+    glow: "bg-[radial-gradient(ellipse_68%_72%_at_38%_42%,rgba(85,111,255,0.075),rgba(142,158,255,0.025)_46%,transparent_74%)]",
+    line: "bg-blue-500",
   },
   {
-    category: "02 / فناوری",
-    name: "رهبر فنی",
+    category: "02 / رهبر فنی",
+    name: "سید محسن جلالی",
     description:
-      "معماری، کیفیت اجرا و تصمیم‌های فنی را به نتیجه واقعی محصول متصل می‌کند.",
-    background: "bg-orange-50",
+      "در همان مسیر تحویل، تصمیم‌ها را بازبینی می‌کند و نتیجه را قابل نگهداری و توضیح‌پذیر نگه می‌دارد.",
+    accent: "text-orange-500",
+    glow: "bg-[radial-gradient(ellipse_68%_72%_at_72%_42%,rgba(255,139,76,0.07),rgba(255,190,145,0.025)_46%,transparent_74%)]",
+    line: "bg-orange-500",
   },
-];
+] as const;
 
 const principles = [
-  "درک مشترک از مسئله",
-  "قابل مشاهده بودن تصمیم‌های فنی",
-  "ساخت و بازبینی در یک چرخه",
-  "ارتباط مستقیم میان تصمیم و نتیجه",
-];
+  {
+    title: "زمینه واقعی کار را بفهمیم",
+    description:
+      "از کاربران، فرایند فعلی، داده‌ها و محدودیت‌هایی شروع می‌کنیم که تصمیم محصول باید از آن‌ها پشتیبانی کند.",
+  },
+  {
+    title: "جهت فنی را قابل مشاهده کنیم",
+    description:
+      "مرزهای سیستم، محدوده، معیار پذیرش، ریسک‌ها و مصالحه‌ها را پیش از تبدیل‌شدن به دوباره‌کاری روشن می‌کنیم.",
+  },
+  {
+    title: "در یک چرخه بسازیم و بازبینی کنیم",
+    description:
+      "خروجی‌های واقعی را پیاده‌سازی و تصمیم‌های مهم و مسیرهای حیاتی را پیش از انتشار بررسی می‌کنیم.",
+  },
+  {
+    title: "تغییر بعدی را شفاف منتقل کنیم",
+    description:
+      "پیشرفت، ریسک‌های باز و تصمیم بعدی را برای افراد مسئول نتیجه، روشن و قابل پیگیری نگه می‌داریم.",
+  },
+] as const;
 
 export default function LeadsSection() {
   return (
-    <section className="flex bg-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col px-6 py-24 lg:px-8">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <div className="flex flex-col gap-6">
-            <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600">
-              تیم ترسیم
+    <section className="bg-[#fbfbfa] px-3.5 py-4 text-black md:px-8 md:pt-28 md:pb-0">
+      <div className="mx-auto w-full max-w-336">
+        <div className="hidden gap-12 border-b border-[#d9d9d6] pb-16 md:grid md:grid-cols-2 md:items-end md:gap-24 md:pb-20">
+          <div>
+            <span className="text-[10px] font-extrabold tracking-[0.2em] text-emerald-600">
+              تیم راهبر ترسیم
             </span>
-
-            <h2 className="max-w-2xl text-5xl font-black leading-none tracking-tighter lg:text-6xl">
-              دو نگاه نزدیک
-              <br />
-              به هر تصمیم
-              <br />
-              مهم.
+            <h2 className="mt-7 max-w-xl text-5xl leading-[0.98] font-black tracking-[-0.055em] md:text-7xl">
+              دو راهبر، نزدیک به هر تصمیم مهم.
             </h2>
           </div>
-
-          <p className="max-w-lg text-sm leading-7 text-black/45">
-            محصول خوب نتیجه یک تخصص واحد نیست. تصمیم‌های محصول و فناوری باید در
-            کنار هم شکل بگیرند.
+          <p className="max-w-lg text-sm leading-7 text-black/55 md:mb-1">
+            راهبران محصول و فنی مستقیماً کار را پیش می‌برند. همان افرادی که
+            مسئله را صورت‌بندی می‌کنند، هنگام تغییر محدوده و شکل‌گیری تصمیم‌های
+            فنی تا بازبینی نتیجه برای انتشار کنار پروژه باقی می‌مانند.
           </p>
         </div>
 
-        <div className="mt-12 flex flex-col border-y border-black/10 md:flex-row">
-          {people.map((person, index) => (
-            <div
+        <div
+          dir="ltr"
+          className="relative mt-4 grid grid-cols-2 border-y border-[#d9d9d6] bg-white pb-28 md:mt-8 md:border-t-0"
+        >
+          {people.map((person) => (
+            <article
               key={person.name}
-              className={[
-                "flex min-h-96 flex-1 flex-col justify-between gap-10 p-8 md:p-10",
-                person.background,
-                index !== 0 ? "border-t md:border-r md:border-t-0" : "",
-                "border-black/10",
-              ].join(" ")}
+              dir="rtl"
+              className="relative flex min-h-72 flex-col overflow-hidden px-5 py-10 md:min-h-92 md:px-18 md:py-18"
             >
-              <span className="text-xs font-semibold uppercase tracking-widest text-black/35">
-                {person.category}
-              </span>
-
-              <div className="flex flex-col gap-6">
-                <h3 className="text-5xl font-black tracking-tighter lg:text-7xl">
+              <div
+                aria-hidden="true"
+                className={`pointer-events-none absolute inset-0 ${person.glow}`}
+              />
+              <div className="relative flex h-full flex-col">
+                <span
+                  className={`max-w-20 text-[9px] leading-3 font-extrabold tracking-[0.14em] md:max-w-none md:text-[10px] md:tracking-[0.16em] ${person.accent}`}
+                >
+                  {person.category}
+                </span>
+                <h3 className="mt-4 text-2xl leading-none font-black tracking-[-0.065em] sm:text-4xl md:mt-5 md:text-7xl">
                   {person.name}
                 </h3>
-
-                <div className="w-full border-t border-black/15" />
-
-                <p className="max-w-sm text-xs leading-6 text-black/45">
+                <p className="mt-5 max-w-md text-[10px] leading-[1.65] text-black/50 sm:text-xs md:mt-7 md:text-sm md:leading-7">
                   {person.description}
                 </p>
               </div>
-            </div>
+            </article>
           ))}
+
+          <div
+            aria-hidden="true"
+            className="absolute top-0 bottom-26 left-1/2 w-px bg-[#d9d9d6] md:bottom-28"
+          />
+
+          <div className="absolute bottom-28 left-[5.5%] hidden h-0.5 w-[38%] bg-blue-500 md:block" />
+          <div className="absolute right-[5.5%] bottom-28 hidden h-0.5 w-[38%] bg-orange-500 md:block" />
+
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 100 40"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute right-0 bottom-13 h-12 w-full md:hidden"
+          >
+            <path
+              d="M0 1 H36 C44 1 42 36 50 36"
+              fill="none"
+              stroke="#315bff"
+              strokeWidth="0.65"
+              vectorEffect="non-scaling-stroke"
+            />
+            <path
+              d="M50 36 C58 36 56 1 64 1 H100"
+              fill="none"
+              stroke="#ff641f"
+              strokeWidth="0.65"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+
+          <div className="absolute right-0 bottom-0 left-0 flex h-14 flex-col items-center justify-end pb-1 md:hidden">
+            <span className="absolute top-0 h-5 w-px bg-emerald-500" />
+            <span className="text-[7px] font-extrabold text-emerald-700">
+              یک مسیر کاری پاسخ‌گو
+            </span>
+            <span className="mt-1 h-3 w-px bg-emerald-500" />
+          </div>
+
+          <div className="absolute right-0 bottom-0 left-0 hidden h-28 items-end justify-center pb-3 md:flex">
+            <div className="flex flex-col items-center">
+              <span className="h-9 w-px bg-emerald-500" />
+              <span className="mt-2 text-[8px] font-extrabold tracking-[0.18em] text-emerald-700">
+                یک مسیر کاری پاسخ‌گو
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="flex flex-col border-b border-black/10 lg:flex-row">
-          <div className="flex flex-1 flex-col py-10 lg:pl-10">
-            <h3 className="max-w-lg text-3xl font-black leading-tight tracking-tight">
-              هر دو نگاه باید آن‌قدر به مسئله نزدیک باشند که تصمیم‌ها را از هم
-              جدا نکنند.
+        <div className="grid min-h-144 border-b border-[#d9d9d6] bg-[#fdfdfc] md:grid-cols-[0.72fr_1.28fr]">
+          <div className="relative py-14 md:py-20 md:pl-16">
+            <span className="text-[10px] font-extrabold tracking-[0.18em] text-emerald-700">
+              مسئولیت‌پذیری چگونه کار می‌کند
+            </span>
+            <h3 className="mt-7 max-w-lg text-2xl leading-8 font-black tracking-tighter sm:leading-tight">
+              هر دو راهبر آن‌قدر نزدیک می‌مانند که فرض‌ها را به چالش بکشند،
+              تصمیم‌های یکدیگر را بازبینی کنند و مشتری با افراد مسئول سیستم در
+              ارتباط باشد؛ نه با یک لایه جداگانه تحویل.
             </h3>
           </div>
 
-          <div className="flex flex-1 flex-col divide-y divide-black/10 border-t border-black/10 lg:border-r lg:border-t-0">
+          <div className="mt-0 flex flex-col border-t border-[#d9d9d6] md:mt-20 md:border-t-0 md:pr-10">
             {principles.map((principle) => (
               <div
-                key={principle}
-                className="flex items-center gap-4 py-5 lg:pr-8"
+                key={principle.title}
+                className="flex flex-1 gap-6 border-t border-[#d9d9d6] py-8 last:border-b-0 md:items-start md:py-9"
               >
-                <span className="size-2 shrink-0 rounded-full bg-emerald-500" />
-
-                <span className="text-xs font-medium">{principle}</span>
+                <span className="mt-2 size-2 shrink-0 rounded-full bg-emerald-500 ring-4 ring-emerald-50" />
+                <div>
+                  <h4 className="text-base font-extrabold md:text-lg">
+                    {principle.title}
+                  </h4>
+                  <p className="mt-2 max-w-3xl text-xs leading-6 text-black/50 md:text-sm md:leading-7">
+                    {principle.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
-        </div>
-
-        <div className="flex flex-col gap-6 border-b border-black/10 py-8 text-xs leading-6 text-black/40 md:flex-row">
-          <span className="flex-1 font-medium text-black">
-            ظرفیت فنی بدون لایه پنهان تحویل.
-          </span>
-
-          <span className="flex-1">
-            افراد مسئول مستقیماً در تصمیم‌های محصول و فناوری حضور دارند و خروجی
-            نهایی را با همان تیمی که آن را ساخته بررسی می‌کنند.
-          </span>
         </div>
       </div>
     </section>

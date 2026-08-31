@@ -35,8 +35,8 @@ export default function Approach() {
       className="w-full bg-linear-to-b from-white to-background-deep px-6 py-16 md:px-16 md:py-24"
       dir="rtl"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 max-w-360 place-self-center">
-        <div className="h-fit text-right lg:sticky lg:top-28">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-360 place-self-center">
+        <div className="h-fit text-right md:sticky md:top-28">
           <div className="font-mono text-electric-blue mb-4 text-sm tracking-widest">
             روش کار
           </div>
@@ -49,7 +49,7 @@ export default function Approach() {
           </p>
         </div>
 
-        <div className="space-y-8 lg:col-span-2 lg:space-y-10">
+        <div className="space-y-8 md:col-span-2 md:space-y-10">
           {steps.map((step, index) => (
             <motion.div
               key={index}

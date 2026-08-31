@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUp, ArrowUpLeft, AtSign, Camera } from "lucide-react";
+import Image from "next/image";
 import logoImg from "@/public/Logo-noneBg.png";
+import { ArrowLeft, ArrowUp, ArrowUpLeft, AtSign } from "lucide-react";
 
 const quickLinks = [
   { label: "خانه", href: "#" },
@@ -23,10 +23,10 @@ const columnTitleClass =
 export default function Footer() {
   return (
     <footer
-      className="relative z-3 bg-[#f7f7f7] px-3 pt-8 pb-4 sm:px-6 lg:px-[8vw] lg:pt-15.5 lg:pb-7.5"
+      className="relative z-3 bg-[#fbfbfa] px-3 pt-8 pb-4 sm:px-6 md:px-[8vw] md:pt-15.5 md:pb-7.5"
       dir="rtl"
     >
-      <div className="mx-auto max-w-[1600px] rounded-[30px] border border-[#dedede] bg-white/70 px-6 py-9 sm:rounded-[48px] sm:px-10 sm:py-12 lg:px-16 lg:py-15.5">
+      <div className="mx-auto max-w-[1600px] rounded-[30px] border border-[#dedede] bg-white/70 px-6 py-9 sm:rounded-[48px] sm:px-10 sm:py-12 md:px-16 md:py-15.5">
         <div className="flex flex-col md:flex-row items-start justify-between gap-5 md:gap-8 sm:items-end">
           <div>
             <p className={columnTitleClass}>درخواست همکاری</p>
@@ -45,13 +45,33 @@ export default function Footer() {
             className="flex items-center gap-3"
             aria-label="شبکه‌های اجتماعی"
           >
-            <a
-              className="grid size-10 place-items-center rounded-full bg-[#f0f0f0] text-[#888] transition hover:-translate-y-0.5 hover:bg-electric-blue hover:text-white sm:size-11.5"
-              href="#"
+            <button
+              type="button"
               aria-label="اینستاگرام ترسیم"
+              data-cursor="link"
+              className="grid size-10 place-items-center rounded-full bg-[#f0f0f0] text-[#888] transition hover:-translate-y-0.5 hover:bg-electric-blue hover:text-white sm:size-11.5"
             >
-              <Camera size={18} />
-            </a>
+              <svg
+                viewBox="0 0 24 24"
+                className="size-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />{" "}
+                <circle cx="12" cy="12" r="4" />{" "}
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1"
+                  fill="currentColor"
+                  stroke="none"
+                />
+              </svg>
+            </button>
             <a
               className="grid size-10 place-items-center rounded-full bg-[#f0f0f0] text-[#888] transition hover:-translate-y-0.5 hover:bg-electric-blue hover:text-white sm:size-11.5"
               href="mailto:hello@tarsim.studio"
@@ -62,7 +82,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-11 grid grid-cols-1 gap-8 sm:mt-16 lg:grid-cols-2 xl:grid-cols-[1.7fr_.75fr_1.35fr_1fr] xl:gap-6">
+        <div className="mt-11 grid grid-cols-1 gap-8 sm:mt-16 md:grid-cols-2 xl:grid-cols-[1.7fr_.75fr_1.35fr_1fr] xl:gap-6">
           <div className="rounded-[18px] bg-[#f5f5f5] p-6 sm:p-8">
             <p className="text-[11px] font-black tracking-[.08em] text-[#00bb68]">
               دانشنامه ترسیم

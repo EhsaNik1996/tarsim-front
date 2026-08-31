@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const checkpoints = [
   {
     phase: "شناخت",
@@ -36,10 +40,22 @@ const checkpoints = [
 
 export default function CheckpointsCard() {
   return (
-    <section className="flex bg-white px-6 pb-28 lg:px-8">
-      <div className="mx-auto flex w-full max-w-5xl">
-        <div className="relative flex w-full flex-col gap-10 overflow-hidden bg-neutral-950 px-6 py-10 text-white sm:px-8 lg:px-10 lg:py-12 rounded-3xl">
-          <div className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-indigo-600/20 blur-3xl" />
+    <section className="flex bg-white px-6 md:px-8">
+      <div className="mx-auto flex w-full max-w-337.5">
+        <div className="relative flex w-full flex-col gap-10 overflow-hidden bg-neutral-950 px-6 py-10 text-white sm:px-8 md:px-10 md:py-12 rounded-3xl">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_540px_at_83%_4%,rgba(62,78,170,0.16)_0%,rgba(35,52,111,0.11)_42%,rgba(17,28,57,0.055)_64%,transparent_88%)] md:bg-[radial-gradient(circle_720px_at_86%_2%,rgba(62,78,170,0.16)_0%,rgba(35,52,111,0.11)_42%,rgba(17,28,57,0.055)_64%,transparent_88%)]"
+          />
+
+          <motion.div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-72 -top-85 size-190 rounded-full bg-[#101a2b]/75"
+            animate={{ scale: [0.92, 1.04, 0.92], opacity: [0.72, 1, 0.72] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <div className="absolute inset-20 rounded-full border border-emerald-400/10 bg-[#182044]/65" />
+          </motion.div>
 
           <div className="pointer-events-none absolute -bottom-32 -left-16 size-80 rounded-full bg-orange-500/10 blur-3xl" />
 
@@ -48,8 +64,8 @@ export default function CheckpointsCard() {
               سیستم کاری ترسیم
             </span>
 
-            <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-              <h2 className="max-w-2xl text-4xl font-black leading-none tracking-tighter lg:text-6xl">
+            <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+              <h2 className="max-w-2xl text-4xl font-black leading-none tracking-tighter md:text-6xl">
                 شش نقطه بررسی،
                 <br />
                 نه یک مرحله
@@ -68,7 +84,7 @@ export default function CheckpointsCard() {
               {checkpoints.map((item, index) => (
                 <div
                   key={item.title}
-                  className="flex flex-col gap-4 py-5 lg:flex-row lg:items-start lg:gap-6"
+                  className="flex flex-col gap-4 py-5 md:flex-row md:items-start md:gap-6"
                 >
                   <span className="w-8 shrink-0 text-xs text-lime-400">
                     {String(index + 1).padStart(2, "0")}

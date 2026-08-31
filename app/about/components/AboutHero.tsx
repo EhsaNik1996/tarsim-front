@@ -1,167 +1,236 @@
-import { Check, Sparkles } from "lucide-react";
+"use client";
+
+import type { ElementType } from "react";
+import { Code2, Compass, PenLine, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
 
 const decisions = [
   {
     number: "01",
     title: "شناخت",
-    description: "درک مسئله، نیاز و زمینه واقعی",
+    description: "درک زمینه، پیش از تعیین محدوده",
+    icon: Compass,
+    iconClass: "text-blue-600",
   },
   {
     number: "02",
     title: "طراحی",
-    description: "تبدیل مسئله به یک راه‌حل قابل اجرا",
+    description: "تصمیم‌هایی که دیده می‌شوند",
+    icon: PenLine,
+    iconClass: "text-violet-600",
   },
   {
     number: "03",
     title: "ساخت",
-    description: "پیاده‌سازی با فناوری مناسب",
+    description: "خروجی‌های کاربردی از همان ابتدا",
+    icon: Code2,
+    iconClass: "text-orange-500",
   },
   {
     number: "04",
     title: "اعتبارسنجی",
-    description: "بررسی نتیجه و اصلاح مسیر",
+    description: "شواهد، پیش از هر ادعا",
+    icon: ShieldCheck,
+    iconClass: "text-emerald-500",
   },
+] as const;
+
+const tickerItems = [
+  "مالکیت مستقیم",
+  "محدوده واقعی و شفاف",
+  "سیستم‌های قابل نگهداری",
+  "تحویل اعتبارسنجی‌شده",
 ];
 
-const backgroundWords = [
-  "ترسیم",
-  "DECISIONS",
-  "DESIGN",
-  "BUILD",
-  "SYSTEMS",
-  "IDEAS",
+const backgroundRows = [
+  ["تصمیم‌ها", "سیستم‌ها", "شواهد", "شناخت", "طراحی"],
+  ["اعتبارسنجی", "محصول", "ساخت", "راهکار", "تحویل"],
 ];
 
 export default function AboutHero() {
   return (
-    <section className="relative flex min-h-screen overflow-hidden border-b border-black/10 bg-white">
-      {/* Background typography */}
+    <section className="relative isolate flex min-h-svh w-full flex-col justify-end overflow-hidden border-b border-black/10 bg-[#fbfcff] text-black">
+      <BackgroundTypography />
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 overflow-hidden select-none"
-      >
-        <div className="about-hero-word about-hero-word-one">
-          {backgroundWords[0]}
-        </div>
-
-        <div className="about-hero-word about-hero-word-two">
-          {backgroundWords[1]}
-        </div>
-
-        <div className="about-hero-word about-hero-word-three">
-          {backgroundWords[2]}
-        </div>
-
-        <div className="about-hero-word about-hero-word-four">
-          {backgroundWords[3]}
-        </div>
-
-        <div className="about-hero-word about-hero-word-five">
-          {backgroundWords[4]}
-        </div>
-
-        <div className="about-hero-word about-hero-word-six">
-          {backgroundWords[5]}
-        </div>
-      </div>
-
-      {/* Ambient glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-1/4 top-1/4 size-96 rounded-full bg-indigo-100/50 blur-3xl"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_58%_72%_at_88%_57%,rgba(105,116,255,0.13)_0%,rgba(149,131,255,0.075)_38%,rgba(210,218,255,0.035)_62%,transparent_82%)]"
       />
 
-      {/* Main content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-6 pt-20 sm:px-8 lg:flex-row lg:gap-20 lg:px-12">
-        {/* Content */}
-        <div className="flex w-full flex-1 flex-col items-start">
-          <span className="flex items-center gap-3 text-xs font-semibold uppercase tracking-widest text-emerald-600">
-            <span className="size-2 rounded-full bg-emerald-500" />
-            درباره ترسیم
-          </span>
-
-          <h1 className="mt-6 max-w-3xl text-6xl font-black leading-none tracking-tighter sm:text-7xl lg:text-8xl">
-            آدم‌هایی که
-            <br />
-            <span className="text-indigo-600">تصمیم‌ها</span>
-            <br />
-            را می‌سازند،
-            <br />
-            محصول را
-            <br />
-            می‌سازند.
-          </h1>
-
-          <p className="mt-8 max-w-xl text-base leading-7 text-black/50 lg:text-lg lg:leading-8">
-            ترسیم یک تیم محصول و فناوری است که با تمرکز روی مسئله واقعی،
-            تصمیم‌های درست و اجرای قابل اتکا، ایده‌ها را به تجربه‌های واقعی
-            تبدیل می‌کند.
-          </p>
-        </div>
-
-        {/* Decision panel */}
-        <div className="relative flex w-full max-w-xl bg-transparent flex-col gap-8 p-6 rounded-3xl">
-          <div className="flex items-center justify-between gap-6">
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold uppercase tracking-widest text-black/30">
-                مسیر ترسیم
-              </span>
-
-              <h2 className="text-xl font-bold">تصمیم تا نتیجه</h2>
-            </div>
-
-            <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-black/10">
-              <Sparkles size={16} />
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-3">
-            {decisions.map((decision, index) => (
-              <DecisionItem
-                key={decision.number}
-                {...decision}
-                active={index === 0}
-              />
-            ))}
-            <div className="flex items-center gap-3 border-t border-black/10 pt-6">
-              <span className="size-2 shrink-0 rounded-full bg-emerald-500" />
-
-              <span className="text-xs text-black/45">
-                هر تصمیم باید دلیلی داشته باشد.
-              </span>
-            </div>
-          </div>
-        </div>
+      <div
+        dir="ltr"
+        className="relative z-10 mx-auto flex flex-col md:flex-row w-full max-w-360 items-center justify-between px-6 py-18 md:min-h-180 md:px-16 md:py-0"
+      >
+        <Process />
+        <HeroIntro />
       </div>
+
+      <HeroTicker />
     </section>
   );
 }
+
+function BackgroundTypography() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-x-0 top-14 -rotate-4 -z-20 flex h-64 flex-col overflow-hidden opacity-75 select-none"
+    >
+      <BackgroundRow items={backgroundRows[0]} duration={40} />
+      <BackgroundRow items={backgroundRows[1]} duration={25} />
+    </div>
+  );
+}
+
+function BackgroundRow({
+  items,
+  duration,
+}: {
+  items: readonly string[];
+  duration: number;
+}) {
+  const repeatedItems = [...items, ...items];
+
+  return (
+    <div dir="ltr" className="flex h-24 md:h-36 shrink-0 items-center overflow-hidden">
+      <motion.div
+        dir="ltr"
+        className="flex w-max"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration, repeat: Infinity, ease: "linear" }}
+      >
+        {[0, 1].map((group) => (
+          <div
+            dir="rtl"
+            key={group}
+            className="flex shrink-0 items-center gap-12 pl-12"
+          >
+            {repeatedItems.map((item, index) => (
+              <span
+                key={`${group}-${item}-${index}`}
+                className="flex shrink-0 items-center gap-12 whitespace-nowrap text-7xl leading-none font-semibold tracking-tighter text-[#fbfcff]/90 [-webkit-text-stroke:0.95px_rgba(139,157,255,0.32)] [paint-order:stroke_fill] sm:text-8xl md:text-9xl"
+              >
+                {item}
+                <i className="size-3 md:size-6 shrink-0 rounded-full border-[1.25px] border-indigo-200/45 bg-transparent" />
+              </span>
+            ))}
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+}
+
+function HeroIntro() {
+  return (
+    <div dir="rtl" className="basis-1/2 order-1 min-w-0 text-right md:order-2">
+      <div className="flex items-center gap-3 text-xs leading-none font-extrabold tracking-wide">
+        <span
+          aria-hidden="true"
+          className="size-2 shrink-0 rounded-full bg-emerald-500 ring-4 ring-emerald-100"
+        />
+        <span>مهندسی محصول با راهبری ارشد</span>
+      </div>
+
+      <h1 className="mt-6 mr-auto flex max-w-2xl flex-col text-5xl md:text-7xl leading-12 md:leading-19 font-black tracking-tighter">
+        <span className="block whitespace-nowrap">آدم‌هایی که</span>
+        <em className="text-electric-blue font-semibold">
+          تصمیم‌ها را
+        </em>
+        <span className="block whitespace-nowrap">می‌سازند،</span>
+        <span className="block whitespace-nowrap">محصول را</span>
+        <span className="block whitespace-nowrap">می‌سازند.</span>
+      </h1>
+
+      <p className="my-8 text-sm font-medium text-black/50 sm:text-base">
+        مالکیت مستقیم فنی از مرحله کشف و شناخت تا تحویل نهایی محصول.
+      </p>
+    </div>
+  );
+}
+
+function Process() {
+  return (
+    <div dir="rtl" className="basis-1/2 order-2 w-full text-right md:order-1">
+      <div className="flex min-h-8 items-start justify-between gap-4 border-b border-black/15 sm:gap-8">
+        <strong className="text-xs font-extrabold sm:text-sm">
+          بدون واسطه میان فروش و تحویل.
+        </strong>
+        <span className="text-xs font-semibold text-black/40 max-sm:text-left">
+          راهبری ارشد در تمام مراحل
+        </span>
+      </div>
+
+      <div>
+        {decisions.map((decision) => (
+          <DecisionItem key={decision.number} {...decision} />
+        ))}
+      </div>
+
+      <p className="pt-4 text-xs font-medium text-black/45">
+        یک مسیر کاری پاسخ‌گو، از اولین جلسه تا انتشار نهایی.
+      </p>
+    </div>
+  );
+}
+
+type DecisionItemProps = {
+  number: string;
+  title: string;
+  description: string;
+  icon: ElementType;
+  iconClass: string;
+};
 
 function DecisionItem({
   number,
   title,
   description,
-}: {
-  number: string;
-  title: string;
-  description: string;
-  active?: boolean;
-}) {
+  icon: Icon,
+  iconClass,
+}: DecisionItemProps) {
   return (
-    <div className="flex items-center gap-4 border-t border-gray-300 px-4 py-4 transition-colors">
-      <span className="w-8 shrink-0 text-xs font-bold text-black/30">
-        {number}
+    <div className="flex min-h-16 items-center gap-4 border-b border-black/10">
+      <span className={`grid size-9 shrink-0 place-items-center rounded-full border border-black/10 bg-white/50 ${iconClass}`}>
+        <Icon aria-hidden="true" className="size-4" />
       </span>
-
-      <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-black/10">
-        <Check size={14} />
+      <span className="w-6 shrink-0 text-xs font-semibold text-black/30">{number}</span>
+      <strong className="w-24 shrink-0 text-xs font-extrabold sm:w-32 sm:text-sm">
+        {title}
+      </strong>
+      <span className="flex-1 text-xs font-medium text-black/40 text-right">
+        {description}
       </span>
+    </div>
+  );
+}
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <span className="text-sm font-bold">{title}</span>
+function HeroTicker() {
+  const repeatedItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
-        <span className="text-xs text-black/40">{description}</span>
-      </div>
+  return (
+    <div
+      dir="ltr"
+      className="relative z-20 flex h-16 shrink-0 items-center overflow-hidden bg-black text-white sm:h-20"
+      aria-label={tickerItems.join("، ")}
+    >
+      <motion.div
+        className="flex w-max"
+        animate={{ x: ["0%", "-50%"] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+      >
+        {[0, 1].map((group) => (
+          <div key={group} className="flex shrink-0 items-center">
+            {repeatedItems.map((item, index) => (
+              <div dir="rtl" key={`${group}-${item}-${index}`} className="flex shrink-0 items-center">
+                <span className="px-2 text-sm font-extrabold sm:text-base">
+                  {item}
+                </span>
+                <i aria-hidden="true" className="mx-4 size-1.5 rounded-full bg-white" />
+              </div>
+            ))}
+          </div>
+        ))}
+      </motion.div>
     </div>
   );
 }

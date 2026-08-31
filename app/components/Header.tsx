@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AtSign, Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -15,18 +16,20 @@ import {
 } from "@/app/components/ui/sheet";
 
 const navItems = [
-  { label: "خدمات", id: "services", href: "" },
-  { label: "نمونه کارها", id: "projects", href: "" },
-  { label: "درباره ما", id: "about", href: "/about" },
-  { label: "سوالات متداول", id: "faq", href: "" },
+  { label: "خدمات", id: "services", href: "/#services" },
+  { label: "نمونه کارها", id: "projects", href: "/#projects" },
+  { label: "درباره ما", id: "about", href: "/about", route: true },
+  { label: "سوالات متداول", id: "faq", href: "/#faq" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("");
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const sections = navItems
+      .filter((item) => !item.route)
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => section !== null);
 
@@ -69,7 +72,7 @@ export default function Header() {
       window.removeEventListener("scroll", updateHeader);
       window.removeEventListener("resize", updateHeader);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <motion.nav
@@ -91,13 +94,15 @@ export default function Header() {
         {/* Navigation */}
         <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {navItems.map((item) => {
-            const isActive = activeSection === item.id;
+            const isActive = item.route
+              ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+              : pathname === "/" && activeSection === item.id;
 
             return (
               <li key={item.id}>
                 <Link
-                  href={`${item.href}`}
-                  onClick={() => setActiveSection(item.id)}
+                  href={item.href}
+                  onClick={() => !item.route && setActiveSection(item.id)}
                   aria-current={isActive ? "location" : undefined}
                   className={`block border-b-2 pb-1 text-sm transition-colors duration-300 ${
                     isActive
@@ -189,13 +194,15 @@ export default function Header() {
 
                 <div className="mt-8 flex flex-col gap-5 text-right">
                   {navItems.map((item) => {
-                    const isActive = activeSection === item.id;
+                    const isActive = item.route
+                      ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+                      : pathname === "/" && activeSection === item.id;
 
                     return (
                       <SheetClose asChild key={item.id}>
                         <Link
-                          href={`#${item.id}`}
-                          onClick={() => setActiveSection(item.id)}
+                          href={item.href}
+                          onClick={() => !item.route && setActiveSection(item.id)}
                           aria-current={isActive ? "location" : undefined}
                           className={`rounded-l-lg border-r-4 py-2 pr-3 text-base transition-all ${
                             isActive

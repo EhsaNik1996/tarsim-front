@@ -333,7 +333,7 @@ function DesktopProcess({
   onSelect: (index: number) => void;
 }) {
   return (
-    <div className="hidden min-h-180 overflow-hidden lg:sticky lg:top-0 lg:block lg:h-svh">
+    <div className="hidden min-h-180 overflow-hidden md:sticky md:top-0 md:block md:h-svh">
       <div className="process-grid pointer-events-none opacity-75 absolute inset-0" />
 
       <div className="relative mx-auto flex flex-col h-full max-w-screen-2xl px-8 py-16 md:py-24 xl:px-12">
@@ -390,7 +390,7 @@ function MobileProcess({
   reduceMotion: MotionPreference;
 }) {
   return (
-    <div className="relative px-3 py-20 lg:hidden">
+    <div className="relative px-3 py-20 md:hidden">
       <div className="process-grid process-mobile-grid pointer-events-none absolute inset-0" />
       <div className="process-mobile-overlay pointer-events-none absolute inset-0" />
 

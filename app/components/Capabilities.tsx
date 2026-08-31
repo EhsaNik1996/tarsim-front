@@ -56,7 +56,7 @@ export default function Capabilities() {
     <section
       id="services"
       dir="rtl"
-      className="relative overflow-hidden px-6 py-16 md:px-12 lg:px-16 lg:py-24"
+      className="relative overflow-hidden px-6 py-16 md:px-12 md:px-16 md:py-24"
     >
       <div className="mx-auto max-w-350">
         {/* Section heading */}
@@ -83,7 +83,7 @@ export default function Capabilities() {
           </div>
         </motion.div>
         {/* Services grid */}
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 mt-7 md:mt-16">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12 mt-7 md:mt-16">
           {/* Main green card */}
           <motion.article
             data-cursor="link"
@@ -91,7 +91,7 @@ export default function Capabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ ...cardTransition, delay: 0.05 }}
-            className="group relative min-h-96 md:min-h-105 overflow-hidden rounded-[28px] bg-green-500/80 p-5 md:p-8 text-right transition-transform duration-300 ease-out hover:-translate-y-1.5 lg:col-span-5 lg:min-h-125 lg:p-10"
+            className="group relative min-h-96 md:min-h-105 overflow-hidden rounded-[28px] bg-green-500/80 p-5 md:p-8 text-right transition-transform duration-300 ease-out hover:-translate-y-1.5 md:col-span-5 md:min-h-125 md:p-10"
           >
             <div className="flex items-center w-fit gap-x-1.5 rounded-full bg-black/95 px-2.5 py-2 text-[10px] font-bold tracking-wide text-white">
               HIGH PERFORMANCE
@@ -123,7 +123,7 @@ export default function Capabilities() {
             </div>
           </motion.article>
           {/* Middle column */}
-          <div className="flex w-full flex-row gap-3 sm:gap-4 md:flex-col lg:col-span-3">
+          <div className="flex w-full flex-row gap-3 sm:gap-4 md:flex-col md:col-span-3">
             {/* Small white card */}
             <motion.article
               data-cursor="link"
@@ -188,7 +188,7 @@ export default function Capabilities() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ ...cardTransition, delay: 0.2 }}
-            className="group relative min-h-96 md:min-h-105 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-[#2450ff] p-8 text-white lg:col-span-4 lg:min-h-125 lg:p-10"
+            className="group relative min-h-96 md:min-h-105 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-[#2450ff] p-8 text-white md:col-span-4 md:min-h-125 md:p-10"
           >
             <div className="flex items-start justify-between">
               <span className="text-[10px] font-bold tracking-[0.15em] text-white/55">
@@ -198,7 +198,7 @@ export default function Capabilities() {
                 AI
               </span>
             </div>
-            <div className="absolute inset-x-8 bottom-8 lg:inset-x-10 lg:bottom-10">
+            <div className="absolute inset-x-8 bottom-8 md:inset-x-10 md:bottom-10">
               <h3 className="whitespace-pre-line text-4xl font-black leading-11 md:leading-16 md:text-7xl">
                 {services.blue.title}
               </h3>
@@ -233,7 +233,7 @@ export default function Capabilities() {
                 ...cardTransition,
                 delay: 0.3 + index * 0.08,
               }}
-              className="group relative min-h-64 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-black p-8 text-white lg:col-span-6"
+              className="group relative min-h-64 transition-transform duration-300 ease-out hover:-translate-y-1.5 overflow-hidden rounded-[28px] bg-black p-8 text-white md:col-span-6"
             >
               <div className="flex h-full flex-col justify-between">
                 <div className="flex items-start justify-between">

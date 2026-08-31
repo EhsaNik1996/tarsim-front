@@ -1,11 +1,11 @@
-import AboutCTA from "./components/AboutCTA";
+import Footer from "../components/Footer";
 import AboutHero from "./components/AboutHero";
-import AboutChecks from "./components/AboutChecks"
-import AboutMarquee from "./components/AboutMarquee";
+import AboutChecks from "./components/AboutChecks";
 import LeadsSection from "./components/LeadsSection";
 import DeliveryModel from "./components/DeliveryModel";
 import AboutStatement from "./components/AboutStatement";
 import CheckpointsCard from "./components/CheckpointsCard";
+import SpecialistBoundary from "./components/SpecialistBoundary";
 
 export default function AboutPage() {
   return (
@@ -15,8 +15,6 @@ export default function AboutPage() {
     >
       <AboutHero />
 
-      <AboutMarquee />
-
       <DeliveryModel />
 
       <AboutChecks />
@@ -25,10 +23,11 @@ export default function AboutPage() {
 
       <LeadsSection />
 
+      <SpecialistBoundary />
+
       <AboutStatement />
 
-      <AboutCTA />
-
+      <Footer />
     </main>
   );
 }
