@@ -1,14 +1,5 @@
 const people = [
   {
-    category: "01 / رهبر محصول",
-    name: "علی جواهرزاده",
-    description:
-      "از نخستین جلسه کاری تا جهت‌دهی محصول، اجرا، بازبینی و انتشار در کنار پروژه می‌ماند.",
-    accent: "text-blue-600",
-    glow: "bg-[radial-gradient(ellipse_68%_72%_at_38%_42%,rgba(85,111,255,0.075),rgba(142,158,255,0.025)_46%,transparent_74%)]",
-    line: "bg-blue-500",
-  },
-  {
     category: "02 / رهبر فنی",
     name: "سید محسن جلالی",
     description:
@@ -16,6 +7,15 @@ const people = [
     accent: "text-orange-500",
     glow: "bg-[radial-gradient(ellipse_68%_72%_at_72%_42%,rgba(255,139,76,0.07),rgba(255,190,145,0.025)_46%,transparent_74%)]",
     line: "bg-orange-500",
+  },
+  {
+    category: "01 / رهبر محصول",
+    name: "علی جواهرزاده",
+    description:
+      "از نخستین جلسه کاری تا جهت‌دهی محصول، اجرا، بازبینی و انتشار در کنار پروژه می‌ماند.",
+    accent: "text-blue-600",
+    glow: "bg-[radial-gradient(ellipse_68%_72%_at_38%_42%,rgba(85,111,255,0.075),rgba(142,158,255,0.025)_46%,transparent_74%)]",
+    line: "bg-blue-500",
   },
 ] as const;
 
@@ -51,7 +51,7 @@ export default function LeadsSection() {
             <span className="text-[10px] font-extrabold tracking-[0.2em] text-emerald-600">
               تیم راهبر ترسیم
             </span>
-            <h2 className="mt-7 max-w-xl text-5xl leading-[0.98] font-black tracking-[-0.055em] md:text-7xl">
+            <h2 className="mt-7 max-w-xl text-4xl leading-[0.98] font-black tracking-[-0.055em] md:text-6xl">
               دو راهبر، نزدیک به هر تصمیم مهم.
             </h2>
           </div>
