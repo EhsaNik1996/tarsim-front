@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import CustomCursor from "./components/CustomCursor";
 import { Vazirmatn, Manrope } from "next/font/google";
+import Header from "./components/Header";
 
 
 const vazir = Vazirmatn({
@@ -36,12 +37,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="overflow-x-clip selection:bg-electric-blue selection:text-white">
+        
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="grid-line-v right-16"></div>
           <div className="grid-line-v left-16"></div>
           <div className="grid-line-v left-1/2"></div>
         </div>
-        <div className="relative z-10 max-w-full overflow-x-clip">{children}</div>
+        <div className="relative z-10 max-w-full overflow-x-clip">
+          <Header/>
+          {children}
+          </div>
         <CustomCursor />
       </body>
     </html>

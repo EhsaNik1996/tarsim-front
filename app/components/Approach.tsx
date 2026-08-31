@@ -35,8 +35,8 @@ export default function Approach() {
       className="w-full bg-linear-to-b from-white to-background-deep px-6 py-16 md:px-16 md:py-24"
       dir="rtl"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 max-w-360 place-self-center">
-        <div className="h-fit text-right lg:sticky lg:top-28">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-360 place-self-center">
+        <div className="h-fit text-right md:sticky md:top-28">
           <div className="font-mono text-electric-blue mb-4 text-sm tracking-widest">
             روش کار
           </div>
@@ -49,7 +49,7 @@ export default function Approach() {
           </p>
         </div>
 
-        <div className="space-y-8 lg:col-span-2 lg:space-y-10">
+        <div className="space-y-8 md:col-span-2 md:space-y-10">
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -57,9 +57,9 @@ export default function Approach() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group flex flex-row-reverse gap-6 border-b border-stroke-gray pb-8 text-right transition-colors duration-300 hover:border-electric-blue/35 md:gap-8"
+              className="group flex justify-end gap-6 border-b border-stroke-gray pb-8 text-right transition-colors duration-300 hover:border-electric-blue/35 md:gap-8"
             >
-              <span className="font-mono text-3xl font-extrabold text-electric-blue transition-transform duration-300 group-hover:-translate-y-1 md:text-4xl">
+              <span className="font-mono text-xl font-normal text-gray-400 transition-transform duration-300 group-hover:-translate-y-1">
                 {step.num}
               </span>
               <div className="space-y-3 flex-1">

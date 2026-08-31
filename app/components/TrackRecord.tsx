@@ -49,7 +49,7 @@ export default function TrackRecord() {
   return (
     <section className="mt-16 border-y border-white/10 bg-[#090a0a] py-16 md:py-24 text-white">
       <div
-        className="mx-auto grid max-w-360 grid-cols-1 gap-16 px-6 md:px-16 lg:grid-cols-12 lg:gap-20"
+        className="mx-auto grid max-w-360 grid-cols-1 gap-16 px-6 md:px-16 md:grid-cols-12 md:gap-20"
         dir="rtl"
       >
         <motion.div
@@ -57,7 +57,7 @@ export default function TrackRecord() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.35 }}
           transition={{ duration: 0.65, ease: "easeOut" }}
-          className="h-fit space-y-7 lg:col-span-5"
+          className="h-fit space-y-7 md:col-span-5"
         >
           <div>
             <h3 className="text-4xl md:text-7xl font-black leading-[0.98] tracking-[-0.055em]">
@@ -85,7 +85,7 @@ export default function TrackRecord() {
           </div>
         </motion.div>
 
-        <div className="lg:col-span-7" dir="ltr">
+        <div className="md:col-span-7" dir="ltr">
           {milestones.map((item, index) => {
             const isOpen = openIndex === index;
             const contentId = `milestone-content-${index}`;
@@ -136,18 +136,38 @@ export default function TrackRecord() {
                   {isOpen && (
                     <motion.div
                       id={contentId}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      initial={{ height: 0 }}
+                      animate={{ height: "auto" }}
+                      exit={{ height: 0 }}
+                      transition={{
+                        duration: 0.4,
+                        ease: [0.22, 1, 0.36, 1],
+                      }}
                       className="overflow-hidden"
                     >
-                      <p
+                      <motion.p
+                        initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+                        animate={{
+                          opacity: 1,
+                          y: 0,
+                          filter: "blur(0px)",
+                          transition: {
+                            duration: 0.3,
+                            delay: 0.12,
+                            ease: [0.22, 1, 0.36, 1],
+                          },
+                        }}
+                        exit={{
+                          opacity: 0,
+                          y: -4,
+                          filter: "blur(3px)",
+                          transition: { duration: 0.18, ease: "easeOut" },
+                        }}
                         className="pb-7 pl-18.5 text-right text-[13px] leading-7 text-zinc-400 md:pl-20.25"
                         dir="rtl"
                       >
                         {item.description}
-                      </p>
+                      </motion.p>
                     </motion.div>
                   )}
                 </AnimatePresence>

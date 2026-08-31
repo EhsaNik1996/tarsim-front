@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AtSign, Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
 import {
   Sheet,
   SheetContent,
@@ -15,72 +16,110 @@ import {
 } from "@/app/components/ui/sheet";
 
 const navItems = [
-  { label: "خدمات", id: "services" },
-  { label: "نمونه کارها", id: "projects" },
-  { label: "درباره ما", id: "about" },
-  { label: "سوالات متداول", id: "faq" },
+  { label: "خدمات", id: "services", href: "/#services" },
+  { label: "نمونه کارها", id: "projects", href: "/#projects" },
+  { label: "درباره ما", id: "about", href: "/about", route: true },
+  { label: "سوالات متداول", id: "faq", href: "/#faq" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("");
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const sections = navItems
+      .filter((item) => !item.route)
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => section !== null);
 
-    const updateActiveSection = () => {
+    let lastScrollY = window.scrollY;
+
+    const updateHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 10) {
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY) {
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+
+      /* Active section */
       const probeLine = Math.min(180, window.innerHeight * 0.3);
+
       const active = sections.find((section) => {
         const rect = section.getBoundingClientRect();
+
         return rect.top <= probeLine && rect.bottom > probeLine;
       });
 
       setActiveSection(active?.id ?? "");
     };
 
-    updateActiveSection();
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
+    updateHeader();
+
+    window.addEventListener("scroll", updateHeader, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateHeader);
 
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("scroll", updateHeader);
+      window.removeEventListener("resize", updateHeader);
     };
-  }, []);
+  }, [pathname]);
 
   return (
-    <nav
-      className="fixed top-0 w-full z-50 glass-nav bg-white/80 backdrop-blur-md border-b border-stroke-gray"
+    <motion.nav
       dir="rtl"
+      initial={false}
+      animate={{
+        y: isVisible ? 0 : "-100%",
+        opacity: isVisible ? 1 : 0,
+      }}
+      transition={{
+        duration: 0.25,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="glass-nav fixed top-0 z-50 w-full border-b border-stroke-gray bg-white/80 backdrop-blur-md"
     >
-      <div className="flex flex-row justify-between items-center w-full px-6 xl:px-16 py-3 mx-auto">
+      <div className="relative mx-auto flex w-full items-center justify-between px-6 py-3 xl:px-16">
         <Logo />
 
-        <div className="hidden md:flex items-center gap-8">
+        {/* Navigation */}
+        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {navItems.map((item) => {
-            const isActive = activeSection === item.id;
+            const isActive = item.route
+              ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+              : pathname === "/" && activeSection === item.id;
 
             return (
-              <Link
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setActiveSection(item.id)}
-                aria-current={isActive ? "location" : undefined}
-                className={`border-b-2 pb-1 text-sm transition-colors duration-300 ${
-                  isActive
-                    ? "border-electric-blue font-bold text-electric-blue"
-                    : "border-transparent text-on-surface-variant hover:text-electric-blue"
-                }`}
-              >
-                {item.label}
-              </Link>
+              <li key={item.id}>
+                <Link
+                  href={item.href}
+                  onClick={() => !item.route && setActiveSection(item.id)}
+                  aria-current={isActive ? "location" : undefined}
+                  className={`block border-b-2 pb-1 text-sm transition-colors duration-300 ${
+                    isActive
+                      ? "border-electric-blue font-bold text-electric-blue"
+                      : "border-transparent text-on-surface-variant hover:text-electric-blue"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
-        {/* بخش چپ: دکمه مشاوره (دسکتاپ) و منوی همبرگری موبایل */}
+        {/* Actions */}
         <div className="flex items-center gap-4">
+          {/* Socials */}
           <div
             className="hidden items-center gap-2 md:flex"
             aria-label="شبکه‌های اجتماعی"
@@ -89,7 +128,7 @@ export default function Header() {
               type="button"
               aria-label="اینستاگرام ترسیم"
               data-cursor="link"
-              className="grid size-9 place-items-center border border-black/10 bg-white text-black/45 hover:text-black transition-all duration-300 hover:border-black/80 rounded-full"
+              className="grid size-9 place-items-center rounded-full border border-black/10 bg-white text-black/45 transition-all duration-300 hover:border-black/80 hover:text-black"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -117,49 +156,53 @@ export default function Header() {
               type="button"
               aria-label="تردز ترسیم"
               data-cursor="link"
-              className="grid size-9 place-items-center border border-black/10 bg-white text-black/45 hover:text-black transition-all duration-300 hover:border-black/80 rounded-full"
+              className="grid size-9 place-items-center rounded-full border border-black/10 bg-white text-black/45 transition-all duration-300 hover:border-black/80 hover:text-black"
             >
               <AtSign className="size-4" strokeWidth={1.8} />
             </button>
           </div>
-          {/* دکمه دسکتاپ */}
+
+          {/* Desktop CTA */}
           <motion.a
             href="#contact"
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.02 }}
-            className="hidden md:block bg-electric-blue text-white text-sm font-bold hover:bg-opacity-90 transition-all px-6 py-2.5 rounded-full"
+            className="hidden rounded-full bg-electric-blue px-6 py-2.5 text-sm font-bold text-white transition-all hover:bg-opacity-90 md:block"
           >
             درخواست مشاوره
           </motion.a>
 
+          {/* Mobile menu */}
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <button className="p-2 text-on-surface hover:bg-slate-100 rounded-xl transition-colors">
+                <button className="rounded-xl p-2 text-on-surface transition-colors hover:bg-slate-100">
                   <Menu className="size-6 text-on-surface" />
                 </button>
               </SheetTrigger>
 
               <SheetContent
                 side="left"
-                className="w-75 px-5 bg-white/80 sm:w-100"
+                className="w-75 bg-white/80 px-5 sm:w-100"
                 dir="rtl"
               >
-                <SheetHeader className="text-right pb-6 border-b border-stroke-gray">
+                <SheetHeader className="border-b border-stroke-gray pb-6 text-right">
                   <SheetTitle className="text-right">
                     <Logo />
                   </SheetTitle>
                 </SheetHeader>
 
-                <div className="flex flex-col gap-5 mt-8 text-right">
+                <div className="mt-8 flex flex-col gap-5 text-right">
                   {navItems.map((item) => {
-                    const isActive = activeSection === item.id;
+                    const isActive = item.route
+                      ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+                      : pathname === "/" && activeSection === item.id;
 
                     return (
                       <SheetClose asChild key={item.id}>
                         <Link
-                          href={`#${item.id}`}
-                          onClick={() => setActiveSection(item.id)}
+                          href={item.href}
+                          onClick={() => !item.route && setActiveSection(item.id)}
                           aria-current={isActive ? "location" : undefined}
                           className={`rounded-l-lg border-r-4 py-2 pr-3 text-base transition-all ${
                             isActive
@@ -173,11 +216,11 @@ export default function Header() {
                     );
                   })}
 
-                  <div className="mt-8 pt-6 border-t border-stroke-gray">
+                  <div className="mt-8 border-t border-stroke-gray pt-6">
                     <SheetClose asChild>
                       <Link
                         href="#contact"
-                        className="block w-full bg-electric-blue text-center text-white py-3 rounded-xl text-sm font-bold shadow-md shadow-electric-blue/10"
+                        className="block w-full rounded-xl bg-electric-blue py-3 text-center text-sm font-bold text-white shadow-md shadow-electric-blue/10"
                       >
                         درخواست مشاوره
                       </Link>
@@ -189,6 +232,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }

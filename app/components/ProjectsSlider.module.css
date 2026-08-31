@@ -3,14 +3,20 @@
 }
 
 .card {
-  border-color: var(--project-border);
+  border-color: color-mix(in srgb, var(--project-accent) 10%, #e4e4e7);
   background:
     radial-gradient(circle at 100% 0%, var(--project-tint), transparent 57%),
     linear-gradient(145deg, color-mix(in srgb, var(--project-tint) 44%, white) 0%, white 66%);
   box-shadow: 0 12px 30px rgba(24, 24, 27, 0.025);
+  transition:
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms ease,
+    box-shadow 180ms ease;
 }
 
-.card:hover {
+.card:hover,
+.card:active,
+.cardActive {
   border-color: var(--project-accent);
   box-shadow:
     0 24px 44px -30px color-mix(in srgb, var(--project-accent) 32%, transparent),
@@ -32,12 +38,28 @@
   color: transparent;
   -webkit-text-stroke: 1px color-mix(in srgb, var(--project-accent) 25%, transparent);
   opacity: 0.8;
+  transition:
+    opacity 180ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    -webkit-text-stroke-color 180ms ease;
 }
 
-.card:hover .number {
+.detailsCta {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover .number,
+.card:active .number,
+.cardActive .number {
   -webkit-text-stroke-color: color-mix(in srgb, var(--project-accent) 43%, transparent);
   opacity: 1;
   transform: translateY(-2px);
+}
+
+.card:hover .detailsCta,
+.card:active .detailsCta,
+.cardActive .detailsCta {
+  transform: scale(1.05);
 }
 
 .navButton:hover {
@@ -46,18 +68,22 @@
   transform: translateY(-1px);
 }
 
-.pagination :global(.swiper-pagination-bullet) {
-  width: 5px !important;
-  height: 5px !important;
-  border-radius: 9999px !important;
-  background: #dedee3 !important;
-  opacity: 1 !important;
-  transition: all 0.4s ease !important;
+.bullet {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 9999px;
+  background: #dedee3;
+  cursor: pointer;
+  transition:
+    width 0.4s ease,
+    background 0.4s ease;
 }
 
-.pagination :global(.swiper-pagination-bullet-active) {
-  width: 32px !important;
-  background: #7c3aed !important;
+.bulletActive {
+  width: 32px;
+  background: var(--pagination-accent);
 }
 
 .scrollbar::-webkit-scrollbar {
