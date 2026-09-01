@@ -1,3 +1,6 @@
+import BlurText from "../../components/BlurText";
+import BlurReveal from "./BlurReveal";
+
 const people = [
   {
     category: "02 / رهبر فنی",
@@ -47,19 +50,19 @@ export default function LeadsSection() {
     <section className="bg-[#fbfbfa] px-3.5 py-4 text-black md:px-8 md:pt-28 md:pb-0">
       <div className="mx-auto w-full max-w-336">
         <div className="hidden gap-12 border-b border-[#d9d9d6] pb-16 md:grid md:grid-cols-2 md:items-end md:gap-24 md:pb-20">
-          <div>
+          <BlurReveal>
             <span className="text-[10px] font-extrabold tracking-[0.2em] text-emerald-600">
-              تیم راهبر ترسیم
+              <BlurText text="تیم راهبر ترسیم" stagger={0.13} />
             </span>
             <h2 className="mt-7 max-w-xl text-4xl leading-[0.98] font-black tracking-[-0.055em] md:text-6xl">
-              دو راهبر، نزدیک به هر تصمیم مهم.
+              <BlurText text="دو راهبر، نزدیک به هر تصمیم مهم." delay={0.12} stagger={0.13} />
             </h2>
-          </div>
+          </BlurReveal>
+          <BlurReveal delay={0.12}>
           <p className="max-w-lg text-sm leading-7 text-black/55 md:mb-1">
-            راهبران محصول و فنی مستقیماً کار را پیش می‌برند. همان افرادی که
-            مسئله را صورت‌بندی می‌کنند، هنگام تغییر محدوده و شکل‌گیری تصمیم‌های
-            فنی تا بازبینی نتیجه برای انتشار کنار پروژه باقی می‌مانند.
+            <BlurText text="راهبران محصول و فنی مستقیماً کار را پیش می‌برند. همان افرادی که مسئله را صورت‌بندی می‌کنند، هنگام تغییر محدوده و شکل‌گیری تصمیم‌های فنی تا بازبینی نتیجه برای انتشار کنار پروژه باقی می‌مانند." delay={0.2} stagger={0.09} />
           </p>
+          </BlurReveal>
         </div>
 
         <div
@@ -67,11 +70,11 @@ export default function LeadsSection() {
           className="relative mt-4 grid grid-cols-2 border-y border-[#d9d9d6] bg-white pb-28 md:mt-8 md:border-t-0"
         >
           {people.map((person) => (
-            <article
+            <BlurReveal
               key={person.name}
-              dir="rtl"
               className="relative flex min-h-72 flex-col overflow-hidden px-5 py-10 md:min-h-92 md:px-18 md:py-18"
             >
+              <article dir="rtl" className="contents">
               <div
                 aria-hidden="true"
                 className={`pointer-events-none absolute inset-0 ${person.glow}`}
@@ -80,16 +83,17 @@ export default function LeadsSection() {
                 <span
                   className={`max-w-20 text-[9px] leading-3 font-extrabold tracking-[0.14em] md:max-w-none md:text-[10px] md:tracking-[0.16em] ${person.accent}`}
                 >
-                  {person.category}
+                  <BlurText text={person.category} stagger={0.13} />
                 </span>
                 <h3 className="mt-4 text-2xl leading-none font-black tracking-[-0.065em] sm:text-4xl md:mt-5 md:text-7xl">
-                  {person.name}
+                  <BlurText text={person.name} stagger={0.14} />
                 </h3>
                 <p className="mt-5 max-w-md text-[10px] leading-[1.65] text-black/50 sm:text-xs md:mt-7 md:text-sm md:leading-7">
-                  {person.description}
+                  <BlurText text={person.description} delay={0.25} stagger={0.1} />
                 </p>
               </div>
-            </article>
+              </article>
+            </BlurReveal>
           ))}
 
           <div
@@ -125,7 +129,7 @@ export default function LeadsSection() {
           <div className="absolute right-0 bottom-0 left-0 flex h-14 flex-col items-center justify-end pb-1 md:hidden">
             <span className="absolute top-0 h-5 w-px bg-emerald-500" />
             <span className="text-[7px] font-extrabold text-emerald-700">
-              یک مسیر کاری پاسخ‌گو
+              <BlurText text="یک مسیر کاری پاسخ‌گو" stagger={0.12} />
             </span>
             <span className="mt-1 h-3 w-px bg-emerald-500" />
           </div>
@@ -134,40 +138,38 @@ export default function LeadsSection() {
             <div className="flex flex-col items-center">
               <span className="h-9 w-px bg-emerald-500" />
               <span className="mt-2 text-[8px] font-extrabold tracking-[0.18em] text-emerald-700">
-                یک مسیر کاری پاسخ‌گو
+                <BlurText text="یک مسیر کاری پاسخ‌گو" stagger={0.12} />
               </span>
             </div>
           </div>
         </div>
 
         <div className="grid min-h-144 border-b border-[#d9d9d6] bg-[#fdfdfc] md:grid-cols-[0.72fr_1.28fr]">
-          <div className="relative py-14 md:py-20 md:pl-16">
+          <BlurReveal className="relative py-14 md:py-20 md:pl-16">
             <span className="text-[10px] font-extrabold tracking-[0.18em] text-emerald-700">
-              مسئولیت‌پذیری چگونه کار می‌کند
+              <BlurText text="مسئولیت‌پذیری چگونه کار می‌کند" stagger={0.12} />
             </span>
             <h3 className="mt-7 max-w-lg text-2xl leading-8 font-black tracking-tighter sm:leading-tight">
-              هر دو راهبر آن‌قدر نزدیک می‌مانند که فرض‌ها را به چالش بکشند،
-              تصمیم‌های یکدیگر را بازبینی کنند و مشتری با افراد مسئول سیستم در
-              ارتباط باشد؛ نه با یک لایه جداگانه تحویل.
+              <BlurText text="هر دو راهبر آن‌قدر نزدیک می‌مانند که فرض‌ها را به چالش بکشند، تصمیم‌های یکدیگر را بازبینی کنند و مشتری با افراد مسئول سیستم در ارتباط باشد؛ نه با یک لایه جداگانه تحویل." delay={0.16} stagger={0.09} />
             </h3>
-          </div>
+          </BlurReveal>
 
           <div className="mt-0 flex flex-col border-t border-[#d9d9d6] md:mt-20 md:border-t-0 md:pr-10">
             {principles.map((principle) => (
-              <div
+              <BlurReveal
                 key={principle.title}
                 className="flex flex-1 gap-6 border-t border-[#d9d9d6] py-8 last:border-b-0 md:items-start md:py-9"
               >
                 <span className="mt-2 size-2 shrink-0 rounded-full bg-emerald-500 ring-4 ring-emerald-50" />
                 <div>
                   <h4 className="text-base font-extrabold md:text-lg">
-                    {principle.title}
+                    <BlurText text={principle.title} stagger={0.12} />
                   </h4>
                   <p className="mt-2 max-w-3xl text-xs leading-6 text-black/50 md:text-sm md:leading-7">
-                    {principle.description}
+                    <BlurText text={principle.description} delay={0.2} stagger={0.09} />
                   </p>
                 </div>
-              </div>
+              </BlurReveal>
             ))}
           </div>
         </div>
