@@ -1,4 +1,5 @@
 import { ArrowLeft } from "lucide-react";
+import BlurReveal from "./BlurReveal";
 
 const checks = [
   {
@@ -40,30 +41,33 @@ export default function AboutChecks() {
     <section className="w-full bg-white" dir="rtl">
       <div className="mx-auto w-full max-w-360 px-6 py-20 md:px-16 md:py-24">
         <div className="grid grid-cols-1 items-end gap-10 pb-10 md:grid-cols-2 md:gap-24">
-          <div>
+          <BlurReveal>
             <span className="text-xs font-black tracking-widest text-emerald-600">
               اصول همکاری
             </span>
 
-            <h2 className="mt-5 max-w-2xl text-5xl leading-none font-black tracking-tighter sm:text-6xl md:text-7xl">
+            <h2 className="mt-5 max-w-2xl text-4xl leading-none font-black tracking-tighter md:text-7xl">
               چهار اصل که
               <br />
               در طول مسیر
               <br />
               بررسی می‌کنیم.
             </h2>
-          </div>
+          </BlurReveal>
 
-          <p className="max-w-xl text-sm leading-7 font-medium text-zinc-500 md:justify-self-end md:text-base">
+          <BlurReveal className="md:justify-self-end" delay={0.12}>
+          <p className="max-w-xl text-sm leading-7 font-medium text-zinc-500 md:text-base">
             این اصول تصمیم‌های فنی روزمره ما را شکل می‌دهند؛ نه ارزش‌هایی که
             بعد از پایان تحویل، فقط به یک اسلاید اضافه شوند.
           </p>
+          </BlurReveal>
         </div>
 
         <div className="border-t border-black">
           {checks.map((item) => (
-            <div
+            <BlurReveal
               key={item.number}
+              delay={Number(item.number) * 0.04}
               className={`group flex min-h-28 flex-wrap items-center gap-5 border-b border-zinc-300 px-0 py-6 transition-colors duration-300 md:min-h-32 md:px-4 md:flex-nowrap ${item.hover}`}
             >
               <span className={`w-12 shrink-0 text-xs font-black ${item.color}`}>
@@ -82,7 +86,7 @@ export default function AboutChecks() {
                 aria-hidden="true"
                 className={`size-5 shrink-0 transition-transform duration-300 group-hover:-translate-x-1 ${item.color}`}
               />
-            </div>
+            </BlurReveal>
           ))}
         </div>
       </div>

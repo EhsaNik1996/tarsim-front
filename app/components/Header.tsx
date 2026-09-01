@@ -86,9 +86,9 @@ export default function Header() {
         duration: 0.25,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="glass-nav fixed top-0 z-50 w-full border-b border-stroke-gray bg-white/80 backdrop-blur-md"
+      className="glass-nav fixed top-0 z-50 w-full border-b border-stroke-gray bg-white/95 backdrop-blur-md"
     >
-      <div className="relative mx-auto flex w-full items-center justify-between px-6 py-3 xl:px-16">
+      <div className="relative mx-auto flex h-17 w-full items-center justify-between px-4 md:h-auto md:px-16 md:py-3">
         <Logo />
 
         {/* Navigation */}
@@ -176,8 +176,11 @@ export default function Header() {
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <button className="rounded-xl p-2 text-on-surface transition-colors hover:bg-slate-100">
-                  <Menu className="size-6 text-on-surface" />
+                <button
+                  aria-label="باز کردن منو"
+                  className="grid size-11 place-items-center rounded-full border border-black/10 bg-white text-on-surface shadow-sm transition-colors hover:bg-slate-50"
+                >
+                  <Menu className="size-6 text-on-surface" strokeWidth={2} />
                 </button>
               </SheetTrigger>
 

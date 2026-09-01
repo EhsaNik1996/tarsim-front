@@ -1,8 +1,8 @@
 ﻿"use client";
 
+import BlurText from "./BlurText";
 import { ArrowLeft } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
-import BlurText from "./BlurText";
 
 export default function Hero() {
   const reduceMotion = useReducedMotion();

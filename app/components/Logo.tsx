@@ -4,8 +4,8 @@ import LogoNoneBg from "@/public/Logo-noneBg.png";
 
 export default function Logo() {
     return (
-        <Link href="/" className="flex flex-col items-center gap-1">
-            <div className="size-20 overflow-hidden relative">
+        <Link href="/" className="flex flex-col items-center gap-1 pb-2">
+            <div className="relative size-16 overflow-hidden md:size-20">
                 <Image
                     alt="لوگوی ترسیم"
                     className="object-cover"
@@ -13,7 +13,7 @@ export default function Logo() {
                     fill
                 />
             </div>
-            <h2 className="text-[10px] tracking-widest text-on-surface uppercase font-bold -mt-7 z-10">
+            <h2 className="z-10 -mt-6 text-[8px] font-bold tracking-widest text-on-surface uppercase md:-mt-7 md:text-[10px]">
                 Tarsim
             </h2>
         </Link>
