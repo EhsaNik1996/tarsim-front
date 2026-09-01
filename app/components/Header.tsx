@@ -16,7 +16,7 @@ import {
 } from "@/app/components/ui/sheet";
 
 const navItems = [
-  { label: "خدمات", id: "services", href: "/#services" },
+  { label: "خدمات", id: "services", href: "/services", route: true },
   { label: "نمونه کارها", id: "projects", href: "/#projects" },
   { label: "درباره ما", id: "about", href: "/about", route: true },
   { label: "سوالات متداول", id: "faq", href: "/#faq" },
@@ -25,7 +25,6 @@ const navItems = [
 export default function Header() {
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("");
-  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const sections = navItems
@@ -33,21 +32,7 @@ export default function Header() {
       .map((item) => document.getElementById(item.id))
       .filter((section): section is HTMLElement => section !== null);
 
-    let lastScrollY = window.scrollY;
-
     const updateHeader = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 10) {
-        setIsVisible(true);
-      } else if (currentScrollY > lastScrollY) {
-        setIsVisible(false);
-      } else if (currentScrollY < lastScrollY) {
-        setIsVisible(true);
-      }
-
-      lastScrollY = currentScrollY;
-
       /* Active section */
       const probeLine = Math.min(180, window.innerHeight * 0.3);
 
@@ -77,18 +62,9 @@ export default function Header() {
   return (
     <motion.nav
       dir="rtl"
-      initial={false}
-      animate={{
-        y: isVisible ? 0 : "-100%",
-        opacity: isVisible ? 1 : 0,
-      }}
-      transition={{
-        duration: 0.25,
-        ease: [0.22, 1, 0.36, 1],
-      }}
       className="glass-nav fixed top-0 z-50 w-full border-b border-stroke-gray bg-white/95 backdrop-blur-md"
     >
-      <div className="relative mx-auto flex h-17 w-full items-center justify-between px-4 md:h-auto md:px-16 md:py-3">
+      <div className="relative mx-auto flex h-17 w-full items-center justify-between px-4 md:h-auto md:px-16">
         <Logo />
 
         {/* Navigation */}
