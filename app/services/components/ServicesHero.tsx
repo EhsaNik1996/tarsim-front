@@ -130,7 +130,7 @@ function DeliveryDiagram() {
         className="absolute inset-y-0 right-[-28vw] left-[12%] z-0 opacity-55 bg-[radial-gradient(rgba(82,93,120,0.12)_0.72px,transparent_0.72px)] bg-size-[18px_18px] mask-[linear-gradient(to_left,black_0%,black_58%,rgba(0,0,0,0.72)_76%,transparent_100%)]"
       />
       <div className="flex flex-col md:flex-row-reverse justify-between">
-        <div className="flex items-center gap-3 text-[9px] font-black tracking-[0.22em] text-zinc-500 md:left-10">
+        <div className="flex items-center gap-3 text-[10px] font-black tracking-[0.2em] text-zinc-500 md:left-10">
           <i className="size-2 rounded-full bg-emerald-500" />
           موتور تحویل
         </div>
@@ -164,6 +164,15 @@ function DeliveryDiagram() {
           <clipPath id="core-clip">
             <polygon points="418,215 510,215 542,306 510,397 418,397 386,306" />
           </clipPath>
+          <linearGradient id="output-line-gradient" x1="542" y1="306" x2="745" y2="306" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stopColor="#9be9c3" stopOpacity="0.45" />
+            <stop offset="0.45" stopColor="#5edc9d" stopOpacity="0.72" />
+            <stop offset="1" stopColor="#16c76a" />
+          </linearGradient>
+          <linearGradient id="output-capsule-gradient" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#9bf0c7" />
+            <stop offset="1" stopColor="#20df7d" />
+          </linearGradient>
         </defs>
 
         {inputs.map((input, index) => (
@@ -209,9 +218,7 @@ function DeliveryDiagram() {
               y={137 + index * 82}
               textAnchor="start"
               direction="rtl"
-              fill="#71717a"
-              fontSize="12"
-              fontWeight="800"
+              className="fill-zinc-500 text-base font-extrabold"
             >
               {input.label}
             </text>
@@ -256,7 +263,7 @@ function DeliveryDiagram() {
                 }
                 transition={{
                   duration: 1.35,
-                  delay: 2.05 + index * 0.12,
+                  delay: 2.65 + index * 0.12,
                   repeat: Infinity,
                   repeatDelay: 2.05,
                   ease: "easeInOut",
@@ -268,10 +275,7 @@ function DeliveryDiagram() {
             x="464"
             y="272"
             textAnchor="middle"
-            fill="#8b918d"
-            fontSize="12"
-            fontWeight="800"
-            letterSpacing="2"
+            className="fill-zinc-400 text-[13px] font-extrabold tracking-widest"
           >
             هم‌راستا
           </text>
@@ -279,10 +283,7 @@ function DeliveryDiagram() {
             x="464"
             y="311"
             textAnchor="middle"
-            fill="white"
-            fontSize="14"
-            fontWeight="900"
-            letterSpacing="2"
+            className="fill-white text-[16px] font-black tracking-widest"
           >
             ساخت
           </text>
@@ -290,42 +291,37 @@ function DeliveryDiagram() {
             x="464"
             y="347"
             textAnchor="middle"
-            fill="#8b918d"
-            fontSize="12"
-            fontWeight="800"
-            letterSpacing="2"
+            className="fill-zinc-400 text-[13px] font-extrabold tracking-widest"
           >
             اعتبارسنجی
           </text>
         </motion.g>
 
         <path
-          d="M542 306 H708"
-          fill="none"
-          stroke="#67dca5"
-          strokeOpacity="0.72"
-          strokeWidth="4"
-          strokeLinecap="round"
+          d="M542 306 H745"
+          stroke="url(#output-line-gradient)"
+          className="fill-none [stroke-linecap:round] stroke-4"
         />
         {[0, 1, 2].map((index) => (
           <motion.rect
             key={index}
-            y={304 - index * 0.25}
-            width="18"
+            y={304 - index * 0.12}
+            width="20"
             height="4"
             rx="2"
-            fill="#38e68b"
+            fill="url(#output-capsule-gradient)"
+            className="drop-shadow-[0_0_2px_rgba(39,240,142,0.35)]"
             initial={
               reduceMotion ? { x: 670, opacity: 0.8 } : { x: 542, opacity: 0 }
             }
             animate={
               reduceMotion
                 ? undefined
-                : { x: [542, 550, 676, 688], opacity: [0, 0.8, 0.8, 0] }
+                : { x: [542, 550, 709, 723], opacity: [0, 1, 1, 0] }
             }
             transition={{
               duration: 1.1,
-              delay: 2.3 + index * 0.15,
+              delay: 3.15 + index * 0.15,
               repeat: Infinity,
               repeatDelay: 2.3,
               times: [0, 0.12, 0.82, 1],
@@ -334,16 +330,13 @@ function DeliveryDiagram() {
           />
         ))}
         <motion.path
-          d="M690 290 L708 306 L690 322"
-          fill="none"
-          stroke="#16c76a"
-          strokeWidth="4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          animate={reduceMotion ? undefined : { x: [0, 0, 5, 0] }}
+          d="M727 290 L745 306 L727 322"
+          className="fill-none stroke-[#16c76a] [stroke-linecap:round] [stroke-linejoin:round] stroke-4"
+          animate={reduceMotion ? undefined : { x: [0, 0, 7, 0] }}
           transition={{
             duration: 3.4,
-            times: [0, 0.72, 0.86, 1],
+            delay: 0.7,
+            times: [0, 0.91, 0.97, 1],
             repeat: Infinity,
             ease: "easeOut",
           }}
@@ -352,14 +345,11 @@ function DeliveryDiagram() {
           x="618"
           y="268"
           textAnchor="middle"
-          fill="#17231c"
-          fontSize="13"
-          fontWeight="900"
-          letterSpacing="1.5"
+          className="fill-zinc-900 text-lg font-black tracking-wide"
         >
           نرم‌افزار کاربردی
         </text>
-        <text x="618" y="350" textAnchor="middle" fill="#71717a" fontSize="10">
+        <text x="618" y="350" textAnchor="middle" className="fill-zinc-500 text-[12px] font-medium">
           یک مسیر پاسخ‌گو
         </text>
 
@@ -368,9 +358,7 @@ function DeliveryDiagram() {
           x="110"
           y="550"
           textAnchor="middle"
-          fill="#8b9098"
-          fontSize="9"
-          fontWeight="800"
+          className="fill-zinc-500 text-xs font-bold"
         >
           ورودی‌های پراکنده
         </text>
@@ -378,9 +366,7 @@ function DeliveryDiagram() {
           x="650"
           y="550"
           textAnchor="middle"
-          fill="#8b9098"
-          fontSize="9"
-          fontWeight="800"
+          className="fill-zinc-500 text-xs font-bold"
         >
           سیستم روشن و قابل استفاده
         </text>
