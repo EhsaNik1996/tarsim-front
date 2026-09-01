@@ -3,6 +3,7 @@
 import type { ElementType } from "react";
 import { Code2, Compass, PenLine, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import BlurReveal from "./BlurReveal";
 
 const decisions = [
   {
@@ -49,16 +50,16 @@ const backgroundRows = [
 
 export default function AboutHero() {
   return (
-    <section className="relative isolate flex min-h-svh w-full flex-col justify-end overflow-hidden border-b border-black/10 bg-[#fbfcff] text-black">
+    <section className="relative isolate flex min-h-svh w-full flex-col justify-end overflow-hidden border-b border-black/10 bg-[#f8f9ff] text-black">
       <BackgroundTypography />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_58%_72%_at_88%_57%,rgba(105,116,255,0.13)_0%,rgba(149,131,255,0.075)_38%,rgba(210,218,255,0.035)_62%,transparent_82%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_90%_58%_at_92%_100%,rgba(155,143,255,0.20)_0%,rgba(192,196,255,0.12)_48%,transparent_78%),linear-gradient(180deg,#f1f4ff_0%,#fbfcff_46%,#f7f5ff_100%)] md:bg-[radial-gradient(ellipse_58%_72%_at_88%_57%,rgba(105,116,255,0.13)_0%,rgba(149,131,255,0.075)_38%,rgba(210,218,255,0.035)_62%,transparent_82%)]"
       />
 
       <div
         dir="ltr"
-        className="relative z-10 mx-auto flex flex-col md:flex-row w-full max-w-360 items-center justify-between px-6 py-18 md:min-h-180 md:px-16 md:py-0"
+        className="relative z-10 mx-auto flex w-full max-w-360 flex-col items-stretch justify-between px-5 pb-5 mt-32 md:mt-16 md:min-h-180 md:flex-row md:items-center md:px-16 md:py-0"
       >
         <Process />
         <HeroIntro />
@@ -73,7 +74,7 @@ function BackgroundTypography() {
   return (
     <div
       aria-hidden="true"
-      className="pointer-events-none absolute inset-x-0 top-14 -rotate-4 -z-20 flex h-64 flex-col overflow-hidden opacity-75 select-none"
+      className="pointer-events-none absolute inset-x-0 top-20 z-0 flex h-64 -rotate-4 flex-col overflow-hidden opacity-90 select-none md:top-14 md:opacity-75"
     >
       <BackgroundRow items={backgroundRows[0]} duration={40} />
       <BackgroundRow items={backgroundRows[1]} duration={25} />
@@ -88,7 +89,7 @@ function BackgroundRow({
   items: readonly string[];
   duration: number;
 }) {
-  const repeatedItems = [...items, ...items];
+  const rowText = items.join("   ");
 
   return (
     <div dir="ltr" className="flex h-24 md:h-36 shrink-0 items-center overflow-hidden">
@@ -102,17 +103,11 @@ function BackgroundRow({
           <div
             dir="rtl"
             key={group}
-            className="flex shrink-0 items-center gap-12 pl-12"
+            className="flex shrink-0 items-center pl-12"
           >
-            {repeatedItems.map((item, index) => (
-              <span
-                key={`${group}-${item}-${index}`}
-                className="flex shrink-0 items-center gap-12 whitespace-nowrap text-7xl leading-none font-semibold tracking-tighter text-[#fbfcff]/90 [-webkit-text-stroke:0.95px_rgba(139,157,255,0.32)] [paint-order:stroke_fill] sm:text-8xl md:text-9xl"
-              >
-                {item}
-                <i className="size-3 md:size-6 shrink-0 rounded-full border-[1.25px] border-indigo-200/45 bg-transparent" />
-              </span>
-            ))}
+            <span className="shrink-0 whitespace-pre text-7xl leading-none font-semibold tracking-tighter text-[#f3f5ff] [-webkit-text-stroke:1px_rgba(139,157,255,0.28)] [paint-order:stroke_fill] sm:text-8xl md:text-9xl md:text-[#fbfcff]/90 md:[-webkit-text-stroke:0.95px_rgba(139,157,255,0.32)]">
+              {rowText}&nbsp;&nbsp;&nbsp;{rowText}&nbsp;&nbsp;&nbsp;
+            </span>
           </div>
         ))}
       </motion.div>
@@ -122,7 +117,8 @@ function BackgroundRow({
 
 function HeroIntro() {
   return (
-    <div dir="rtl" className="basis-1/2 order-1 min-w-0 text-right md:order-2">
+    <BlurReveal immediate className="order-1 min-w-0 basis-1/2 text-right md:order-2">
+    <div dir="rtl">
       <div className="flex items-center gap-3 text-xs leading-none font-extrabold tracking-wide">
         <span
           aria-hidden="true"
@@ -131,7 +127,7 @@ function HeroIntro() {
         <span>مهندسی محصول با راهبری ارشد</span>
       </div>
 
-      <h1 className="mt-6 mr-auto flex max-w-2xl flex-col text-5xl md:text-7xl leading-12 md:leading-19 font-black tracking-tighter">
+      <h1 className="mt-6 mr-auto flex max-w-3xl flex-col text-4xl leading-10 font-black tracking-[-0.055em] md:text-7xl md:leading-19">
         <span className="block whitespace-nowrap">آدم‌هایی که</span>
         <em className="text-electric-blue font-semibold">
           تصمیم‌ها را
@@ -141,17 +137,19 @@ function HeroIntro() {
         <span className="block whitespace-nowrap">می‌سازند.</span>
       </h1>
 
-      <p className="my-8 text-sm font-medium text-black/50 sm:text-base">
+      <p className="mt-7 mb-9 max-w-80 text-sm leading-7 font-medium text-black/50 sm:text-base md:my-8 md:max-w-none">
         مالکیت مستقیم فنی از مرحله کشف و شناخت تا تحویل نهایی محصول.
       </p>
     </div>
+    </BlurReveal>
   );
 }
 
 function Process() {
   return (
-    <div dir="rtl" className="basis-1/2 order-2 w-full text-right md:order-1">
-      <div className="flex min-h-8 items-start justify-between gap-4 border-b border-black/15 sm:gap-8">
+    <BlurReveal immediate className="order-2 w-full basis-1/2 text-right md:order-1 pb-10 md:pb-0" delay={0.16}>
+    <div dir="rtl">
+      <div className="flex min-h-13 items-start justify-between gap-4 border-b border-black/15 pt-1 sm:gap-8 md:min-h-8 md:pt-0">
         <strong className="text-xs font-extrabold sm:text-sm">
           بدون واسطه میان فروش و تحویل.
         </strong>
@@ -161,15 +159,18 @@ function Process() {
       </div>
 
       <div>
-        {decisions.map((decision) => (
-          <DecisionItem key={decision.number} {...decision} />
+        {decisions.map((decision, index) => (
+          <BlurReveal immediate key={decision.number} delay={0.22 + index * 0.06} amount={0.1}>
+            <DecisionItem {...decision} />
+          </BlurReveal>
         ))}
       </div>
 
-      <p className="pt-4 text-xs font-medium text-black/45">
+      <p className="pt-5 pb-1 text-[11px] leading-6 font-medium text-black/45 md:pt-4 md:pb-0 md:text-xs">
         یک مسیر کاری پاسخ‌گو، از اولین جلسه تا انتشار نهایی.
       </p>
     </div>
+    </BlurReveal>
   );
 }
 
@@ -189,12 +190,12 @@ function DecisionItem({
   iconClass,
 }: DecisionItemProps) {
   return (
-    <div className="flex min-h-16 items-center gap-4 border-b border-black/10">
+    <div className="flex min-h-16 items-center gap-3 border-b border-black/10 md:gap-4">
       <span className={`grid size-9 shrink-0 place-items-center rounded-full border border-black/10 bg-white/50 ${iconClass}`}>
         <Icon aria-hidden="true" className="size-4" />
       </span>
       <span className="w-6 shrink-0 text-xs font-semibold text-black/30">{number}</span>
-      <strong className="w-24 shrink-0 text-xs font-extrabold sm:w-32 sm:text-sm">
+      <strong className="w-20 shrink-0 text-xs font-extrabold sm:w-32 sm:text-sm">
         {title}
       </strong>
       <span className="flex-1 text-xs font-medium text-black/40 text-right">

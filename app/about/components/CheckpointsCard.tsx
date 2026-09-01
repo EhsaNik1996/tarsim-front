@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import BlurReveal from "./BlurReveal";
+import BlurText from "../../components/BlurText";
 
 const checkpoints = [
   {
@@ -60,30 +62,31 @@ export default function CheckpointsCard() {
           <div className="pointer-events-none absolute -bottom-32 -left-16 size-80 rounded-full bg-orange-500/10 blur-3xl" />
 
           <div className="relative flex flex-col gap-10">
+            <BlurReveal>
             <span className="text-xs font-semibold uppercase tracking-widest text-lime-400">
-              سیستم کاری ترسیم
+              <BlurText text="سیستم کاری ترسیم" stagger={0.13} />
             </span>
+            </BlurReveal>
 
             <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
+              <BlurReveal>
               <h2 className="max-w-2xl text-4xl font-black leading-none tracking-tighter md:text-6xl">
-                شش نقطه بررسی،
-                <br />
-                نه یک مرحله
-                <br />
-                پایانی.
+                <BlurText text="شش نقطه بررسی، نه یک مرحله پایانی." stagger={0.13} />
               </h2>
+              </BlurReveal>
 
+              <BlurReveal delay={0.12}>
               <p className="max-w-md text-xs leading-7 text-white/45">
-                هر پروژه مجموعه‌ای از تصمیم‌هاست. ما تلاش می‌کنیم در نقاط مهم،
-                قبل از ادامه مسیر مطمئن شویم چیزی که ساخته‌ایم واقعاً ارزش ادامه
-                دادن دارد.
+                <BlurText text="هر پروژه مجموعه‌ای از تصمیم‌هاست. ما تلاش می‌کنیم در نقاط مهم، قبل از ادامه مسیر مطمئن شویم چیزی که ساخته‌ایم واقعاً ارزش ادامه دادن دارد." delay={0.18} stagger={0.09} />
               </p>
+              </BlurReveal>
             </div>
 
             <div className="flex flex-col divide-y divide-white/10 border-y border-white/10">
               {checkpoints.map((item, index) => (
-                <div
+                <BlurReveal
                   key={item.title}
+                  delay={index * 0.045}
                   className="flex flex-col gap-4 py-5 md:flex-row md:items-start md:gap-6"
                 >
                   <span className="w-8 shrink-0 text-xs text-lime-400">
@@ -91,15 +94,17 @@ export default function CheckpointsCard() {
                   </span>
 
                   <span className="w-24 shrink-0 text-xs font-bold uppercase tracking-widest text-white/35">
-                    {item.phase}
+                    <BlurText text={item.phase} delay={index * 0.16} stagger={0.12} />
                   </span>
 
-                  <h3 className="flex-1 text-sm font-bold">{item.title}</h3>
+                  <h3 className="flex-1 text-sm font-bold">
+                    <BlurText text={item.title} delay={index * 0.16} stagger={0.11} />
+                  </h3>
 
                   <p className="flex-1 text-xs leading-6 text-white/40">
-                    {item.description}
+                    <BlurText text={item.description} delay={0.2 + index * 0.16} stagger={0.09} />
                   </p>
-                </div>
+                </BlurReveal>
               ))}
             </div>
           </div>
