@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpLeft } from "lucide-react";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const tracks = [
@@ -185,13 +186,23 @@ export default function ServiceTracks() {
             <div
               className={`flex gap-7 md:items-start md:gap-16 ${"reverse" in track && track.reverse ? "md:flex-row-reverse" : "md:flex-row"}`}
             >
-              <span
+              <motion.span
                 style={{ color: track.accent }}
                 className="shrink-0 text-5xl leading-none font-light tracking-tighter md:text-6xl"
+                initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.8, ease: [0.2, 0.65, 0.3, 1] }}
               >
                 {track.number}
-              </span>
-              <div className="flex-1">
+              </motion.span>
+              <motion.div
+                className="flex-1"
+                initial={{ opacity: 0, y: 22, filter: "blur(10px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ duration: 0.9, delay: 0.08, ease: [0.2, 0.65, 0.3, 1] }}
+              >
                 <span
                   style={{ color: track.accent }}
                   className="text-[9px] font-black tracking-[0.16em]"
@@ -204,13 +215,17 @@ export default function ServiceTracks() {
                 <p className="max-w-2xl text-xs leading-6 text-black/45 md:text-sm mt-4">
                   {track.description}
                 </p>
-              </div>
+              </motion.div>
             </div>
 
             <div className="grid md:grid-cols-[0.9fr_1fr_1fr] md:gap-14 mt-12 md:mt-20">
-              <div
+              <motion.div
                 style={{ borderColor: track.accent }}
                 className="border-t py-5"
+                initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.75, delay: 0.12, ease: [0.2, 0.65, 0.3, 1] }}
               >
                 <span
                   style={{ color: track.accent }}
@@ -221,14 +236,18 @@ export default function ServiceTracks() {
                 <p className="text-[11px] leading-6 text-black/50 mt-3">
                   {track.bestFor}
                 </p>
-              </div>
+              </motion.div>
               {[track.items.slice(0, 2), track.items.slice(2)].map(
                 (column, columnIndex) => (
                   <div key={columnIndex} className="flex flex-col">
-                    {column.map(([title, description]) => (
-                      <div
+                    {column.map(([title, description], itemIndex) => (
+                      <motion.div
                         key={title}
                         className="relative border-t border-black/10 pr-5 py-5"
+                        initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
+                        whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        viewport={{ once: true, amount: 0.4 }}
+                        transition={{ duration: 0.75, delay: 0.12 + columnIndex * 0.08 + itemIndex * 0.1, ease: [0.2, 0.65, 0.3, 1] }}
                       >
                         <i
                           style={{ backgroundColor: track.accent }}
@@ -238,14 +257,20 @@ export default function ServiceTracks() {
                         <p className="text-[10px] leading-5 text-black/40 mt-2">
                           {description}
                         </p>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 ),
               )}
             </div>
 
-            <div className="grid gap-8 border-t border-black/10 md:grid-cols-[1.2fr_1fr_auto] mt-12 pt-7">
+            <motion.div
+              className="grid gap-8 border-t border-black/10 md:grid-cols-[1.2fr_1fr_auto] mt-12 pt-7"
+              initial={{ opacity: 0, y: 14, filter: "blur(7px)" }}
+              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.45 }}
+              transition={{ duration: 0.8, delay: 0.16, ease: [0.2, 0.65, 0.3, 1] }}
+            >
               <div>
                 <span
                   style={{ color: track.accent }}
@@ -276,7 +301,7 @@ export default function ServiceTracks() {
               >
                 بررسی این خدمت <ArrowUpLeft className="size-3" />
               </a>
-            </div>
+            </motion.div>
           </div>
         </section>
       ))}
