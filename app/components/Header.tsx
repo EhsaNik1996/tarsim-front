@@ -88,7 +88,7 @@ export default function Header() {
       }}
       className="glass-nav fixed top-0 z-50 w-full border-b border-stroke-gray bg-white/95 backdrop-blur-md"
     >
-      <div className="relative mx-auto flex h-17 w-full items-center justify-between px-4 md:h-auto md:px-16 md:py-3">
+      <div className="relative mx-auto flex h-17 w-full items-center justify-between px-4 md:h-auto md:px-16">
         <Logo />
 
         {/* Navigation */}
