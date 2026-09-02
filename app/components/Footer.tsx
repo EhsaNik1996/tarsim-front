@@ -97,7 +97,7 @@ export default function Footer() {
                   height={46}
                 />
               </span>
-              <strong className="font-manrope text-[29px] font-black tracking-[-.04em]">
+              <strong className="font-plus-jakarta text-[29px] font-black tracking-[-.04em]">
                 Tarsim
               </strong>
             </div>

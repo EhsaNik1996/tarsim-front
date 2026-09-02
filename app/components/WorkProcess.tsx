@@ -166,7 +166,7 @@ function StageTabs({
             }}
           >
             <span
-              className="font-manrope text-xs font-black"
+              className="font-plus-jakarta text-xs font-black"
               style={{ color: stage.color }}
             >
               {stage.number}
@@ -262,7 +262,7 @@ function DesktopStageCard({
           />
 
           <div className="relative flex items-center gap-3">
-            <span className="process-meta font-manrope">
+            <span className="process-meta font-plus-jakarta">
               {stage.number} / 05
             </span>
             <span
@@ -293,7 +293,7 @@ function DesktopStageCard({
                 className="flex items-center gap-6 py-3 text-sm font-bold text-zinc-600"
               >
                 <span
-                  className="font-manrope text-xs font-black"
+                  className="font-plus-jakarta text-xs font-black"
                   style={{ color: stage.color }}
                 >
                   {String(pointIndex + 1).padStart(2, "0")}
@@ -340,9 +340,9 @@ function DesktopProcess({
         <div className="grid grid-cols-12 items-end gap-12">
           <div className="col-span-6">
             <span className="process-kicker mb-2">شیوه کار ما</span>
-            <h2 className="process-display text-4xl md:text-7xl">
+            <h2 className="process-display text-4xl md:text-6xl">
               از ایده تا
-              <span className="block text-4xl md:text-7xl">انتشار.</span>
+              <span className="block text-4xl md:text-6xl">انتشار.</span>
             </h2>
           </div>
 
@@ -447,7 +447,7 @@ function MobileProcess({
                 }}
               />
 
-              <div className="process-meta relative flex items-center gap-2 font-manrope">
+              <div className="process-meta relative flex items-center gap-2 font-plus-jakarta">
                 <span style={{ color: stage.color }}>{stage.number}</span>
                 <span className="text-zinc-300">/</span>
                 <span style={{ color: stage.color }}>{stage.eyebrow}</span>

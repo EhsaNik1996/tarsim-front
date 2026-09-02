@@ -305,7 +305,7 @@ export default function TechStackSection() {
     >
       <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.6fr] items-center">
         <div className="text-right space-y-3 pr-1">
-          <span className="text-[10px] font-mono font-bold text-zinc-400 tracking-widest block uppercase">
+          <span className="text-[10px]font-plus-jakarta font-bold text-zinc-400 tracking-widest block uppercase">
             تکنولوژی
           </span>
           <h3 className="text-[26px] md:text-4xl font-black text-zinc-900 tracking-tight leading-[1.15]">

@@ -102,7 +102,7 @@ export default function Metrics() {
           variants={createContainerVariant(0)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-4xl md:text-7xl font-black text-on-surface leading-tight flex flex-wrap gap-x-2"
+          className="text-4xl md:text-6xl font-black text-on-surface leading-tight flex flex-wrap gap-x-2"
         >
           {titleText.split(" ").map((word, idx) => (
             <React.Fragment key={idx}>
@@ -192,7 +192,7 @@ export default function Metrics() {
             >
               <div className="relative z-10">
                 <div>
-                  <div className="metric-value mb-4 md:text-7xl text-nowrap leading-none font-black tracking-[-.04em] text-on-surface transition-colors duration-300 text-4xl md:mb-3 md:text-[clamp(2rem,3vw,3rem)]">
+                  <div className="metric-value mb-4 md:text-6xl text-nowrap leading-none font-black tracking-[-.04em] text-on-surface transition-colors duration-300 text-4xl md:mb-3 md:text-[clamp(2rem,3vw,3rem)]">
                     {item.value}
                   </div>
 
@@ -218,7 +218,7 @@ export default function Metrics() {
               >
                 {item.desc}
               </motion.p>
-              <div className="metric-outline absolute bottom-2 left-2 z-0 font-mono text-7xl font-black transition-all duration-300 sm:text-7xl md:bottom-3 md:left-3">
+              <div className="metric-outline absolute bottom-2 left-2 z-0font-plus-jakarta text-7xl font-black transition-all duration-300 sm:text-7xl md:bottom-3 md:left-3">
                 {item.num}
               </div>
             </div>

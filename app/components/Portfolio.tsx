@@ -14,7 +14,7 @@ export default function Portfolio() {
         <section className="px-6 md:px-16 py-8 md:py-32 bg-white mx-auto">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
                 <div className="text-right">
-                    <div className="text-electric-blue mb-4 font-mono text-sm tracking-widest">SELECTED WORK</div>
+                    <div className="text-electric-blue mb-4font-plus-jakarta text-sm tracking-widest">SELECTED WORK</div>
                     <h2 className="text-4xl font-bold text-on-surface">پروژه‌های اخیر ما</h2>
                 </div>
                 <button className="bg-on-surface text-white px-6 py-3 rounded-lg font-bold hover:bg-electric-blue transition-colors duration-300">

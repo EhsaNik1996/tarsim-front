@@ -9,7 +9,7 @@
   --color-surface-container-low: #fafafa;
   --color-background-deep: #fafafa;
   --font-vazir: var(--font-vazirmatn), sans-serif;
-  --font-manrope: var(--font-manrope), sans-serif;
+  --font-plus-jakarta: var(--font-plus-jakarta), sans-serif;
 }
 
 @layer base {
@@ -90,7 +90,7 @@
   }
 
   .process-display {
-    @apply max-w-3xl text-6xl leading-none font-black text-black md:text-7xl xl:text-8xl 2xl:text-9xl;
+    @apply max-w-3xl text-6xl leading-none font-black text-black md:text-6xl xl:text-8xl 2xl:text-9xl;
   }
 
   .process-copy {

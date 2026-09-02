@@ -60,7 +60,7 @@ export default function TrackRecord() {
           className="h-fit space-y-7 md:col-span-5"
         >
           <div>
-            <h3 className="text-4xl md:text-7xl font-black leading-[0.98] tracking-[-0.055em]">
+            <h3 className="text-4xl md:text-6xl font-black leading-[0.98] tracking-[-0.055em]">
               مسیر ترسیم
               <span className="mt-2 block">
                 و <span className="text-electric-blue">نقاط عطف</span>
@@ -127,7 +127,7 @@ export default function TrackRecord() {
                     </span>
                   </div>
 
-                  <span className="pt-1 font-manrope text-[13px] font-bold text-[#53636d]">
+                  <span className="pt-1 font-plus-jakarta text-[13px] font-bold text-[#53636d]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </button>

@@ -119,7 +119,7 @@ function HeroIntro() {
   return (
     <BlurReveal immediate className="order-1 min-w-0 basis-1/2 text-right md:order-2">
     <div dir="rtl">
-      <div className="flex items-center gap-3 text-xs leading-none font-extrabold tracking-wide">
+      <div className="flex items-center gap-3 text-xs leading-none font-normal tracking-wide">
         <span
           aria-hidden="true"
           className="size-2 shrink-0 rounded-full bg-emerald-500 ring-4 ring-emerald-100"
@@ -127,7 +127,7 @@ function HeroIntro() {
         <span>مهندسی محصول با راهبری ارشد</span>
       </div>
 
-      <h1 className="mt-6 mr-auto flex max-w-3xl flex-col text-4xl leading-10 font-black tracking-[-0.055em] md:text-7xl md:leading-19">
+      <h1 className="mt-6 mr-auto flex max-w-3xl flex-col text-4xl leading-10 font-black tracking-[-0.055em] md:text-6xl md:leading-16">
         <span className="block whitespace-nowrap">آدم‌هایی که</span>
         <em className="text-electric-blue font-semibold">
           تصمیم‌ها را
@@ -137,7 +137,7 @@ function HeroIntro() {
         <span className="block whitespace-nowrap">می‌سازند.</span>
       </h1>
 
-      <p className="mt-7 mb-9 max-w-80 text-sm leading-7 font-medium text-black/50 sm:text-base md:my-8 md:max-w-none">
+      <p className="mt-7 mb-9 max-w-80 text-sm leading-7 font-normal text-black/50 sm:text-base md:my-8 md:max-w-none">
         مالکیت مستقیم فنی از مرحله کشف و شناخت تا تحویل نهایی محصول.
       </p>
     </div>
@@ -153,7 +153,7 @@ function Process() {
         <strong className="text-xs font-extrabold sm:text-sm">
           بدون واسطه میان فروش و تحویل.
         </strong>
-        <span className="text-xs font-semibold text-black/40 max-sm:text-left">
+        <span className="text-xs font-normal text-black/40 max-sm:text-left">
           راهبری ارشد در تمام مراحل
         </span>
       </div>
@@ -166,7 +166,7 @@ function Process() {
         ))}
       </div>
 
-      <p className="pt-5 pb-1 text-[11px] leading-6 font-medium text-black/45 md:pt-4 md:pb-0 md:text-xs">
+      <p className="pt-5 pb-1 text-[11px] leading-6 font-normal text-black/45 md:pt-4 md:pb-0">
         یک مسیر کاری پاسخ‌گو، از اولین جلسه تا انتشار نهایی.
       </p>
     </div>
@@ -194,11 +194,11 @@ function DecisionItem({
       <span className={`grid size-9 shrink-0 place-items-center rounded-full border border-black/10 bg-white/50 ${iconClass}`}>
         <Icon aria-hidden="true" className="size-4" />
       </span>
-      <span className="w-6 shrink-0 text-xs font-semibold text-black/30">{number}</span>
+      <span className="w-6 shrink-0 font-plus-jakarta text-[8px] font-extrabold text-black/30">{number}</span>
       <strong className="w-20 shrink-0 text-xs font-extrabold sm:w-32 sm:text-sm">
         {title}
       </strong>
-      <span className="flex-1 text-xs font-medium text-black/40 text-right">
+      <span className="flex-1 text-[11px] font-normal text-black/40 text-right">
         {description}
       </span>
     </div>

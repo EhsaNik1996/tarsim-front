@@ -42,11 +42,11 @@ export default function AboutChecks() {
       <div className="mx-auto w-full max-w-360 px-6 py-20 md:px-16 md:py-24">
         <div className="grid grid-cols-1 items-end gap-10 pb-10 md:grid-cols-2 md:gap-24">
           <BlurReveal>
-            <span className="text-xs font-black tracking-widest text-emerald-600">
+            <span className="text-xs font-medium tracking-widest text-emerald-600">
               اصول همکاری
             </span>
 
-            <h2 className="mt-5 max-w-2xl text-4xl leading-none font-black tracking-tighter md:text-7xl">
+            <h2 className="mt-5 max-w-2xl text-4xl leading-none font-black tracking-tighter md:text-5xl">
               چهار اصل که
               <br />
               در طول مسیر
@@ -56,7 +56,7 @@ export default function AboutChecks() {
           </BlurReveal>
 
           <BlurReveal className="md:justify-self-end" delay={0.12}>
-          <p className="max-w-xl text-sm leading-7 font-medium text-zinc-500 md:text-base">
+          <p className="max-w-xl text-sm leading-7 font-normal text-zinc-500">
             این اصول تصمیم‌های فنی روزمره ما را شکل می‌دهند؛ نه ارزش‌هایی که
             بعد از پایان تحویل، فقط به یک اسلاید اضافه شوند.
           </p>
@@ -70,7 +70,7 @@ export default function AboutChecks() {
               delay={Number(item.number) * 0.04}
               className={`group flex min-h-28 flex-wrap items-center gap-5 border-b border-zinc-300 px-0 py-6 transition-colors duration-300 md:min-h-32 md:px-4 md:flex-nowrap ${item.hover}`}
             >
-              <span className={`w-12 shrink-0 text-xs font-black ${item.color}`}>
+              <span className={`w-12 shrink-0 text-[10px] font-medium ${item.color}`}>
                 {item.number}
               </span>
 
@@ -78,13 +78,13 @@ export default function AboutChecks() {
                 {item.title}
               </h3>
 
-              <p className="order-last w-full pr-16 text-sm leading-7 font-medium text-zinc-500 md:order-0 md:w-auto md:flex-1 md:pr-0">
+              <p className="order-last w-full pr-16 text-[13.5px] leading-7 font-normal text-zinc-500 md:order-0 md:w-auto md:flex-1 md:pr-0">
                 {item.description}
               </p>
 
               <ArrowLeft
                 aria-hidden="true"
-                className={`size-5 shrink-0 transition-transform duration-300 group-hover:-translate-x-1 ${item.color}`}
+                className={`size-4 shrink-0 transition-transform duration-300 group-hover:-translate-x-1 ${item.color}`}
               />
             </BlurReveal>
           ))}
