@@ -66,11 +66,11 @@ export default function Capabilities() {
           viewport={{ once: true, margin: "-100px" }}
           transition={cardTransition}
         >
-          <div className="mb-2 font-mono text-xs font-medium text-electric-blue">
+          <div className="mb-2font-plus-jakarta text-xs font-medium text-electric-blue">
             توانمندی‌ها
           </div>
           <div className="relative">
-            <h2 className="relative z-10 text-4xl md:text-7xl font-black md:leading-19 pt-2">
+            <h2 className="relative z-10 text-4xl md:text-6xl font-black md:leading-19 pt-2">
               توانمندی‌هایی که در کنار هم،
               <span className="block text-electric-blue">یک سیستم کامل می‌سازند.</span>
             </h2>
@@ -102,7 +102,7 @@ export default function Capabilities() {
               <div className="hidden md:block mb-4 text-xs font-medium tracking-wider text-black/60">
                 {services.main.eyebrow}
               </div>
-              <h3 className="whitespace-pre-line text-4xl font-black leading-10 md:leading-18 text-black md:text-7xl">
+              <h3 className="whitespace-pre-line text-4xl font-black leading-10 md:leading-18 text-black md:text-6xl">
                 {services.main.title}
               </h3>
               <p className="mt-5 max-w-md text-sm leading-7 text-black/70">
@@ -199,7 +199,7 @@ export default function Capabilities() {
               </span>
             </div>
             <div className="absolute inset-x-8 bottom-8 md:inset-x-10 md:bottom-10">
-              <h3 className="whitespace-pre-line text-4xl font-black leading-11 md:leading-18 md:text-7xl">
+              <h3 className="whitespace-pre-line text-4xl font-black leading-11 md:leading-18 md:text-6xl">
                 {services.blue.title}
               </h3>
               <p className="mt-5 max-w-md text-sm leading-7 text-white/65">

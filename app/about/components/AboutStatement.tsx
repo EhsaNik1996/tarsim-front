@@ -7,11 +7,11 @@ export default function AboutStatement() {
       <div className="mx-auto flex w-full max-w-7xl">
         <div className="flex w-full flex-col gap-10 overflow-hidden bg-linear-to-br from-indigo-50 via-purple-50 to-orange-50 px-6 py-10 sm:px-8 md:flex-row md:items-end md:justify-between md:px-10 md:py-12 rounded-3xl">
           <BlurReveal className="flex flex-col gap-5">
-            <span className="text-xs font-semibold uppercase tracking-widest text-black/40">
+            <span className="text-[13px] font-medium uppercase tracking-widest text-black/70">
               فلسفه ترسیم
             </span>
 
-            <h2 className="max-w-3xl text-4xl font-black md:leading-16 tracking-tighter md:text-6xl">
+            <h2 className="max-w-3xl text-4xl font-black md:leading-15 tracking-tighter md:text-[55px]">
               شما یک مسئله واقعی،
               <br />
               یک نتیجه مفید،

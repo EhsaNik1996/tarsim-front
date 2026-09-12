@@ -41,7 +41,7 @@ export default function ServicesHero() {
   return (
     <section
       dir="rtl"
-      className="relative isolate min-h-svh overflow-hidden bg-white text-black pt-17 md:pt-20"
+      className="relative isolate overflow-hidden border-b border-black/10 bg-white text-black pt-17 md:pt-20"
     >
       <div aria-hidden="true" className="absolute inset-0 -z-20 bg-white" />
       <div
@@ -50,7 +50,7 @@ export default function ServicesHero() {
       />
 
       <div
-        className="flex min-h-[calc(100svh-5rem)] w-full flex-col items-stretch justify-center gap-10 mx-auto px-6 py-12 md:flex-row md:items-center md:gap-x-56 md:px-20 md:py-8"
+        className="mx-auto flex w-full flex-col items-stretch justify-center gap-10 px-6 py-12 md:min-h-[calc(100svh-7.5rem)] md:flex-row md:items-center md:gap-x-[14vw] md:px-[4.45vw] md:py-8"
         dir="ltr"
       >
         <ServiceCopy />
@@ -64,14 +64,14 @@ function ServiceCopy() {
   return (
     <motion.div
       dir="rtl"
-      className="order-1 text-right md:order-0 md:basis-[35%] md:shrink-0"
+      className="order-1 min-w-0 text-right md:order-0 md:basis-[30%] md:shrink-0"
       initial={{ opacity: 0, y: 22, filter: "blur(10px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       transition={{ duration: 0.9, ease: [0.2, 0.65, 0.3, 1] }}
     >
       <div className="flex items-center justify-start gap-3 text-[11px] font-black tracking-[0.2em] text-zinc-500">
-        <span>خدمات</span>
         <i className="size-2 rounded-full bg-emerald-500" />
+        <span className="text-base font-medium">خدمات</span>
       </div>
 
       <div className="max-w-152 text-5xl leading-13 md:leading-20 font-black tracking-[-0.055em] sm:text-6xl lg:text-[4.3rem] mt-9">
@@ -96,7 +96,7 @@ function ServiceCopy() {
         درمی‌آورند.
       </div>
 
-      <p className="max-w-136 text-sm leading-8 font-medium text-zinc-500 md:text-base mt-8">
+      <p className="max-w-136 text-sm leading-7 font-normal text-zinc-500 md:text-base mt-8">
         پنج مسیر یکپارچه‌ی خدمات، پیچیدگی را به شفافیت تبدیل می‌کنند، فناوری را
         با اهداف کسب‌وکار هم‌راستا نگه می‌دارند و از مسئله‌ی امروز، یک نرم‌افزار
         کاربردی و قابل اتکا می‌سازند.
@@ -119,7 +119,7 @@ function DeliveryDiagram() {
   return (
     <div
       dir="rtl"
-      className="relative order-2 min-h-105 overflow-visible md:order-0 md:min-h-155 md:basis-[62%] md:flex-1"
+      className="relative order-2 min-h-105 overflow-visible md:order-0 md:h-[min(74svh,44rem)] md:min-h-140 md:min-w-0 md:flex-1"
     >
       <div
         aria-hidden="true"
@@ -129,9 +129,9 @@ function DeliveryDiagram() {
         aria-hidden="true"
         className="absolute inset-y-0 right-[-28vw] left-[12%] z-0 opacity-55 bg-[radial-gradient(rgba(82,93,120,0.12)_0.72px,transparent_0.72px)] bg-size-[18px_18px] mask-[linear-gradient(to_left,black_0%,black_58%,rgba(0,0,0,0.72)_76%,transparent_100%)]"
       />
-      <div className="flex flex-col md:flex-row-reverse justify-between">
-        <div className="flex items-center gap-3 text-[9px] font-black tracking-[0.22em] text-zinc-500 md:left-10">
-          <i className="size-2 rounded-full bg-emerald-500" />
+      <div className="flex flex-col md:flex-row-reverse justify-between items-center">
+        <div className="flex items-center gap-2 text-xs font-medium text-zinc-500/80 md:left-10">
+          <i className="size-1.5 rounded-full bg-emerald-500" />
           موتور تحویل
         </div>
         <div className="max-w-58 text-right text-xs leading-6 text-zinc-500 md:top-7 md:right-8 md:text-sm">
@@ -141,7 +141,7 @@ function DeliveryDiagram() {
 
       <svg
         viewBox="0 0 760 560"
-        className="absolute inset-x-0 bottom-4 h-[88%] w-full overflow-visible md:h-[108%]"
+        className="absolute inset-x-0 bottom-0 h-[88%] w-full overflow-visible md:h-full"
         aria-label="نمودار تبدیل ورودی‌های مختلف به نرم‌افزار کاربردی"
       >
         <defs>
@@ -207,11 +207,7 @@ function DeliveryDiagram() {
             <text
               x="76"
               y={137 + index * 82}
-              textAnchor="start"
-              direction="rtl"
-              fill="#71717a"
-              fontSize="12"
-              fontWeight="800"
+              className="fill-zinc-500 text-sm font-medium rtl"
             >
               {input.label}
             </text>

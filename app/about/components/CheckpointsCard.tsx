@@ -76,7 +76,7 @@ export default function CheckpointsCard() {
               </BlurReveal>
 
               <BlurReveal delay={0.12}>
-              <p className="max-w-md text-xs leading-7 text-white/45">
+              <p className="max-w-md text-sm leading-6 font-medium text-white/55">
                 <BlurText text="هر پروژه مجموعه‌ای از تصمیم‌هاست. ما تلاش می‌کنیم در نقاط مهم، قبل از ادامه مسیر مطمئن شویم چیزی که ساخته‌ایم واقعاً ارزش ادامه دادن دارد." delay={0.18} stagger={0.09} />
               </p>
               </BlurReveal>
@@ -87,21 +87,21 @@ export default function CheckpointsCard() {
                 <BlurReveal
                   key={item.title}
                   delay={index * 0.045}
-                  className="flex flex-col gap-4 py-5 md:flex-row md:items-start md:gap-6"
+                  className="flex flex-col gap-4 py-7.5 md:flex-row md:items-start md:gap-6"
                 >
-                  <span className="w-8 shrink-0 text-xs text-lime-400">
+                  <span className="w-8 shrink-0 font-space-grotesk text-[10px] font-semibold text-lime-400">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <span className="w-24 shrink-0 text-xs font-bold uppercase tracking-widest text-white/35">
+                  <span className="w-24 shrink-0 text-xs font-normal uppercase tracking-widest text-white/50">
                     <BlurText text={item.phase} delay={index * 0.16} stagger={0.12} />
                   </span>
 
-                  <h3 className="flex-1 text-sm font-bold">
+                  <h3 className="flex-1 text-lg font-extrabold">
                     <BlurText text={item.title} delay={index * 0.16} stagger={0.11} />
                   </h3>
 
-                  <p className="flex-1 text-xs leading-6 text-white/40">
+                  <p className="flex-1 text-[13.5px] leading-6 text-white/60">
                     <BlurText text={item.description} delay={0.2 + index * 0.16} stagger={0.09} />
                   </p>
                 </BlurReveal>

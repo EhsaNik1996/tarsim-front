@@ -43,7 +43,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative scroll-mt-20 overflow-hidden bg-black py-16 md:py-24 text-white md:py-32"
+      className="relative scroll-mt-20 overflow-hidden bg-black py-16 text-white md:py-32"
       dir="rtl"
     >
       <div className="mx-auto flex max-w-360 justify-center px-6 md:px-16">
@@ -55,7 +55,7 @@ export default function FAQ() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="mb-16 md:mb-19"
           >
-            <h2 className="text-4xl font-black leading-none tracking-tighter md:text-7xl">
+            <h2 className="text-4xl font-black leading-none tracking-tighter md:text-6xl">
               سوالات متداول
             </h2>
             <div className="flex items-center mt-6 gap-x-1.5 text-[15px] text-zinc-500 md:text-[17px]">
@@ -90,7 +90,7 @@ export default function FAQ() {
                     className="group grid w-full grid-cols-[minmax(0,1fr)_24px] gap-5 py-6 text-right md:py-7"
                   >
                     <span>
-                      <span className="mb-3 inline-flex rounded-full border border-[#292e31] px-3 py-1 font-manrope text-[9px] font-bold tracking-[0.16em] text-[#76b9e6]">
+                      <span className="mb-3 inline-flex rounded-full border border-[#292e31] px-3 py-1 font-plus-jakarta text-[9px] font-bold tracking-[0.16em] text-[#76b9e6]">
                         {faq.category}
                       </span>
                       <span className="block text-[18px] font-extrabold leading-7 text-zinc-100 transition-colors duration-300 group-hover:text-electric-blue md:text-[21px]">

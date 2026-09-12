@@ -260,7 +260,7 @@ function ProjectDetails({ project }: { project: Project }) {
               <div className="size-2.5 rounded-full bg-yellow-400" />
               <div className="size-2.5 rounded-full bg-green-400" />
             </div>
-            <div className="mx-auto flex-1 max-w-md truncate rounded-md border border-zinc-200 bg-white px-3 py-0.5 text-center font-mono text-xs text-zinc-400 select-none">
+            <div className="mx-auto flex-1 max-w-md truncate rounded-md border border-zinc-200 bg-white px-3 py-0.5 text-centerfont-plus-jakarta text-xs text-zinc-400 select-none">
               {project.url.replace("https://", "").replace("http://", "")}/
             </div>
           </div>
@@ -321,7 +321,7 @@ function ProjectDialog({
           <X className="size-4" />
         </button>
 
-        <div className="absolute -top-10 left-1/2 z-50 -translate-x-1/2 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 font-manrope text-xs font-bold text-zinc-500 shadow-sm backdrop-blur-sm">
+        <div className="absolute -top-10 left-1/2 z-50 -translate-x-1/2 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 font-plus-jakarta text-xs font-bold text-zinc-500 shadow-sm backdrop-blur-sm">
           {selectedIndex + 1}/{projectsData.length}
         </div>
 
@@ -395,7 +395,7 @@ export default function ProjectsSlider() {
           </div>
 
           <div className="flex items-center gap-3" dir="ltr">
-            <span className="mr-1 min-w-10 font-manrope text-xs font-extrabold text-black">
+            <span className="mr-1 min-w-10 font-plus-jakarta text-xs font-extrabold text-black">
               {activeIndex + 1}/{projectsData.length}
             </span>
             <button
@@ -471,7 +471,7 @@ export default function ProjectsSlider() {
                       >
                         {project.subtitle}
                       </span>
-                      <span className="shrink-0 rounded-full border border-zinc-200/80 bg-white/75 px-3 py-1.5 font-manrope text-xs leading-none font-bold text-zinc-400">
+                      <span className="shrink-0 rounded-full border border-zinc-200/80 bg-white/75 px-3 py-1.5 font-plus-jakarta text-xs leading-none font-bold text-zinc-400">
                         {project.privacy}
                       </span>
                     </div>
@@ -490,7 +490,7 @@ export default function ProjectsSlider() {
                       dir="ltr"
                     >
                       <div
-                        className={`${styles.link} flex h-full flex-col items-start justify-end gap-y-6 border-b border-transparent pb-0.5 font-manrope text-xs font-extrabold transition-all`}
+                        className={`${styles.link} flex h-full flex-col items-start justify-end gap-y-6 border-b border-transparent pb-0.5 font-plus-jakarta text-xs font-extrabold transition-all`}
                       >
                         <div className="flex flex-wrap gap-1">
                           {project.tags.map((tag) => (
@@ -507,7 +507,7 @@ export default function ProjectsSlider() {
                         </div>
                       </div>
                       <div
-                        className={`${styles.number} pointer-events-none z-0 select-none font-manrope text-8xl leading-none font-extrabold transition-all duration-500`}
+                        className={`${styles.number} pointer-events-none z-0 select-none font-plus-jakarta text-8xl leading-none font-extrabold transition-all duration-500`}
                         dir="ltr"
                       >
                         {String(project.id).padStart(2, "0")}

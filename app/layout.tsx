@@ -1,8 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import CustomCursor from "./components/CustomCursor";
-import { Vazirmatn, Manrope } from "next/font/google";
 import Header from "./components/Header";
+import CustomCursor from "./components/CustomCursor";
+import { Vazirmatn, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 
 
 const vazir = Vazirmatn({
@@ -12,9 +12,15 @@ const vazir = Vazirmatn({
 });
 
 
-const manrope = Manrope({
+const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-plus-jakarta",
+  display: "swap"
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk-family",
   display: "swap"
 });
 
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazir.variable} ${manrope.variable} overflow-x-clip`}>
+    <html lang="fa" dir="rtl" className={`${vazir.variable} ${plusJakarta.variable} ${spaceGrotesk.variable} overflow-x-clip`}>
       <head>
         <link
           rel="stylesheet"

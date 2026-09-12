@@ -45,7 +45,7 @@ export default function DigitalEngineering() {
       <div className="mx-auto max-w-360 px-6 md:px-16" dir="rtl">
         <div className="mb-14 grid grid-cols-1 items-end gap-8 md:mb-20 md:grid-cols-12">
           <div className="md:col-span-8">
-            <span className="mb-3 block text-xs font-mono tracking-widest text-electric-blue">
+            <span className="mb-3 block text-xsfont-plus-jakarta tracking-widest text-electric-blue">
               مهندسی دیجیتال
             </span>
             <h2 className="text-4xl leading-tight font-black tracking-tight text-zinc-100 md:text-6xl">
@@ -68,7 +68,7 @@ export default function DigitalEngineering() {
               <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 h-0.75 w-0 -translate-x-1/2 rounded-full bg-electric-blue transition-[width] duration-500 ease-out group-hover:w-40" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-electric-blue/4 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-              <div className="pointer-events-none absolute bottom-0 left-2 z-0 select-none font-mono text-8xl leading-none font-black text-[#131316] transition-colors duration-500 group-hover:text-electric-blue/10" dir="ltr">
+              <div className="pointer-events-none absolute bottom-0 left-2 z-0 select-nonefont-plus-jakarta text-8xl leading-none font-black text-[#131316] transition-colors duration-500 group-hover:text-electric-blue/10" dir="ltr">
                 {item.num}
               </div>
 

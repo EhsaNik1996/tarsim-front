@@ -87,7 +87,7 @@ export default function CTA() {
             <span className="size-2 rounded-full bg-[#05e986] shadow-[0_0_12px_rgba(5,233,134,.55)]" />
             یک همکاری ماندگار
           </div>
-          <h2 className="mt-8 text-[34px] leading-tight font-black tracking-[-.045em] sm:text-5xl sm:leading-[1.15] md:mt-10 md:text-7xl">
+          <h2 className="mt-8 text-[34px] leading-tight font-black tracking-[-.045em] sm:text-5xl sm:leading-[1.15] md:mt-10 md:text-6xl">
             بیایید سیستمی بسازیم
             <span className="block">
               که برای{" "}

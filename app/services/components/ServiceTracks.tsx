@@ -2,7 +2,7 @@
 
 import { ArrowUpLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 const tracks = [
   {
@@ -182,13 +182,18 @@ export default function ServiceTracks() {
           }}
         >
           <div className="relative mx-auto w-full max-w-330 border-t border-black/10 px-6 py-20 md:px-10 md:py-28">
-            <i aria-hidden="true" style={{ backgroundColor: track.accent }} className="absolute top-0 right-6 h-0.5 w-24 md:right-10 md:w-32" />
+            <i
+              aria-hidden="true"
+              style={{ backgroundColor: track.accent }}
+              className="absolute top-0 right-6 h-0.5 w-24 md:right-10 md:w-32"
+            />
             <div
               className={`flex gap-7 md:items-start md:gap-16 ${"reverse" in track && track.reverse ? "md:flex-row-reverse" : "md:flex-row"}`}
             >
               <motion.span
                 style={{ color: track.accent }}
-                className="shrink-0 text-5xl leading-none font-light tracking-tighter md:text-6xl"
+                dir="ltr"
+                className="service-track-number shrink-0 -mt-3 text-[4rem] leading-none tracking-[-0.4rem] font-space-grotesk md:-mt-4"
                 initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.4 }}
@@ -201,18 +206,22 @@ export default function ServiceTracks() {
                 initial={{ opacity: 0, y: 22, filter: "blur(10px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.35 }}
-                transition={{ duration: 0.9, delay: 0.08, ease: [0.2, 0.65, 0.3, 1] }}
+                transition={{
+                  duration: 0.9,
+                  delay: 0.08,
+                  ease: [0.2, 0.65, 0.3, 1],
+                }}
               >
                 <span
                   style={{ color: track.accent }}
-                  className="text-[9px] font-black tracking-[0.16em]"
+                  className="text-xs font-medium"
                 >
                   {track.eyebrow}
                 </span>
                 <h2 className="max-w-4xl text-4xl leading-[0.95] font-black tracking-[-0.055em] md:text-6xl mt-3">
                   {track.title}
                 </h2>
-                <p className="max-w-2xl text-xs leading-6 text-black/45 md:text-sm mt-4">
+                <p className="max-w-2xl text-xs leading-6 text-black/45 md:text-base mt-4">
                   {track.description}
                 </p>
               </motion.div>
@@ -225,15 +234,19 @@ export default function ServiceTracks() {
                 initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.75, delay: 0.12, ease: [0.2, 0.65, 0.3, 1] }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.12,
+                  ease: [0.2, 0.65, 0.3, 1],
+                }}
               >
                 <span
                   style={{ color: track.accent }}
-                  className="text-[8px] font-black tracking-[0.18em]"
+                  className="text-xs font-medium tracking-[0.18em]"
                 >
                   مناسب برای
                 </span>
-                <p className="text-[11px] leading-6 text-black/50 mt-3">
+                <p className="text-[13px] leading-6 text-black/50 mt-3">
                   {track.bestFor}
                 </p>
               </motion.div>
@@ -243,20 +256,40 @@ export default function ServiceTracks() {
                     {column.map(([title, description], itemIndex) => (
                       <motion.div
                         key={title}
-                        className="relative border-t border-black/10 pr-5 py-5"
+                        className="group relative border-t border-black/10 pr-5 pt-5 pb-16"
                         initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                         viewport={{ once: true, amount: 0.4 }}
-                        transition={{ duration: 0.75, delay: 0.12 + columnIndex * 0.08 + itemIndex * 0.1, ease: [0.2, 0.65, 0.3, 1] }}
+                        transition={{
+                          duration: 0.75,
+                          delay: 0.12 + columnIndex * 0.08 + itemIndex * 0.1,
+                          ease: [0.2, 0.65, 0.3, 1],
+                        }}
                       >
-                        <i
+                        <span
+                          aria-hidden="true"
                           style={{ backgroundColor: track.accent }}
-                          className="absolute right-0 top-7 size-1.5"
+                          className="absolute inset-x-0 -top-px h-px origin-right scale-x-0 transition-transform duration-500 ease-out group-hover:scale-x-100"
                         />
-                        <h3 className="text-sm font-extrabold">{title}</h3>
-                        <p className="text-[10px] leading-5 text-black/40 mt-2">
-                          {description}
-                        </p>
+                        <div className="flex gap-x-8">
+                          <h2
+                            className="font-space-grotesk text-[10px] font-semibold mt-1"
+                            style={{ color: track.accent }}
+                          >
+                            {String(itemIndex * 2 + columnIndex + 1).padStart(
+                              2,
+                              "0",
+                            )}
+                          </h2>
+                          <div>
+                            <h3 className="text-[17px] font-extrabold">
+                              {title}
+                            </h3>
+                            <p className="text-[13px] leading-5 text-black/40 mt-2">
+                              {description}
+                            </p>
+                          </div>
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -269,35 +302,46 @@ export default function ServiceTracks() {
               initial={{ opacity: 0, y: 14, filter: "blur(7px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true, amount: 0.45 }}
-              transition={{ duration: 0.8, delay: 0.16, ease: [0.2, 0.65, 0.3, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.16,
+                ease: [0.2, 0.65, 0.3, 1],
+              }}
             >
               <div>
                 <span
                   style={{ color: track.accent }}
-                  className="text-[8px] font-black tracking-[0.18em]"
+                  className="text-xs font-medium tracking-[0.18em]"
                 >
                   رویکرد ما
                 </span>
-                <p className="max-w-xl text-[10px] leading-5 font-medium mt-2">
+                <p className="max-w-xl text-[13px] leading-5 font-medium mt-2">
                   {track.description}
                 </p>
               </div>
               <div>
                 <span
                   style={{ color: track.accent }}
-                  className="text-[8px] font-black tracking-[0.18em]"
+                  className="text-xs font-medium tracking-[0.18em]"
                 >
                   توانمندی‌ها
                 </span>
-                <div className="flex flex-wrap gap-2 text-[9px] text-black/40 mt-3">
-                  {track.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
+                <div className="flex flex-wrap items-center gap-2 text-xs text-black/40 mt-3">
+                  {track.tags.map((tag, index) => (
+                    <Fragment key={tag}>
+                      <span>{tag}</span>
+                      {index < track.tags.length - 1 && (
+                        <span aria-hidden="true" style={{ color: track.accent }}>
+                          /
+                        </span>
+                      )}
+                    </Fragment>
                   ))}
                 </div>
               </div>
               <a
                 href="#contact"
-                className="flex items-center gap-2 border-b border-black text-[10px] font-bold md:self-end pb-1"
+                className="flex items-center gap-2 border-b border-black text-xs font-bold md:self-end pb-1"
               >
                 بررسی این خدمت <ArrowUpLeft className="size-3" />
               </a>
@@ -309,16 +353,27 @@ export default function ServiceTracks() {
   );
 }
 
-function ServiceRoute({ activeTrack, visible }: { activeTrack: number; visible: boolean }) {
+function ServiceRoute({
+  activeTrack,
+  visible,
+}: {
+  activeTrack: number;
+  visible: boolean;
+}) {
   return (
     <nav
       aria-label="مسیر خدمات"
-      className={`fixed inset-x-0 top-17 z-40 border-y border-black/10 bg-white/95 backdrop-blur-xl transition-all duration-500 md:top-20 ${visible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"}`}
+      className={`fixed inset-x-0 top-17 z-40 border-y border-black/10 bg-amber-50/20 backdrop-blur-xl transition-all duration-500 md:top-20 ${visible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"}`}
     >
       <div className="flex flex-col md:hidden">
         <div className="flex h-10 items-center justify-center gap-3 border-b border-black/10 px-4">
-          <span className="text-[7px] font-black tracking-[0.16em] text-black/35">مسیر خدمات</span>
-          <strong style={{ color: tracks[activeTrack].accent }} className="text-[8px] font-black">
+          <span className="text-[7px] font-black tracking-[0.16em] text-black/35">
+            مسیر خدمات
+          </span>
+          <strong
+            style={{ color: tracks[activeTrack].accent }}
+            className="font-space-grotesk text-[7px] font-semibold"
+          >
             {String(activeTrack + 1).padStart(2, "0")} / 05
           </strong>
           <span className="max-w-45 truncate text-[9px] font-extrabold text-black/80">
@@ -329,8 +384,17 @@ function ServiceRoute({ activeTrack, visible }: { activeTrack: number; visible: 
           {tracks.map((track, index) => {
             const active = index === activeTrack;
             return (
-              <a key={track.number} href={`#service-${track.number}`} className="relative flex flex-1 items-center justify-center text-[8px] font-bold text-black/35">
-                <span style={{ color: active ? track.accent : undefined }}>{track.number}</span>
+              <a
+                key={track.number}
+                href={`#service-${track.number}`}
+                className="relative flex flex-1 items-center justify-center text-[8px] font-bold text-black/35"
+              >
+                <span
+                  className="font-space-grotesk text-[7px] font-semibold"
+                  style={{ color: active ? track.accent : undefined }}
+                >
+                  {track.number}
+                </span>
                 <i
                   aria-hidden="true"
                   className="absolute right-1 bottom-0 left-1 h-px origin-center transition-all duration-300"
@@ -348,8 +412,13 @@ function ServiceRoute({ activeTrack, visible }: { activeTrack: number; visible: 
 
       <div className="hidden w-full items-stretch mx-auto px-16 md:flex">
         <div className="flex w-48 shrink-0 flex-col justify-center border-l border-black/10 py-4">
-          <span className="text-[8px] font-black tracking-[0.18em] text-black/35">مسیر خدمات</span>
-          <strong style={{ color: tracks[activeTrack].accent }} className="text-[10px] font-black mt-2">
+          <span className="text-[8px] font-black tracking-[0.18em] text-black/35">
+            مسیر خدمات
+          </span>
+          <strong
+            style={{ color: tracks[activeTrack].accent }}
+            className="font-space-grotesk text-[8px] font-semibold mt-2"
+          >
             {String(activeTrack + 1).padStart(2, "0")} / 05
           </strong>
         </div>
@@ -363,7 +432,12 @@ function ServiceRoute({ activeTrack, visible }: { activeTrack: number; visible: 
                 className="relative flex flex-1 items-center gap-3 text-[10px] font-bold transition-colors duration-300 px-5 py-5"
                 style={{ color: active ? "#111" : "rgba(0,0,0,.38)" }}
               >
-                <span style={{ color: active ? track.accent : "inherit" }}>{track.number}</span>
+                <span
+                  className="font-space-grotesk text-[7px] font-semibold"
+                  style={{ color: active ? track.accent : "inherit" }}
+                >
+                  {track.number}
+                </span>
                 <span>{track.title}</span>
                 <i
                   aria-hidden="true"
