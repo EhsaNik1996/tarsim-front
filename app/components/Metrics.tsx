@@ -86,17 +86,6 @@ export default function Metrics() {
       dir="rtl"
     >
       <div className="mb-12 space-y-3 select-none">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mb-2 flex"
-        >
-          <span className="rounded-full border border-stroke-gray bg-surface-container px-3 py-1 text-xs font-bold tracking-wide text-on-surface-variant">
-            بیش از کدنویسی
-          </span>
-        </motion.div>
-
         {/* 1. اجرای انیمیشن تیتر اصلی */}
         <motion.h2
           variants={createContainerVariant(0)}
@@ -109,10 +98,7 @@ export default function Metrics() {
               {word === "سیستم" && (
                 <span className="h-0 basis-full" aria-hidden="true" />
               )}
-              <motion.span
-                variants={wordBlurVariant}
-                className="inline-block"
-              >
+              <motion.span variants={wordBlurVariant} className="inline-block">
                 {word === "طراحی" ? (
                   <span className="text-electric-blue">{word}</span>
                 ) : (
@@ -122,11 +108,21 @@ export default function Metrics() {
             </React.Fragment>
           ))}
         </motion.h2>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-2 flex"
+        >
+          <span className="border border-stroke-gray bg-surface-container px-3 py-1 text-base font-medium tracking-wide text-on-surface-variant/70 rounded-full">
+            بیش از کدنویسی
+          </span>
+        </motion.div>
         <motion.p
           variants={createContainerVariant(0.3)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-base md:text-lg max-w-4xl leading-8 font-medium flex flex-wrap gap-x-1.5 gap-y-1 md:mt-14"
+          className="text-base md:text-4xl max-w-4xl leading-8 md:leading-12 font-normal flex flex-wrap gap-x-1.5 gap-y-1 md:mt-14"
         >
           {paragraph1.split(" ").map((word, idx) => (
             <motion.span
@@ -143,7 +139,7 @@ export default function Metrics() {
           variants={createContainerVariant(0.6)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-lg text-on-surface-variant max-w-4xl leading-relaxed flex flex-wrap gap-x-1.5 gap-y-1"
+          className="text-lg md:text-3xl text-on-surface-variant max-w-4xl leading-relaxed flex flex-wrap gap-x-1.5 gap-y-1"
         >
           {paragraph2.split(" ").map((word, idx) => (
             <motion.span
@@ -163,12 +159,12 @@ export default function Metrics() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="metrics-summary flex flex-col justify-center border-b border-stroke-gray bg-white/70 p-5 sm:p-6 md:col-span-4 md:border-b-0 md:border-l md:p-14"
+          className="metrics-summary flex flex-col justify-center border-b border-stroke-gray bg-white/70 p-5 sm:p-6 md:col-span-4 md:border-b-0 md:border-l md:p-12"
         >
-          <span className="mb-3 text-[10px] font-extrabold tracking-[.14em] text-on-surface-variant md:text-xs">
+          <span className="mb-3 text-[10px] font-medium tracking-[.14em] text-on-surface-variant/80 md:text-base">
             تصویر کلی ترسیم
           </span>
-          <h3 className="mb-3 text-4xl font-black leading-tight tracking-[-.035em] text-on-surface md:mb-4 md:text-5xl">
+          <h3 className="mb-3 text-4xl font-black leading-[1.15] tracking-[-.035em] text-on-surface md:mb-4 md:text-5xl">
             توانمندی، بدون حاشیه.
           </h3>
           <p className="text-[13px] leading-7 text-on-surface-variant md:text-sm md:leading-relaxed">
@@ -206,7 +202,6 @@ export default function Metrics() {
                     {item.label}
                   </motion.div>
                 </div>
-
               </div>
 
               <motion.p
@@ -218,7 +213,7 @@ export default function Metrics() {
               >
                 {item.desc}
               </motion.p>
-              <div className="metric-outline absolute bottom-2 left-2 z-0font-plus-jakarta text-7xl font-black transition-all duration-300 sm:text-7xl md:bottom-3 md:left-3">
+              <div className="metric-outline absolute bottom-2 left-2 z-0 font-space-grotesk text-7xl font-black transition-all duration-300 md:text-[6.7rem] md:bottom-3 md:left-3">
                 {item.num}
               </div>
             </div>

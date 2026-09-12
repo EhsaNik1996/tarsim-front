@@ -4,9 +4,9 @@ import logoImg from "@/public/Logo-noneBg.png";
 import { ArrowLeft, ArrowUp, ArrowUpLeft, AtSign } from "lucide-react";
 
 const quickLinks = [
-  { label: "خانه", href: "#" },
-  { label: "درباره ما", href: "#about" },
-  { label: "خدمات", href: "#services" },
+  { label: "خانه", href: "/" },
+  { label: "درباره ما", href: "/about" },
+  { label: "خدمات", href: "/services" },
   { label: "نمونه‌کارها", href: "#projects" },
   { label: "تماس", href: "#contact" },
 ];

@@ -1,0 +1,54 @@
+variables:
+  PROJECT_NAME: "tarsim"
+  ENV: "prod"
+
+image: ${DOCKER_REGISTRY_MIRROR}/docker:latest
+# image: hub.cr.parmincloud.ir/library/docker:latest
+
+default:
+  tags:
+    # - basalam-runner
+    # - soha-cloud
+    # - iran-runner
+    - roohi-temp
+    # - tarsim-starlink
+
+
+stages:
+  - build
+  - deploy-stage
+  - deploy-prod
+
+build:
+  stage: build
+  before_script:
+    - echo "Using environment file .env.${ENV}"
+    - docker login -u "$DOCKER_REGISTRY_USER" -p "$DOCKER_REGISTRY_PASS" "${DOCKER_REGISTRY_MIRROR}"
+  script:
+    - docker build --build-arg ENV=prod -t ${DOCKER_REGISTRY_MIRROR}/sohacloud/${PROJECT_NAME}:${CI_COMMIT_SHORT_SHA} .
+  only:
+    - main 
+
+deploy_stage:
+  stage: deploy-stage
+  script:
+    - export ENV="stage"
+    - echo "${ENV}"
+    - docker build --build-arg ENV=${ENV} -t ${DOCKER_REGISTRY_MIRROR}/sohacloud/${PROJECT_NAME}/dev .
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS ${DOCKER_REGISTRY_MIRROR}
+    - docker push ${DOCKER_REGISTRY_MIRROR}/sohacloud/${PROJECT_NAME}/dev
+  only:
+    - main
+  when: manual
+
+deploy_production:
+  stage: deploy-prod
+  script:
+    - export ENV="prod"
+    - echo "${ENV}"
+    - docker build --build-arg ENV=${ENV} -t ${DOCKER_REGISTRY_MIRROR}/sohacloud/${PROJECT_NAME}/master .
+    - docker login -u $DOCKER_REGISTRY_USER -p $DOCKER_REGISTRY_PASS ${DOCKER_REGISTRY_MIRROR}
+    - docker push ${DOCKER_REGISTRY_MIRROR}/sohacloud/${PROJECT_NAME}/master
+  only:
+    - main
+  when: manual
