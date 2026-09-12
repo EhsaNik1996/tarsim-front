@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Header from "./components/Header";
 import CustomCursor from "./components/CustomCursor";
-import { Vazirmatn, Plus_Jakarta_Sans } from "next/font/google";
+import { Vazirmatn, Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 
 
 const vazir = Vazirmatn({
@@ -18,6 +18,12 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap"
 });
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk-family",
+  display: "swap"
+});
+
 export const metadata: Metadata = {
   title: "ترسیم | معماری ، نوآوری و تکنولوژی",
   description: "راهکارهای دیجیتال هوشمند و مدرن",
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazir.variable} ${plusJakarta.variable} overflow-x-clip`}>
+    <html lang="fa" dir="rtl" className={`${vazir.variable} ${plusJakarta.variable} ${spaceGrotesk.variable} overflow-x-clip`}>
       <head>
         <link
           rel="stylesheet"

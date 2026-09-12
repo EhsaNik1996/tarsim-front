@@ -89,7 +89,7 @@ export default function CheckpointsCard() {
                   delay={index * 0.045}
                   className="flex flex-col gap-4 py-7.5 md:flex-row md:items-start md:gap-6"
                 >
-                  <span className="w-8 shrink-0 text-[10px] font-semibold text-lime-400">
+                  <span className="w-8 shrink-0 font-space-grotesk text-[10px] font-semibold text-lime-400">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 

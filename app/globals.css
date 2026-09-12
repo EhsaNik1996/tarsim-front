@@ -8,6 +8,7 @@
   --color-surface-container: #f8f8f8;
   --color-surface-container-low: #fafafa;
   --color-background-deep: #fafafa;
+  --font-space-grotesk: var(--font-space-grotesk-family), sans-serif;
   --font-vazir: var(--font-vazirmatn), sans-serif;
   --font-plus-jakarta: var(--font-plus-jakarta), sans-serif;
 }
@@ -166,5 +167,28 @@
   @keyframes marquee {
     from { transform: translateX(0%); }
     to { transform: translateX(100%); } 
+  }
+}
+
+/* Keep service numerals independent of the surrounding Persian typography. */
+.font-space-grotesk,
+.service-track-number {
+  font-family: var(--font-space-grotesk-family), sans-serif;
+}
+
+.service-track-number {
+  display: inline-block;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.08em;
+  font-variant-numeric: lining-nums proportional-nums;
+}
+
+@media (min-width: 768px) {
+  .service-track-number {
+    font-size: 5rem;
   }
 }

@@ -3,7 +3,7 @@ import BlurText from "../../components/BlurText";
 
 const people = [
   {
-    category: "02 / رهبر فنی",
+    category: "02 / مدیر فنی",
     name: "سید محسن جلالی",
     description:
       "در همان مسیر تحویل، تصمیم‌ها را بازبینی می‌کند و نتیجه را قابل نگهداری و توضیح‌پذیر نگه می‌دارد.",
@@ -12,7 +12,7 @@ const people = [
     line: "bg-orange-500",
   },
   {
-    category: "01 / رهبر محصول",
+    category: "01 / مدیر محصول",
     name: "علی جواهرزاده",
     description:
       "از نخستین جلسه کاری تا جهت‌دهی محصول، اجرا، بازبینی و انتشار در کنار پروژه می‌ماند.",
@@ -149,7 +149,7 @@ export default function LeadsSection() {
             <span className="text-xs font-medium tracking-[0.18em] text-emerald-700">
               <BlurText text="مسئولیت‌پذیری چگونه کار می‌کند" stagger={0.12} />
             </span>
-            <h3 className="mt-7 max-w-lg text-[30px] leading-8 font-black sm:leading-tight">
+            <h3 className="mt-7 max-w-lg text-[28px] leading-9 md:text-4xl md:leading-10 font-black">
               <BlurText text="هر دو راهبر آن‌قدر نزدیک می‌مانند که فرض‌ها را به چالش بکشند، تصمیم‌های یکدیگر را بازبینی کنند و مشتری با افراد مسئول سیستم در ارتباط باشد؛ نه با یک لایه جداگانه تحویل." delay={0.16} stagger={0.09} />
             </h3>
           </BlurReveal>
