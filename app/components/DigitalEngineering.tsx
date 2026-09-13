@@ -62,9 +62,10 @@ export default function DigitalEngineering() {
               data-cursor="link"
               initial="initial"
               whileHover="hover"
+              whileTap="hover"
               whileFocus="hover"
               tabIndex={0}
-              className="group relative flex min-h-65 cursor-none flex-col justify-between overflow-hidden rounded-3xl border border-zinc-900 bg-[#0d0d10] p-8 text-right md:p-10"
+              className="group relative flex max-h-52 md:min-h-65 cursor-none flex-col justify-between overflow-hidden rounded-3xl border border-zinc-900 bg-[#0d0d10] p-8 text-right md:p-10"
             >
               <div className="pointer-events-none absolute inset-0 z-20 rounded-3xl border border-transparent transition-all duration-500 group-hover:border-electric-blue group-focus:border-electric-blue" />
               <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 h-0.75 w-0 -translate-x-1/2 rounded-full bg-electric-blue transition-[width] duration-500 ease-out group-hover:w-40 group-focus:w-40" />
