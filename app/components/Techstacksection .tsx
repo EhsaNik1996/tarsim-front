@@ -300,7 +300,7 @@ const badges = ["پیاده‌سازی سریع", "تحویل تمیز و مست
 export default function TechStackSection() {
   return (
     <div
-      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-8 md:p-10 mx-4 md:mx-0 md:w-[84%] rounded-4xl"
+      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-6 md:p-10 mx-4 md:mx-0 md:w-[84%] rounded-4xl"
       dir="rtl"
     >
       <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.6fr] items-center">

@@ -25,7 +25,10 @@ function getVisibleRange(swiper: SwiperType) {
   }
 
   const perView = swiper.params.slidesPerView;
-  const count = Math.max(1, Math.floor(typeof perView === "number" ? perView : 1));
+  const count = Math.max(
+    1,
+    Math.floor(typeof perView === "number" ? perView : 1),
+  );
   const start = swiper.activeIndex;
   return {
     start,
@@ -502,7 +505,9 @@ export default function ProjectsSlider() {
                             </div>
                           ))}
                         </div>
-                        <div className={`${styles.detailsCta} transition-transform duration-500`}>
+                        <div
+                          className={`${styles.detailsCta} transition-transform duration-500`}
+                        >
                           مشاهده جزئیات <span>↗</span>
                         </div>
                       </div>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import BlurText from "./BlurText";
 import { ArrowLeft } from "lucide-react";
@@ -9,7 +9,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-white px-6 pb-24 pt-28 md:px-16 md:pb-32 md:pt-32"
+      className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-white px-6 pb-24 pt-26 md:px-16 md:pb-32 md:pt-32"
       dir="rtl"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(79,82,255,0.09)_1px,transparent_0)] bg-size-[29px_29px]" />
@@ -19,23 +19,21 @@ export default function Hero() {
       <div className="relative z-10 mx-auto flex w-full max-w-300 flex-col items-center text-center">
         <motion.div
           initial={
-            reduceMotion
-              ? false
-              : { opacity: 0, y: 10, filter: "blur(6px)" }
+            reduceMotion ? false : { opacity: 0, y: 10, filter: "blur(6px)" }
           }
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: reduceMotion ? 0 : 0.55 }}
-          className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-zinc-200 bg-white/85 px-4 py-2 mb-8 text-[10px] font-bold text-zinc-500 shadow-sm backdrop-blur-sm sm:text-xs rounded-full"
+          className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-zinc-200 bg-white/85 px-4 py-2 mb-8 font-medium text-zinc-500 shadow-sm backdrop-blur-sm text-xs rounded-full"
         >
-          <span className="size-2 bg-electric-blue shadow-sm rounded-full" />
-          <span className="hidden md:block">از سال 1389</span>
-          <span className="hidden md:block text-zinc-300">•</span>
+          <span className="size-2 bg-electric-blue shadow-sm animate-pulse rounded-full" />
+          <span className="hidden md:block">از سال ۱۳۸۹</span>
+          <span className="hidden text-zinc-300 md:block">•</span>
           <span>مهندسی سیستم</span>
           <span className="text-zinc-300">•</span>
           <span>محصولات دیجیتال</span>
           <span className="text-zinc-300">•</span>
           <span>زیرساخت</span>
-          <span className="text-zinc-300 hidden md:block">•</span>
+          <span className="hidden text-zinc-300 md:block">•</span>
           <span className="hidden md:block">مدیریت دانش</span>
         </motion.div>
 
@@ -56,7 +54,7 @@ export default function Hero() {
           />
         </h1>
 
-        <p className="mt-7 max-w-220 text-[15px] leading-8 text-zinc-500 sm:text-base md:text-lg md:leading-9">
+        <p className="mt-4 max-w-220 text-base font-normal leading-7 text-zinc-500 sm:text-base md:text-lg md:leading-9">
           <BlurText
             text="ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت، توسعه‌پذیری و پایداری ساخته شده‌اند."
             delay={1}
@@ -67,16 +65,14 @@ export default function Hero() {
 
         <motion.div
           initial={
-            reduceMotion
-              ? false
-              : { opacity: 0, y: 16, filter: "blur(8px)" }
+            reduceMotion ? false : { opacity: 0, y: 16, filter: "blur(8px)" }
           }
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{
             duration: reduceMotion ? 0 : 0.65,
             delay: reduceMotion ? 0 : 1.8,
           }}
-          className="mt-9 flex w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
+          className="mt-9 flex md:w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
         >
           <a
             href="#contact"
@@ -92,6 +88,26 @@ export default function Hero() {
             مشاهده پروژه‌ها
           </a>
         </motion.div>
+
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.55,
+            delay: reduceMotion ? 0 : 2.05,
+          }}
+          className="mt-10"
+        >
+          <p className="mb-2 text-zinc-400/80 text-[0.97rem] md:text-[0.85rem] font-normal">
+            نمونه‌کارهای منتخب
+          </p>
+          <div className="flex max-w-3xl flex-wrap items-center justify-center gap-x-5 gap-y-2 font-normal text-[0.85rem] md:text-[0.97rem] text-zinc-400/70 md:gap-x-8 md:text-xl">
+            <span>داکیباکس</span>
+            <span>الفائزون</span>
+            <span>اختام</span>
+            <span>المستند</span>
+          </div>
+        </motion.div>
       </div>
 
       <motion.a
@@ -100,7 +116,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.9, duration: 0.5 }}
-        className="absolute bottom-6 left-1/2 z-10 flex h-9 w-5 -translate-x-1/2 justify-center rounded-full border border-zinc-300 bg-white/80 pt-2 backdrop-blur-sm md:bottom-8"
+        className="absolute bottom-6 left-1/2 z-10 flex h-9 w-5 -translate-x-1/2 justify-center rounded-full border border-zinc-300 bg-white/80 pt-2 backdrop-blur-sm md:bottom-10"
       >
         <motion.span
           className="w-1 h-2.5 rounded-full bg-electric-blue"

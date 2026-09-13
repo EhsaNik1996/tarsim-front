@@ -66,6 +66,17 @@ const wordBlurVariant = {
   },
 };
 
+const renderMetricValue = (value: string) =>
+  value.split(/([0-9۰-۹٠-٩+%]+)/g).map((part, index) =>
+    /[0-9۰-۹٠-٩]/.test(part) ? (
+      <span key={index} className="font-space-grotesk">
+        {part}
+      </span>
+    ) : (
+      <React.Fragment key={index}>{part}</React.Fragment>
+    ),
+  );
+
 export default function Metrics() {
   const { ref: sectionRef, inView } = useInView({
     threshold: 0.1,
@@ -82,7 +93,7 @@ export default function Metrics() {
     <section
       id="about"
       ref={sectionRef}
-      className="scroll-mt-20 py-16 md:py-24 px-4 md:px-16 max-w-360 mx-auto text-right"
+      className="scroll-mt-20 pt-16 pb-0 md:py-24 px-4 md:px-16 max-w-360 mx-auto text-right"
       dir="rtl"
     >
       <div className="mb-12 space-y-3 select-none">
@@ -112,7 +123,7 @@ export default function Metrics() {
           initial={{ opacity: 0, y: 10 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="mb-2 flex"
+          className="mb-14 md:mb-2 flex"
         >
           <span className="border border-stroke-gray bg-surface-container px-3 py-1 text-base font-medium tracking-wide text-on-surface-variant/70 rounded-full">
             بیش از کدنویسی
@@ -122,7 +133,7 @@ export default function Metrics() {
           variants={createContainerVariant(0.3)}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="text-base md:text-4xl max-w-4xl leading-8 md:leading-12 font-normal flex flex-wrap gap-x-1.5 gap-y-1 md:mt-14"
+          className="text-lg md:text-4xl max-w-4xl leading-7 md:leading-12 font-normal flex flex-wrap gap-x-1.5 gap-y-1 md:mt-14"
         >
           {paragraph1.split(" ").map((word, idx) => (
             <motion.span
@@ -161,13 +172,13 @@ export default function Metrics() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="metrics-summary flex flex-col justify-center border-b border-stroke-gray bg-white/70 p-5 sm:p-6 md:col-span-4 md:border-b-0 md:border-l md:p-12"
         >
-          <span className="mb-3 text-[10px] font-medium tracking-[.14em] text-on-surface-variant/80 md:text-base">
+          <span className="mb-3 text-[0.97rem] font-normal text-on-surface-variant/80 md:text-base">
             تصویر کلی ترسیم
           </span>
-          <h3 className="mb-3 text-4xl font-black leading-[1.15] tracking-[-.035em] text-on-surface md:mb-4 md:text-5xl">
+          <h3 className="mb-3 text-3xl font-black leading-[1.15] tracking-[-.035em] text-on-surface md:mb-4 md:text-5xl">
             توانمندی، بدون حاشیه.
           </h3>
-          <p className="text-[13px] leading-7 text-on-surface-variant md:text-sm md:leading-relaxed">
+          <p className="text-sm leading-7 text-on-surface-variant md:leading-relaxed">
             چهار شاخص روشن از تجربه، شیوه همراهی و عمق مهندسی ترسیم.
           </p>
         </motion.div>
@@ -189,7 +200,7 @@ export default function Metrics() {
               <div className="relative z-10">
                 <div>
                   <div className="metric-value mb-4 md:text-6xl text-nowrap leading-none font-black tracking-[-.04em] text-on-surface transition-colors duration-300 text-4xl md:mb-3 md:text-[clamp(2rem,3vw,3rem)]">
-                    {item.value}
+                    {renderMetricValue(item.value)}
                   </div>
 
                   <motion.div
@@ -197,7 +208,7 @@ export default function Metrics() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
-                    className="text-[10px] leading-5 font-extrabold tracking-[.06em] text-on-surface-variant sm:text-[11px] md:text-xs"
+                    className="text-[10px] leading-5 font-normal tracking-[.06em] text-on-surface-variant/85 md:text-base"
                   >
                     {item.label}
                   </motion.div>
@@ -213,7 +224,7 @@ export default function Metrics() {
               >
                 {item.desc}
               </motion.p>
-              <div className="metric-outline absolute bottom-2 left-2 z-0 font-space-grotesk text-7xl font-black transition-all duration-300 md:text-[6.7rem] md:bottom-3 md:left-3">
+              <div className="metric-outline absolute bottom-2 left-2 z-0 font-space-grotesk text-7xl font-black transition-all duration-300 md:text-[6.7rem] md:bottom-0 md:left-3">
                 {item.num}
               </div>
             </div>
