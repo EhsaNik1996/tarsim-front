@@ -25,6 +25,7 @@ const navItems = [
 export default function Header() {
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const sections = navItems
@@ -33,6 +34,8 @@ export default function Header() {
       .filter((section): section is HTMLElement => section !== null);
 
     const updateHeader = () => {
+      setIsScrolled(window.scrollY > 8);
+
       /* Active section */
       const probeLine = Math.min(180, window.innerHeight * 0.3);
 
@@ -62,11 +65,14 @@ export default function Header() {
   return (
     <motion.nav
       dir="rtl"
-      className="glass-nav fixed top-0 z-50 w-full border-b border-stroke-gray bg-white/95 backdrop-blur-md"
+      className={
+        isScrolled
+          ? "fixed top-0 z-50 w-full bg-white/50 border-b border-gray-500/15 backdrop-blur-lg transition-[background-color,backdrop-filter] duration-300"
+          : "fixed top-0 z-50 w-full bg-linear-to-b from-white via-white/50 to-transparent transition-[background-color,backdrop-filter] duration-300"
+      }
     >
-      <div className="relative mx-auto flex h-17 w-full items-center justify-between px-4 md:h-auto md:max-w-[80%]">
+      <div className="relative mx-auto flex h-15 w-full items-center justify-between px-4 md:h-auto md:max-w-[80%]">
         <Logo />
-
         {/* Navigation */}
         <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {navItems.map((item) => {
@@ -92,7 +98,6 @@ export default function Header() {
             );
           })}
         </ul>
-
         {/* Actions */}
         <div className="flex items-center gap-4">
           {/* Socials */}
@@ -154,7 +159,7 @@ export default function Header() {
               <SheetTrigger asChild>
                 <button
                   aria-label="باز کردن منو"
-                  className="grid size-11 place-items-center rounded-full border border-black/10 bg-white text-on-surface shadow-sm transition-colors hover:bg-slate-50"
+                  className="grid size-11 place-items-center text-on-surface stransition-colors hover:bg-slate-50 rounded-full"
                 >
                   <Menu className="size-6 text-on-surface" strokeWidth={2} />
                 </button>
@@ -174,14 +179,17 @@ export default function Header() {
                 <div className="mt-8 flex flex-col gap-5 text-right">
                   {navItems.map((item) => {
                     const isActive = item.route
-                      ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+                      ? pathname === item.href ||
+                        pathname.startsWith(`${item.href}/`)
                       : pathname === "/" && activeSection === item.id;
 
                     return (
                       <SheetClose asChild key={item.id}>
                         <Link
                           href={item.href}
-                          onClick={() => !item.route && setActiveSection(item.id)}
+                          onClick={() =>
+                            !item.route && setActiveSection(item.id)
+                          }
                           aria-current={isActive ? "location" : undefined}
                           className={`rounded-l-lg border-r-4 py-2 pr-3 text-base transition-all ${
                             isActive

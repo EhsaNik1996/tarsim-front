@@ -62,23 +62,26 @@ export default function DigitalEngineering() {
               data-cursor="link"
               initial="initial"
               whileHover="hover"
-              className="group relative flex min-h-65 cursor-none flex-col justify-between overflow-hidden rounded-3xl border border-zinc-900 bg-[#0d0d10] p-8 text-right md:p-10"
+              whileTap="hover"
+              whileFocus="hover"
+              tabIndex={0}
+              className="group relative flex max-h-52 md:min-h-65 cursor-none flex-col justify-between overflow-hidden rounded-3xl border border-zinc-900 bg-[#0d0d10] p-8 text-right md:p-10"
             >
-              <div className="pointer-events-none absolute inset-0 z-20 rounded-3xl border border-transparent transition-all duration-500 group-hover:border-electric-blue" />
-              <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 h-0.75 w-0 -translate-x-1/2 rounded-full bg-electric-blue transition-[width] duration-500 ease-out group-hover:w-40" />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-electric-blue/4 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 z-20 rounded-3xl border border-transparent transition-all duration-500 group-hover:border-electric-blue group-focus:border-electric-blue" />
+              <div className="pointer-events-none absolute bottom-0 left-1/2 z-30 h-0.75 w-0 -translate-x-1/2 rounded-full bg-electric-blue transition-[width] duration-500 ease-out group-hover:w-40 group-focus:w-40" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-electric-blue/4 via-transparent to-transparent opacity-0 transition-opacity duration-700 group-hover:opacity-100 group-focus:opacity-100" />
 
-              <div className="pointer-events-none absolute bottom-0 left-2 z-0 select-nonefont-plus-jakarta text-8xl leading-none font-black text-[#131316] transition-colors duration-500 group-hover:text-electric-blue/10" dir="ltr">
+              <div className="pointer-events-none absolute bottom-3 left-4 z-0 font-space-grotesk text-6xl md:text-8xl leading-none font-extrabold text-[#131316] transition-colors duration-500 group-hover:text-electric-blue/10 group-focus:text-electric-blue/10" dir="ltr">
                 {item.num}
               </div>
 
               <div className="relative z-10 space-y-6">
                 <motion.div
                   variants={iconVariants}
-                  className="ml-auto mr-0 size-5 rounded-xs border-2 border-electric-blue/40 bg-electric-blue/10 transition-colors duration-500 group-hover:border-electric-blue group-hover:bg-electric-blue"
+                  className="ml-auto mr-0 size-5 rounded-xs border-2 border-electric-blue/40 bg-electric-blue/10 transition-colors duration-500 group-hover:border-electric-blue group-hover:bg-electric-blue group-focus:border-electric-blue group-focus:bg-electric-blue"
                 />
                 <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-zinc-100 transition-colors duration-300 group-hover:text-electric-blue">
+                  <h3 className="text-xl font-bold text-zinc-100 transition-colors duration-300 group-hover:text-electric-blue group-focus:text-electric-blue">
                     {item.title}
                   </h3>
                   <p className="text-sm leading-7 font-medium text-zinc-500">{item.desc}</p>

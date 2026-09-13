@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const faqs = [
   {
@@ -43,7 +43,7 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="relative scroll-mt-20 overflow-hidden bg-black py-16 text-white md:py-32"
+      className="relative scroll-mt-20 overflow-hidden bg-black py-16 text-white md:py-28"
       dir="rtl"
     >
       <div className="mx-auto flex max-w-360 justify-center px-6 md:px-16">
@@ -53,7 +53,7 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.55, ease: "easeOut" }}
-            className="mb-16 md:mb-19"
+            className="mb-16 md:mb-14"
           >
             <h2 className="text-4xl font-black leading-none tracking-tighter md:text-6xl">
               سوالات متداول
@@ -80,7 +80,7 @@ export default function FAQ() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.35 }}
                   transition={{ duration: 0.45, delay: index * 0.05 }}
-                  className="border-b border-[#202527] first:border-t"
+                  className="border-b border-[#202527]"
                 >
                   <button
                     type="button"

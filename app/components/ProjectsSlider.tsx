@@ -5,9 +5,9 @@ import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Dialog, DialogContent } from "@/app/components/ui/dialog";
 import { CSSProperties, useCallback, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, X, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
-const SLIDE_SPEED = 360;
+const SLIDE_SPEED = 520;
 
 function getVisibleRange(swiper: SwiperType) {
   const fullyVisibleClass =
@@ -25,7 +25,10 @@ function getVisibleRange(swiper: SwiperType) {
   }
 
   const perView = swiper.params.slidesPerView;
-  const count = Math.max(1, Math.floor(typeof perView === "number" ? perView : 1));
+  const count = Math.max(
+    1,
+    Math.floor(typeof perView === "number" ? perView : 1),
+  );
   const start = swiper.activeIndex;
   return {
     start,
@@ -57,7 +60,7 @@ const projectsData = [
     tags: ["Next.js", "React.js", "tailwind"],
     url: "https://docibox.ir",
     screenshotName: "docibox",
-    privacy: "public",
+    privacy: "PUBLIC",
   },
   {
     id: 2,
@@ -67,7 +70,7 @@ const projectsData = [
     longDesc:
       "«کتابخانۀ مجازی ادبیات» بستری است برای دستیابی پژوهشگران ارجمند حوزۀ ادبیات به فایل تمام‌متن پی‌دی‌اف (pdf) کتاب‌های حوزۀ ادبیات فارسی و عربی.",
     tags: ["Next.js", "Laravel", "tailwind"],
-    privacy: "public",
+    privacy: "PUBLIC",
     url: "https://eliteraturebook.com",
     screenshotName: "adabiat",
   },
@@ -78,8 +81,8 @@ const projectsData = [
     desc: "سامانه جامع دسترسی به منابع، کتاب‌ها، مقالات و اسناد تخصصی تاریخ اسلام و ایران برای پژوهشگران و علاقه‌مندان.",
     longDesc:
       "وب‌سایت کتابخانه تخصصی تاریخ اسلام و ایران با هدف ارائه دسترسی سریع و سازمان‌یافته به منابع معتبر تاریخی طراحی و توسعه شد. این پلتفرم امکان جستجوی پیشرفته، معرفی کتاب‌ها و مقالات، مدیریت آرشیو منابع و ارائه اطلاعات پژوهشی را در بستری مدرن و کاربرپسند فراهم می‌کند تا پژوهشگران، دانشجویان و علاقه‌مندان بتوانند به آسانی به محتوای تخصصی مورد نیاز خود دسترسی داشته باشند.",
-    tags: ["Next.js", "آرشیو دیجیتال", "کتابخانه"],
-    privacy: "public",
+    tags: ["Next.js", "Digital Archive", "Library"],
+    privacy: "PUBLIC",
     url: "https://historylib.com/",
     screenshotName: "tarikh",
   },
@@ -90,8 +93,8 @@ const projectsData = [
     desc: "وب‌سایت چندرسانه‌ای برای انتشار مستندها، پادکست‌ها، پژوهش‌ها، نسخه‌های خطی و رویدادهای فرهنگی و تاریخی.",
     longDesc:
       "این پلتفرم با هدف ارائه و انتشار محتوای پژوهشی و رسانه‌ای در حوزه تاریخ و فرهنگ طراحی و توسعه شد. امکاناتی مانند معرفی مستندها، انتشار مقالات و پژوهش‌ها، آرشیو نسخه‌های خطی، پادکست، پوشش رویدادها و مدیریت محتوای چندرسانه‌ای در بستری مدرن و واکنش‌گرا، تجربه‌ای روان برای مخاطبان و پژوهشگران فراهم می‌کند.",
-    tags: ["Next.js", "CMS", "چندرسانه‌ای"],
-    privacy: "public",
+    tags: ["Next.js", "CMS", "Multi-media"],
+    privacy: "PUBLIC",
     url: "https://akhtam.net/",
     screenshotName: "akhtam",
   },
@@ -102,8 +105,8 @@ const projectsData = [
     desc: "وب‌سایت رسمی شرکت تولیدات هنری برای معرفی سریال‌ها، فیلم‌ها، پروژه‌های در حال تولید و اخبار رسانه‌ای.",
     longDesc:
       "این وب‌سایت با هدف معرفی آثار و فعالیت‌های شرکت تولیدات هنری طراحی و توسعه شد. پلتفرم امکان نمایش پروژه‌های در حال تولید، معرفی آثار منتشرشده، ارائه اخبار، مدیریت محتوای چندرسانه‌ای و معرفی تیم تولید را در محیطی مدرن، واکنش‌گرا و بهینه برای تمامی دستگاه‌ها فراهم می‌کند.",
-    tags: ["Next.js", "رسانه", "چندرسانه‌ای"],
-    privacy: "public",
+    tags: ["Next.js", "Media", "Multi-media"],
+    privacy: "PUBLIC",
     url: "https://alfaazon.com/",
     screenshotName: "faezoon",
   },
@@ -114,8 +117,8 @@ const projectsData = [
     desc: "وب‌سایت رسمی شرکت تولیدات هنری برای معرفی سریال‌ها، فیلم‌ها، پروژه‌های در حال تولید و اخبار رسانه‌ای.",
     longDesc:
       "این وب‌سایت با هدف معرفی آثار و فعالیت‌های شرکت تولیدات هنری طراحی و توسعه شد. پلتفرم امکان نمایش پروژه‌های در حال تولید، معرفی آثار منتشرشده، ارائه اخبار، مدیریت محتوای چندرسانه‌ای و معرفی تیم تولید را در محیطی مدرن، واکنش‌گرا و بهینه برای تمامی دستگاه‌ها فراهم می‌کند.",
-    tags: ["Next.js", "رسانه", "چندرسانه‌ای"],
-    privacy: "public",
+    tags: ["Next.js", "Media", "Multi-media"],
+    privacy: "PUBLIC",
     url: "https://aqaed.net",
     screenshotName: "aqaed",
   },
@@ -126,8 +129,8 @@ const projectsData = [
     desc: "وب‌سایت شرکتی برای معرفی محصولات، برندهای بین‌المللی و خدمات تخصصی در حوزه فیلترهای ممبران و تجهیزات تصفیه آب صنعتی.",
     longDesc:
       "این وب‌سایت با هدف معرفی خدمات و محصولات شرکت سفیر آفاق تجارت سبز طراحی و توسعه شد. پلتفرم امکان معرفی برندهای معتبر جهانی، نمایش مشخصات فنی محصولات، ارائه اطلاعات تخصصی درباره فناوری‌های تصفیه آب صنعتی و ایجاد بستری حرفه‌ای برای ارتباط با مشتریان و دریافت درخواست‌های تجاری را فراهم می‌کند.",
-    tags: ["Next.js", "وب‌سایت شرکتی", "تجارت بین‌الملل"],
-    privacy: "public",
+    tags: ["Next.js", "Company Website", "International Trade"],
+    privacy: "PUBLIC",
     url: "http://sats-co.com/",
     screenshotName: "safir",
   },
@@ -138,8 +141,8 @@ const projectsData = [
     desc: "سایت اطلاعات مدیران و ارگان های موسسه آل البیت التراث",
     longDesc:
       "این پروژه با هدف خودکارسازی زیرساخت‌های ابری پایدار برای پلتفرم‌های حساس مهندسی شد. معماری دیتابیس‌های توزیع‌شده، کانتینرهای داکر و مانیتورینگ بلادرنگ فرآیندها به تیم‌های توسعه اجازه می‌دهد تا دپلوی محصولات را با حداکثر سرعت انجام دهند.",
-    tags: ["Docker", "زیرساخت", "امنیت"],
-    privacy: "private",
+    tags: ["Docker", "Basic", "Security"],
+    privacy: "PRIVATE",
     url: "https://new.al-mostanad.com",
     screenshotName: "mostanad",
   },
@@ -192,13 +195,13 @@ type Project = (typeof projectsData)[number];
 
 function ProjectDetails({ project }: { project: Project }) {
   return (
-    <div className="grid h-full min-h-0 grid-cols-1 overflow-y-auto md:grid-cols-12 md:overflow-hidden">
+    <div className="grid h-full min-h-0 grid-cols-1 overflow-y-auto pb-16 md:grid-cols-12 md:overflow-hidden md:pb-0">
       <div
-        className={`${styles.scrollbar} flex flex-col justify-between bg-white p-6 md:col-span-5 md:overflow-y-auto md:p-12`}
+        className={`${styles.scrollbar} flex flex-col justify-between bg-white p-5 pt-20 md:col-span-5 md:overflow-y-auto md:p-12`}
       >
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <div>
-            <h3 className="mb-4 text-3xl leading-tight font-black text-zinc-900">
+            <h3 className="mb-3 text-2xl leading-tight font-black text-zinc-900 md:mb-4 md:text-3xl">
               {project.title}
             </h3>
             <p className="text-sm leading-relaxed font-medium text-zinc-500">
@@ -210,7 +213,7 @@ function ProjectDetails({ project }: { project: Project }) {
             <h4 className="font-mono text-xs font-bold text-zinc-400">
               مرور کلی پروژه
             </h4>
-            <p className="rounded-2xl border border-zinc-100 bg-zinc-50/60 p-5 text-xs leading-relaxed font-medium text-zinc-600">
+            <p className="rounded-2xl border border-zinc-100 bg-zinc-50/70 p-4 text-[13px] leading-7 font-medium text-zinc-600 md:p-5 md:text-xs md:leading-relaxed">
               {project.longDesc}
             </p>
           </div>
@@ -232,7 +235,7 @@ function ProjectDetails({ project }: { project: Project }) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-zinc-100 pt-6">
+        <div className="mt-8 border-t border-zinc-100 pt-5 md:mt-12 md:pt-6">
           <a
             href={project.url}
             target="_blank"
@@ -246,7 +249,7 @@ function ProjectDetails({ project }: { project: Project }) {
       </div>
 
       <div
-        className="flex min-h-80 flex-col justify-center border-zinc-100 bg-zinc-50 p-5 md:col-span-7 md:min-h-0 md:border-r md:p-8"
+        className="flex min-h-80 flex-col justify-center border-t border-zinc-100 bg-zinc-50/80 p-4 md:col-span-7 md:min-h-0 md:border-t-0 md:border-r md:p-8"
         dir="ltr"
       >
         <span className="mb-5 block text-right text-xs font-bold text-zinc-800">
@@ -305,7 +308,7 @@ function ProjectDialog({
   return (
     <Dialog open={open} onOpenChange={(nextOpen) => !nextOpen && onClose()}>
       <DialogContent
-        className="isolate flex h-[85vh] max-w-7xl flex-col overflow-visible rounded-4xl border border-zinc-200 bg-white p-0 text-right shadow-2xl"
+        className="isolate flex h-[92dvh] w-[calc(100%-1rem)] max-w-none flex-col overflow-visible rounded-[1.75rem] border border-zinc-200 bg-white p-0 text-right shadow-[0_24px_80px_-32px_rgba(0,0,0,0.28)] md:h-[85vh] md:w-full md:max-w-7xl md:rounded-4xl md:shadow-2xl"
         dir="rtl"
       >
         <button
@@ -316,12 +319,12 @@ function ProjectDialog({
           }}
           onClick={onClose}
           aria-label="بستن جزئیات پروژه"
-          className="pointer-events-auto absolute top-6 left-6 z-50 flex size-8 touch-manipulation items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-400 shadow-xs transition-all hover:border-zinc-400 hover:text-zinc-900"
+          className="pointer-events-auto absolute top-4 left-4 z-50 flex size-9 touch-manipulation items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-400 shadow-sm backdrop-blur-md transition-all hover:border-zinc-400 hover:text-zinc-900 md:top-6 md:left-6 md:size-8"
         >
           <X className="size-4" />
         </button>
 
-        <div className="absolute -top-10 left-1/2 z-50 -translate-x-1/2 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 font-plus-jakarta text-xs font-bold text-zinc-500 shadow-sm backdrop-blur-sm">
+        <div className="absolute top-5 left-1/2 z-50 -translate-x-1/2 rounded-full border border-zinc-200 bg-white/95 px-3 py-1 font-plus-jakarta text-xs font-bold text-zinc-500 shadow-sm backdrop-blur-md md:-top-10">
           {selectedIndex + 1}/{projectsData.length}
         </div>
 
@@ -329,7 +332,7 @@ function ProjectDialog({
           type="button"
           onClick={() => detailSwiperRef.current?.swiper.slidePrev()}
           aria-label="پروژه قبلی"
-          className="absolute top-1/2 right-2 z-50 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-500 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-400 hover:text-black md:-right-16"
+          className="absolute top-4 right-4 z-50 flex size-9 items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-500 shadow-sm backdrop-blur-md transition-all hover:border-zinc-400 hover:text-black md:top-1/2 md:-right-16 md:size-11 md:-translate-y-1/2 md:shadow-lg"
         >
           <ArrowRight className="size-5" strokeWidth={1.7} />
         </button>
@@ -337,7 +340,7 @@ function ProjectDialog({
           type="button"
           onClick={() => detailSwiperRef.current?.swiper.slideNext()}
           aria-label="پروژه بعدی"
-          className="absolute top-1/2 left-2 z-50 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-500 shadow-lg backdrop-blur-sm transition-all hover:border-zinc-400 hover:text-black md:-left-16"
+          className="absolute top-4 right-15 z-50 flex size-9 items-center justify-center rounded-full border border-zinc-200 bg-white/95 text-zinc-500 shadow-sm backdrop-blur-md transition-all hover:border-zinc-400 hover:text-black md:top-1/2 md:right-auto md:-left-16 md:size-11 md:-translate-y-1/2 md:shadow-lg"
         >
           <ArrowLeft className="size-5" strokeWidth={1.7} />
         </button>
@@ -350,7 +353,7 @@ function ProjectDialog({
             spaceBetween={0}
             loop
             onSlideChange={(swiper) => onIndexChange(swiper.realIndex)}
-            className="h-full w-full overflow-hidden rounded-4xl"
+            className="h-full w-full overflow-hidden rounded-[1.75rem] md:rounded-4xl"
           >
             {projectsData.map((project) => (
               <SwiperSlide key={project.id} className="h-full!">
@@ -384,7 +387,7 @@ export default function ProjectsSlider() {
       className="relative scroll-mt-20 overflow-hidden bg-white py-16 text-zinc-950 md:py-24 md:pt-18"
     >
       <div className="mx-auto w-[94%] max-w-380" dir="rtl">
-        <div className="mb-14 flex flex-col items-start justify-between gap-7 md:mb-16 md:flex-row md:items-center">
+        <div className="mb-5 flex flex-col items-start justify-between gap-6 md:mb-16 md:flex-row md:items-center md:gap-7">
           <div className="space-y-2 text-right">
             <h2 className="text-4xl leading-none font-black text-black md:text-6xl">
               تجربه‌هایی که به نتیجه رسیدند
@@ -394,26 +397,34 @@ export default function ProjectsSlider() {
             </h3>
           </div>
 
-          <div className="flex items-center gap-3" dir="ltr">
-            <span className="mr-1 min-w-10 font-plus-jakarta text-xs font-extrabold text-black">
+          <div
+            className="flex w-full items-center justify-between gap-2 p-1.5 md:w-auto md:justify-start md:gap-3 md:border-0 md:bg-transparent md:p-0 md:shadow-none rounded-full"
+            dir="ltr"
+          >
+            <span className="mr-2 min-w-10 bg-white px-3 py-2 text-center font-space-grotesk text-sm font-medium text-black md:mr-0 md:bg-transparent md:px-0 md:py-0 md:text-start md:shadow-none rounded-full">
               {activeIndex + 1}/{projectsData.length}
             </span>
-            <button
-              type="button"
-              onClick={() => goToIndex(activeIndex + 1)}
-              aria-label="پروژه قبلی"
-              className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
-            >
-              <ArrowLeft className="size-4 text-zinc-500" strokeWidth={1.5} />
-            </button>
-            <button
-              type="button"
-              onClick={() => goToIndex(activeIndex - 1)}
-              aria-label="پروژه بعدی"
-              className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
-            >
-              <ArrowRight className="size-4 text-zinc-500" strokeWidth={1.5} />
-            </button>
+            <div className="flex items-center justify-center gap-x-2.5">
+              <button
+                type="button"
+                onClick={() => goToIndex(activeIndex + 1)}
+                aria-label="پروژه قبلی"
+                className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
+              >
+                <ChevronLeft className="size-5 text-zinc-500" strokeWidth={1.5} />
+              </button>
+              <button
+                type="button"
+                onClick={() => goToIndex(activeIndex - 1)}
+                aria-label="پروژه بعدی"
+                className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
+              >
+                <ChevronRight
+                  className="size-5 text-zinc-500"
+                  strokeWidth={1.5}
+                />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -461,22 +472,22 @@ export default function ProjectsSlider() {
                         projectPalettes[project.id - 1].border,
                     } as CSSProperties
                   }
-                  className={`${styles.card} ${projectIndex === activeIndex ? styles.cardActive : ""} group relative flex h-full min-h-102.5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl border p-7 text-right transition-all duration-500 md:p-8`}
+                  className={`${styles.card} ${projectIndex === activeIndex ? styles.cardActive : ""} group relative flex h-full min-h-96 cursor-pointer flex-col justify-between overflow-hidden rounded-[1.75rem] border p-6 text-right transition-all duration-500 md:min-h-102.5 md:rounded-3xl md:p-8`}
                   dir="rtl"
                 >
                   <div className="relative z-10">
-                    <div className="mb-9 flex items-center justify-between gap-3">
+                    <div className="mb-7 flex items-center justify-between gap-3 md:mb-9">
                       <span
                         className={`${styles.category} max-w-3/4 truncate rounded-full border px-3 py-1.5 text-xs leading-none font-extrabold`}
                       >
                         {project.subtitle}
                       </span>
-                      <span className="shrink-0 rounded-full border border-zinc-200/80 bg-white/75 px-3 py-1.5 font-plus-jakarta text-xs leading-none font-bold text-zinc-400">
+                      <span className="shrink-0 border border-zinc-200/80 bg-white/75 px-3 py-1.5 tracking-wider font-plus-jakarta text-[0.67rem] leading-none font-bold text-zinc-400 rounded-full">
                         {project.privacy}
                       </span>
                     </div>
 
-                    <h3 className="mb-4 text-3xl leading-tight font-black text-black">
+                    <h3 className="mb-3 text-2xl leading-tight font-black text-black md:mb-4 md:text-3xl">
                       {project.title}
                     </h3>
                     <p className="max-w-11/12 text-sm leading-7 font-medium text-zinc-500">
@@ -496,18 +507,20 @@ export default function ProjectsSlider() {
                           {project.tags.map((tag) => (
                             <div
                               key={tag}
-                              className="flex rounded-full border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-xs font-bold text-zinc-500 backdrop-blur-sm"
+                              className="flex border border-zinc-200/60 bg-white/70 px-3 py-1.5 text-xs font-bold text-zinc-500 backdrop-blur-sm rounded-full"
                             >
                               {tag}
                             </div>
                           ))}
                         </div>
-                        <div className={`${styles.detailsCta} transition-transform duration-500`}>
+                        <div
+                          className={`${styles.detailsCta} font-vazir transition-transform duration-500`}
+                        >
                           مشاهده جزئیات <span>↗</span>
                         </div>
                       </div>
                       <div
-                        className={`${styles.number} pointer-events-none z-0 select-none font-plus-jakarta text-8xl leading-none font-extrabold transition-all duration-500`}
+                        className={`${styles.number} pointer-events-none z-0 select-none font-plus-jakarta text-6xl leading-none font-extrabold transition-all duration-500 md:text-8xl`}
                         dir="ltr"
                       >
                         {String(project.id).padStart(2, "0")}
@@ -520,9 +533,9 @@ export default function ProjectsSlider() {
           </Swiper>
         </div>
 
-        <div className="relative z-30 mt-9 flex w-full justify-center">
+        <div className="relative z-30 mt-7 flex w-full justify-center md:mt-9">
           <div
-            className={`${styles.pagination} flex h-6 items-center justify-center gap-2`}
+            className={`${styles.pagination} flex h-9 items-center justify-center gap-2 px-4 md:h-6 md:border-0 md:bg-transparent md:px-0 md:shadow-none rounded-full`}
             dir="rtl"
             aria-label="انتخاب پروژه"
           >

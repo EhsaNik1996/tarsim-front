@@ -26,7 +26,8 @@ type Stage = {
 
 type MotionPreference = boolean | null;
 
-const DESKTOP_CARD_STEP = 84;
+const DESKTOP_CARD_WIDTH = 80;
+const DESKTOP_CARD_GAP = 4;
 const DESKTOP_CARD_INACTIVE_SCALE = 0.95;
 
 const stages: Stage[] = [
@@ -66,7 +67,11 @@ const stages: Stage[] = [
     description:
       "بخش‌های منسجم را با مسیرهای داده واقعی، نمایش‌های مکرر و پیشرفتی تحویل می‌دهیم که همه تیم بتوانند آن را بررسی کنند.",
     question: "آیا می‌توانیم پیشرفت را زود اثبات کنیم؟",
-    points: ["بخش‌های قابل استفاده", "کیفیت و بازبینی", "ریتم تحویل قابل مشاهده"],
+    points: [
+      "بخش‌های قابل استفاده",
+      "کیفیت و بازبینی",
+      "ریتم تحویل قابل مشاهده",
+    ],
     output: "سیستم در حال کار",
     note: "پیش از ادامه بازبینی شود",
     color: "#0096b7",
@@ -211,7 +216,8 @@ function DesktopStageCard({
   const isActive = offset === 0;
   const left = useTransform(
     stageProgress,
-    (progress) => `${50 - (index - progress) * DESKTOP_CARD_STEP}%`,
+    (progress) =>
+      `calc(50% - ${(index - progress) * (DESKTOP_CARD_WIDTH + DESKTOP_CARD_GAP)}rem)`,
   );
   const opacity = useTransform(stageProgress, (progress) => {
     const distance = Math.abs(index - progress);
@@ -232,7 +238,7 @@ function DesktopStageCard({
       animate={
         reduceMotion
           ? {
-              left: `${50 - offset * DESKTOP_CARD_STEP}%`,
+              left: `calc(50% - ${offset * (DESKTOP_CARD_WIDTH + DESKTOP_CARD_GAP)}rem)`,
               opacity: isActive ? 1 : 0,
               scale: isActive ? 1 : DESKTOP_CARD_INACTIVE_SCALE,
               filter: isActive ? "blur(0px)" : "blur(2px)",
@@ -384,11 +390,7 @@ function DesktopProcess({
   );
 }
 
-function MobileProcess({
-  reduceMotion,
-}: {
-  reduceMotion: MotionPreference;
-}) {
+function MobileProcess({ reduceMotion }: { reduceMotion: MotionPreference }) {
   return (
     <div className="relative px-3 py-20 md:hidden">
       <div className="process-grid process-mobile-grid pointer-events-none absolute inset-0" />
@@ -501,8 +503,7 @@ export default function WorkProcess() {
 
     window.scrollTo({
       top:
-        section.offsetTop +
-        scrollableDistance * (index / (stages.length - 1)),
+        section.offsetTop + scrollableDistance * (index / (stages.length - 1)),
       behavior: reduceMotion ? "auto" : "smooth",
     });
   };

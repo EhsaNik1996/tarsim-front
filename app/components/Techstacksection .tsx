@@ -300,7 +300,7 @@ const badges = ["پیاده‌سازی سریع", "تحویل تمیز و مست
 export default function TechStackSection() {
   return (
     <div
-      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-8 md:p-10 mx-4 md:mx-0 md:w-[84%] rounded-4xl"
+      className="place-self-center border border-zinc-200 bg-linear-to-br from-[#fdfeff] via-white to-[#f4f8ff] p-5 md:p-10 w-[93%] md:w-[84%] rounded-4xl"
       dir="rtl"
     >
       <div className="grid grid-cols-1 md:grid-cols-[0.85fr_1.6fr] items-center">
@@ -320,16 +320,15 @@ export default function TechStackSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 border border-zinc-200 mt-10 rounded-2xl overflow-hidden bg-white/70 backdrop-blur-sm">
+        <div className="grid grid-cols-2 md:grid-cols-4 border border-zinc-200 mt-10 rounded-2xl overflow-hidden bg-white/70 backdrop-blur-sm">
           {techStack.map((tech, i) => {
             const col = i % 4;
-            const row = Math.floor(i / 4);
             return (
               <div
                 key={tech.name}
                 className={`flex flex-col items-start gap-2.5 p-5 text-left ${
-                  col !== 0 ? "border-r border-zinc-200" : ""
-                } ${row !== 0 ? "border-t border-zinc-200" : ""}`}
+                  i % 2 !== 0 ? "border-r border-zinc-200" : col !== 0 ? "md:border-r md:border-zinc-200" : ""
+                } ${i >= 2 && i < 4 ? "border-t border-zinc-200 md:border-t-0" : i >= 4 ? "border-t border-zinc-200" : ""}`}
                 dir="ltr"
               >
                 <div className="flex items-center justify-center">
@@ -348,7 +347,7 @@ export default function TechStackSection() {
         {badges.map((badge) => (
           <span
             key={badge}
-            className="text-[11.5px] font-bold text-zinc-600 bg-white border border-zinc-200/70 px-5 py-2 rounded-full"
+            className="text-[11.5px] font-bold text-zinc-600 bg-white border border-zinc-200/70 px-5 py-3 text-center rounded-full"
           >
             {badge}
           </span>

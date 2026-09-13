@@ -33,11 +33,6 @@
   top: 0;
 }
 
-.glass-nav {
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
 .metrics-summary {
   background:
     radial-gradient(circle at 88% 8%, rgba(84, 211, 144, 0.09), transparent 48%),
@@ -99,11 +94,11 @@
   }
 
   .process-meta {
-    @apply text-xs font-black text-zinc-400;
+    @apply text-[10px] font-space-grotesk font-medium text-zinc-400;
   }
 
   .process-stage-title {
-    @apply text-7xl leading-none font-black text-black xl:text-8xl 2xl:text-9xl;
+    @apply text-7xl leading-none font-medium text-black xl:text-8xl 2xl:text-9xl;
   }
 
   .process-question {
@@ -115,7 +110,7 @@
   }
 
   .process-card {
-    @apply absolute top-0 h-104 w-4/5 max-w-7xl -translate-x-1/2 overflow-hidden rounded-4xl border border-zinc-200 bg-white shadow-2xl;
+    @apply absolute top-0 h-104 w-7xl -translate-x-1/2 overflow-hidden rounded-4xl border border-zinc-200 bg-white shadow-2xl;
   }
 }
 

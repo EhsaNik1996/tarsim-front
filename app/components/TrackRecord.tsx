@@ -97,7 +97,7 @@ export default function TrackRecord() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.5, delay: index * 0.07 }}
-                className="border-b border-[#243139] first:border-t"
+                className="border-b border-[#243139]"
               >
                 <button
                   type="button"
@@ -163,7 +163,7 @@ export default function TrackRecord() {
                           filter: "blur(3px)",
                           transition: { duration: 0.18, ease: "easeOut" },
                         }}
-                        className="pb-7 pl-18.5 text-right text-[13px] leading-7 text-zinc-400 md:pl-20.25"
+                        className="pb-7 px-9 text-right text-[13px] leading-7 text-zinc-400 md:px-12"
                         dir="rtl"
                       >
                         {item.description}
