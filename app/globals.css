@@ -90,7 +90,7 @@
   }
 
   .process-copy {
-    @apply text-base leading-7 font-medium text-zinc-500;
+    @apply text-sm leading-7 font-normal text-zinc-500;
   }
 
   .process-meta {
