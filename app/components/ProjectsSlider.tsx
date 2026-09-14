@@ -5,7 +5,14 @@ import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { Dialog, DialogContent } from "@/app/components/ui/dialog";
 import { CSSProperties, useCallback, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  X,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
 const SLIDE_SPEED = 520;
 
@@ -411,7 +418,10 @@ export default function ProjectsSlider() {
                 aria-label="پروژه قبلی"
                 className={`${styles.navButton} z-10 flex size-10 items-center justify-center rounded-full border border-zinc-200 bg-white transition-all`}
               >
-                <ChevronLeft className="size-5 text-zinc-500" strokeWidth={1.5} />
+                <ChevronLeft
+                  className="size-5 text-zinc-500"
+                  strokeWidth={1.5}
+                />
               </button>
               <button
                 type="button"
@@ -486,10 +496,17 @@ export default function ProjectsSlider() {
                         {project.privacy}
                       </span>
                     </div>
-
-                    <h3 className="mb-3 text-2xl leading-tight font-black text-black md:mb-4 md:text-3xl">
-                      {project.title}
-                    </h3>
+                    <div className="flex items-center justify-between gap-3 md:gap-5">
+                      <h3 className="mb-3 text-2xl leading-tight font-black text-black">
+                        {project.title}
+                      </h3>
+                      <div
+                        className={`${styles.number} pointer-events-none md:hidden z-0 select-none font-space-grotesk text-7xl md:text-8xl leading-none font-extrabold transition-all duration-500`}
+                        dir="ltr"
+                      >
+                        {String(project.id).padStart(2, "0")}
+                      </div>
+                    </div>
                     <p className="max-w-11/12 text-sm leading-7 font-medium text-zinc-500">
                       {project.desc}
                     </p>
@@ -520,7 +537,7 @@ export default function ProjectsSlider() {
                         </div>
                       </div>
                       <div
-                        className={`${styles.number} pointer-events-none z-0 select-none font-plus-jakarta text-6xl leading-none font-extrabold transition-all duration-500 md:text-8xl`}
+                        className={`${styles.number} pointer-events-none hidden md:block z-0 select-none font-space-grotesk text-6xl leading-none font-extrabold transition-all duration-500 md:text-8xl`}
                         dir="ltr"
                       >
                         {String(project.id).padStart(2, "0")}

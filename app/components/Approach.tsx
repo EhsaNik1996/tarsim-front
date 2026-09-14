@@ -57,9 +57,9 @@ export default function Approach() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group flex justify-end gap-6 border-b border-stroke-gray pb-8 text-right transition-colors duration-300 hover:border-electric-blue/35 md:gap-8"
+              className="group flex justify-end gap-6 first:border-t first:border-t-black first:pt-8 md:first:border-t-stroke-gray border-b border-stroke-gray pb-8 text-right transition-colors duration-300 hover:border-electric-blue/35 md:gap-8"
             >
-              <span className="font-mono text-xl font-normal text-gray-400 transition-transform duration-300 group-hover:-translate-y-1">
+              <span className="text-sm font-bold font-space-grotesk text-black md:text-gray-400 transition-transform duration-300 group-hover:-translate-y-1">
                 {step.num}
               </span>
               <div className="space-y-3 flex-1">
