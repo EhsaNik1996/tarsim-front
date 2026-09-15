@@ -67,7 +67,7 @@ export default function Header() {
       dir="rtl"
       className={
         isScrolled
-          ? "fixed top-0 z-50 w-full bg-white/50 border-b border-gray-500/15 backdrop-blur-lg transition-[background-color,backdrop-filter] duration-300"
+          ? "fixed top-0 z-50 w-full bg-white/80 border-b border-gray-500/15 backdrop-blur-lg transition-[background-color,backdrop-filter] duration-300"
           : "fixed top-0 z-50 w-full bg-linear-to-b from-white via-white/50 to-transparent transition-[background-color,backdrop-filter] duration-300"
       }
     >

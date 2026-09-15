@@ -50,7 +50,7 @@ export default function ServicesHero() {
       />
 
       <div
-        className="mx-auto flex w-full flex-col items-stretch justify-center gap-10 px-6 py-12 md:min-h-[calc(100svh-7.5rem)] md:flex-row md:items-center md:gap-x-[14vw] md:px-[4.45vw] md:py-8"
+        className="mx-auto flex w-full flex-col items-stretch justify-center gap-10 px-6 py-10 md:min-h-[calc(100svh-7.5rem)] md:flex-row md:items-center md:gap-x-[14vw] md:px-[4.45vw] md:py-8"
         dir="ltr"
       >
         <ServiceCopy />
@@ -74,7 +74,7 @@ function ServiceCopy() {
         <span className="text-base font-medium">خدمات</span>
       </div>
 
-      <div className="max-w-152 text-5xl leading-13 md:leading-20 font-black tracking-[-0.055em] sm:text-6xl lg:text-[4.3rem] mt-9">
+      <div className="max-w-152 text-5xl leading-13 md:leading-20 font-black tracking-[-0.055em] sm:text-6xl lg:text-[4.3rem] mt-7">
         سیستم‌هایی که
         <motion.h2 className="relative block font-semibold text-emerald-500 my-1 pb-2">
           کار را به حرکت
@@ -129,12 +129,12 @@ function DeliveryDiagram() {
         aria-hidden="true"
         className="absolute inset-y-0 right-[-28vw] left-[12%] z-0 opacity-55 bg-[radial-gradient(rgba(82,93,120,0.12)_0.72px,transparent_0.72px)] bg-size-[18px_18px] mask-[linear-gradient(to_left,black_0%,black_58%,rgba(0,0,0,0.72)_76%,transparent_100%)]"
       />
-      <div className="flex flex-col md:flex-row-reverse justify-between items-center">
-        <div className="flex items-center gap-2 text-xs font-medium text-zinc-500/80 md:left-10">
+      <div className="flex flex-col md:flex-row-reverse md:justify-between items-center">
+        <div className="flex items-center w-full md:w-fit gap-2 text-xs font-medium text-zinc-500/80 md:left-10">
           <i className="size-1.5 rounded-full bg-emerald-500" />
           موتور تحویل
         </div>
-        <div className="max-w-58 text-right text-xs leading-6 text-zinc-500 md:top-7 md:right-8 md:text-sm">
+        <div className="md:max-w-58 text-right w-full text-xs leading-6 text-zinc-500 md:top-7 md:right-8 md:text-sm">
           ورودی‌های متفاوت؛ یک مسیر پاسخ‌گو تا محصول نهایی.
         </div>
       </div>
@@ -207,7 +207,7 @@ function DeliveryDiagram() {
             <text
               x="76"
               y={137 + index * 82}
-              className="fill-zinc-500 text-sm font-medium rtl"
+              className="fill-zinc-500 text-base font-medium"
             >
               {input.label}
             </text>
@@ -264,10 +264,7 @@ function DeliveryDiagram() {
             x="464"
             y="272"
             textAnchor="middle"
-            fill="#8b918d"
-            fontSize="12"
-            fontWeight="800"
-            letterSpacing="2"
+            className="fill-[#8b918d] text-sm font-extrabold tracking-[2px]"
           >
             هم‌راستا
           </text>
@@ -275,10 +272,7 @@ function DeliveryDiagram() {
             x="464"
             y="311"
             textAnchor="middle"
-            fill="white"
-            fontSize="14"
-            fontWeight="900"
-            letterSpacing="2"
+            className="fill-white text-base font-black tracking-[2px]"
           >
             ساخت
           </text>
@@ -286,10 +280,7 @@ function DeliveryDiagram() {
             x="464"
             y="347"
             textAnchor="middle"
-            fill="#8b918d"
-            fontSize="12"
-            fontWeight="800"
-            letterSpacing="2"
+            className="fill-[#8b918d] text-sm font-extrabold tracking-[2px]"
           >
             اعتبارسنجی
           </text>
@@ -348,14 +339,16 @@ function DeliveryDiagram() {
           x="618"
           y="268"
           textAnchor="middle"
-          fill="#17231c"
-          fontSize="13"
-          fontWeight="900"
-          letterSpacing="1.5"
+          className="fill-[#17231c] text-base font-black tracking-[1.5px]"
         >
           نرم‌افزار کاربردی
         </text>
-        <text x="618" y="350" textAnchor="middle" fill="#71717a" fontSize="10">
+        <text
+          x="618"
+          y="350"
+          textAnchor="middle"
+          className="fill-zinc-500 text-sm font-normal"
+        >
           یک مسیر پاسخ‌گو
         </text>
 
@@ -364,9 +357,7 @@ function DeliveryDiagram() {
           x="110"
           y="550"
           textAnchor="middle"
-          fill="#8b9098"
-          fontSize="9"
-          fontWeight="800"
+          className="fill-[#8b9098] text-sm font-extrabold"
         >
           ورودی‌های پراکنده
         </text>
@@ -374,9 +365,7 @@ function DeliveryDiagram() {
           x="650"
           y="550"
           textAnchor="middle"
-          fill="#8b9098"
-          fontSize="9"
-          fontWeight="800"
+          className="fill-[#8b9098] text-sm font-extrabold"
         >
           سیستم روشن و قابل استفاده
         </text>

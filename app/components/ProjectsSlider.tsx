@@ -537,7 +537,7 @@ export default function ProjectsSlider() {
                         </div>
                       </div>
                       <div
-                        className={`${styles.number} pointer-events-none hidden md:block z-0 select-none font-space-grotesk text-6xl leading-none font-extrabold transition-all duration-500 md:text-8xl`}
+                        className={`${styles.number} pointer-events-none hidden translate-y-7 md:block z-0 select-none font-space-grotesk text-6xl md:text-[9.5rem] leading-none font-extrabold transition-all duration-500`}
                         dir="ltr"
                       >
                         {String(project.id).padStart(2, "0")}
