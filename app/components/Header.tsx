@@ -4,16 +4,16 @@ import Logo from "./Logo";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { AtSign, Menu } from "lucide-react";
+import { AtSign, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import {
-  Sheet,
-  SheetContent,
-  SheetClose,
-  SheetTrigger,
-  SheetHeader,
-  SheetTitle,
-} from "@/app/components/ui/sheet";
+  DialogTrigger,
+  Dialog,
+  DialogHeader,
+  DialogTitle,
+  DialogContent,
+  DialogClose,
+} from "./ui/dialog";
 
 const navItems = [
   { label: "خدمات", id: "services", href: "/services", route: true },
@@ -67,7 +67,7 @@ export default function Header() {
       dir="rtl"
       className={
         isScrolled
-          ? "fixed top-0 z-50 w-full bg-white/50 border-b border-gray-500/15 backdrop-blur-lg transition-[background-color,backdrop-filter] duration-300"
+          ? "fixed top-0 z-50 w-full bg-white/80 border-b border-gray-500/15 backdrop-blur-lg transition-[background-color,backdrop-filter] duration-300"
           : "fixed top-0 z-50 w-full bg-linear-to-b from-white via-white/50 to-transparent transition-[background-color,backdrop-filter] duration-300"
       }
     >
@@ -155,67 +155,109 @@ export default function Header() {
 
           {/* Mobile menu */}
           <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <button
-                  aria-label="باز کردن منو"
-                  className="grid size-11 place-items-center text-on-surface stransition-colors hover:bg-slate-50 rounded-full"
-                >
-                  <Menu className="size-6 text-on-surface" strokeWidth={2} />
-                </button>
-              </SheetTrigger>
+            <Dialog>
+              <DialogTrigger aria-label="باز کردن منو">
+                <Menu className="size-6 text-on-surface" strokeWidth={2} />
+              </DialogTrigger>
 
-              <SheetContent
-                side="left"
-                className="w-75 bg-white/80 px-5 sm:w-100"
+              <DialogContent
+                className="mobile-menu-dialog w-[95%] max-w-none gap-0 bg-white p-0 text-on-surface rounded-4xl"
                 dir="rtl"
               >
-                <SheetHeader className="border-b border-stroke-gray pb-6 text-right">
-                  <SheetTitle className="text-right">
+                <DialogHeader className="flex-row items-center justify-between border-b border-stroke-gray px-5 py-3 text-right">
+                  <DialogTitle className="text-right">
                     <Logo />
-                  </SheetTitle>
-                </SheetHeader>
+                  </DialogTitle>
+                  <DialogClose
+                    aria-label="بستن منو"
+                    className="grid size-11 place-items-center rounded-full border border-black/15 text-on-surface transition-transform duration-300 hover:rotate-90 hover:border-black/40"
+                  >
+                    <X className="size-6" strokeWidth={1.5} />
+                  </DialogClose>
+                </DialogHeader>
 
-                <div className="mt-8 flex flex-col gap-5 text-right">
-                  {navItems.map((item) => {
-                    const isActive = item.route
-                      ? pathname === item.href ||
-                        pathname.startsWith(`${item.href}/`)
-                      : pathname === "/" && activeSection === item.id;
+                <div className="px-5 pb-5 pt-6 text-right">
+                  <div className="flex flex-col">
+                    {navItems.map((item) => {
+                      const isActive = item.route
+                        ? pathname === item.href ||
+                          pathname.startsWith(`${item.href}/`)
+                        : pathname === "/" && activeSection === item.id;
 
-                    return (
-                      <SheetClose asChild key={item.id}>
-                        <Link
-                          href={item.href}
-                          onClick={() =>
-                            !item.route && setActiveSection(item.id)
-                          }
-                          aria-current={isActive ? "location" : undefined}
-                          className={`rounded-l-lg border-r-4 py-2 pr-3 text-base transition-all ${
-                            isActive
-                              ? "border-electric-blue bg-electric-blue/5 font-bold text-electric-blue"
-                              : "border-transparent text-on-surface-variant hover:text-electric-blue"
-                          }`}
+                      return (
+                        <DialogClose
+                          key={item.id}
+                          className="group border-b border-stroke-gray"
                         >
-                          {item.label}
-                        </Link>
-                      </SheetClose>
-                    );
-                  })}
+                          <Link
+                            href={item.href}
+                            onClick={() =>
+                              !item.route && setActiveSection(item.id)
+                            }
+                            aria-current={isActive ? "location" : undefined}
+                            className="flex items-center justify-between py-4 transition-colors duration-300 group-hover:text-electric-blue"
+                          >
+                            <h2
+                              className={`text-3xl font-black transition-colors duration-300 ${
+                                isActive
+                                  ? "text-electric-blue"
+                                  : "text-on-surface group-hover:text-electric-blue"
+                              }`}
+                            >
+                              {item.label}
+                            </h2>
+                            <span className="font-space-grotesk text-xs font-bold text-gray-400">
+                              {String(navItems.indexOf(item) + 1).padStart(
+                                2,
+                                "0",
+                              )}
+                            </span>
+                          </Link>
+                        </DialogClose>
+                      );
+                    })}
+                  </div>
 
-                  <div className="mt-8 border-t border-stroke-gray pt-6">
-                    <SheetClose asChild>
-                      <Link
-                        href="#contact"
-                        className="block w-full rounded-xl bg-electric-blue py-3 text-center text-sm font-bold text-white shadow-md shadow-electric-blue/10"
+                  <div className="mt-5 flex items-center gap-2 h-12">
+                    <button
+                      type="button"
+                      aria-label="اینستاگرام ترسیم"
+                      className="flex items-center justify-center basis-1/2 h-full gap-x-1 border border-black/10 text-on-surface transition-colors hover:border-black/50 rounded-full"
+                    >
+                      <p>Instagram</p>
+                      <svg
+                        viewBox="0 0 24 24"
+                        className="size-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
                       >
-                        درخواست مشاوره
-                      </Link>
-                    </SheetClose>
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle
+                          cx="17.5"
+                          cy="6.5"
+                          r="1"
+                          fill="currentColor"
+                          stroke="none"
+                        />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="تردز ترسیم"
+                      className="flex items-center justify-center basis-1/2 h-full gap-x-1 border border-black/10 text-on-surface transition-colors hover:border-black/50 rounded-full"
+                    >
+                      <p>Twitter</p>
+                      <AtSign className="size-4" strokeWidth={1.8} />
+                    </button>
                   </div>
                 </div>
-              </SheetContent>
-            </Sheet>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>

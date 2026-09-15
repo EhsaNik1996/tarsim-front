@@ -23,7 +23,7 @@ export default function Hero() {
           }
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: reduceMotion ? 0 : 0.55 }}
-          className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-zinc-200 bg-white/85 px-4 py-2 mb-8 font-medium text-zinc-500 shadow-sm backdrop-blur-sm text-xs rounded-full"
+          className="flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 border border-zinc-200 bg-white/85 px-4 py-3 mb-8 font-medium text-zinc-500 backdrop-blur-sm text-xs md:text-sm rounded-full"
         >
           <span className="size-2 bg-electric-blue shadow-sm animate-pulse rounded-full" />
           <span className="hidden md:block">از سال ۱۳۸۹</span>
@@ -39,22 +39,17 @@ export default function Hero() {
 
         <h1 className="max-w-275 text-4xl xl:text-7xl font-black leading-12 xl:leading-24">
           <BlurText
-            text="سیستم‌هایی می‌سازیم که سال‌ها بتوان به آن‌ها"
+            text="سیستم‌هایی می‌سازیم که سال‌ها بتوان به آن‌ها اعتماد کرد."
             delay={0.18}
             stagger={0.07}
             className="justify-center"
-          />
-          <BlurText
-            text="اعتماد کرد."
-            delay={0.75}
-            stagger={0.07}
-            className="justify-center"
             highlightWords={["اعتماد"]}
-            highlightClassName="text-electric-blue"
+            highlightClassName="text-electric-blue text-center"
           />
+   
         </h1>
 
-        <p className="mt-4 max-w-220 text-base font-normal leading-7 text-zinc-500 sm:text-base md:text-lg md:leading-9">
+        <p className="mt-4 max-w-[50%] text-base font-normal leading-7 text-zinc-500 sm:text-base md:text-lg md:leading-9">
           <BlurText
             text="ترسیم یک شرکت مهندسی سیستم است. از طراحی محصولات دیجیتال و زیرساخت‌های فناوری گرفته تا سامانه‌های مدیریت دانش، کتابخانه‌ها و موزه‌ها، ما سیستم‌هایی را طراحی، اجرا و نگهداری می‌کنیم که برای استفاده بلندمدت، توسعه‌پذیری و پایداری ساخته شده‌اند."
             delay={1}
@@ -72,18 +67,18 @@ export default function Hero() {
             duration: reduceMotion ? 0 : 0.65,
             delay: reduceMotion ? 0 : 1.8,
           }}
-          className="mt-9 flex md:w-full flex-col justify-center gap-3 sm:w-auto sm:flex-row"
+          className="mt-9 flex md:w-[35%] h-12 flex-col justify-center gap-3 sm:w-auto sm:flex-row"
         >
           <a
             href="#contact"
-            className="group inline-flex items-center justify-center gap-3 rounded-full bg-black px-8 py-4 text-sm font-bold text-white shadow-[0_12px_30px_rgba(0,0,0,0.14)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-electric-blue"
+            className="group inline-flex basis-2/3 items-center justify-center gap-3 bg-black text-sm font-bold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-electric-blue rounded-full"
           >
             <span>شروع همکاری</span>
             <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
           </a>
           <a
             href="#projects"
-            className="inline-flex items-center justify-center rounded-full border border-zinc-300 bg-white/80 px-8 py-4 text-sm font-bold text-zinc-900 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-electric-blue hover:text-electric-blue"
+            className="inline-flex basis-1/3 items-center justify-center border border-zinc-300 bg-white/80 text-sm font-bold text-zinc-900 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-electric-blue hover:text-electric-blue rounded-full"
           >
             مشاهده پروژه‌ها
           </a>

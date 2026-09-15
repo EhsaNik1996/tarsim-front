@@ -16,8 +16,8 @@ const deliveryFacts = [
 export default function DeliveryModel() {
   return (
     <section className="flex w-full bg-white" dir="rtl">
-      <div className="mx-auto w-full max-w-360 flex-col px-6 pt-20 md:px-16 md:py-24">
-        <div className="grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-20">
+      <div className="mx-auto w-full max-w-360 flex-col px-6 pt-16 md:px-16 md:py-24">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-20">
           <BlurReveal className="md:col-span-5">
             <span className="text-xs font-normal tracking-widest">
               شیوه کار ترسیم
@@ -33,7 +33,7 @@ export default function DeliveryModel() {
           </BlurReveal>
 
           <BlurReveal className="md:col-span-7" delay={0.12}>
-          <p className="flex flex-col gap-5 md:pt-1 text-base leading-8 font-light text-zinc-500 md:text-[17px]">
+          <p className="flex flex-col gap-5 md:pt-1 text-sm md:text-base leading-7 font-normal text-zinc-500">
             ترسیم یک استودیوی نرم‌افزاری با راهبری افراد ارشد است؛ برای تیم‌هایی
             که به محصولات کاربردی، یکپارچه‌سازی قابل اتکا و تصمیم‌های فنی شفاف
             نیاز دارند.

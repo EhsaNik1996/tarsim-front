@@ -56,7 +56,7 @@ export default function BlurText({
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className={`flex flex-wrap gap-x-[0.25em] gap-y-[0.05em] ${className}`}
+      className={`flex flex-wrap w-fit gap-x-[0.25em] gap-y-[0.05em] ${className}`}
       aria-label={text}
     >
       {words.map((word, index) => (

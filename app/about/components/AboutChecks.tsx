@@ -56,7 +56,7 @@ export default function AboutChecks() {
           </BlurReveal>
 
           <BlurReveal className="md:justify-self-end" delay={0.12}>
-          <p className="max-w-xl text-sm leading-7 font-normal text-zinc-500">
+          <p className="max-w-xl text-sm leading-6 font-normal text-zinc-500">
             این اصول تصمیم‌های فنی روزمره ما را شکل می‌دهند؛ نه ارزش‌هایی که
             بعد از پایان تحویل، فقط به یک اسلاید اضافه شوند.
           </p>
@@ -78,7 +78,7 @@ export default function AboutChecks() {
                 {item.title}
               </h3>
 
-              <p className="order-last w-full pr-16 text-[13.5px] leading-7 font-normal text-zinc-500 md:order-0 md:w-auto md:flex-1 md:pr-0">
+              <p className="order-last w-full pr-16 text-[13.5px] leading-6 font-normal text-zinc-500 md:order-0 md:w-auto md:flex-1 md:pr-0">
                 {item.description}
               </p>
 

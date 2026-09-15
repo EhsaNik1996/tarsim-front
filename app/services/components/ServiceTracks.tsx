@@ -221,7 +221,7 @@ export default function ServiceTracks() {
                 <h2 className="max-w-4xl text-4xl leading-[0.95] font-black tracking-[-0.055em] md:text-6xl mt-3">
                   {track.title}
                 </h2>
-                <p className="max-w-2xl text-xs leading-6 text-black/45 md:text-base mt-4">
+                <p className="max-w-2xl text-sm leading-6 font-medium text-black/45 md:text-base mt-4">
                   {track.description}
                 </p>
               </motion.div>
@@ -230,7 +230,7 @@ export default function ServiceTracks() {
             <div className="grid md:grid-cols-[0.9fr_1fr_1fr] md:gap-14 mt-12 md:mt-20">
               <motion.div
                 style={{ borderColor: track.accent }}
-                className="border-t py-5"
+                className="border-t py-8 md:py-5"
                 initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 viewport={{ once: true, amount: 0.4 }}
@@ -246,7 +246,7 @@ export default function ServiceTracks() {
                 >
                   مناسب برای
                 </span>
-                <p className="text-[13px] leading-6 text-black/50 mt-3">
+                <p className="text-sm leading-6 text-black/50 mt-3">
                   {track.bestFor}
                 </p>
               </motion.div>
@@ -256,7 +256,7 @@ export default function ServiceTracks() {
                     {column.map(([title, description], itemIndex) => (
                       <motion.div
                         key={title}
-                        className="group relative border-t border-black/10 pr-5 pt-5 pb-16"
+                        className="group flex items-center md:items-start relative border-t border-black/10 px-5 md:py-6 h-28 md:h-40"
                         initial={{ opacity: 0, y: 16, filter: "blur(8px)" }}
                         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                         viewport={{ once: true, amount: 0.4 }}
@@ -285,7 +285,7 @@ export default function ServiceTracks() {
                             <h3 className="text-[17px] font-extrabold">
                               {title}
                             </h3>
-                            <p className="text-[13px] leading-5 text-black/40 mt-2">
+                            <p className="text-sm leading-5 text-black/40 mt-2">
                               {description}
                             </p>
                           </div>
@@ -341,7 +341,7 @@ export default function ServiceTracks() {
               </div>
               <a
                 href="#contact"
-                className="flex items-center gap-2 border-b border-black text-xs font-bold md:self-end pb-1"
+                className="flex items-center gap-2 w-fit border-b border-black text-xs font-bold md:self-end pb-1"
               >
                 بررسی این خدمت <ArrowUpLeft className="size-3" />
               </a>

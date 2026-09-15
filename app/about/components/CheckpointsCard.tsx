@@ -63,22 +63,29 @@ export default function CheckpointsCard() {
 
           <div className="relative flex flex-col gap-10">
             <BlurReveal>
-            <span className="text-xs font-semibold uppercase tracking-widest text-lime-400">
-              <BlurText text="سیستم کاری ترسیم" stagger={0.13} />
-            </span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-lime-400">
+                <BlurText text="سیستم کاری ترسیم" stagger={0.13} />
+              </span>
             </BlurReveal>
 
             <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
               <BlurReveal>
-              <h2 className="max-w-2xl text-4xl font-black leading-none tracking-tighter md:text-6xl">
-                <BlurText text="شش نقطه بررسی، نه یک مرحله پایانی." stagger={0.13} />
-              </h2>
+                <h2 className="max-w-2xl text-4xl font-black leading-none tracking-tighter md:text-6xl">
+                  <BlurText
+                    text="شش نقطه بررسی، نه یک مرحله پایانی."
+                    stagger={0.13}
+                  />
+                </h2>
               </BlurReveal>
 
               <BlurReveal delay={0.12}>
-              <p className="max-w-md text-sm leading-6 font-medium text-white/55">
-                <BlurText text="هر پروژه مجموعه‌ای از تصمیم‌هاست. ما تلاش می‌کنیم در نقاط مهم، قبل از ادامه مسیر مطمئن شویم چیزی که ساخته‌ایم واقعاً ارزش ادامه دادن دارد." delay={0.18} stagger={0.09} />
-              </p>
+                <p className="max-w-md text-sm leading-6 font-medium text-white/55">
+                  <BlurText
+                    text="هر پروژه مجموعه‌ای از تصمیم‌هاست. ما تلاش می‌کنیم در نقاط مهم، قبل از ادامه مسیر مطمئن شویم چیزی که ساخته‌ایم واقعاً ارزش ادامه دادن دارد."
+                    delay={0.18}
+                    stagger={0.09}
+                  />
+                </p>
               </BlurReveal>
             </div>
 
@@ -87,23 +94,38 @@ export default function CheckpointsCard() {
                 <BlurReveal
                   key={item.title}
                   delay={index * 0.045}
-                  className="flex flex-col gap-4 py-7.5 md:flex-row md:items-start md:gap-6"
+                  className="flex items-center py-7.5 md:items-start md:gap-6"
                 >
-                  <span className="w-8 shrink-0 font-space-grotesk text-[10px] font-semibold text-lime-400">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <div className="flex items-center">
+                    <span className="w-8 shrink-0 font-space-grotesk text-[10px] font-semibold text-lime-400">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
 
-                  <span className="w-24 shrink-0 text-xs font-normal uppercase tracking-widest text-white/50">
-                    <BlurText text={item.phase} delay={index * 0.16} stagger={0.12} />
-                  </span>
+                    <span className="w-24 shrink-0 text-xs font-normal uppercase tracking-widest text-white/50">
+                      <BlurText
+                        text={item.phase}
+                        delay={index * 0.16}
+                        stagger={0.12}
+                      />
+                    </span>
+                  </div>
+                  <div className="flex flex-col md:flex-row md:w-full">
+                    <h3 className="flex md:w-[30%] text-lg font-extrabold">
+                      <BlurText
+                        text={item.title}
+                        delay={index * 0.16}
+                        stagger={0.11}
+                      />
+                    </h3>
 
-                  <h3 className="flex-1 text-lg font-extrabold">
-                    <BlurText text={item.title} delay={index * 0.16} stagger={0.11} />
-                  </h3>
-
-                  <p className="flex-1 text-[13.5px] leading-6 text-white/60">
-                    <BlurText text={item.description} delay={0.2 + index * 0.16} stagger={0.09} />
-                  </p>
+                    <p className="flex-1 text-sm leading-6 text-white/60">
+                      <BlurText
+                        text={item.description}
+                        delay={0.2 + index * 0.16}
+                        stagger={0.09}
+                      />
+                    </p>
+                  </div>
                 </BlurReveal>
               ))}
             </div>
